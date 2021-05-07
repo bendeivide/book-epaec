@@ -1,0 +1,42 @@
+bookdown::gitbook:
+#  split_by: section
+  info: yes
+  css: ear.css
+  config:
+    toc:
+      collapse: subsection
+      scroll_highlight: yes
+      before: |
+        <li><a href="./">Estatística & Probabilidade aplicado às Engenharias e Ciências</a></li>
+      after: |
+        <li><a href="https://bendeivide.github.io/book-epaec" target="blank">Acesse o curso desse material!</a></li>
+#   download: ["pdf", "epub"]
+    download: null
+    edit: https://github.com/bendeivide/book-epaec/edit/main/%s
+    toolbar:
+      position: fixed # static
+    sharing:
+      facebook: yes
+      github: yes
+      twitter: yes
+      linkedin: no
+      weibo: no
+      instapaper: no
+      vk: no
+      whatsapp: yes
+bookdown::pdf_book:
+  # includes:
+  #   in_header: latex/preamble.tex
+  #   before_body: latex/before_body.tex
+  #   after_body: latex/after_body.tex
+  keep_tex: yes
+  latex_engine: xelatex
+  citation_package: natbib
+  template: null
+  pandoc_args: [--top-level-division=chapter, --wrap=none]
+  toc_depth: 3
+  toc_unnumbered: no
+  toc_appendix: yes
+  highlight_bw: yes
+  quote_footer: ["\\VA{", "}{}"]
+bookdown::epub_book: default

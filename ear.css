@@ -1,0 +1,73 @@
+/* Definitions, Theoremns*/
+
+body {
+  /* Set "cont-cap" to 0 */
+  counter-reset: cont-teo;
+  counter-reset: cont-exem;
+}
+
+.definicao {
+  display: block;
+  font-style: italic;
+  font-size: 18px;
+  font-family: "Times New Roman";
+  color: black;
+  border-radius: 10px;
+  background-color: rgb(238,248,253);
+  box-shadow: 5px 10px 8px #888888;
+}
+.definicao[cap][titulo]::before {
+  /* Increment "cont-cap" by 1 */
+  counter-increment: cont-teo ;
+  content: "Definição " attr(cap) "." counter(cont-teo) " " attr(titulo) " ";
+  font-weight: bold;
+  font-style: normal;
+  display: inline-block;
+  width: -webkit-fill-available;
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 5px 5px 15px;
+  background-color: rgb(82,111,125);
+}
+.definicao p {
+  padding: 15px 15px 15px 15px;
+}
+
+/* Modelo de definicao
+
+<div id="def:prob" class="definicao" cap=1 titulo="(Método científico)">
+Um conjunto de regras e procedimentos para a obtenção de resultados, isto é, uma conclusão, sobre um determinado problema de uma pesquisa científica, é denominado de Método científico.
+</div>
+
+*/
+
+.exemplo {
+  display: block;
+  font-style: italic;
+  font-size: 18px;
+  font-family: "Times New Roman";
+  color: black;
+  border-radius: 10px;
+  background-color: rgb(255,255,255);
+  box-shadow: 5px 10px 8px #888888;
+}
+.exemplo[cap][titulo]::before {
+  /* Increment "cont-cap" by 1 */
+  counter-increment: cont-exem ;
+  content: "Exemplo " attr(cap) "." counter(cont-exem) " " attr(titulo) " ";
+  font-weight: bold;
+  font-style: normal;
+  display: inline-block;
+  width: -webkit-fill-available;
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 5px 5px 15px;
+  background-color: rgb(128,65,36);
+}
+.exemplo p {
+  padding: 15px 15px 15px 15px;
+}
+
+
+
+
