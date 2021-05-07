@@ -2,8 +2,7 @@
 
 body {
   /* Set "cont-cap" to 0 */
-  counter-reset: cont-teo;
-  counter-reset: cont-exem;
+  counter-reset: cont-def cont-exem;
 }
 
 .definicao {
@@ -18,8 +17,8 @@ body {
 }
 .definicao[cap][titulo]::before {
   /* Increment "cont-cap" by 1 */
-  counter-increment: cont-teo ;
-  content: "Definição " attr(cap) "." counter(cont-teo) " " attr(titulo) " ";
+  counter-increment: cont-def ;
+  content: "Definição " attr(cap) "." counter(cont-def) " " attr(titulo) " ";
   font-weight: bold;
   font-style: normal;
   display: inline-block;
