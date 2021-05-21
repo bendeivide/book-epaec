@@ -1,8 +1,31 @@
+.infobox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  background: lightgray 5px center/3em no-repeat;
+  border: 2px solid red;
+  border-radius: 10px;
+}
+.caution {
+  background-image: url("images/caution.png");
+}
+.important {
+  background-image: url("images/important.png");
+}
+.note {
+  background-image: url("images/note.png");
+}
+.tip {
+  background-image: url("images/tip.png");
+}
+.warning {
+  background-image: url("images/warning.png");
+}
+
 /* Definitions, Theoremns*/
 
 body {
   /* Set "cont-cap" to 0 */
-  counter-reset: cont-def cont-exem;
+  counter-reset: cont-def cont-exem cont-teo cont-prova cont-exerprop;
 }
 
 .definicao {
@@ -73,3 +96,100 @@ Um conjunto de regras e procedimentos para a obtenção de resultados, isto é, 
 </div>
 */
 
+
+.teorema {
+  display: block;
+  font-style: italic;
+  font-size: 18px;
+  font-family: "Times New Roman";
+  color: black;
+  border-radius: 10px;
+  background-color: rgb(161,181,181);
+  box-shadow: 5px 10px 8px #888888;
+}
+.teorema[cap][titulo]::before {
+  /* Increment "cont-cap" by 1 */
+  counter-increment: cont-teo ;
+  content: "Teorema " attr(cap) "." counter(cont-teo) " " attr(titulo) " ";
+  font-weight: bold;
+  font-style: normal;
+  display: inline-block;
+  width: -webkit-fill-available;
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 5px 5px 15px;
+  background-color: rgb(38,38,38);
+}
+.teorema p {
+  padding: 15px 15px 15px 15px;
+}
+
+/*
+<div id="teo:PropSom" class="teorema" cap=1 titulo="Propriedades de somatório">
+Considere $a$, $b$ e $k$ constantes, e que $X$ e $Y$ são variáveis quantitativas, então as seguintes propriedades envolvendo somatório são válidas:
+  
+</div>
+*/
+
+
+.prova {
+  display: block;
+  font-style: italic;
+  font-size: 18px;
+  font-family: "Times New Roman";
+  color: black;
+  border-radius: 10px;
+  background-color: rgb(248, 248, 248);
+  box-shadow: 5px 10px 8px #888888;
+}
+.prova[cap][titulo]::before {
+  /* Increment "cont-cap" by 1 */
+  counter-increment: cont-prova ;
+  /* content: "Prova:" attr(cap) "." counter(cont-prova) " " attr(titulo) " "; */
+  content: "Prova:";
+  font-weight: bold;
+  font-style: normal;
+  display: inline-block;
+  width: -webkit-fill-available;
+  color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 5px 5px 15px;
+  background-color: rgb(38,38,38);
+}
+.prova p {
+  padding: 15px 15px 15px 15px;
+}
+
+/*
+<div id="prova:PropSom" class="prova" cap=1 titulo="">
+
+</div>
+*/
+
+
+.exerprop {
+  display: block;
+  font-style: italic;
+  font-size: 18px;
+  font-family: "Times New Roman";
+  color: black;
+  border-radius: 10px;
+  background-color: rgb(255,253,229);
+  box-shadow: 5px 10px 8px #888888;
+}
+.exerprop[cap][titulo]::before {
+  /* Increment "cont-cap" by 1 */
+  counter-increment: cont-exerprop ;
+  content: "Exercícios propostos " attr(cap) "." counter(cont-exerprop) " " attr(titulo) " ";
+  font-weight: bold;
+  font-style: normal;
+  display: inline-block;
+  width: -webkit-fill-available;
+  color: black;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 5px 5px 15px;
+  background-color: rgb(255,143,28);
+}
+.exerprop p {
+  padding: 15px 15px 15px 15px;
+}
