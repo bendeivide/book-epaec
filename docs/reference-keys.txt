@@ -16,6 +16,18 @@ eq:fr
 tab:erroscanalag
 eq:fp
 tab:erroscanalperc
+eq:facabaixode
+eq:facacimade
+tab:erroscanalacum
+eq:facacimadealt
+eq:fracumabaixode
+eq:fpacumabaixode
+tab:erroscanalgeral
+eq:numclasses
+eq:amptotal
+eq:ampclasse
+eq:lipc
+eq:pmedio
 dgets
 introdução
 definições-gerais-da-estatística
@@ -25,6 +37,7 @@ técnicas-de-somatório
 chap:coad
 introdução-1
 sec:reptabular
+representação-gráfica
 chap:mp
 introdução-2
 média

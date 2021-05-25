@@ -24,7 +24,7 @@
 <meta name="author" content="Ben Dêivide de Oliveira Batista" />
 
 
-<meta name="date" content="2021-05-24" />
+<meta name="date" content="2021-05-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -178,6 +178,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="chap-coad.html"><a href="chap-coad.html#introdução-1"><i class="fa fa-check"></i><b>2.1</b> Introdução</a></li>
 <li class="chapter" data-level="2.2" data-path="chap-coad.html"><a href="chap-coad.html#sec:reptabular"><i class="fa fa-check"></i><b>2.2</b> Representação tabular</a></li>
+<li class="chapter" data-level="2.3" data-path="chap-coad.html"><a href="chap-coad.html#representação-gráfica"><i class="fa fa-check"></i><b>2.3</b> Representação gráfica</a></li>
 <li class="chapter" data-level="" data-path="chap-coad.html"><a href="chap-coad.html#exercícios-propostos-1"><i class="fa fa-check"></i>Exercícios propostos</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="chap-mp.html"><a href="chap-mp.html"><i class="fa fa-check"></i><b>3</b> Medidas de posição</a>
@@ -444,7 +445,7 @@ div.csl-indent {
 </table>
 <p>De forma mais fácil, podemos por meio da Tabela <a href="chap-coad.html#tab:erroscanaldf">2.3</a> saber quantas vezes um determinado valor foi observado, sem grandes esforços, bastando apenas olhar para a coluna de frequências absolutas. Se desejarmos, apresentar uma forma relativa dessa frequência em relação ao número total de observações, podemos utilizar a frequência relativa, denotada por <span class="math inline">\(F_r\)</span>, em que <span class="math inline">\(f_r\)</span> representa o seu respectivo valor observado, e que essa frequência será um valor entre <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>. Calculamos a frequência relativa, de acordo com a expressão (eq:fr),</p>
 <p><span class="math display" id="eq:fr">\[\begin{align}
-  F_{r_i} | = \frac{F_i}{\sum_{i = 1}^{k}F_i}, \quad i = 1, 2, \ldots, k, \tag{2.1}
+  F_{r_i} &amp; = \frac{F_i}{\sum_{i = 1}^{k}F_i}, \quad i = 1, 2, \ldots, k, \tag{2.1}
 \end{align}\]</span></p>
 <p>sendo <span class="math inline">\(k\)</span> o número de grupos ou classes. No caso, o cálculo da frequência relativa baseado na Tabela <a href="chap-coad.html#tab:erroscanaldf">2.3</a>, a representação de <span class="math inline">\(k\)</span> se refere ao número de grupos, uma vez que os dados são discretizados. Portanto, esse tipo de agrupamento é válido tanto para as variáveis qualitativas quanto para a variável quantitativa discreta. No caso da variável quantitativa contínua, agrupamos os seus valores em classes, uma vez que sua natureza não é discretizada. O modo de como criar essas classes, aprenderemos mais a frente. Desse modo, a Tabela <a href="chap-coad.html#tab:erroscanalag">2.4</a> apresenta o agrupamento dos dados do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação, juntamente com a frequência relativa de seus valores.</p>
 <table>
@@ -491,7 +492,7 @@ div.csl-indent {
 </table>
 <p>Percebemos que <span class="math inline">\(\sum_{i = 1}^{k}f_i = n\)</span>, uma vez que os dados são amostrais. A frequência relativa passa a ter sentido prático quando usamos o resultado em porcentagem, surgindo então, a frequência percentual, denotada por <span class="math inline">\(F_\%\)</span>, cujo valor observado é dado por <span class="math inline">\(f_\%\)</span>, de modo que essa frequência é calculada pela expressão <a href="chap-coad.html#eq:fp">(2.2)</a>.</p>
 <p><span class="math display" id="eq:fp">\[\begin{align}
-  F_{\%_i} | = F_{r_i} \times 100, \quad i = 1, 2, \ldots, k, \tag{2.2}
+  F_{\%_i} &amp; = F_{r_i} \times 100, \quad i = 1, 2, \ldots, k, \tag{2.2}
 \end{align}\]</span>
 em que <span class="math inline">\(F_{r_i}\)</span> é dado pela expressão <a href="chap-coad.html#eq:fr">(2.1)</a>, e <span class="math inline">\(k\)</span> é igual ao número de grupos ou classes.</p>
 <p>Assim, podemos acrescentar a frequência percentual aos dados da Tabela <a href="chap-coad.html#tab:erroscanalag">2.4</a>, que pode ser apresentado na Tabela <a href="chap-coad.html#tab:erroscanalperc">2.5</a>.</p>
@@ -551,17 +552,901 @@ em que <span class="math inline">\(F_{r_i}\)</span> é dado pela expressão <a h
 </tbody>
 </table>
 <p>Podemos observar que, <span class="math inline">\(35\%\)</span> do grupo de caracteres apresentava apenas <span class="math inline">\(1\)</span> erro, <span class="math inline">\(15\%\)</span> dos grupos não apresentaram erros. Porém, se perguntássemos, no mínimo, quantos grupos apresentaram <span class="math inline">\(2\)</span> erros? Em quantos grupos tivemos, no máximo, <span class="math inline">\(3\)</span> erros? A primeira pergunta, seria respondida somando as frequências simples (ou absolutas) <span class="math inline">\(4\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(5\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(1\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(10\)</span> grupos. Para a segunda pergunta, responderíamos <span class="math inline">\(3\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(7\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(4\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(5\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(1\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(19\)</span> grupos. Isso poderia tornar mais oneroso, à medida que o nome de grupos fosse aumentando. Ao invés, usaremos as frequências acumuladas, para auxiliar indagações desse tipo aos dados.</p>
+<p>Temos dois tipos de frequências acumuladas, a frequência acumulada , denotada por <span class="math inline">\(F_{ac\downarrow}\)</span>, cujo valor calculado é denotado por <span class="math inline">\(f_{ac\downarrow}\)</span>, dado pela expressão <a href="chap-coad.html#eq:facabaixode">(2.3)</a>,</p>
+<p><span class="math display" id="eq:facabaixode">\[\begin{align}
+  F_{ac\downarrow_i} &amp; = \sum_{j = 1}^{i}F_j, \quad i = 1, 2, \ldots, k, \tag{2.3}
+\end{align}\]</span>
+sendo <span class="math inline">\(k\)</span> o número de grupos ou classes, e <span class="math inline">\(F_j\)</span> representando <span class="math inline">\(j\)</span>-ésima frequência absoluta.</p>
+<p>A outra é a frequência acumulada <em>acima de</em>, denotada por <span class="math inline">\(F_{ac\downarrow}\)</span>, cujo valor calculado é denotado por <span class="math inline">\(f_{ac\uparrow}\)</span>, dado pela expressão <a href="chap-coad.html#eq:facacimade">(2.4)</a>,</p>
+<p><span class="math display" id="eq:facacimade">\[\begin{align}
+  F_{ac\uparrow_i} &amp; = \sum_{j = i}^{k}F_j, \quad i = 1, 2, \ldots, k, \tag{2.4}
+\end{align}\]</span>
+sendo <span class="math inline">\(k\)</span> o número de grupos ou classes, e <span class="math inline">\(F_j\)</span> representando <span class="math inline">\(j\)</span>-ésima frequência absoluta. Na Tabela , complementamos as informações com as frequências acumuladas os dados apresentados da Tabela <a href="chap-coad.html#tab:erroscanalperc">2.5</a>.</p>
+<table style="width:100%;">
+<caption><span id="tab:erroscanalacum">TABELA 2.6: </span> Frequência percentual do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.</caption>
+<colgroup>
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Número de erros <span class="math inline">\((x_i)\)</span></th>
+<th align="center"><span class="math inline">\(f_i\)</span></th>
+<th align="center"><span class="math inline">\(f_{r_i}\)</span></th>
+<th align="center"><span class="math inline">\(f_{\%_i}\)</span></th>
+<th align="center">Frequência acumulada (<span class="math inline">\(f_{ac\downarrow_i}\)</span>)</th>
+<th align="center">Frequência acumulada (<span class="math inline">\(f_{ac\uparrow_i}\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(3\)</span></td>
+<td align="center"><span class="math inline">\(0,15\)</span></td>
+<td align="center"><span class="math inline">\(15\)</span></td>
+<td align="center"><span class="math inline">\(3\)</span></td>
+<td align="center"><span class="math inline">\(3 + 7 + 4 + 5 + 1 = 20\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(7\)</span></td>
+<td align="center"><span class="math inline">\(0,35\)</span></td>
+<td align="center"><span class="math inline">\(35\)</span></td>
+<td align="center"><span class="math inline">\(3 + 7 = 10\)</span></td>
+<td align="center"><span class="math inline">\(7 + 4 + 5 + 1 = 20 - 3 = 17\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(2\)</span></td>
+<td align="center"><span class="math inline">\(4\)</span></td>
+<td align="center"><span class="math inline">\(0,20\)</span></td>
+<td align="center"><span class="math inline">\(35\)</span></td>
+<td align="center"><span class="math inline">\(3 + 7 + 4 = 14\)</span></td>
+<td align="center"><span class="math inline">\(4 + 5 + 1 = 17 - 7 = 10\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(3\)</span></td>
+<td align="center"><span class="math inline">\(5\)</span></td>
+<td align="center"><span class="math inline">\(0,25\)</span></td>
+<td align="center"><span class="math inline">\(25\)</span></td>
+<td align="center"><span class="math inline">\(3 + 7 + 4 + 5 = 19\)</span></td>
+<td align="center"><span class="math inline">\(5 + 1 = 10 - 4 = 6\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(4\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0,05\)</span></td>
+<td align="center"><span class="math inline">\(5\)</span></td>
+<td align="center"><span class="math inline">\(3 + 7 + 4 + 5 + 1 = 20\)</span></td>
+<td align="center"><span class="math inline">\(1 = 6 - 5 = 1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\(20\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(100\)</span></td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+</tbody>
+</table>
+<p>É importante notar que sempre o último valor da coluna da frequência acumulada <em>abaixo de</em> é o número total de elementos, e que o último valor da frequência acumulada <em>acima de</em> coincide com o seu respectivo valor da frequência simples (<span class="math inline">\(f_i\)</span>), como pode ser observado na Tabela <a href="chap-coad.html#tab:erroscanalacum">2.6</a>. Uma outra coisa interessante, é que podemos ter uma forma alternativa de calcular a frequência acumulada <em>acima de</em>, dado pela expressão <a href="chap-coad.html#eq:facacimadealt">(2.5)</a>,</p>
+<p><span class="math display" id="eq:facacimadealt">\[\begin{align}
+  F_{ac\uparrow_i} &amp; = \left\{\begin{array}{ll}
+                         \sum_{i = 1}^{k}F_i, &amp; i = 1,  |
+                         F_{ac_{\uparrow_{i - 1}}} - F_{i-1}, &amp; \textrm{demais casos,}
+                       \end{array}\right. \tag{2.5}
+\end{align}\]</span></p>
+<p>sendo <span class="math inline">\(k\)</span> o número de grupos ou classes. Vamos tentar entender as equivalências entre as expressões <a href="chap-coad.html#eq:facacimade">(2.4)</a> e <a href="chap-coad.html#eq:facacimadealt">(2.5)</a>. Indagamos, quantos grupos apresentam, no mínimo, <span class="math inline">\(1\)</span> erro? Observe que <span class="math inline">\(x_2 = 1\)</span>, isto é, os valores observados iguais a <span class="math inline">\(1\)</span>, estão no segundo grupo. Assim, pela expressão <a href="chap-coad.html#eq:facacimade">(2.4)</a>, temos</p>
+<p><span class="math display">\[\begin{align}
+  f_{ac\uparrow_2} &amp;  = \sum_{j = 2}^{5}f_j = 7 + 4 + 5 + 1 = 17.
+\end{align}\]</span></p>
+<p>Da mesma forma, podemos utilizar a expressão <a href="chap-coad.html#eq:facacimadealt">(2.5)</a>, e de modo equivalente, temos
+<span class="math display">\[\begin{align}
+  f_{ac\uparrow_2} &amp;  = f_{ac_{\uparrow_{2 - 1}}} - f_{2 - 1}|
+                   &amp;  = f_{ac_{\uparrow_{1}}} - f_1|
+                   &amp;  = 20 - 3 = 17.
+\end{align}\]</span></p>
+<p>A expressão <a href="chap-coad.html#eq:facacimadealt">(2.5)</a> pode parecer no primeiro momento mais trabalhoso o cálculo. Porém, perceberemos com a prática de exercícios que esse processo é mais rápido do que calcular usando a expressão <a href="chap-coad.html#eq:facacimade">(2.4)</a>.</p>
+<p>Por fim, podemos apresentar a forma relativa e percentual das frequências acumuladas, usando de modo similar, quando calculamos as frequências relativas e percentuais, dadas nas expressões <a href="chap-coad.html#eq:fr">(2.1)</a> e <a href="chap-coad.html#eq:fp">(2.2)</a>, respectivamente. Denotaremos a frequência relativa acumulada <em>abaixo de</em>, por <span class="math inline">\(Fr_{ac_{\downarrow}}\)</span>, e a frequência relativa acumulada <em>acima de</em>, por <span class="math inline">\(Fr_{ac_{\uparrow}}\)</span>. As expressões dessas duas frequências são dadas, respectivamente, por</p>
+<p><span class="math display" id="eq:fracumabaixode">\[\begin{align}
+  Fr_{ac_{\downarrow}} &amp; = \frac{F_{ac\downarrow_i}}{\sum_{i = 1}^{k}F_i} \quad i = 1, 2, \ldots, k, \tag{2.6}
+\end{align}\]</span>
+e
+<span class="math display" id="eq:fracumabaixode">\[\begin{align}
+  Fr_{ac_{\uparrow}} &amp; = \frac{F_{ac\uparrow_i}}{\sum_{i = 1}^{k}F_i} \quad i = 1, 2, \ldots, k, \tag{2.6}
+\end{align}\]</span>
+em que <span class="math inline">\(F_{ac\downarrow_i}\)</span> expresso em <a href="chap-coad.html#eq:facabaixode">(2.3)</a>, <span class="math inline">\(F_{ac\uparrow_i}\)</span> expresso em <a href="chap-coad.html#eq:facacimade">(2.4)</a>, e <span class="math inline">\(k\)</span> é igual ao número de grupos ou classes. Já para as frequências percentuais acumuladas <em>abaixo de</em> e <em>acima de</em>, denotando-as por <span class="math inline">\(F_{ac_{\downarrow}\%}\)</span> e <span class="math inline">\(F_{ac_{\uparrow}\%}\)</span>, respectivamente, e sendo expressas por</p>
+<p><span class="math display" id="eq:fpacumabaixode">\[\begin{align}
+F_{ac_{\downarrow}\%}  &amp; = Fr_{ac_{\downarrow}} \times 100 \quad i = 1, 2, \ldots, k, \tag{2.7}
+\end{align}\]</span>
+e
+<span class="math display" id="eq:fpacumabaixode">\[\begin{align}
+F_{ac_{\uparrow}\%} &amp; = Fr_{ac_{\uparrow}} \times 100 \quad i = 1, 2, \ldots, k, \tag{2.7}
+\end{align}\]</span>
+respectivamente, em que <span class="math inline">\(k\)</span> é o número de grupos ou classes.</p>
+<p>Voltando ao conjunto de dados iniciado na Tabela <a href="chap-coad.html#tab:erroscanal">2.1</a>, podemos finalizar a sua tabulação com todas as frequências mencionadas anterioremente, em um quadro resumo na Tabela <a href="chap-coad.html#tab:erroscanalgeral">2.7</a>.</p>
+<table style="width:100%;">
+<caption><span id="tab:erroscanalgeral">TABELA 2.7: </span> Distribuição de frequências do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.</caption>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Número de erros <span class="math inline">\((x_i)\)</span></th>
+<th align="center"><span class="math inline">\(f_i\)</span></th>
+<th align="center"><span class="math inline">\(f_{r_i}\)</span></th>
+<th align="center"><span class="math inline">\(f_{\%_i}\)</span></th>
+<th align="center"><span class="math inline">\(f_{ac\downarrow_i}\)</span></th>
+<th align="center"><span class="math inline">\(f_{ac\uparrow_i}\)</span></th>
+<th align="center"><span class="math inline">\(fr_{ac_{\downarrow}}\)</span></th>
+<th align="center"><span class="math inline">\(fr_{ac_{\uparrow}}\)</span></th>
+<th align="center"><span class="math inline">\(f_{ac_{\downarrow}\%}\)</span></th>
+<th align="center"><span class="math inline">\(f_{ac_{\uparrow}\%}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(0\)</span></td>
+<td align="center"><span class="math inline">\(3\)</span></td>
+<td align="center"><span class="math inline">\(0,15\)</span></td>
+<td align="center"><span class="math inline">\(15\)</span></td>
+<td align="center"><span class="math inline">\(3\)</span></td>
+<td align="center"><span class="math inline">\(20\)</span></td>
+<td align="center"><span class="math inline">\(0,30\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center">30</td>
+<td align="center"><span class="math inline">\(100\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(7\)</span></td>
+<td align="center"><span class="math inline">\(0,35\)</span></td>
+<td align="center"><span class="math inline">\(35\)</span></td>
+<td align="center"><span class="math inline">\(10\)</span></td>
+<td align="center"><span class="math inline">\(17\)</span></td>
+<td align="center"><span class="math inline">\(0,33\)</span></td>
+<td align="center"><span class="math inline">\(0,85\)</span></td>
+<td align="center"><span class="math inline">\(33\)</span></td>
+<td align="center"><span class="math inline">\(85\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(2\)</span></td>
+<td align="center"><span class="math inline">\(4\)</span></td>
+<td align="center"><span class="math inline">\(0,20\)</span></td>
+<td align="center"><span class="math inline">\(35\)</span></td>
+<td align="center"><span class="math inline">\(14\)</span></td>
+<td align="center"><span class="math inline">\(10\)</span></td>
+<td align="center"><span class="math inline">\(0,47\)</span></td>
+<td align="center"><span class="math inline">\(0,50\)</span></td>
+<td align="center"><span class="math inline">\(47\)</span></td>
+<td align="center"><span class="math inline">\(50\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(3\)</span></td>
+<td align="center"><span class="math inline">\(5\)</span></td>
+<td align="center"><span class="math inline">\(0,25\)</span></td>
+<td align="center"><span class="math inline">\(25\)</span></td>
+<td align="center"><span class="math inline">\(19\)</span></td>
+<td align="center"><span class="math inline">\(6\)</span></td>
+<td align="center"><span class="math inline">\(0,95\)</span></td>
+<td align="center"><span class="math inline">\(0,20\)</span></td>
+<td align="center"><span class="math inline">\(0,95\)</span></td>
+<td align="center"><span class="math inline">\(20\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(4\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0,05\)</span></td>
+<td align="center"><span class="math inline">\(5\)</span></td>
+<td align="center"><span class="math inline">\(20\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(0,05\)</span></td>
+<td align="center"><span class="math inline">\(100\)</span></td>
+<td align="center"><span class="math inline">\(5\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\(20\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(100\)</span></td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+</tbody>
+</table>
+<p>Essa representação tabular como falado anteriormente, pode ser usado para todas as variáveis discretizadas, como as variáveis qualitativas quanto a variável quantitativa discreta. Porém, para o caso da variável qualitativa nominal, não faz sentido o uso da frequência acumulada, uma vez que esse tipo de variável não tem ordenamento no sentido quantitativo. Para o caso da variável quantitativa contínua, precisamos agrupar os valores observados em intervalos de classe, isso porque a discretização de seus valores se devem aos instrumentos de medida, e não a natureza da variável. Por exemplo, quando medimos uma altura, <span class="math inline">\(1,78m\)</span>, de fato a altura real não está limitado a segunda casa decimal. Então, a melhor forma será criar regiões (intervalos), de modo que possamos contemplar determinados valores.</p>
+<p>Existem diversas formas de como agrupar as variáveis quantitativas contínuas, isto é, metodologias de como desenvolver a criação de classes. Contudo, iremos nos restringir a um critério empírico, que se baseia no número de elementos, seja na amostra ou população. A primeira indagação que surge é, qual o número de classes para agrupar esses dados? Denotaremos por <span class="math inline">\(k\)</span> o número de classes, em que sua expressão por:</p>
+<p><span class="math display" id="eq:numclasses">\[\begin{align}
+  k &amp; \approx \left\{\begin{array}{ll}
+          \sqrt{\textrm{número de elementos}}, &amp; \textrm{Caso o tamanho seja igual ou inferior a 100} \\
+          5log_{10}(\textrm{número de elementos}), &amp; \textrm{Caso o tamanho seja superior a 100}.
+        \end{array}\right. \tag{2.8}
+\end{align}\]</span></p>
+<p>Nesse caso, o cálculo de <span class="math inline">\(k\)</span> é uma aproximação, e devemos aproximar a um número inteiro mais próximo. Pode ocorrer situações em que o número de classes resulte em um agrupamento em que tenhamos classes com frequência <span class="math inline">\(0\)</span>, isto é, com nenhum elemento dentro dessa classe. Não faz sentido criar uma classe sem elementos. Dessa forma, ao final do processo da criação de tabelas com intervalos de classes e verificado classes sem elementos, o processo deve ser reiniciado e alterado o valor de <span class="math inline">\(k\)</span>, ou um número inteiro para baixo ou para cima. Após isso, todo o processo que será apresentado na sequência, deverá seguir. Caso esse problema se repita, novamente, voltaremos a fase de determinação de <span class="math inline">\(k\)</span> até encontrar um inteiro, do qual se obtenha agrupamento de dados com intervalo de classes, com frequência em suas classes superior a 0. Em todo esses processo, devemos evitar que o número de classes seja inferior a 3, uma vez que para <span class="math inline">\(k &lt; 3\)</span> não será necessário um agrupamento de dados em tabela, para uma quantidade tão pequena de valores.</p>
+<p>Dando sequência, após a determinação do número de classes, determinaremos a amplitude total, denotada por <span class="math inline">\(A_t\)</span>, sendo definida pela expressão <a href="chap-coad.html#eq:amptotal">(2.9)</a>,</p>
+<p><span class="math display" id="eq:amptotal">\[\begin{align}\
+  A_t &amp; = \max_i(X_i) - \min_i(X_i), \tag{2.9}
+\end{align}\]</span>
+para <span class="math inline">\(i \in \mathbb{N}^{+}\)</span>.</p>
+<p>Posteriormente, deveremos determinar a amplitude da classe, denotada por <span class="math inline">\(c\)</span> e expressa como:</p>
+<p><span class="math display" id="eq:ampclasse">\[\begin{align}
+  c &amp; = \left\{\begin{array}{ll}
+           \frac{A_t}{k - 1}, &amp; \textrm{Amostra} \\
+           \frac{A_t}{k}, &amp; \textrm{População}.
+        \end{array}\right. \tag{2.10}
+\end{align}\]</span></p>
+<p>em <span class="math inline">\(A_t\)</span> é expresso em <a href="chap-coad.html#eq:amptotal">(2.9)</a> e <span class="math inline">\(k\)</span> dada pela expressão <a href="chap-coad.html#eq:numclasses">(2.8)</a>. O fato de o denominado ter o valor de <span class="math inline">\(k\)</span> subtraído de 1, ao invés de <span class="math inline">\(k\)</span> para o caso dos dados amostrais, é devido a uma correção realizada no cálculo do limite inferior da primeira classe, que será apresentada a seguir. Segundo <span class="citation"><a href="#ref-Ferreira2009" role="doc-biblioref">Ferreira</a> (<a href="#ref-Ferreira2009" role="doc-biblioref">2009</a>)</span> a justificativa se deve a suposição de que uma amostra de tamanho <span class="math inline">\(n\)</span> tem grande chance de não conter o valor mínimo da população, isto é, à medida que o tamanho da amostra aumenta, tem-se uma maior chance de obter elementos menores que o valor mínimo que foi encontrado para uma amostra de tamanho menor.</p>
+<p>Por fim, apresentamos o cálculo para se obter o limite inferior da primeira, denotado por <span class="math inline">\(Li_{1a}\)</span>, sendo dado pela expressão <a href="chap-coad.html#eq:lipc">(2.11)</a>,</p>
+<p><span class="math display" id="eq:lipc">\[\begin{align}
+Li_{1a} &amp; = \left\{\begin{array}{ll}
+           X_{(1)} - c / 2, &amp; \textrm{Amostra} \\
+           X_{(1)}, &amp; \textrm{População}.
+        \end{array}\right. \tag{2.11}
+\end{align}\]</span></p>
+<p>Realizando esses quatro passos, iremos criar as classes, iniciando pelo limite inferior da primeira classe, e para essa mesma classe, o seu limite superior será denotado por <span class="math inline">\(Ls_{1a}\)</span>, cujo cálculo é dado por <span class="math inline">\(Ls_{1a} = Li_{1a} + c\)</span>. Representaremos em notação a primeia classe da seguinte forma:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Classe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(Li_{1a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{1a}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Em termos de conjunto, diremos que <span class="math inline">\(\textrm{Classe 1} = \{x \in R : Li_{1a} \leq x &lt; Ls_{1a}\}\)</span>, isto é, os valores observados pertencerão a essa classe se forem iguais ou superiores a <span class="math inline">\(Li_{1a}\)</span> e inferiores a <span class="math inline">\(Ls_{1a}\)</span>. Como o valor do limite superior não pertence a essa classe, será contabilizado para a próxima classe. Nesse caso, o limite inferior da segunda classe será dado por <span class="math inline">\(Li_{2a} = Ls_{1a}\)</span> e seu limite superior <span class="math inline">\(Ls_{2a} = L1_{1a} + c\)</span>, em que <span class="math inline">\(c\)</span> é a amplitude da classe. Inserindo agora a segunda classe na tabela, temos:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Classe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(Li_{1a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{1a}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(Li_{2a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{2a}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Mais uma vez, o valor do limite superior dessa classe não pertence, mas pertencerá a próxima classe. Esse processo continua, até chegar a <span class="math inline">\(k\)</span>-ésima classe, que ao final teremos uma tabela da seguinte forma,</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Classe</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(Li_{1a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{1a}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(Li_{2a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{2a}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(Li_{ka}\)</span> <span class="math inline">\(|\)</span>—<span class="math inline">\(|\)</span> <span class="math inline">\(Ls_{ka}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>No caso da última classe, nós contemplamos os valores dos limites a essas classes, caso existam no banco de dados. Assim, a frequência absoluta é calculada verificando os valores que estão dentro da amplitude dos intervalos, e as demais frequências seguem o mesmo raciocínio falado anteriormente. Um problema surge com os dados, porque ao serem agrupadados nas classes nós perdemos essa informação. Vejamos a representação de uma classe com a sua frequência absoluta,</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Classe</th>
+<th align="center"><span class="math inline">\(F_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(Li_{1a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{1a}\)</span></td>
+<td align="center"><span class="math inline">\(f_1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(Li_{2a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{2a}\)</span></td>
+<td align="center"><span class="math inline">\(f_2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(Li_{ka}\)</span> <span class="math inline">\(|\)</span>—<span class="math inline">\(|\)</span> <span class="math inline">\(Ls_{ka}\)</span></td>
+<td align="center"><span class="math inline">\(f_k\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Observe que sabemos quantos valores existem em cada classe, mas sem a informação dos dados brutos ou elaborados, nós não sabemos quais são os valores pertencentes a cada classe. Assim, uma alternativa de valor para representar as <span class="math inline">\(f_i\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(k\)</span>, em cada classe é usa o ponto médio. Esse critério é chamado hipótese tabular básica. Essa hipótese sugere que assumir o ponto médio como um potencial representante dos valores de uma determinada classe, assume um menor erro do que escolher qualquer outro valor dentro desse intervalo para representar essas observações. O ponto médio, denotado por <span class="math inline">\(\tilde{X}_i\)</span>, será dado por:</p>
+<p><span class="math display" id="eq:pmedio">\[\begin{align}
+  \tilde{X}_i &amp; = \frac{Li_{ia} + Ls_{ia}}{2}, \quad i = 1, 2, \ldots, k. \tag{2.12}
+\end{align}\]</span></p>
+<p>Percebemos, que ocorre uma perda de precisão nos dados quando agrupamos em intervalo de classes, uma vez que o ponto médio passa a representar esses valores em cada classe. De todo modo, se observa que essa perda de informação é pequena para o ganho que se obtém ao representar esses dados em tabulação com intervalo de classe, no sentido não só de organização, mas de entendimento das informações. Em resumo, podemos dizer que o algoritmo para criar um agrupamento de dados em intervalo de classes pode ser dados em sete passos:</p>
+<ul>
+<li>Calcular <span class="math inline">\(k\)</span>,</li>
+<li>Calcular <span class="math inline">\(A_t\)</span>,</li>
+<li>Calcular <span class="math inline">\(c\)</span>,</li>
+<li>Calcular <span class="math inline">\(Li_{1a}\)</span>,</li>
+<li>Determinar as classes,</li>
+<li>Calcular o ponto médio, e</li>
+<li>Calcular as frequências como apresentadas no início dessa seção.</li>
+</ul>
+<p>Os dados do Exemplo <a href="#Challanger1986">2.1</a>, foram retirados de <span class="citation"><a href="#ref-Nasa1986" role="doc-biblioref">Presidential Comission</a> (<a href="#ref-Nasa1986" role="doc-biblioref">1986</a>)</span>, e apresentados a seguir.</p>
+<div id="def:Challanger1986" class="exemplo" cap="2" titulo="">
+<p>Os dados representam a temperatura (ºF) do anel de vedação de cada teste de acionamento ou lançamento real do motor do foguete Challenger, isso porque, em 1986, houve nos Estados Unidos um dos maiores acidentes com ônibus espaciais, vitimando em 8 astronautas que estavam na tripulação. Foram realizados diversos estudos pela NASA para identificar as causas da falha. A primeira atenção se voltou para a temperatura do anel de vedação, que é apresentado a seguir.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="right">84</td>
+<td align="right">49</td>
+<td align="right">61</td>
+<td align="right">40</td>
+<td align="right">83</td>
+<td align="right">67</td>
+<td align="right">45</td>
+<td align="right">66</td>
+<td align="right">70</td>
+<td align="right">69</td>
+<td align="right">80</td>
+<td align="right">58</td>
+</tr>
+<tr class="even">
+<td align="right">68</td>
+<td align="right">60</td>
+<td align="right">67</td>
+<td align="right">72</td>
+<td align="right">73</td>
+<td align="right">70</td>
+<td align="right">57</td>
+<td align="right">63</td>
+<td align="right">70</td>
+<td align="right">78</td>
+<td align="right">52</td>
+<td align="right">67</td>
+</tr>
+<tr class="odd">
+<td align="right">53</td>
+<td align="right">67</td>
+<td align="right">75</td>
+<td align="right">61</td>
+<td align="right">70</td>
+<td align="right">81</td>
+<td align="right">76</td>
+<td align="right">79</td>
+<td align="right">75</td>
+<td align="right">76</td>
+<td align="right">58</td>
+<td align="right">31</td>
+</tr>
+</tbody>
+</table>
+<p>Diante dessas informações, para melhor apresentar essas informações, vamos agrupar esses dados em uma tabela com intervalo de classes, uma vez que a temperatura do anel de vedação é uma variável quantitativa contínua. Inicialmente, vamos calcular o número de classes, <span class="math inline">\(k = \sqrt{36} = 6\)</span> classes. Observando os valores, percebemos que <span class="math inline">\(x_{(1)} = 31^oF\)</span> e <span class="math inline">\(x_{(36)} = 84^oF\)</span>, logo a amplitude total é <span class="math inline">\(A_t = 53^oF\)</span>. Na sequência, calculamos amplitude da classe, <span class="math inline">\(c = 53 / (6 - 1) = 10,6^oF\)</span>, por fim, o limite inferior da primeira classe, <span class="math inline">\(Li_{1a} = 31 - 10,6 / 2 = 25,7^oF\)</span>. Assim, começaremos pela primeira classe, em que já temos o limite inferior dela e seu limite superior será <span class="math inline">\(Li_{1a} = 25,7 + 10,6 = 36,3^oF\)</span>. As demais classes, segue o procedimento descrito anteriormente. Por fim, verificaremos quais o valores pertencentes em cada classe para computar a frequência absoluta, o cálculo do ponto médio de acordo com a expressão <a href="chap-coad.html#eq:pmedio">(2.12)</a> e as demais frequências calculadas como descritas no início dessa seção. Assim, temos o quadro geral de uma tabela com intervalo de classes para esses dados, apresentados a seguir.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Classe</th>
+<th align="center"><span class="math inline">\(f_i\)</span></th>
+<th align="center"><span class="math inline">\(\tilde{x}_i\)</span></th>
+<th align="center"><span class="math inline">\(f_{r_i}\)</span></th>
+<th align="center"><span class="math inline">\(f_{ac\downarrow_i}\)</span></th>
+<th align="center"><span class="math inline">\(f_{ac\uparrow_i}\)</span></th>
+<th align="center"><span class="math inline">\(f_{\%_i}\)</span></th>
+<th align="center"><span class="math inline">\(f_{ac_{\downarrow}\%}\)</span></th>
+<th align="center"><span class="math inline">\(f_{ac_{\uparrow}\%}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">25,7 <span class="math inline">\(|\)</span>— 36,3</td>
+<td align="center">1,00</td>
+<td align="center">31,00</td>
+<td align="center">0,03</td>
+<td align="center">1,00</td>
+<td align="center">36,00</td>
+<td align="center">3,00</td>
+<td align="center">2,78</td>
+<td align="center">100,00</td>
+</tr>
+<tr class="even">
+<td align="center">36,3 <span class="math inline">\(|\)</span>— 46,9</td>
+<td align="center">2,00</td>
+<td align="center">41,60</td>
+<td align="center">0,06</td>
+<td align="center">3,00</td>
+<td align="center">35,00</td>
+<td align="center">6,00</td>
+<td align="center">8,33</td>
+<td align="center">97,22</td>
+</tr>
+<tr class="odd">
+<td align="center">46,9 <span class="math inline">\(|\)</span>— 57,5</td>
+<td align="center">4,00</td>
+<td align="center">52,20</td>
+<td align="center">0,11</td>
+<td align="center">7,00</td>
+<td align="center">33,00</td>
+<td align="center">11,00</td>
+<td align="center">19,44</td>
+<td align="center">91,67</td>
+</tr>
+<tr class="even">
+<td align="center">57,5 <span class="math inline">\(|\)</span>— 68,1</td>
+<td align="center">12,00</td>
+<td align="center">62,80</td>
+<td align="center">0,33</td>
+<td align="center">19,00</td>
+<td align="center">29,00</td>
+<td align="center">33,00</td>
+<td align="center">52,78</td>
+<td align="center">80,56</td>
+</tr>
+<tr class="odd">
+<td align="center">68,1 <span class="math inline">\(|\)</span>— 78,7</td>
+<td align="center">12,00</td>
+<td align="center">73,40</td>
+<td align="center">0,33</td>
+<td align="center">31,00</td>
+<td align="center">17,00</td>
+<td align="center">33,00</td>
+<td align="center">86,11</td>
+<td align="center">47,22</td>
+</tr>
+<tr class="even">
+<td align="center">78,7 <span class="math inline">\(|\)</span>—<span class="math inline">\(|\)</span> 89,3</td>
+<td align="center">5,00</td>
+<td align="center">84,00</td>
+<td align="center">0,14</td>
+<td align="center">36,00</td>
+<td align="center">5,00</td>
+<td align="center">14,00</td>
+<td align="center">100,00</td>
+<td align="center">13,89</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="representação-gráfica" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Representação gráfica</h2>
 </div>
 <div id="exercícios-propostos-1" class="section level2 unnumbered">
 <h2>Exercícios propostos</h2>
+<div id="exprop:ex2.1" class="exerprop" cap="2" titulo="">
+<p>Observamos nas expressões <a href="chap-coad.html#eq:facabaixode">(2.3)</a> e <a href="chap-coad.html#eq:facacimade">(2.4)</a>, a forma de se calcular as frequências acumuladas <em>acima de</em> e <em>abaixo de</em>, quando indagamos questões que envolvem situações do tipo, quantas vezes observamos, <em>no máximo</em>, <span class="math inline">\(X = x\)</span>? Para isso, usamos a expressão <a href="chap-coad.html#eq:facabaixode">(2.3)</a>. Em outra situação, indagamos, quantas vezes observamos, <em>no mínimo</em>, <span class="math inline">\(X = x\)</span>? Para isso, usamos a expressão <a href="chap-coad.html#eq:facacimade">(2.4)</a>. Percebemos que a condição limiar está inclusa na situação. Por exemplo, na Tabela , podemos estar interessados em saber quantos grupos de caracteres monitorados<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> em um canal de comunicação, foram encontrados, <em>no mínimo</em>, <span class="math inline">\(2\)</span> erros? Isto significa, que desejamos saber todos os grupos, tais que <span class="math inline">\(X \geq 2\)</span>. Ou seja, o grupo que continha dois erros estava incluso na contagem. Para isso, usamos a expressão <a href="chap-coad.html#eq:facacimade">(2.4)</a>.
+Porém, podemos estar interessados na situação em que a condição limiar não esteja inclusa na contagem de elementos. Por exemplo, refazendo a indagação anterior, quantos grupos de caracteres apresentam <em>acima de</em> <span class="math inline">\(2\)</span> erros. Observe que os grupos apresentam dois erros não entram na contagem. Isso vale também para a outra situação. Logo, não será possível utilizar as expressões das frequências acumuladas <a href="chap-coad.html#eq:facabaixode">(2.3)</a> e <a href="chap-coad.html#eq:facacimade">(2.4)</a>.
+Desenvolva as expressões, para essas últimas situações, de modo similar ao apresentado para as expressões <a href="chap-coad.html#eq:facabaixode">(2.3)</a> e <a href="chap-coad.html#eq:facacimade">(2.4)</a>, fazendo as adaptações devidas.</p>
+</div>
+<div id="exprop:ex2.2" class="exerprop" cap="2" titulo="">
+<p>Os dados retirados de <span class="citation"><a href="#ref-Tavares1999" role="doc-biblioref">Tavares and Anjos</a> (<a href="#ref-Tavares1999" role="doc-biblioref">1999</a>)</span>, representam a distribuição percentual do estado nutricional em homens idosos brasileiros (idade <span class="math inline">\(\geq\)</span> 60 anos), segundo Índice de Massa Corporal (IMC<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>), por macrorregião e situação de domicílio, Pesquisa Nacional sobre Saúde e Nutrição, 1989, que seguem,</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#93a1a1;border-spacing:0;}
+.tg td{background-color:#fdf6e3;border-bottom-width:1px;border-color:#93a1a1;border-style:solid;border-top-width:1px;
+  border-width:0px;color:#002b36;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;
+  word-break:normal;}
+.tg th{background-color:#657b83;border-bottom-width:1px;border-color:#93a1a1;border-style:solid;border-top-width:1px;
+  border-width:0px;color:#fdf6e3;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;
+  padding:10px 5px;word-break:normal;}
+.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-zv4m{border-color:#ffffff;text-align:left;vertical-align:top}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-8jgo{border-color:#ffffff;text-align:center;vertical-align:top}
+.tg .tg-9by8{background-color:#657b83;border-color:#ffffff;text-align:center;vertical-align:top}
+.tg .tg-lqy6{text-align:right;vertical-align:top}
+.tg .tg-v0mg{border-color:#ffffff;text-align:center;vertical-align:middle}
+.tg .tg-ufyb{font-style:italic;text-align:right;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+<tr>
+<th class="tg-v0mg" rowspan="2">
+<span style="font-weight:bold">Regiões</span>
+</th>
+<th class="tg-v0mg" rowspan="2">
+<span style="font-weight:bold">Números</span>
+</th>
+<th class="tg-8jgo" colspan="4">
+Estado Nutricional (%)<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>
+</th>
+</tr>
+<tr>
+<td class="tg-9by8">
+Magreza
+</td>
+<td class="tg-9by8">
+Adequado
+</td>
+<td class="tg-9by8">
+Sobrepeso I
+</td>
+<td class="tg-9by8">
+Sobrepeso II e III
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tg-zv4m">
+<span style="font-weight:bold">Norte</span>
+</td>
+<td class="tg-8jgo">
+223
+</td>
+<td class="tg-8jgo">
+4,4
+</td>
+<td class="tg-8jgo">
+60,6
+</td>
+<td class="tg-8jgo">
+29,4
+</td>
+<td class="tg-8jgo">
+5,6
+</td>
+</tr>
+<tr>
+<td class="tg-1wig">
+Nordeste
+</td>
+<td class="tg-baqh">
+586
+</td>
+<td class="tg-baqh">
+8,8
+</td>
+<td class="tg-baqh">
+68,3
+</td>
+<td class="tg-baqh">
+19,8
+</td>
+<td class="tg-baqh">
+3,1
+</td>
+</tr>
+<tr>
+<td class="tg-ufyb">
+Urbano
+</td>
+<td class="tg-baqh">
+267
+</td>
+<td class="tg-baqh">
+7,1
+</td>
+<td class="tg-baqh">
+62,3
+</td>
+<td class="tg-baqh">
+26,6
+</td>
+<td class="tg-baqh">
+4,0
+</td>
+</tr>
+<tr>
+<td class="tg-ufyb">
+Rural
+</td>
+<td class="tg-baqh">
+319
+</td>
+<td class="tg-baqh">
+10,7
+</td>
+<td class="tg-baqh">
+74,6
+</td>
+<td class="tg-baqh">
+12,5
+</td>
+<td class="tg-baqh">
+2,2
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+<span style="font-weight:bold">Sudeste</span>
+</td>
+<td class="tg-baqh">
+46,3
+</td>
+<td class="tg-baqh">
+7,9
+</td>
+<td class="tg-baqh">
+59,0
+</td>
+<td class="tg-baqh">
+26,7
+</td>
+<td class="tg-baqh">
+6,4
+</td>
+</tr>
+<tr>
+<td class="tg-lqy6">
+<span style="font-style:italic">Urbano</span>
+</td>
+<td class="tg-baqh">
+197
+</td>
+<td class="tg-baqh">
+5,6
+</td>
+<td class="tg-baqh">
+56,4
+</td>
+<td class="tg-baqh">
+30,2
+</td>
+<td class="tg-baqh">
+7,8
+</td>
+</tr>
+<tr>
+<td class="tg-lqy6">
+<span style="font-style:italic">Rural</span>
+</td>
+<td class="tg-baqh">
+266
+</td>
+<td class="tg-baqh">
+17,3
+</td>
+<td class="tg-baqh">
+69,5
+</td>
+<td class="tg-baqh">
+12,4
+</td>
+<td class="tg-baqh">
+0,8
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+<span style="font-weight:bold">Sul</span>
+</td>
+<td class="tg-baqh">
+429
+</td>
+<td class="tg-baqh">
+5,1
+</td>
+<td class="tg-baqh">
+56,5
+</td>
+<td class="tg-baqh">
+29,2
+</td>
+<td class="tg-baqh">
+9,2
+</td>
+</tr>
+<tr>
+<td class="tg-lqy6">
+<span style="font-style:italic">Urbano</span>
+</td>
+<td class="tg-baqh">
+197
+</td>
+<td class="tg-baqh">
+4,5
+</td>
+<td class="tg-baqh">
+51,2
+</td>
+<td class="tg-baqh">
+33,0
+</td>
+<td class="tg-baqh">
+11,3
+</td>
+</tr>
+<tr>
+<td class="tg-lqy6">
+<span style="font-style:italic">Rural</span>
+</td>
+<td class="tg-baqh">
+232
+</td>
+<td class="tg-baqh">
+6,4
+</td>
+<td class="tg-baqh">
+66,4
+</td>
+<td class="tg-baqh">
+22,0
+</td>
+<td class="tg-baqh">
+5,2
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+<span style="font-weight:bold">Centro-Oeste</span>
+</td>
+<td class="tg-baqh">
+327
+</td>
+<td class="tg-baqh">
+10,7
+</td>
+<td class="tg-baqh">
+60,6
+</td>
+<td class="tg-baqh">
+22,8
+</td>
+<td class="tg-baqh">
+5,9
+</td>
+</tr>
+<tr>
+<td class="tg-lqy6">
+<span style="font-style:italic">Urbano</span>
+</td>
+<td class="tg-baqh">
+154
+</td>
+<td class="tg-baqh">
+10,6
+</td>
+<td class="tg-baqh">
+55,2
+</td>
+<td class="tg-baqh">
+27,3
+</td>
+<td class="tg-baqh">
+6,9
+</td>
+</tr>
+<tr>
+<td class="tg-lqy6">
+<span style="font-style:italic">Rural</span>
+</td>
+<td class="tg-baqh">
+173
+</td>
+<td class="tg-baqh">
+11,0
+</td>
+<td class="tg-baqh">
+71,4
+</td>
+<td class="tg-baqh">
+13,7
+</td>
+<td class="tg-baqh">
+3,9
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+<span style="font-weight:bold">Brasil</span>
+</td>
+<td class="tg-baqh">
+2.028
+</td>
+<td class="tg-baqh">
+7,8
+</td>
+<td class="tg-baqh">
+61,8
+</td>
+<td class="tg-baqh">
+24,7
+</td>
+<td class="tg-baqh">
+5,7
+</td>
+</tr>
+<tr>
+<td class="tg-lqy6">
+<span style="font-style:italic">Urbano</span>
+</td>
+<td class="tg-baqh">
+1.038
+</td>
+<td class="tg-baqh">
+6,0
+</td>
+<td class="tg-baqh">
+57,2
+</td>
+<td class="tg-baqh">
+29,5
+</td>
+<td class="tg-baqh">
+7,3
+</td>
+</tr>
+<tr>
+<td class="tg-lqy6">
+<span style="font-style:italic">Rural</span>
+</td>
+<td class="tg-baqh">
+990
+</td>
+<td class="tg-baqh">
+11,7
+</td>
+<td class="tg-baqh">
+71,7
+</td>
+<td class="tg-baqh">
+14,2
+</td>
+<td class="tg-baqh">
+2,4
+</td>
+</tr>
+</tbody>
+</table>
+<p>Considere a variável estado nutricional como estudo, então como seria desenvolvido a distribuição de frequência baseado nas informações da tabela? Apresente-a(s).</p>
+</div>
 
 </div>
 </div>
 <h3>Referências</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Ferreira2009" class="csl-entry">
+Ferreira, Daniel Furtado. 2009. <em>Estatística básica</em>. 2 Revisada. Lavras: Editora UFLA.
+</div>
 <div id="ref-Montgomery2016" class="csl-entry">
 Montgomery, Douglas C., and George C. Runger. 2016. <em>Estatística Aplicada e Probabilidade Para Engenheiros</em>. 6th ed. Rio de Janeiro: LTC.
 </div>
+<div id="ref-Nasa1986" class="csl-entry">
+Presidential Comission. 1986. <span>“On the Space Shuttle Challanger Accident.”</span> Vol. I. Washington: National Aeronautics; Space Administration.
+</div>
+<div id="ref-Tavares1999" class="csl-entry">
+Tavares, Elda Lima, and Luiz Antonio do Anjos. 1999. <span>“Perfil Antropométrico Da População Idosa Brasileira. Resultados Da Pesquisa Nacional Sobre Saúde e Nutrição.”</span> <em>Cad. Saúde Pública</em> 15 (4): 759–68.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>Entenda nessa situação que grupo de caracteres é um elemento da amostra.<a href="chap-coad.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>A unidade de IMC em <span class="math inline">\(kg/m^2\)</span>.<a href="chap-coad.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>A classificação do estado nutricional em relação ao IMC foi: Magreza (todas as formas - <span class="math inline">\(\textrm{IMC} &lt; 18,5\)</span>); adequado (<span class="math inline">\(18 \leq \textrm{IMC} &lt; 25,0\)</span>); sobrepeso I (<span class="math inline">\(25 \leq \textrm{IMC} &lt; 30,0\)</span>); sobrepeso I e II (<span class="math inline">\(\textrm{IMC} \geq 30,0\)</span>).<a href="chap-coad.html#fnref6" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
