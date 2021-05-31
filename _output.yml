@@ -11,7 +11,8 @@ bookdown::gitbook:
       after: |
         <li><a href="https://bendeivide.github.io/book-epaec" target="blank">Acesse o curso desse material!</a></li>
 #   download: ["pdf", "epub"]
-    download: null
+#    download: null
+    download: ["pdf"]
     edit: https://github.com/bendeivide/book-epaec/edit/main/%s
     toolbar:
       position: fixed # static
