@@ -180,7 +180,7 @@ Considere $a$, $b$ e $k$ constantes, e que $X$ e $Y$ são variáveis quantitativ
 .exerprop[cap][titulo]::before {
   /* Increment "cont-cap" by 1 */
   counter-increment: cont-exerprop ;
-  content: "Exercícios propostos " attr(cap) "." counter(cont-exerprop) " " attr(titulo) " ";
+  content: "Exercício " attr(cap) "." counter(cont-exerprop) " " attr(titulo) " ";
   font-weight: bold;
   font-style: normal;
   display: inline-block;
@@ -193,3 +193,9 @@ Considere $a$, $b$ e $k$ constantes, e que $X$ e $Y$ são variáveis quantitativ
 .exerprop p {
   padding: 15px 15px 15px 15px;
 }
+
+/*
+<div id="exprop:ex1.10" class="exerprop" cap=1 titulo="">
+Considere a expressão $\displaystyle \sum_{i = 1}^{n}(X_i - A)^2$. Qual o valor de $A$ para que essa expressão seja minizada?
+</div>
+*/
