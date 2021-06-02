@@ -28,6 +28,7 @@ eq:amptotal
 eq:ampclasse
 eq:lipc
 eq:pmedio
+def:medart
 eq:medaritpop
 eq:media
 eq:mediaagrup
@@ -44,6 +45,7 @@ eq:mediana4
 eq:medianadadclasse1
 eq:medianadadclasse2
 fig:moda
+tab:tresgrupos
 dgets
 introdução
 definições-gerais-da-estatística
@@ -61,7 +63,7 @@ mediana
 moda
 chap:md
 introdução-3
-amplitude-total
+amplitude-total-ou-amplitude
 variância
 desvio-padrão
 coeficiente-de-variação
