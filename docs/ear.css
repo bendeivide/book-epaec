@@ -1,3 +1,14 @@
+/*
+# Informacoes do pacote bookdown (html.R)
+# default names for labels
+label_names = list(fig = 'Figure ', tab = 'Table ', eq = 'Equation ')
+# prefixes for theorem environments
+theorem_abbr = c(
+  theorem = 'thm', lemma = 'lem', corollary = 'cor', proposition = 'prp', conjecture = 'cnj',
+  definition = 'def', example = 'exm', exercise = 'exr', hypothesis = 'hyp'
+)
+*/
+
 .infobox {
   padding: 1em 1em 1em 4em;
   margin-bottom: 10px;
@@ -41,7 +52,7 @@ body {
 .definicao[cap][titulo]::before {
   /* Increment "cont-cap" by 1 */
   counter-increment: cont-def ;
-  content: "Definição " attr(cap) "." counter(cont-def) " " attr(titulo) " ";
+  content: "Definição " attr(cap) "." counter(cont-def) " " attr(titulo) " "; 
   font-weight: bold;
   font-style: normal;
   display: inline-block;
@@ -91,7 +102,7 @@ Um conjunto de regras e procedimentos para a obtenção de resultados, isto é, 
 }
 
 /*
-<div id="exem:MGbarragens" class="exemplo" cap=1 titulo="Trajédia das barragens de rejeito">
+<div id="exm:MGbarragens" class="exemplo" cap=1 titulo="Trajédia das barragens de rejeito">
   No Estado de Minas Gerais houveram dois acidentes, de grandes proporções nos últimos anos, envolvendo barragens que armazenam rejeitos de mineração. Os acidentes ocorreram na cidade de Mariana e Brumadinho, vitimando centenas de pessoas e um impacto ambiental imenso com o arrombamentos dessas barragens. Indagamos...
 </div>
 */
@@ -125,7 +136,7 @@ Um conjunto de regras e procedimentos para a obtenção de resultados, isto é, 
 }
 
 /*
-<div id="teo:PropSom" class="teorema" cap=1 titulo="Propriedades de somatório">
+<div id="thm:PropSom" class="teorema" cap=1 titulo="Propriedades de somatório">
 Considere $a$, $b$ e $k$ constantes, e que $X$ e $Y$ são variáveis quantitativas, então as seguintes propriedades envolvendo somatório são válidas:
   
 </div>
@@ -199,3 +210,5 @@ Considere $a$, $b$ e $k$ constantes, e que $X$ e $Y$ são variáveis quantitativ
 Considere a expressão $\displaystyle \sum_{i = 1}^{n}(X_i - A)^2$. Qual o valor de $A$ para que essa expressão seja minizada?
 </div>
 */
+
+

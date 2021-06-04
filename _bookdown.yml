@@ -6,9 +6,12 @@ repo: https://github.com/bendeivide/book-epaec/
 
 language:
   label:
-    fig: "FIGURA "
-    tab: "TABELA "
+    fig: "Figura "
+    tab: "Tabela "
     thm: "Teorema "
+    exm: "Exemplo "
+    exr: "Exercício "
+    def: "Definição "
   ui:
     edit: "Edite"
     chapter_name: "Capítulo "
