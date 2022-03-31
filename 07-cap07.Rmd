@@ -1,0 +1,7 @@
+# Amostragem {#chap:sampling}
+
+## Introdução
+
+## Amostragem não-probabilística e probabilística
+
+## Técnicas de amostragem probabilística

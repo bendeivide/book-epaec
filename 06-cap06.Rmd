@@ -1,0 +1,19 @@
+# Distribuições de probabilidade {#chap:cap6}
+
+## Introdução
+
+## Distribuições discretas de probabilidades
+
+### Distribuição Bernoulli
+
+### Distribuição Binomial
+
+### Distribuição Poisson
+
+### Relação entre a distribuição Binomial e Poisson
+
+## Distribuições contínuas de probabilidades
+
+### Distribuição normal
+
+#### Distribuição normal padrão

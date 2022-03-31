@@ -1,0 +1,501 @@
+# Coleta, organização e apresentação dos dados {#chap:coad}
+
+## Introdução
+
+Após selecionado a população de interesse, definindo os elementos que a compõe, bem como as variáveis que serão estudadas, fazemos o processo de coleta dos dados. Os dados são os valores assumidos de uma variável em um determinado elemento da população, que pode está sendo estudado por meio de uma amostra ou coletado diretamente da população. Neste último caso, a pesquisa realizada é um Censo.
+
+Ao termos um primeiro contato com os dados, percebemos que algumas informações prévias podem não ser facilmente obtidas, devido a desorganização dessas observações, Isso ocorre principalmente quando temos um grande número de dados.
+
+<div id="def:dbrutos" class="definicao" cap=2 titulo="(Dados brutos)">
+Os dados coletados numa forma sem ordenação e sem nenhum tipo de arranjo sistemático são chamados dados brutos.
+</div>
+
+Os dados da Tabela \@ref(tab:erroscanal), retirado de @Montgomery2016, representam o número de erros em um conjunto de caracteres (*strings*) de 1.000 *bits*, que foram monitorados por um canal de comunicação. No total, foram coletados dados de 20 conjuntos de caracteres.
+
+<!-- Table: (\#tab:erroscanal) Dados brutos sobre o número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação. -->
+
+<!-- A     B   C     D    E    f    g    h    i    j -->
+<!-- ---  ---  ---  ---  ---  ---  ---  ---  ---  --- -->
+<!--  3     1    0    1    3    2    4    1    3    1 -->
+<!--  1     1    2    3    3    2    0    2    0    1 -->
+
+
+```{r erroscanal, echo=FALSE, warning=FALSE}
+dados <- c( 3,     1,    0 ,   1,    3  ,  2 ,   4,    1  ,  3 ,   1,
+ 1 ,    1   , 2 ,   3  ,  3  ,  2  ,  0   , 2 ,   0,    1
+)
+dados <- matrix(dados, 2, 10)
+knitr::kable(
+  dados, longtable = TRUE, booktabs = TRUE,
+  caption = 'Dados brutos sobre o número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.'
+)
+```
+
+Podemos observar pela Tabela \@ref(tab:erroscanal), que estes representam um tipo de dados brutos, pois não há qualquer ordenamento sobre os seus valores, e que a interpretação desses dados poderá se complicar à medida que o tamanho da amostra aumenta. Quando ordenamos os dados brutos podemos obter algumas informações mais facilmente, como por exemplo, valores mínimos e máximos desses conjunto de dados.
+
+<div id="def:drol" class="definicao" cap=2 titulo="(Dados brutos)">
+Os dados brutos, Definição [2.1](#def:dbrutos), ordenados de modo crescente ou decrescente alfanumericamente, são chamados de dados em rol ou elaborados.
+</div>
+
+Agora, podemos transformar os dados brutos da Tabela \@ref(tab:erroscanal), em dados elaborados (em Rol), apresentados na Tabela \@ref(tab:erroscanalrol). Em termos de notação, iremos representar um conjunto de variáveis ordenadas dessa forma, $X_1$, $X_2$, $\ldots$, $X_n$, de tamanho $n$. Com o ordenamento, usaremos um parêntese no índice, $X_{(1)}$, $X_{(2)}$, $\ldots$, $X_{(n)}$, de modo que, $X_{(1)} = \min_i(X_i)$ e  $X_{(n)} = \max_i(X_i)$ para $i$ $=$ $1$, $2$, $\ldots$, $n$. Da mesma forma, vale para a representação dos valores observados dessas respectivas variáveis, isto é, valores observados sem ordenação denotados por $x_{(1)}$, $x_{(2)}$, $\ldots$, $x_{(n)}$, e valores observados ordenados $x_{(1)} = \min_i(x_i)$ e  $x_{(n)} = \max_i(x_i)$. Este último é a representação, em notação, dos dados elaborados.
+
+```{r erroscanalrol, echo=FALSE, warning=FALSE}
+dados <- c( 
+    0 , 0 , 0 , 1 , 1 , 1 , 1 , 1 , 1 , 1,
+    2 , 2 , 2 , 2 , 3 , 3 , 3 , 3 , 3 , 4
+)
+dados <- matrix(dados, 2, 10, byrow = TRUE)
+knitr::kable(
+  dados, longtable = TRUE, booktabs = TRUE,
+  caption = 'Dados elaborados sobre o número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.'
+)
+```
+
+Percebemos, com os dados elaborados, que os valores extremos representam, respectivamente, os valores mínimo e máximo do conjunto de dados, independente do número de elementos. Isso facilita a percepção de algumas informações, porém ainda limitado, uma vez que a quantidade de valores pode ser simplicada, sem perda de informações, por meio de tabulações agrupadas em distribuição de frequências. Além de simplificar, podemos obter mais informações do que se estes dados tivessem expressos sem tabulação, do qual, trataremos na próxima seção.
+
+## Representação tabular {#sec:reptabular}
+
+A frequência simples ou frequência absoluta, representa o número de vezes que determinado valor foi observado, que em notação, denotaremos por $F_i$ i-ésima frequência de determinada variável, em que a frequência observada será denotada por $f_i$. Vejamos o agrupamento dos dados da Tabela \@ref(tab:erroscanaldf), em distribuição de frequência, a seguir.
+
+Table: (\#tab:erroscanaldf) Distribuição de frequência do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.
+
+|Número de erros $(x_i)$ | Frequência simples ($f_i$) |
+| :--------------------: | :------------------------: |
+|        0               |            3               |
+                     |1|    7|
+                     |2 |   4|
+                     |3  |  5|
+                    | 4  |  1|
+                 |Total |    20|
+
+De forma mais fácil, podemos por meio da Tabela \@ref(tab:erroscanaldf) saber quantas vezes um determinado valor foi observado, sem grandes esforços, bastando apenas olhar para a coluna de frequências absolutas. Se desejarmos, apresentar uma forma relativa dessa frequência em relação ao número total de observações, podemos utilizar a frequência relativa, denotada por $F_r$, em que $f_r$ representa o seu respectivo valor observado, e que essa frequência será um valor entre $0$ e $1$. Calculamos a frequência relativa, de acordo com a expressão \ref(eq:fr),
+
+\begin{align}
+  F_{r_i} & = \frac{F_i}{\sum_{i = 1}^{k}F_i}, \quad i = 1, 2, \ldots, k, (\#eq:fr)
+\end{align}
+
+sendo $k$ o número de grupos ou classes. No caso, o cálculo da frequência relativa baseado na Tabela \@ref(tab:erroscanaldf), a representação de $k$ se refere ao número de grupos, uma vez que os dados são discretizados. Portanto, esse tipo de agrupamento é válido tanto para as variáveis qualitativas quanto para a variável quantitativa discreta. No caso da variável quantitativa contínua, agrupamos os seus valores em classes, uma vez que sua natureza não é discretizada. O modo de como criar essas classes, aprenderemos mais a frente. Desse modo, a Tabela \@ref(tab:erroscanalag) apresenta o agrupamento dos dados  do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação, juntamente com a frequência relativa de seus valores.
+
+Table: (\#tab:erroscanalag) Frequência relativa do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.
+
+|Número de erros $(x_i)$ | Frequência simples ($f_i$) | Frequência relativa ($f_{r_i}$) |
+| :-----: | :-----: | :-----: |
+  |  $0$     |  $3$ |  $3 / 20 = 0,15$ |
+  |  $1$     |  $7$ | $7 / 20 = 0,35$ |
+   | $2$     |  $4$ | $4 / 20 = 0,20$ |
+   | $3$     |  $5$ | $5 / 20 = 0,25$|
+  |  $4$     |  $1$ | $1 / 20 = 0,05$|
+
+
+Percebemos que $\sum_{i = 1}^{k}f_i = n$, uma vez que os dados são amostrais. A frequência relativa passa a ter sentido prático quando usamos o resultado em porcentagem, surgindo então, a frequência percentual, denotada por $F_\%$, cujo valor observado é dado por $f_\%$, de modo que essa frequência é calculada pela expressão \@ref(eq:fp).
+
+\begin{align}
+  F_{\%_i} & = F_{r_i} \times 100, \quad i = 1, 2, \ldots, k, (\#eq:fp)
+\end{align}
+em que $F_{r_i}$ é dado pela expressão \@ref(eq:fr), e $k$ é igual ao número de grupos ou classes.
+
+Assim, podemos acrescentar a frequência percentual aos dados da Tabela \@ref(tab:erroscanalag), que pode ser apresentado na Tabela \@ref(tab:erroscanalperc).
+
+Table: (\#tab:erroscanalperc) Frequência percentual do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.
+
+|Número de erros $(x_i)$ |  Frequência simples ($f_i$) | Frequência relativa ($f_{r_i}$) | Frequência percentual ($f_{\%_i}$)|
+| :---: | :----: | :----: | :----: |
+    $0$     |  $3$ |  $0,15$ | $0,15 \times 100 = 15$|
+    $1$     |  $7$ | $0,35$ | $0,35 \times 100 = 35$|
+    $2$     |  $4$ | $0,20$ | $0,20 \times 100 = 35$|
+    $3$     |  $5$ | $0,25$ | $0,25 \times 100 = 25$|
+    $4$     |  $1$ | $0,05$ | $0,05 \times 100 = 5$|
+    Total |  $20$ | $1$ | $100$|
+
+Podemos observar que, $35\%$ do grupo de caracteres apresentava apenas $1$ erro, $15\%$ dos grupos não apresentaram erros. Porém, se perguntássemos, no mínimo, quantos grupos apresentaram $2$ erros? Em quantos grupos tivemos, no máximo, $3$ erros? A primeira pergunta, seria respondida somando as frequências simples (ou absolutas) $4$ $+$ $5$ $+$ $1$ $=$ $10$ grupos. Para a segunda pergunta, responderíamos $3$ $+$ $7$ $+$ $4$ $+$ $5$ $+$ $1$ $=$ $19$ grupos. Isso poderia tornar mais oneroso, à medida que o nome de grupos fosse aumentando. Ao invés, usaremos as frequências acumuladas, para auxiliar indagações desse tipo aos dados.
+
+Temos dois tipos de frequências acumuladas, a frequência acumulada \emph{abaixo de}, denotada por $F_{ac\downarrow}$, cujo valor calculado é denotado por $f_{ac\downarrow}$, dado pela expressão \@ref(eq:facabaixode),
+
+\begin{align}
+  F_{ac\downarrow_i} & = \sum_{j = 1}^{i}F_j, \quad i = 1, 2, \ldots, k, (\#eq:facabaixode)
+\end{align}
+sendo $k$ o número de grupos ou classes, e $F_j$ representando $j$-ésima frequência absoluta.
+
+A outra é a frequência acumulada *acima de*, denotada por $F_{ac\downarrow}$, cujo valor calculado é denotado por  $f_{ac\uparrow}$, dado pela expressão \@ref(eq:facacimade),
+
+\begin{align}
+  F_{ac\uparrow_i} & = \sum_{j = i}^{k}F_j, \quad i = 1, 2, \ldots, k, (\#eq:facacimade)
+\end{align}
+sendo $k$ o número de grupos ou classes, e $F_j$ representando $j$-ésima frequência absoluta. Na Tabela \ref{tab:erroscanalacum}, complementamos as informações com as frequências acumuladas os dados apresentados da Tabela \@ref(tab:erroscanalperc).
+
+Table: (\#tab:erroscanalacum) Frequência percentual do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.
+
+| Número de erros $(x_i)$ |  $f_i$ | $f_{r_i}$ | $f_{\%_i}$ | Frequência acumulada ($f_{ac\downarrow_i}$) | Frequência acumulada ($f_{ac\uparrow_i}$) |
+| :----: | :----: | :----: | :----: | :----: | :----: | 
+| $0$     |  $3$ |  $0,15$ | $15$ | $3$ | $3 + 7 + 4 + 5 + 1 = 20$|
+    $1$     |  $7$ | $0,35$ | $35$ | $3 + 7 = 10$ | $7 + 4 + 5 + 1 = 20 - 3 = 17$|
+    $2$     |  $4$ | $0,20$ | $35$ | $3 + 7 + 4 = 14$ | $4 + 5 + 1 = 17 -  7 = 10$|
+    $3$     |  $5$ | $0,25$ | $25$ | $3 + 7 + 4 + 5 = 19$ | $5 + 1 = 10 - 4 = 6$|
+    $4$     |  $1$ | $0,05$ | $5$ | $3 + 7 + 4 + 5 + 1 = 20$ | $1 = 6 - 5 = 1$|
+Total |  $20$ | $1$ | $100$ | - | - |
+
+
+
+É importante notar que sempre o último valor da coluna da frequência acumulada *abaixo de* é o número total de elementos, e que o último valor da frequência acumulada *acima de* coincide com o seu respectivo valor da frequência simples ($f_i$), como pode ser observado na Tabela \@ref(tab:erroscanalacum). Uma outra coisa interessante, é que podemos ter uma forma alternativa de calcular a frequência acumulada *acima de*, dado pela expressão \@ref(eq:facacimadealt),
+
+\begin{align}
+  F_{ac\uparrow_i} & = \left\{\begin{array}{ll}
+                         \sum_{i = 1}^{k}F_i, & i = 1,  |
+                         F_{ac_{\uparrow_{i - 1}}} - F_{i-1}, & \textrm{demais casos,}
+                       \end{array}\right. (\#eq:facacimadealt)
+\end{align}
+
+sendo $k$ o número de grupos ou classes. Vamos tentar entender as equivalências entre as expressões \@ref(eq:facacimade) e \@ref(eq:facacimadealt). Indagamos, quantos grupos apresentam, no mínimo, $1$ erro? Observe que $x_2 = 1$, isto é, os valores observados iguais a $1$, estão no segundo grupo. Assim, pela expressão \@ref(eq:facacimade), temos
+
+\begin{align}
+  f_{ac\uparrow_2} &  = \sum_{j = 2}^{5}f_j = 7 + 4 + 5 + 1 = 17.
+\end{align}
+
+Da mesma forma, podemos utilizar a expressão \@ref(eq:facacimadealt), e de modo equivalente, temos
+\begin{align}
+  f_{ac\uparrow_2} &  = f_{ac_{\uparrow_{2 - 1}}} - f_{2 - 1}|
+                   &  = f_{ac_{\uparrow_{1}}} - f_1|
+                   &  = 20 - 3 = 17.
+\end{align}
+
+A expressão \@ref(eq:facacimadealt) pode parecer no primeiro momento mais trabalhoso o cálculo. Porém, perceberemos com a prática de exercícios que esse processo é  mais rápido do que calcular usando a expressão \@ref(eq:facacimade).
+
+Por fim, podemos apresentar a forma relativa e percentual das frequências acumuladas, usando de modo similar, quando calculamos as frequências relativas e percentuais, dadas nas expressões \@ref(eq:fr) e \@ref(eq:fp), respectivamente. Denotaremos a frequência relativa acumulada *abaixo de*, por $Fr_{ac_{\downarrow}}$, e a frequência relativa acumulada *acima de*, por $Fr_{ac_{\uparrow}}$. As expressões dessas duas frequências são dadas, respectivamente, por
+
+\begin{align}
+  Fr_{ac_{\downarrow}} & = \frac{F_{ac\downarrow_i}}{\sum_{i = 1}^{k}F_i} \quad i = 1, 2, \ldots, k, (\#eq:fracumabaixode)
+\end{align}
+e
+\begin{align}
+  Fr_{ac_{\uparrow}} & = \frac{F_{ac\uparrow_i}}{\sum_{i = 1}^{k}F_i} \quad i = 1, 2, \ldots, k, (\#eq:fracumacimade)
+\end{align}
+em que $F_{ac\downarrow_i}$ expresso em \@ref(eq:facabaixode), $F_{ac\uparrow_i}$ expresso em \@ref(eq:facacimade), e $k$ é igual ao número de grupos ou classes. Já para as frequências percentuais acumuladas *abaixo de* e *acima de*, denotando-as por $F_{ac_{\downarrow}\%}$ e $F_{ac_{\uparrow}\%}$, respectivamente, e sendo expressas por
+
+\begin{align}
+F_{ac_{\downarrow}\%}  & = Fr_{ac_{\downarrow}} \times 100 \quad i = 1, 2, \ldots, k, (\#eq:fpacumabaixode)
+\end{align}
+e
+\begin{align}
+F_{ac_{\uparrow}\%} & = Fr_{ac_{\uparrow}} \times 100 \quad i = 1, 2, \ldots, k, (\#eq:fpacumacimade)
+\end{align}
+respectivamente, em que $k$ é o número de grupos ou classes.
+
+Voltando ao conjunto de dados iniciado na Tabela \@ref(tab:erroscanal), podemos finalizar a sua tabulação com todas as frequências mencionadas anterioremente, em um quadro resumo na Tabela \@ref(tab:erroscanalgeral).
+
+Table: (\#tab:erroscanalgeral) Distribuição de frequências do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.
+
+| Número de erros $(x_i)$ | $f_i$ | $f_{r_i}$ | $f_{\%_i}$ | $f_{ac\downarrow_i}$ | $f_{ac\uparrow_i}$ | $fr_{ac_{\downarrow}}$ | $fr_{ac_{\uparrow}}$ | $f_{ac_{\downarrow}\%}$ | $f_{ac_{\uparrow}\%}$ |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+    $0$     |  $3$ |  $0,15$ | $15$ | $3$ | $20$ | $0,30$ | $1$ | 30 | $100$ |
+    $1$     |  $7$ | $0,35$ | $35$ | $10$ | $17$ | $0,33$ | $0,85$ | $33$ | $85$ |
+    $2$     |  $4$ | $0,20$ | $35$ | $14$ | $10$ | $0,47$ | $0,50$ | $47$ | $50$ |
+    $3$     |  $5$ | $0,25$ | $25$ | $19$ | $6$  | $0,95$ | $0,20$ | $0,95$ | $20$ |
+    $4$     |  $1$ | $0,05$ | $5$ | $20$ | $1$   | $1$ | $0,05$ | $100$ | $5$ |
+|    Total |  $20$ | $1$ | $100$ | - | - | $1$ | $1$ | - | -|
+
+Essa representação tabular como falado anteriormente, pode ser usado para todas as variáveis discretizadas, como as variáveis qualitativas quanto a variável quantitativa discreta. Porém, para o caso da variável qualitativa nominal, não faz sentido o uso da frequência acumulada, uma vez que esse tipo de variável não tem ordenamento no sentido quantitativo. Para o caso da variável quantitativa contínua, precisamos agrupar os valores observados em intervalos de classe, isso porque a discretização de seus valores se devem aos instrumentos de medida, e não a natureza da variável. Por exemplo, quando medimos uma altura, $1,78m$, de fato a altura real não está limitado a segunda casa decimal. Então, a melhor forma será criar regiões (intervalos), de modo que possamos contemplar determinados valores.
+
+Existem diversas formas de como agrupar as variáveis quantitativas contínuas, isto é, metodologias de como desenvolver a criação de classes. Contudo, iremos nos restringir a um critério empírico, que se baseia no número de elementos, seja na amostra ou população. A primeira indagação que surge é, qual o número de classes para agrupar esses dados? Denotaremos por $k$ o número de classes, em que sua expressão por:
+
+\begin{align}
+  k & \approx \left\{\begin{array}{ll}
+          \sqrt{\textrm{número de elementos}}, & \textrm{Caso o tamanho seja igual ou inferior a 100} \\
+          5log_{10}(\textrm{número de elementos}), & \textrm{Caso o tamanho seja superior a 100}.
+        \end{array}\right. (\#eq:numclasses)
+\end{align}
+
+Nesse caso, o cálculo de $k$ é uma aproximação, e devemos aproximar a um número inteiro mais próximo. Pode ocorrer situações em que o número de classes resulte em um agrupamento em que tenhamos classes com frequência $0$, isto é, com nenhum elemento dentro dessa classe. Não faz sentido criar uma classe sem elementos. Dessa forma, ao final do processo da criação de tabelas com intervalos de classes e verificado classes sem elementos, o processo deve ser reiniciado e alterado o valor de $k$, ou um número inteiro para baixo ou para cima. Após isso, todo o processo que será apresentado na sequência, deverá seguir. Caso esse problema se repita, novamente, voltaremos a fase de determinação de $k$ até encontrar um inteiro, do qual se obtenha agrupamento de dados com intervalo de classes, com frequência em suas classes superior a 0. Em todo esses processo, devemos evitar que o número de classes seja inferior a 3, uma vez que para $k < 3$ não será necessário um agrupamento de dados em tabela, para uma quantidade tão pequena de valores.
+
+Dando sequência, após a determinação do número de classes, determinaremos a amplitude total, denotada por $A_t$, sendo definida pela expressão \@ref(eq:amptotal),
+
+\begin{align}\
+  A_t & = \max_i(X_i) - \min_i(X_i), (\#eq:amptotal)
+\end{align}
+para $i \in \mathbb{N}^{+}$.
+
+Posteriormente, deveremos determinar a amplitude da classe, denotada por $c$ e expressa como:
+
+\begin{align}
+  c & = \left\{\begin{array}{ll}
+           \frac{A_t}{k - 1}, & \textrm{Amostra} \\
+           \frac{A_t}{k}, & \textrm{População}.
+        \end{array}\right. (\#eq:ampclasse)
+\end{align}
+
+em $A_t$ é expresso em \@ref(eq:amptotal) e $k$ dada pela expressão \@ref(eq:numclasses). O fato de o denominado ter o valor de $k$ subtraído de 1, ao invés de $k$ para o caso dos dados amostrais, é devido a uma correção realizada no cálculo do limite inferior da primeira classe, que será apresentada a seguir. Segundo @Ferreira2009 a justificativa se deve a suposição de que uma amostra de tamanho $n$ tem grande chance de não conter o valor mínimo da população, isto é, à medida que o tamanho da amostra aumenta, tem-se uma maior chance de obter elementos menores que o valor mínimo que foi encontrado para uma amostra de tamanho menor.
+
+Por fim, apresentamos o cálculo para se obter o limite inferior da primeira, denotado por $Li_{1a}$, sendo dado pela expressão \@ref(eq:lipc),
+
+\begin{align}
+Li_{1a} & = \left\{\begin{array}{ll}
+           X_{(1)} - c / 2, & \textrm{Amostra} \\
+           X_{(1)}, & \textrm{População}.
+        \end{array}\right. (\#eq:lipc)
+\end{align}
+
+Realizando esses quatro passos, iremos criar as classes, iniciando pelo limite inferior da primeira classe, e para essa mesma classe, o seu limite superior será denotado por $Ls_{1a}$, cujo cálculo é dado por $Ls_{1a} = Li_{1a} + c$. Representaremos em notação a primeia classe da seguinte forma:
+
+| Classe  |
+| :-----: |
+| $Li_{1a}$ $|$--- $Ls_{1a}$ |
+
+Em termos de conjunto, diremos que $\textrm{Classe 1} = \{x \in R  :  Li_{1a} \leq x < Ls_{1a}\}$, isto é, os valores observados pertencerão a essa classe se forem iguais ou superiores a $Li_{1a}$ e inferiores a $Ls_{1a}$. Como o valor do limite superior não pertence a essa classe, será contabilizado para a próxima classe. Nesse caso, o limite inferior da segunda classe será dado por $Li_{2a} = Ls_{1a}$ e seu limite superior $Ls_{2a} = L1_{1a} + c$, em que $c$ é a amplitude da classe. Inserindo agora a segunda classe na tabela, temos:
+
+| Classe |
+| :----: |
+| $Li_{1a}$ $|$--- $Ls_{1a}$ |
+| $Li_{2a}$ $|$--- $Ls_{2a}$ |
+
+Mais uma vez, o valor do limite superior dessa classe não pertence, mas pertencerá a próxima classe. Esse processo continua, até chegar a $k$-ésima classe, que ao final teremos uma tabela da seguinte forma,
+
+| Classe |
+| :----: |
+| $Li_{1a}$ $|$--- $Ls_{1a}$ |
+| $Li_{2a}$ $|$--- $Ls_{2a}$ |
+| $\vdots$ |
+| $Li_{ka}$ $|$---$|$ $Ls_{ka}$ |
+
+No caso da última classe, nós contemplamos os valores dos limites a essas classes, caso existam no banco de dados. Assim, a frequência absoluta é calculada verificando os valores que estão dentro da amplitude dos intervalos, e as demais frequências seguem o mesmo raciocínio falado anteriormente. Um problema surge com os dados, porque ao serem agrupadados nas classes nós perdemos essa informação. Vejamos a representação de uma classe com a sua frequência absoluta,
+
+| Classe | $F_i$ |
+| :----: | :----: |
+| $Li_{1a}$ $|$--- $Ls_{1a}$ | $f_1$ |
+| $Li_{2a}$ $|$--- $Ls_{2a}$ | $f_2$ |
+|    $\vdots$ | $\vdots$ |
+| $Li_{ka}$ $|$---$|$ $Ls_{ka}$ | $f_k$ |
+
+Observe que sabemos quantos valores existem em cada classe, mas sem a informação dos dados brutos ou elaborados, nós não sabemos quais são os valores pertencentes a cada classe. Assim, uma alternativa de valor para representar as $f_i$, para $i$ $=$ $1$, $2$, $\ldots$, $k$, em cada classe é usa o ponto médio. Esse critério é chamado hipótese tabular básica. Essa hipótese sugere que assumir o ponto médio como um potencial representante dos valores de uma determinada classe, assume um menor erro do que escolher qualquer outro valor dentro desse intervalo para representar essas observações. O ponto médio, denotado por $\tilde{X}_i$, será dado por:
+
+\begin{align}
+  \tilde{X}_i & = \frac{Li_{ia} + Ls_{ia}}{2}, \quad i = 1, 2, \ldots, k. (\#eq:pmedio)
+\end{align}
+
+Percebemos, que ocorre uma perda de precisão nos dados quando agrupamos em intervalo de classes, uma vez que o ponto médio passa a representar esses valores em cada classe. De todo modo, se observa que essa perda de informação é pequena para o ganho que se obtém ao representar esses dados em tabulação com intervalo de classe, no sentido não só de organização, mas de entendimento das informações. Em resumo, podemos dizer que o algoritmo para criar um agrupamento de dados em intervalo de classes pode ser dados em sete passos:
+
+- Calcular $k$,
+- Calcular $A_t$,
+- Calcular $c$,
+- Calcular $Li_{1a}$,
+- Determinar as classes,
+- Calcular o ponto médio, e
+- Calcular as frequências como apresentadas no início dessa seção.
+
+Os dados do Exemplo (\#exm:Challanger1986), foram retirados de @Nasa1986, e apresentados a seguir. 
+
+<div id="exm:Challanger1986" class="exemplo" cap=2 titulo="">
+Os dados representam a temperatura (ºF) do anel de vedação de cada teste de acionamento ou lançamento real do motor do foguete Challenger, isso porque, em 1986, houve nos Estados Unidos um dos maiores acidentes com ônibus espaciais, vitimando em 8 astronautas que estavam na tripulação. Foram realizados diversos estudos pela NASA para identificar as causas da falha. A primeira atenção se voltou para a temperatura do anel de vedação, que é apresentado a seguir.
+
+```{r , echo=FALSE, warning=FALSE}
+dados <- c( 
+    84 , 49 , 61 , 40 , 83 , 67 , 45 , 66 , 70 , 69 , 80 , 58, 
+    68 , 60 , 67 , 72 , 73 , 70 , 57 , 63 , 70 , 78 , 52 , 67 ,
+    53 , 67 , 75 , 61 , 70 , 81 , 76 , 79 , 75 , 76 , 58 , 31 
+)
+dados <- matrix(dados, 3, 12, byrow = TRUE)
+knitr::kable(
+  dados, longtable = TRUE, booktabs = TRUE)
+```
+
+Diante dessas informações, para melhor apresentar essas informações, vamos agrupar esses dados em uma tabela com intervalo de classes, uma vez que a temperatura do anel de vedação é uma variável quantitativa contínua. Inicialmente, vamos calcular o número de classes, $k = \sqrt{36} = 6$ classes. Observando os valores, percebemos que $x_{(1)} = 31^oF$ e $x_{(36)} = 84^oF$, logo a amplitude total é $A_t = 53^oF$. Na sequência, calculamos amplitude da classe, $c = 53 / (6 - 1) = 10,6^oF$, por fim, o limite inferior da primeira classe, $Li_{1a} = 31 - 10,6 / 2 = 25,7^oF$. Assim, começaremos pela primeira classe, em que já temos o limite inferior dela e seu limite superior será $Li_{1a} = 25,7 + 10,6 = 36,3^oF$. As demais classes, segue o procedimento descrito anteriormente. Por fim, verificaremos quais o valores pertencentes em cada classe para computar a frequência absoluta, o cálculo do ponto médio de acordo com a expressão \@ref(eq:pmedio) e as demais frequências calculadas como descritas no início dessa seção. Assim, temos o quadro geral de uma tabela com intervalo de classes para esses dados, apresentados a seguir.
+
+| Classe | $f_i$ | $\tilde{x}_i$ | $f_{r_i}$ | $f_{ac\downarrow_i}$ | $f_{ac\uparrow_i}$ | $f_{\%_i}$ | $f_{ac_{\downarrow}\%}$ | $f_{ac_{\uparrow}\%}$|
+| :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| 25,7 $|$---  36,3 | 1,00 | 31,00 | 0,03 | 1,00 | 36,00 | 3,00 | 2,78 | 100,00 |
+| 36,3 $|$---  46,9 | 2,00 | 41,60 | 0,06 | 3,00 | 35,00 | 6,00 | 8,33 | 97,22 |
+| 46,9 $|$---  57,5 | 4,00 | 52,20 | 0,11 | 7,00 | 33,00 | 11,00 | 19,44 | 91,67 |
+| 57,5 $|$---  68,1 | 12,00 | 62,80 | 0,33 | 19,00 | 29,00 | 33,00 | 52,78 | 80,56 |
+| 68,1 $|$---  78,7 | 12,00 | 73,40 | 0,33 | 31,00 | 17,00 | 33,00 | 86,11 | 47,22 |
+| 78,7 $|$---$|$ 89,3 | 5,00 | 84,00 | 0,14 | 36,00 | 5,00 | 14,00 | 100,00 | 13,89 |
+</div>
+
+
+
+
+## Representação gráfica
+
+
+
+
+
+## Exercícios propostos {-}
+
+<div id="exprop:ex2.1" class="exerprop" cap=2 titulo="">
+Observamos nas expressões \@ref(eq:facabaixode) e \@ref(eq:facacimade), a forma de se calcular as frequências acumuladas *acima de* e *abaixo de*, quando indagamos questões que envolvem situações do tipo, quantas vezes observamos, *no máximo*, $X = x$? Para isso, usamos a expressão \@ref(eq:facabaixode). Em outra situação, indagamos, quantas vezes observamos, *no mínimo*, $X = x$? Para isso, usamos a expressão \@ref(eq:facacimade). Percebemos que a condição limiar está inclusa na situação. Por exemplo, na Tabela \@ref(tab:erroscanalag), podemos estar interessados em saber quantos grupos de caracteres monitorados^[Entenda nessa situação que grupo de caracteres é um elemento da amostra.] em um canal de comunicação, foram encontrados, *no mínimo*, $2$ erros? Isto significa, que desejamos saber todos os grupos, tais que $X \geq 2$. Ou seja, o grupo que continha dois erros estava incluso na contagem. Para isso, usamos a expressão \@ref(eq:facacimade).
+Porém, podemos estar interessados na situação em que a condição limiar não esteja inclusa na contagem de elementos. Por exemplo, refazendo a indagação anterior, quantos grupos de caracteres apresentam *acima de* $2$ erros. Observe que os grupos apresentam dois erros não entram na contagem. Isso vale também para a outra situação. Logo, não será possível utilizar as expressões das frequências acumuladas \@ref(eq:facabaixode) e \@ref(eq:facacimade).
+Desenvolva as expressões, para essas últimas situações, de modo similar ao apresentado para as expressões \@ref(eq:facabaixode) e \@ref(eq:facacimade), fazendo as adaptações devidas.
+</div>
+
+
+<div id="exprop:ex2.2" class="exerprop" cap=2 titulo="">
+Os dados retirados de @Tavares1999, representam a distribuição percentual do estado nutricional em homens idosos brasileiros (idade $\geq$ 60 anos), segundo Índice de Massa Corporal (IMC^[A unidade de IMC em $kg/m^2$.]), por macrorregião e situação de domicílio, Pesquisa Nacional sobre Saúde e Nutrição, 1989, que seguem,
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#93a1a1;border-spacing:0;}
+.tg td{background-color:#fdf6e3;border-bottom-width:1px;border-color:#93a1a1;border-style:solid;border-top-width:1px;
+  border-width:0px;color:#002b36;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;
+  word-break:normal;}
+.tg th{background-color:#657b83;border-bottom-width:1px;border-color:#93a1a1;border-style:solid;border-top-width:1px;
+  border-width:0px;color:#fdf6e3;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;
+  padding:10px 5px;word-break:normal;}
+.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-zv4m{border-color:#ffffff;text-align:left;vertical-align:top}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-8jgo{border-color:#ffffff;text-align:center;vertical-align:top}
+.tg .tg-9by8{background-color:#657b83;border-color:#ffffff;text-align:center;vertical-align:top}
+.tg .tg-lqy6{text-align:right;vertical-align:top}
+.tg .tg-v0mg{border-color:#ffffff;text-align:center;vertical-align:middle}
+.tg .tg-ufyb{font-style:italic;text-align:right;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-v0mg" rowspan="2"><span style="font-weight:bold">Regiões</span></th>
+    <th class="tg-v0mg" rowspan="2"><span style="font-weight:bold">Números</span></th>
+    <th class="tg-8jgo" colspan="4">Estado Nutricional (%)^[A classificação do estado nutricional em relação ao IMC foi: Magreza (todas as formas - $\textrm{IMC} < 18,5$); adequado ($18 \leq \textrm{IMC} < 25,0$); sobrepeso I ($25 \leq \textrm{IMC} < 30,0$); sobrepeso I e II ($\textrm{IMC} \geq 30,0$).]</th>
+  </tr>
+  <tr>
+    <td class="tg-9by8">Magreza</td>
+    <td class="tg-9by8">Adequado</td>
+    <td class="tg-9by8">Sobrepeso I</td>
+    <td class="tg-9by8">Sobrepeso II e III</td>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-zv4m"><span style="font-weight:bold">Norte</span></td>
+    <td class="tg-8jgo">223</td>
+    <td class="tg-8jgo">4,4</td>
+    <td class="tg-8jgo">60,6</td>
+    <td class="tg-8jgo">29,4</td>
+    <td class="tg-8jgo">5,6</td>
+  </tr>
+  <tr>
+    <td class="tg-1wig">Nordeste</td>
+    <td class="tg-baqh">586</td>
+    <td class="tg-baqh">8,8</td>
+    <td class="tg-baqh">68,3</td>
+    <td class="tg-baqh">19,8</td>
+    <td class="tg-baqh">3,1</td>
+  </tr>
+  <tr>
+    <td class="tg-ufyb">Urbano</td>
+    <td class="tg-baqh">267</td>
+    <td class="tg-baqh">7,1</td>
+    <td class="tg-baqh">62,3</td>
+    <td class="tg-baqh">26,6</td>
+    <td class="tg-baqh">4,0</td>
+  </tr>
+  <tr>
+    <td class="tg-ufyb">Rural</td>
+    <td class="tg-baqh">319</td>
+    <td class="tg-baqh">10,7</td>
+    <td class="tg-baqh">74,6</td>
+    <td class="tg-baqh">12,5</td>
+    <td class="tg-baqh">2,2</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"><span style="font-weight:bold">Sudeste</span></td>
+    <td class="tg-baqh">46,3</td>
+    <td class="tg-baqh">7,9</td>
+    <td class="tg-baqh">59,0</td>
+    <td class="tg-baqh">26,7</td>
+    <td class="tg-baqh">6,4</td>
+  </tr>
+  <tr>
+    <td class="tg-lqy6"><span style="font-style:italic">Urbano</span></td>
+    <td class="tg-baqh">197</td>
+    <td class="tg-baqh">5,6</td>
+    <td class="tg-baqh">56,4</td>
+    <td class="tg-baqh">30,2</td>
+    <td class="tg-baqh">7,8</td>
+  </tr>
+  <tr>
+    <td class="tg-lqy6"><span style="font-style:italic">Rural</span></td>
+    <td class="tg-baqh">266</td>
+    <td class="tg-baqh">17,3</td>
+    <td class="tg-baqh">69,5</td>
+    <td class="tg-baqh">12,4</td>
+    <td class="tg-baqh">0,8</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"><span style="font-weight:bold">Sul</span></td>
+    <td class="tg-baqh">429</td>
+    <td class="tg-baqh">5,1</td>
+    <td class="tg-baqh">56,5</td>
+    <td class="tg-baqh">29,2</td>
+    <td class="tg-baqh">9,2</td>
+  </tr>
+  <tr>
+    <td class="tg-lqy6"><span style="font-style:italic">Urbano</span></td>
+    <td class="tg-baqh">197</td>
+    <td class="tg-baqh">4,5</td>
+    <td class="tg-baqh">51,2</td>
+    <td class="tg-baqh">33,0</td>
+    <td class="tg-baqh">11,3</td>
+  </tr>
+  <tr>
+    <td class="tg-lqy6"><span style="font-style:italic">Rural</span></td>
+    <td class="tg-baqh">232</td>
+    <td class="tg-baqh">6,4</td>
+    <td class="tg-baqh">66,4</td>
+    <td class="tg-baqh">22,0</td>
+    <td class="tg-baqh">5,2</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"><span style="font-weight:bold">Centro-Oeste</span></td>
+    <td class="tg-baqh">327</td>
+    <td class="tg-baqh">10,7</td>
+    <td class="tg-baqh">60,6</td>
+    <td class="tg-baqh">22,8</td>
+    <td class="tg-baqh">5,9</td>
+  </tr>
+  <tr>
+    <td class="tg-lqy6"><span style="font-style:italic">Urbano</span></td>
+    <td class="tg-baqh">154</td>
+    <td class="tg-baqh">10,6</td>
+    <td class="tg-baqh">55,2</td>
+    <td class="tg-baqh">27,3</td>
+    <td class="tg-baqh">6,9</td>
+  </tr>
+  <tr>
+    <td class="tg-lqy6"><span style="font-style:italic">Rural</span></td>
+    <td class="tg-baqh">173</td>
+    <td class="tg-baqh">11,0</td>
+    <td class="tg-baqh">71,4</td>
+    <td class="tg-baqh">13,7</td>
+    <td class="tg-baqh">3,9</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"><span style="font-weight:bold">Brasil</span></td>
+    <td class="tg-baqh">2.028</td>
+    <td class="tg-baqh">7,8</td>
+    <td class="tg-baqh">61,8</td>
+    <td class="tg-baqh">24,7</td>
+    <td class="tg-baqh">5,7</td>
+  </tr>
+  <tr>
+    <td class="tg-lqy6"><span style="font-style:italic">Urbano</span></td>
+    <td class="tg-baqh">1.038</td>
+    <td class="tg-baqh">6,0</td>
+    <td class="tg-baqh">57,2</td>
+    <td class="tg-baqh">29,5</td>
+    <td class="tg-baqh">7,3</td>
+  </tr>
+  <tr>
+    <td class="tg-lqy6"><span style="font-style:italic">Rural</span></td>
+    <td class="tg-baqh">990</td>
+    <td class="tg-baqh">11,7</td>
+    <td class="tg-baqh">71,7</td>
+    <td class="tg-baqh">14,2</td>
+    <td class="tg-baqh">2,4</td>
+  </tr>
+</tbody>
+</table>
+
+Considere a variável estado nutricional como estudo, então como seria desenvolvido a distribuição de frequência baseado nas informações da tabela? Apresente-a(s).
+</div>
+
+<div id="exprop:ex2.3" class="exerprop" cap=1 titulo="">
+Considerando os dados do Exercício [2.2](), como poderíamos representá-los graficamente, considerando apenas um gráfico?
+</div>
