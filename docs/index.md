@@ -5,7 +5,7 @@ subtitle: "aplicadas às Engenharias e Ciências"
 author: "Ben Dêivide de Oliveira Batista"
 date: "2022-03-31"
 
-site: "bookdown::bookdown_site"
+site: bookdown::bookdown_site
 
 bibliography:
 - epaec.bib
