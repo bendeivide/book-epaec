@@ -1,4 +1,4 @@
-# Teoria da decisão {#chap:teodec}
+# Teoria da decisão {#teodec}
 
 ## Introdução
 

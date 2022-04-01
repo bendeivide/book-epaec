@@ -1,4 +1,4 @@
-# Teoria de estimação {#chap:teoest}
+# Teoria de estimação {#teoest}
 
 ## Introdução
 

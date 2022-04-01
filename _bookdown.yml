@@ -1,6 +1,6 @@
 book_filename: book-epaec
-new_session: yes
-delete_merged_file: yes
+new_session: true
+delete_merged_file: true
 output_dir: "docs"
 repo: https://github.com/bendeivide/book-epaec/
 

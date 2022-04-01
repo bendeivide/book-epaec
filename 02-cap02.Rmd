@@ -1,4 +1,4 @@
-# Coleta, organização e apresentação dos dados {#chap:coad}
+# Coleta, organização e apresentação dos dados {#coad}
 
 ## Introdução
 
