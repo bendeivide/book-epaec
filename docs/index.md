@@ -3,7 +3,7 @@ title: "Estatística & Probabilidade"
 subtitle: "aplicadas às Engenharias e Ciências"
 
 author: "Ben Dêivide de Oliveira Batista"
-date: "2022-03-31"
+date: "2022-04-19"
 
 site: bookdown::bookdown_site
 
