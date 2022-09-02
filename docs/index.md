@@ -3,7 +3,7 @@ title: "Estatística & Probabilidade"
 subtitle: "aplicadas às Engenharias e Ciências"
 
 author: "Ben Dêivide de Oliveira Batista"
-date: "2022-04-20"
+date: "2022-09-02"
 
 site: bookdown::bookdown_site
 
@@ -32,6 +32,10 @@ github-repo: bendeivide/book-epaec
 O número de leitores  que acessaram esse livro:
 </br>
 <div align='center'><a href='https://www.free-website-hit-counter.com'><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=127145&s=76' border='0' alt='Free Website Hit Counter'></a><br / ><small><a href='https://www.free-website-hit-counter.com' title="Free Website Hit Counter">Free website hit counter</a></small></div>
+
+## Sugestões e críticas {-}
+
+Sugestões e críticas sobre o livro podem ser enviadas para [livrosdeben@gmail.com](mailto:livrosdeben@gmail.com).
 
 ## Licença {-}
 
