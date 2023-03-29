@@ -17,4 +17,4 @@ load(con); close(con)
 # Tabulando os dados
 challenger |>
   new_leem(variable = 2) |>
-  hist()
+  ogive(both = TRUE)
