@@ -9,24 +9,14 @@
 # em: <https://bendeivide.github.io/book-epaec/>. Acesso em: 
 #=================================================================================
 
-# Instalando o pacote 'leem' (via CRAN)
-install.packages("leem")
-# (ou) Instalando via github
-pkgs <- c("manipulate", "tkRplotR", 
-          "tkrplot", "crayon")
-install.packages(pkgs)
-## Instalando o pacote 'devtools'
-install.packages("devtools")
-## Instalando o pacote 'leem'
-devtools::install_github("bendeivide/leem")
 # Anexando o pacote leem
 library(leem)
 # Importando o banco de dados
-con <- url("https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/dados_exem2.1.RData")
+con <- url("https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/challenger.RData")
 load(con); close(con)
 # Imprimindo os dados
-dados_exem2.1
+challenger
 # Tabulando os dados
-dados_exem2.1 |>
+challenger |>
   new_leem(variable = 2) |>
-  tabfreq()
+  hist()

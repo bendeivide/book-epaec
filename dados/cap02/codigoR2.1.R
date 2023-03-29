@@ -1,6 +1,7 @@
 #=================================================================================
-# Tabela 2.1 - Dados brutos sobre o número de erros encontrados em 20 conjuntos de 
-#              caracteres monitorado em um canal de comunicação.
+# Código 2.1 - Os dados representam a temperatura (ºF) do anel de vedação de cada 
+#              teste de acionamento ou lançamento real do motor do foguete Challen
+#              ger
 #-----------
 # Como citar o livro:
 # BATISTA, B. D. O.. Estatística e Probabilidade: aplicadas às Engenharias e Ciên-
@@ -24,14 +25,8 @@ library(leem)
 con <- url("https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/dados_exem2.1.RData")
 load(con); close(con)
 # Imprimindo os dados
-dados_exem2.1
+challenger
 # Tabulando os dados
-dados_exem2.1 |>
+challenger |>
   new_leem(variable = 2) |>
   tabfreq()
-
-
-con <- read.table("https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/nerros.txt", h = T)
-nerros <- con$erros
-
-save(nerros, file = "tabela2.1.RData")
