@@ -17,6 +17,7 @@ load(con); close(con)
 # Tabulando os dados
 challenger |>
   new_leem(variable = 2) |>
-  ogive(both = TRUE) |>
-  insert(type = "median", lcol = "red",
-         ptext = 1.5, side = "left", parrow = 2)
+  tabfreq() |>
+  ogive(both = TRUE, histogram = TRUE, freq = "r") |>
+  insert(type = "median", lcol = "red", ptext = 0)
+
