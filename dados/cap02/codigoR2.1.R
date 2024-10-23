@@ -22,7 +22,7 @@ devtools::install_github("bendeivide/leem")
 # Anexando o pacote leem
 library(leem)
 # Importando o banco de dados
-con <- url("https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/dados_exem2.1.RData")
+con <- url("https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/challenger.RData")
 load(con); close(con)
 # Imprimindo os dados
 challenger

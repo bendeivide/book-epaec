@@ -1,0 +1,2671 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Coleta, organização e apresentação dos dados – Estatística &amp; Probabilidade aplicada às Engenharias e Ciências</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./cap03.html" rel="next">
+<link href="./cap01.html" rel="prev">
+<link href="./hardcover.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<style>
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Proof {
+  --color1: #aaa6a3;
+}
+.Example {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Exercise {
+  --color1: #4485f6;
+  --color2: #479bd1;
+}
+.Definition {
+  --color1: #5e737f;
+  --color2: #49606d;
+}
+.Solution {
+  --color1: #9ad5f6;
+}
+.Theorem {
+  --color1: #d14747;
+  --color2: #8b1f1f;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="custom.scss">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap02.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coleta, organização e apresentação dos dados</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Estatística &amp; Probabilidade aplicada às Engenharias e Ciências</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo de leitor">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bem-vindo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Definições Gerais da Estatística e técnicas de somatórios</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap02.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coleta, organização e apresentação dos dados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas de Posição</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medidas de dispersão</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidades</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuições de probabilidades</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Amostragem</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Distribuição de amostragem</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Teoria da estimação</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria da decisão</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlação e regressão linear simples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">2.1</span> Introdução</a></li>
+  <li><a href="#sec-reptabular" id="toc-sec-reptabular" class="nav-link" data-scroll-target="#sec-reptabular"><span class="header-section-number">2.2</span> Representação tabular</a></li>
+  <li><a href="#sec-repgraficas" id="toc-sec-repgraficas" class="nav-link" data-scroll-target="#sec-repgraficas"><span class="header-section-number">2.3</span> Representação gráfica</a>
+  <ul class="collapse">
+  <li><a href="#gráfico-de-hastes-ou-bastão" id="toc-gráfico-de-hastes-ou-bastão" class="nav-link" data-scroll-target="#gráfico-de-hastes-ou-bastão"><span class="header-section-number">2.3.1</span> Gráfico de hastes ou bastão</a></li>
+  <li><a href="#gráfico-de-barras" id="toc-gráfico-de-barras" class="nav-link" data-scroll-target="#gráfico-de-barras"><span class="header-section-number">2.3.2</span> Gráfico de barras</a></li>
+  <li><a href="#histograma-de-frequências" id="toc-histograma-de-frequências" class="nav-link" data-scroll-target="#histograma-de-frequências"><span class="header-section-number">2.3.3</span> Histograma de frequências</a></li>
+  <li><a href="#polígono-de-frequências" id="toc-polígono-de-frequências" class="nav-link" data-scroll-target="#polígono-de-frequências"><span class="header-section-number">2.3.4</span> Polígono de frequências</a></li>
+  <li><a href="#ogivas" id="toc-ogivas" class="nav-link" data-scroll-target="#ogivas"><span class="header-section-number">2.3.5</span> Ogivas</a></li>
+  </ul></li>
+  <li><a href="#exercícios-propostos" id="toc-exercícios-propostos" class="nav-link" data-scroll-target="#exercícios-propostos">Exercícios propostos</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-coad" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coleta, organização e apresentação dos dados</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introdução" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">2.1</span> Introdução</h2>
+<p>Após selecionado a população de interesse, definindo os elementos que a compõe, bem como as variáveis que serão estudadas, fazemos o processo de coleta dos dados. Os dados são os valores assumidos de uma variável em um determinado elemento da população, que pode está sendo estudado por meio de uma amostra ou coletado diretamente da população. Neste último caso, a pesquisa realizada é um Censo.</p>
+<p>Ao termos um primeiro contato com os dados, percebemos que algumas informações prévias podem não ser facilmente obtidas, devido a desorganização dessas observações, Isso ocorre principalmente quando temos um grande número de dados.</p>
+<div id="def:dbrutos" class="Definition" title="Dados brutos">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 2.1: </strong>Dados brutos</summary><div>Os dados coletados numa forma sem ordenação e sem nenhum tipo de arranjo sistemático são chamados dados brutos.<p></p>
+</div></details>
+</div>
+<p>Os dados da <a href="#tbl-erroscanal" class="quarto-xref">Tabela&nbsp;<span>2.1</span></a>, retirado de <span class="citation" data-cites="Montgomery2016">Montgomery e Runger (<a href="references.html#ref-Montgomery2016" role="doc-biblioref">2016, p. 188</a>)</span>, representam o número de erros em um conjunto de caracteres (<em>strings</em>) de 1.000 <em>bits</em>, que foram monitorados por um canal de comunicação. No total, foram coletados dados de 20 conjuntos de caracteres.</p>
+<div id="tbl-erroscanal" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-erroscanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2.1: Dados brutos sobre o número de erros encontrados em 20 conjuntos de caracteres monitorado em um canal de comunicação.
+</figcaption>
+<div aria-describedby="tbl-erroscanal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Podemos observar pela <a href="#tbl-erroscanal" class="quarto-xref">Tabela&nbsp;<span>2.1</span></a> que estes representam um tipo de dados brutos, pois não há qualquer ordenamento sobre os seus valores, e que a interpretação desses dados poderá se complicar à medida que o tamanho da amostra aumenta. Quando ordenamos os dados brutos podemos obter algumas informações mais facilmente, como por exemplo, valores mínimos e máximos desses conjunto de dados.</p>
+<div id="def:drol" class="Definition" title="Dados em rol ou elaborados">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 2.2: </strong>Dados em rol ou elaborados</summary><div>Os dados brutos, Definição <a href="cap02.html#def:dbrutos">2.1</a>, ordenados de modo crescente ou decrescente alfanumericamente, são chamados de dados em rol ou elaborados.<p></p>
+</div></details>
+</div>
+<p>Agora, podemos transformar os dados brutos da <a href="#tbl-erroscanal" class="quarto-xref">Tabela&nbsp;<span>2.1</span></a>, em dados elaborados (em Rol), apresentados na <a href="#tbl-erroscanalrol" class="quarto-xref">Tabela&nbsp;<span>2.2</span></a>. Em termos de notação, iremos representar um conjunto de variáveis ordenadas dessa forma, <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, de tamanho <span class="math inline">\(n\)</span>. Com o ordenamento, usaremos um parêntese no índice, <span class="math inline">\(X_{(1)}\)</span>, <span class="math inline">\(X_{(2)}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_{(n)}\)</span>, de modo que, <span class="math inline">\(X_{(1)} = \min_i(X_i)\)</span> e <span class="math inline">\(X_{(n)} = \max_i(X_i)\)</span> para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>. Da mesma forma, vale para a representação dos valores observados dessas respectivas variáveis, isto é, valores observados sem ordenação denotados por <span class="math inline">\(x_{(1)}\)</span>, <span class="math inline">\(x_{(2)}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(x_{(n)}\)</span>, e valores observados ordenados <span class="math inline">\(x_{(1)} = \min_i(x_i)\)</span> e <span class="math inline">\(x_{(n)} = \max_i(x_i)\)</span>. Este último é a representação, em notação, dos dados elaborados.</p>
+<div id="tbl-erroscanalrol" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-erroscanalrol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2.2: Dados elaborados sobre o número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.
+</figcaption>
+<div aria-describedby="tbl-erroscanalrol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Percebemos, com os dados elaborados, que os valores extremos representam, respectivamente, os valores mínimo e máximo do conjunto de dados, independente do número de elementos. Isso facilita a percepção de algumas informações, porém ainda limitado, uma vez que a quantidade de valores pode ser simplicada, sem perda de informações, por meio de tabulações agrupadas em distribuição de frequências. Além de simplificar, podemos obter mais informações do que se estes dados tivessem expressos sem tabulação, do qual, trataremos na próxima seção.</p>
+</section>
+<section id="sec-reptabular" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-reptabular"><span class="header-section-number">2.2</span> Representação tabular</h2>
+<p>A frequência simples ou frequência absoluta, representa o número de vezes que determinado valor foi observado, que em notação, denotaremos por <span class="math inline">\(F_i\)</span> i-ésima frequência de determinada variável, em que a frequência observada será denotada por <span class="math inline">\(f_i\)</span>. Vejamos o agrupamento dos dados da <a href="#tbl-erroscanalrol" class="quarto-xref">Tabela&nbsp;<span>2.2</span></a>, em distribuição de frequência, a seguir.</p>
+<div id="tbl-erroscanaldf" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-erroscanaldf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2.3: Distribuição de frequência do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação .
+</figcaption>
+<div aria-describedby="tbl-erroscanaldf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Número de erros</strong> <span class="math inline">\(\mathbf{(x_i)}\)</span></th>
+<th style="text-align: center;"><strong>Frequência simples</strong> <span class="math inline">\(\mathbf{(f_i)}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;">20</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>De forma mais fácil, podemos por meio da <a href="#tbl-erroscanaldf" class="quarto-xref">Tabela&nbsp;<span>2.3</span></a> saber quantas vezes um determinado valor foi observado, sem grandes esforços, bastando apenas olhar para a coluna de frequências absolutas. Se desejarmos, apresentar uma forma relativa dessa frequência em relação ao número total de observações, podemos utilizar a frequência relativa, denotada por <span class="math inline">\(F_r\)</span>, em que <span class="math inline">\(f_r\)</span> representa o seu respectivo valor observado, e que essa frequência será um valor entre <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>. Calculamos a frequência relativa, de acordo com a expressão (<a href="#eq-fr" class="quarto-xref"><span>2.1</span></a>), <span id="eq-fr"><span class="math display">\[
+\begin{align}
+  F_{r_i} &amp; = \frac{F_i}{\sum_{i = 1}^{k}F_i}, \quad i = 1, 2, \ldots, k,
+\end{align}
+\tag{2.1}\]</span></span> sendo <span class="math inline">\(k\)</span> o número de grupos ou classes. No caso, o cálculo da frequência relativa baseado na <a href="#tbl-erroscanaldf" class="quarto-xref">Tabela&nbsp;<span>2.3</span></a>, a representação de <span class="math inline">\(k\)</span> se refere ao número de grupos, uma vez que os dados são discretizados. Portanto, esse tipo de agrupamento é válido tanto para as variáveis qualitativas quanto para a variável quantitativa discreta. No caso da variável quantitativa contínua, agrupamos os seus valores em classes, uma vez que sua natureza não é discretizada. O modo de como criar essas classes, aprenderemos mais a frente. Desse modo, a <a href="#tbl-erroscanalag" class="quarto-xref">Tabela&nbsp;<span>2.4</span></a> apresenta o agrupamento dos dados do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação, juntamente com a frequência relativa de seus valores.</p>
+<div id="tbl-erroscanalag" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-erroscanalag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2.4: Frequência relativa do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.
+</figcaption>
+<div aria-describedby="tbl-erroscanalag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Número de erros</strong> <span class="math inline">\(\mathbf{(x_i)}\)</span></th>
+<th style="text-align: center;"><strong>Frequência simples</strong> <span class="math inline">\(\mathbf{(f_i)}\)</span></th>
+<th style="text-align: center;"><strong>Frequência relativa</strong> <span class="math inline">\(\mathbf{(f_{r_i})}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3 / 20 = 0,15\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(7 / 20 = 0,35\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4 / 20 = 0,20\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5 / 20 = 0,25\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1 / 20 = 0,05\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Percebemos que <span class="math inline">\(\sum_{i = 1}^{k}f_i = n\)</span>, uma vez que os dados são amostrais. A frequência relativa passa a ter sentido prático quando usamos o resultado em porcentagem, surgindo então, a frequência percentual, denotada por <span class="math inline">\(F_\%\)</span>, cujo valor observado é dado por <span class="math inline">\(f_\%\)</span>, de modo que essa frequência é calculada pela expressão (<a href="#eq-fp" class="quarto-xref"><span>2.2</span></a>).</p>
+<p><span id="eq-fp"><span class="math display">\[
+\begin{align}
+  F_{\%_i} &amp; = F_{r_i} \times 100, \quad i = 1, 2, \ldots, k,
+\end{align}
+\tag{2.2}\]</span></span> em que <span class="math inline">\(F_{r_i}\)</span> é dado pela expressão (<a href="#eq-fr" class="quarto-xref"><span>2.1</span></a>), e <span class="math inline">\(k\)</span> é igual ao número de grupos ou classes.</p>
+<p>Assim, podemos acrescentar a frequência percentual aos dados da <a href="#tbl-erroscanalag" class="quarto-xref">Tabela&nbsp;<span>2.4</span></a>, que pode ser apresentado na <a href="#tbl-erroscanalperc" class="quarto-xref">Tabela&nbsp;<span>2.5</span></a>.</p>
+<div id="tbl-erroscanalperc" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-erroscanalperc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2.5: Frequência percentual do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.
+</figcaption>
+<div aria-describedby="tbl-erroscanalperc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Número de erros</strong> <span class="math inline">\(\mathbf{(x_i)}\)</span></th>
+<th style="text-align: center;"><strong>Frequência simples</strong> <span class="math inline">\(\mathbf{(f_i)}\)</span></th>
+<th style="text-align: center;"><strong>Frequência relativa</strong> <span class="math inline">\(\mathbf{(f_{r_i})}\)</span></th>
+<th style="text-align: center;"><strong>Freq. percentual</strong> <span class="math inline">\(\mathbf{(f_{\%_i})}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,15 \times 100 = 15\%\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,35\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,35 \times 100 = 35\%\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,20 \times 100 = 20\%\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,25\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,25 \times 100 = 25\%\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,05\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,05 \times 100 = 5\%\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(100\%\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Podemos observar que, <span class="math inline">\(35\%\)</span> do grupo de caracteres apresentava apenas <span class="math inline">\(1\)</span> erro, <span class="math inline">\(15\%\)</span> dos grupos não apresentaram erros. Porém, se perguntássemos, no mínimo, quantos grupos apresentaram <span class="math inline">\(2\)</span> erros? Em quantos grupos tivemos, no máximo, <span class="math inline">\(3\)</span> erros? A primeira pergunta, seria respondida somando as frequências simples (ou absolutas) <span class="math inline">\(4\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(5\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(1\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(10\)</span> grupos. Para a segunda pergunta, responderíamos <span class="math inline">\(3\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(7\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(4\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(5\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(1\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(19\)</span> grupos. Isso poderia tornar mais oneroso, à medida que o nome de grupos fosse aumentando. Ao invés, usaremos as frequências acumuladas, para auxiliar indagações desse tipo aos dados.</p>
+<p>Temos dois tipos de frequências acumuladas, a frequência acumulada <em>abaixo de</em>, denotada por <span class="math inline">\(F_{ac\downarrow}\)</span>, cujo valor calculado é denotado por <span class="math inline">\(f_{ac\downarrow}\)</span>, dado pela expressão (<a href="#eq-facabaixode" class="quarto-xref"><span>2.3</span></a>),</p>
+<p><span id="eq-facabaixode"><span class="math display">\[
+\begin{align}
+  F_{ac\downarrow_i} &amp; = \sum_{j = 1}^{i}F_j, \quad i = 1, 2, \ldots, k,
+\end{align}
+\tag{2.3}\]</span></span> sendo <span class="math inline">\(k\)</span> o número de grupos ou classes, e <span class="math inline">\(F_j\)</span> representando <span class="math inline">\(j\)</span>-ésima frequência absoluta.</p>
+<p>A outra é a frequência acumulada <em>acima de</em>, denotada por <span class="math inline">\(F_{ac\uparrow}\)</span>, cujo valor calculado é denotado por <span class="math inline">\(f_{ac\uparrow}\)</span>, dado pela expressão (<a href="#eq-facacimade" class="quarto-xref"><span>2.4</span></a>), <span id="eq-facacimade"><span class="math display">\[
+\begin{align}
+  F_{ac\uparrow_i} &amp; = \sum_{j = i}^{k}F_j, \quad i = 1, 2, \ldots, k,
+\end{align}
+\tag{2.4}\]</span></span> sendo <span class="math inline">\(k\)</span> o número de grupos ou classes, e <span class="math inline">\(F_j\)</span> representando <span class="math inline">\(j\)</span>-ésima frequência absoluta. Na <a href="#tbl-erroscanalacum" class="quarto-xref">Tabela&nbsp;<span>2.6</span></a>, complementamos as informações com as frequências acumuladas os dados apresentados da <a href="#tbl-erroscanalperc" class="quarto-xref">Tabela&nbsp;<span>2.5</span></a>.</p>
+<div id="tbl-erroscanalacum" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-erroscanalacum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2.6: Frequência percentual do número de erros encontrados (<span class="math inline">\(x_i\)</span>) em 20 conjunto de caracteres monitorado em um canal de comunicação.
+</figcaption>
+<div aria-describedby="tbl-erroscanalacum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(\mathbf{x_i}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_i}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{r_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{\%_i}}\)</span></th>
+<th style="text-align: center;"><strong>Freq. acum.</strong> <span class="math inline">\(\mathbf{(f_{ac\downarrow_i})}\)</span></th>
+<th style="text-align: center;"><strong>Freq. acum.</strong> <span class="math inline">\(\mathbf{(f_{ac\uparrow_i})}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(15\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3 + 7 + 4 + 5 + 1 = 20\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,35\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(35\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3 + 7 = 10\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(7 + 4 + 5 + 1 = 20 - 3 = 17\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(20\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3 + 7 + 4 = 14\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4 + 5 + 1 = 17 -  7 = 10\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,25\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(25\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3 + 7 + 4 + 5 = 19\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5 + 1 = 10 - 4 = 6\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,05\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3 + 7 + 4 + 5 + 1 = 20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1 = 6 - 5 = 1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(100\)</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>É importante notar que sempre o último valor da coluna da frequência acumulada <em>abaixo de</em> é o número total de elementos, e que o último valor da frequência acumulada <em>acima de</em> coincide com o seu respectivo valor da frequência simples (<span class="math inline">\(f_i\)</span>), como pode ser observado na <a href="#tbl-erroscanalacum" class="quarto-xref">Tabela&nbsp;<span>2.6</span></a>. Uma outra coisa interessante, é que podemos ter uma forma alternativa de calcular a frequência acumulada <em>acima de</em>, dado pela expressão (<a href="#eq-facacimadealt" class="quarto-xref"><span>2.5</span></a>),</p>
+<p><span id="eq-facacimadealt"><span class="math display">\[
+\begin{align}
+  F_{ac\uparrow_i} &amp; = \left\{\begin{array}{ll}
+                         \sum_{i = 1}^{k}F_i, &amp; i = 1,  \\
+                         F_{ac_{\uparrow_{i - 1}}} - F_{i-1}, &amp; \textrm{demais casos,}
+                       \end{array}\right.
+\end{align}
+\tag{2.5}\]</span></span> sendo <span class="math inline">\(k\)</span> o número de grupos ou classes. Vamos tentar entender as equivalências entre as expressões (<a href="#eq-facacimade" class="quarto-xref"><span>2.4</span></a>) e (<a href="#eq-facacimadealt" class="quarto-xref"><span>2.5</span></a>). Indagamos, quantos grupos apresentam, no mínimo, <span class="math inline">\(1\)</span> erro? Observe que <span class="math inline">\(x_2 = 1\)</span>, isto é, os valores observados iguais a <span class="math inline">\(1\)</span>, estão no segundo grupo. Assim, pela expressão ([-<a href="#eq-facacimade" class="quarto-xref">Equação&nbsp;<span>2.4</span></a>}, temos que a frequência acumulada (<em>abaixo de</em>) observada para o segundo grupo é</p>
+<p><span class="math display">\[\begin{align*}
+  f_{ac\uparrow_2} &amp;  = \sum_{j = 2}^{5}f_j = 7 + 4 + 5 + 1 = 17.
+\end{align*}\]</span> Da mesma forma, podemos utilizar a expressão (<a href="#eq-facacimadealt" class="quarto-xref"><span>2.5</span></a>), e de modo equivalente, temos <span class="math display">\[\begin{align*}
+  f_{ac\uparrow_2} &amp;  = f_{ac_{\uparrow_{2 - 1}}} - f_{2 - 1}\\
+                   &amp;  = f_{ac_{\uparrow_{1}}} - f_1\\
+                   &amp;  = 20 - 3 = 17.
+\end{align*}\]</span></p>
+<p>A expressão (<a href="#eq-facacimadealt" class="quarto-xref"><span>2.5</span></a>) pode parecer no primeiro momento mais trabalhoso o cálculo. Porém, perceberemos com a prática de exercícios que esse processo é mais rápido do que calcular usando a expressão (<a href="#eq-facacimade" class="quarto-xref"><span>2.4</span></a>).</p>
+<p>Por fim, podemos apresentar a forma relativa e percentual das fre-quências acumuladas, usando de modo similar, quando calculamos as frequências relativas e percentuais, dadas nas expressões (<a href="#eq-fr" class="quarto-xref"><span>2.1</span></a>) e (<a href="#eq-fp" class="quarto-xref"><span>2.2</span></a>), respectivamente. Denotaremos a frequência relativa acumulada “<em>abaixo de</em>”, por <span class="math inline">\(Fr_{ac\downarrow_{i}}\)</span>, e a frequência relativa acumulada “<em>acima de</em>”, por <span class="math inline">\(Fr_{ac\uparrow_{i}}\)</span>, para o <span class="math inline">\(i\)</span>-ésimo grupo ou classe. As expressões dessas duas frequências são dadas, respectivamente, por <span id="eq-fracumabaixode"><span class="math display">\[
+\begin{align}
+  Fr_{ac\downarrow_{i}} &amp; = \frac{F_{ac\downarrow_i}}{\sum_{i = 1}^{k}F_i} \quad i = 1, 2, \ldots, k,
+\end{align}
+\tag{2.6}\]</span></span> e <span id="eq-fracumacimade"><span class="math display">\[
+\begin{align}
+  Fr_{ac\uparrow_{i}} &amp; = \frac{F_{ac\uparrow_i}}{\sum_{i = 1}^{k}F_i} \quad i = 1, 2, \ldots, k,
+\end{align}
+\tag{2.7}\]</span></span> em que <span class="math inline">\(F_{ac\downarrow_i}\)</span> expresso em (<a href="#eq-facabaixode" class="quarto-xref"><span>2.3</span></a>), <span class="math inline">\(F_{ac\uparrow_i}\)</span> expresso em (<a href="#eq-facacimade" class="quarto-xref"><span>2.4</span></a>), e <span class="math inline">\(k\)</span> é igual ao número de grupos ou classes. Já para as frequências percentuais acumuladas <em>abaixo de</em> e <em>acima de</em>, denotando-as por <span class="math inline">\(F_{ac\downarrow_i\%}\)</span> e <span class="math inline">\(F_{ac\uparrow_i\%}\)</span>, respectivamente, e sendo expressas por <span id="eq-fpacumabaixode"><span class="math display">\[
+\begin{align}
+F_{ac\downarrow_{i}\%}  &amp; = Fr_{ac\downarrow_{i}} \times 100 \quad i = 1, 2, \ldots, k,
+\end{align}
+\tag{2.8}\]</span></span> e <span id="eq-fpacumacimade"><span class="math display">\[
+\begin{align}
+F_{ac\uparrow_{i}\%} &amp; = Fr_{ac\uparrow_{i}} \times 100 \quad i = 1, 2, \ldots, k,
+\end{align}
+\tag{2.9}\]</span></span> respectivamente, em que <span class="math inline">\(k\)</span> é o número de grupos ou classes.</p>
+<p>Voltando ao conjunto de dados iniciado na <a href="#tbl-erroscanal" class="quarto-xref">Tabela&nbsp;<span>2.1</span></a>, podemos finalizar a sua tabulação com todas as frequências mencionadas anterioremente, em um quadro resumo na <a href="#tbl-erroscanalgeral" class="quarto-xref">Tabela&nbsp;<span>2.7</span></a>.</p>
+<div id="tbl-erroscanalgeral" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-erroscanalgeral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2.7: Distribuição de frequências do número de erros encontrados em 20 conjunto de caracteres monitorado em um canal de comunicação.
+</figcaption>
+<div aria-describedby="tbl-erroscanalgeral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Nº de erros</strong> <span class="math inline">\(\mathbf{(x_i)}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_i}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{r_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{\%_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac\downarrow_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac\uparrow_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{fr_{ac_{\downarrow}}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{fr_{ac_{\uparrow}}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac_{\downarrow}\%}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac_{\uparrow}\%}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(100\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,35\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(35\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(17\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,50\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,85\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(50\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(85\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(35\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(14\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,70\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,50\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(70\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(50\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,25\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(25\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(19\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,95\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(95\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,05\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0,05\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(100\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(100\)</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Essa representação tabular como falado anteriormente, pode ser usado para todas as variáveis discretizadas, como as variáveis qualitativas quanto a variável quantitativa discreta. Porém, para o caso da variável qualitativa nominal, não faz sentido o uso da frequência acumulada, uma vez que esse tipo de variável não tem ordenamento no sentido quantitativo.</p>
+<p>Por meio do pacote <a href="https://bendeivide.github.io/leem/">leem</a>, podemos tabular esses dados. Inicialmente podemos realizar a instalação do pacote usando o <a href="#lst-codRinstallleem" class="quarto-xref">Código R&nbsp;<span>2.1</span></a>.</p>
+<div class="cell">
+<div id="lst-codRinstallleem" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRinstallleem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.1: Instalando o pacote leem.
+</figcaption>
+<div aria-describedby="lst-codRinstallleem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRinstallleem"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRinstallleem-1"><a href="#lst-codRinstallleem-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalando o pacote 'leem' (via CRAN)</span></span>
+<span id="lst-codRinstallleem-2"><a href="#lst-codRinstallleem-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("leem")</span></span>
+<span id="lst-codRinstallleem-3"><a href="#lst-codRinstallleem-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (ou) Instalando via github</span></span>
+<span id="lst-codRinstallleem-4"><a href="#lst-codRinstallleem-4" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"manipulate"</span>, <span class="st">"tkRplotR"</span>,</span>
+<span id="lst-codRinstallleem-5"><a href="#lst-codRinstallleem-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">"tkrplot"</span>, <span class="st">"crayon"</span>)</span>
+<span id="lst-codRinstallleem-6"><a href="#lst-codRinstallleem-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkgs)</span>
+<span id="lst-codRinstallleem-7"><a href="#lst-codRinstallleem-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalando o pacote 'devtools'</span></span>
+<span id="lst-codRinstallleem-8"><a href="#lst-codRinstallleem-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
+<span id="lst-codRinstallleem-9"><a href="#lst-codRinstallleem-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalando o pacote 'leem'</span></span>
+<span id="lst-codRinstallleem-10"><a href="#lst-codRinstallleem-10" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"bendeivide/leem"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+</div>
+<p>Agora, tabular os dados de acordo com a <a href="#tbl-erroscanalgeral" class="quarto-xref">Tabela&nbsp;<span>2.7</span></a> usando o <a href="https://bendeivide.github.io/leem/">leem</a> é apresentado no <a href="#lst-codRnerros" class="quarto-xref">Código R&nbsp;<span>2.2</span></a>.</p>
+<div class="cell">
+<div id="lst-codRnerros" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRnerros-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.2: Tabulando dados discretos.
+</figcaption>
+<div aria-describedby="lst-codRnerros-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRnerros"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRnerros-1"><a href="#lst-codRnerros-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRnerros-2"><a href="#lst-codRnerros-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRnerros-3"><a href="#lst-codRnerros-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando o banco de dados</span></span>
+<span id="lst-codRnerros-4"><a href="#lst-codRnerros-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">url</span>(<span class="st">"https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/challenger.RData"</span>)</span>
+<span id="lst-codRnerros-5"><a href="#lst-codRnerros-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(con); <span class="fu">close</span>(con)</span>
+<span id="lst-codRnerros-6"><a href="#lst-codRnerros-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="lst-codRnerros-7"><a href="#lst-codRnerros-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabulando os dados</span></span>
+<span id="lst-codRnerros-8"><a href="#lst-codRnerros-8" aria-hidden="true" tabindex="-1"></a>challenger <span class="sc">|&gt;</span></span>
+<span id="lst-codRnerros-9"><a href="#lst-codRnerros-9" aria-hidden="true" tabindex="-1"></a><span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRnerros-10"><a href="#lst-codRnerros-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tabfreq</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Tabela de frequência 
+Tipo de variável: continuous
+
+          Classes Fi   PM   Fr Fac1 Fac2 Fp  Fac1p  Fac2p
+1 25.7 |---  36.3  1 31.0 0.03    1   36  3   2.78 100.00
+2 36.3 |---  46.9  2 41.6 0.06    3   35  6   8.33  97.22
+3 46.9 |---  57.5  4 52.2 0.11    7   33 11  19.44  91.67
+4 57.5 |---  68.1 12 62.8 0.33   19   29 33  52.78  80.56
+5 68.1 |---  78.7 12 73.4 0.33   31   17 33  86.11  47.22
+6 78.7 |---  89.3  5 84.0 0.14   36    5 14 100.00  13.89
+
+============================================== 
+Classes: Agrupamento de classes 
+Fi: Frequência absoluta 
+PM: Ponto médio 
+Fr: Frequência relativa 
+Fac1: Frequência acumulada (abaixo de) 
+Fac2: Frequência acumulada (acima de) 
+Fp: Frequência percentual 
+Fac1p: Frequência acumulada percentual (abaixo de) 
+Fac2p: Frequência acumulada percentual (acima de) </code></pre>
+</div>
+</div>
+<p>Para o caso da variável quantitativa contínua, precisamos agrupar os valores observados em intervalos de classe, isso porque a discretização de seus valores se devem aos instrumentos de medida, e não a natureza da variável. Por exemplo, quando medimos uma altura, <span class="math inline">\(1,78m\)</span>, de fato a altura real não está limitado a segunda casa decimal. Então, a melhor forma será criar regiões (intervalos), de modo que possamos contemplar determinados valores.</p>
+<p>Existem diversas formas de como agrupar as variáveis quantitativas contínuas, isto é, metodologias de como desenvolver a criação de classes. Contudo, iremos nos restringir a um critério empírico, que se baseia no número de elementos, seja na amostra ou população. A primeira indagação que surge é, qual o número de classes para agrupar esses dados? Denotaremos por <span class="math inline">\(k\)</span> o número de classes, cuja expressão é dada por: <span id="eq-numclasses"><span class="math display">\[
+\begin{align}
+  k &amp; \approx \left\{\begin{array}{ll}
+          \sqrt{m}, &amp; m \leq 100; \\
+          5log_{10}(m), &amp; m &gt; 100,
+        \end{array}\right.
+\end{align}
+\tag{2.10}\]</span></span> em que <span class="math inline">\(m\)</span> representa o número de elementos.</p>
+<p>Nesse caso, o cálculo de <span class="math inline">\(k\)</span> é uma aproximação, e devemos aproximar a um número inteiro mais próximo. Pode ocorrer situações em que o número de classes resulte em um agrupamento em que tenhamos classes com frequência <span class="math inline">\(0\)</span>, isto é, com nenhum elemento dentro dessa classe. Não faz sentido criar uma classe sem elementos. Dessa forma, ao final do processo da criação de tabelas com intervalos de classes e verificado classes sem elementos, o processo deve ser reiniciado e alterado o valor de <span class="math inline">\(k\)</span>, ou um número inteiro para baixo ou para cima. Após isso, todo o processo que será apresentado na sequência, deverá seguir. Caso esse problema se repita, novamente, voltaremos a fase de determinação de <span class="math inline">\(k\)</span> até encontrar um inteiro, do qual se obtenha agrupamento de dados com intervalo de classes, com frequência em suas classes superior a 0. Em todo esses processo, devemos evitar que o número de classes seja inferior a 3, uma vez que para <span class="math inline">\(k &lt; 3\)</span> não será necessário um agrupamento de dados em tabela, para uma quantidade tão pequena de valores.</p>
+<p>Dando sequência, após a determinação do número de classes, determinaremos a amplitude total, denotada por <span class="math inline">\(A_t\)</span>, sendo definida pela expressão (<a href="#eq-amptotal" class="quarto-xref"><span>2.11</span></a>), <span id="eq-amptotal"><span class="math display">\[
+\begin{align}
+  A_t &amp; = \max_i(X_i) - \min_i(X_i),
+\end{align}
+\tag{2.11}\]</span></span> para <span class="math inline">\(i \in \mathbb{N}^{+}\)</span>.</p>
+<p>Posteriormente, deveremos determinar a amplitude da classe, denotada por <span class="math inline">\(c\)</span> e expressa como: <span id="eq-ampclasse"><span class="math display">\[
+\begin{align}
+  c &amp; = \left\{\begin{array}{ll}
+           \frac{A_t}{k - 1}, &amp; \textrm{Amostra} \\
+           \frac{A_t}{k}, &amp; \textrm{População}.
+        \end{array}\right.
+\end{align}
+\tag{2.12}\]</span></span> em <span class="math inline">\(A_t\)</span> é expresso em (<a href="#eq-amptotal" class="quarto-xref"><span>2.11</span></a>) e <span class="math inline">\(k\)</span> dada pela expressão (<a href="#eq-numclasses" class="quarto-xref"><span>2.10</span></a>). O fato de o denominado ter o valor de <span class="math inline">\(k\)</span> subtraído de 1, ao invés de <span class="math inline">\(k\)</span> para o caso dos dados amostrais, é devido a uma correção realizada no cálculo do limite inferior da primeira classe, que será apresentada a seguir. Segundo <span class="citation" data-cites="Ferreira2009">Ferreira (<a href="references.html#ref-Ferreira2009" role="doc-biblioref">2009, p. 13</a>)</span> a justificativa se deve a suposição de que uma amostra de tamanho <span class="math inline">\(n\)</span> tem grande chance de não conter o valor mínimo da população, isto é, à medida que o tamanho da amostra aumenta, temos uma maior chance de obter elementos menores que o valor mínimo que foi encontrado para uma amostra de tamanho menor.</p>
+<p>Por fim, apresentamos o cálculo para se obter o limite inferior da primeira, denotado por <span class="math inline">\(Li_{1a}\)</span>, sendo dado pela expressão (<a href="#eq-lipc" class="quarto-xref"><span>2.13</span></a>), <span id="eq-lipc"><span class="math display">\[
+\begin{align}
+Li_{1a} &amp; = \left\{\begin{array}{ll}
+           X_{(1)} - c / 2, &amp; \textrm{Amostra} \\
+           X_{(1)}, &amp; \textrm{População}.
+        \end{array}\right.
+\end{align}
+\tag{2.13}\]</span></span> Realizando esses quatro passos, iremos criar as classes, iniciando pelo limite inferior da primeira classe, e para essa mesma classe, o seu limite superior será denotado por <span class="math inline">\(Ls_{1a}\)</span>, cujo cálculo é dado por <span class="math inline">\(Ls_{1a} = Li_{1a} + c\)</span>. Representaremos em notação a primeia classe da seguinte forma:</p>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Classe</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(Li_{1a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{1a}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Em termos de conjunto, diremos que <span class="math inline">\(\textrm{Classe 1} = \{x \in \mathbb{R}~:~Li_{1a} \leq x &lt; Ls_{1a}\}\)</span>, isto é, os valores observados pertencerão a essa classe se forem iguais ou superiores a <span class="math inline">\(Li_{1a}\)</span> e inferiores a <span class="math inline">\(Ls_{1a}\)</span>. Como o valor do limite superior não pertence a essa classe, será contabilizado para a próxima classe. Nesse caso, o limite inferior da segunda classe será dado por <span class="math inline">\(Li_{2a} = Ls_{1a}\)</span> e seu limite superior <span class="math inline">\(Ls_{2a} = L1_{1a} + c\)</span>, em que <span class="math inline">\(c\)</span> é a amplitude da classe. Inserindo agora a segunda classe na tabela, temos:</p>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Classe</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(Li_{1a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{1a}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(Li_{2a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{2a}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Mais uma vez, o valor do limite superior dessa classe não pertence, mas pertencerá a próxima classe. Esse processo continua, até chegar a <span class="math inline">\(k\)</span>-ésima classe, que ao final teremos uma tabela da seguinte forma,</p>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Classe</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(Li_{1a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{1a}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(Li_{2a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{2a}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(Li_{ka}\)</span> <span class="math inline">\(|\)</span>—<span class="math inline">\(|\)</span> <span class="math inline">\(Ls_{ka}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>No caso da última classe, nós contemplamos os valores dos limites a essas classes, caso existam no banco de dados. Assim, a frequência absoluta é calculada verificando os valores que estão dentro da amplitude dos intervalos, e as demais frequências seguem o mesmo raciocínio falado anteriormente. Algumas notações vistas na literatura não contemplam o limite superior da última classe, e assim, essa classe pode ser também representada da forma <span class="math inline">\(Li_{ka}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{ka}\)</span>. Um problema surge com os dados, porque ao serem agrupados nas classes nós perdemos essa informação. Vejamos a representação de uma classe com a sua frequência absoluta,</p>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Classe</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbf{f_i}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(Li_{1a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{1a}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(Li_{2a}\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(Ls_{2a}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(Li_{ka}\)</span> <span class="math inline">\(|\)</span>—<span class="math inline">\(|\)</span> <span class="math inline">\(Ls_{ka}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_k\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Observe que sabemos quantos valores existem em cada classe, mas sem a informação dos dados brutos ou elaborados, nós não sabemos quais são os valores pertencentes a cada classe. Assim, uma alternativa de valor para representar as <span class="math inline">\(f_i\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(k\)</span>, em cada classe é usa o ponto médio. Esse critério é chamado hipótese tabular básica. Essa hipótese sugere que assumir o ponto médio como um potencial representante dos valores de uma determinada classe, assume um menor erro do que escolher qualquer outro valor dentro desse intervalo para representar essas observações. O ponto médio, denotado por <span class="math inline">\(\tilde{X}_i\)</span>, será dado por: <span id="eq-pmedio"><span class="math display">\[
+\begin{align}
+  \tilde{X}_i &amp; = \frac{Li_{ia} + Ls_{ia}}{2}, \quad i = 1, 2, \ldots, k.
+\end{align}
+\tag{2.14}\]</span></span> Percebemos, que ocorre uma perda de precisão nos dados quando agrupamos em intervalo de classes, uma vez que o ponto médio passa a representar esses valores em cada classe. De todo modo, se observa que essa perda de informação é pequena para o ganho que se obtém ao representar esses dados em tabulação com intervalo de classe, no sentido não só de organização, mas de entendimento das informações. Em resumo, podemos dizer que o algoritmo para criar um agrupamento de dados em intervalo de classes pode ser dados em sete passos:</p>
+<ol type="1">
+<li>Calcular <span class="math inline">\(k\)</span>,</li>
+<li>Calcular <span class="math inline">\(A_t\)</span>,</li>
+<li>Calcular <span class="math inline">\(c\)</span>,</li>
+<li>Calcular <span class="math inline">\(Li_{1a}\)</span>,</li>
+<li>Determinar as classes,</li>
+<li>Calcular o ponto médio, e</li>
+<li>Calcular as frequências como apresentadas no início dessa seção.</li>
+</ol>
+<p>Os dados do Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a> foram retirados de <span class="citation" data-cites="Nasa1986">Presidential Comission (<a href="references.html#ref-Nasa1986" role="doc-biblioref">1986, p. 129–131</a>)</span>, e apresentados a seguir.</p>
+<div id="ex:Challanger1986" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 2.1</strong></summary><div>Os dados representam a temperatura (ºF) do anel de vedação de cada teste de acionamento ou lançamento real do motor do foguete Challenger, isso porque, em 1986, houve nos Estados Unidos um dos maiores acidentes com ônibus espaciais, vitimando em 8 astronautas que estavam na tripulação. Foram realizados diversos estudos pela NASA para identificar as causas da falha. A primeira atenção se voltou para a temperatura do anel de vedação, que é apresentado a seguir.<p></p>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">83</td>
+<td style="text-align: center;">67</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">66</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">69</td>
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">58</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">68</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">67</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">73</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">67</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">53</td>
+<td style="text-align: center;">67</td>
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">81</td>
+<td style="text-align: center;">76</td>
+<td style="text-align: center;">79</td>
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">76</td>
+<td style="text-align: center;">58</td>
+<td style="text-align: center;">31</td>
+</tr>
+</tbody>
+</table>
+<p>Diante dessas informações, para melhor apresentar essas informações, vamos agrupar esses dados em uma tabela com intervalo de classes, uma vez que a temperatura do anel de vedação é uma variável quantitativa contínua. Inicialmente, vamos calcular o número de classes, <span class="math inline">\(k = \sqrt{36} = 6\)</span> classes. Observando os valores, percebemos que <span class="math inline">\(x_{(1)} = 31^oF\)</span> e <span class="math inline">\(x_{(36)} = 84^oF\)</span>, logo a amplitude total é <span class="math inline">\(A_t = 53^oF\)</span>. Na sequência, calculamos amplitude da classe, <span class="math inline">\(c = 53 / (6 - 1) = 10,6^oF\)</span>, por fim, o limite inferior da primeira classe, <span class="math inline">\(Li_{1a} = 31 - 10,6 / 2 = 25,7^oF\)</span>. Assim, começaremos pela primeira classe, em que já temos o limite inferior dela e seu limite superior será <span class="math inline">\(Li_{1a} = 25,7 + 10,6 = 36,3^oF\)</span>. As demais classes, segue o procedimento descrito anteriormente. Por fim, verificaremos quais o valores pertencentes em cada classe para computar a frequência absoluta, o cálculo do ponto médio de acordo com a expressão (<a href="#eq-pmedio" class="quarto-xref"><span>2.14</span></a>) e as demais frequências calculadas como descritas no início dessa seção. Assim, temos o quadro geral de uma tabela com intervalo de classes para esses dados, apresentados a seguir.</p>
+<p><font size="+0"></font></p><font size="+0">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 53%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Classe</strong></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_i}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{\tilde{x}_i}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{r_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac\downarrow_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac\uparrow_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{\%_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac_{\downarrow}\%}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac_{\uparrow}\%}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">25,7 <span class="math inline">\(|\)</span>— 36,3</td>
+<td style="text-align: center;">1,00</td>
+<td style="text-align: center;">31,00</td>
+<td style="text-align: center;">0,03</td>
+<td style="text-align: center;">1,00</td>
+<td style="text-align: center;">36,00</td>
+<td style="text-align: center;">3,00</td>
+<td style="text-align: center;">2,78</td>
+<td style="text-align: center;">100,00</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">36,3 <span class="math inline">\(|\)</span>— 46,9</td>
+<td style="text-align: center;">2,00</td>
+<td style="text-align: center;">41,60</td>
+<td style="text-align: center;">0,06</td>
+<td style="text-align: center;">3,00</td>
+<td style="text-align: center;">35,00</td>
+<td style="text-align: center;">6,00</td>
+<td style="text-align: center;">8,33</td>
+<td style="text-align: center;">97,22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">46,9 <span class="math inline">\(|\)</span>— 57,5</td>
+<td style="text-align: center;">4,00</td>
+<td style="text-align: center;">52,20</td>
+<td style="text-align: center;">0,11</td>
+<td style="text-align: center;">7,00</td>
+<td style="text-align: center;">33,00</td>
+<td style="text-align: center;">11,00</td>
+<td style="text-align: center;">19,44</td>
+<td style="text-align: center;">91,67</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">57,5 <span class="math inline">\(|\)</span>— 68,1</td>
+<td style="text-align: center;">12,00</td>
+<td style="text-align: center;">62,80</td>
+<td style="text-align: center;">0,33</td>
+<td style="text-align: center;">19,00</td>
+<td style="text-align: center;">29,00</td>
+<td style="text-align: center;">33,00</td>
+<td style="text-align: center;">52,78</td>
+<td style="text-align: center;">80,56</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">68,1 <span class="math inline">\(|\)</span>— 78,7</td>
+<td style="text-align: center;">12,00</td>
+<td style="text-align: center;">73,40</td>
+<td style="text-align: center;">0,33</td>
+<td style="text-align: center;">31,00</td>
+<td style="text-align: center;">17,00</td>
+<td style="text-align: center;">33,00</td>
+<td style="text-align: center;">86,11</td>
+<td style="text-align: center;">47,22</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">78,7 <span class="math inline">\(|\)</span>—<span class="math inline">\(|\)</span> 89,3</td>
+<td style="text-align: center;">5,00</td>
+<td style="text-align: center;">84,00</td>
+<td style="text-align: center;">0,14</td>
+<td style="text-align: center;">36,00</td>
+<td style="text-align: center;">5,00</td>
+<td style="text-align: center;">14,00</td>
+<td style="text-align: center;">100,00</td>
+<td style="text-align: center;">13,89</td>
+</tr>
+</tbody>
+</table>
+</font><p><font size="+0"></font></p>
+</div></details>
+</div>
+<p>Por meio do pacote <a href="https://bendeivide.github.io/leem/">leem</a>, <a href="#lst-codRchallenger" class="quarto-xref">Código R&nbsp;<span>2.3</span></a>, podemos tabular os dados agrupados em intervalo de classes, para variáveis quantitativas contínuas, o mesmo conjunto de dados apresentado no Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a>.</p>
+<div class="cell">
+<div id="lst-codRchallenger" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRchallenger-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.3: Tabulando dados contínuos.
+</figcaption>
+<div aria-describedby="lst-codRchallenger-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRchallenger"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRchallenger-1"><a href="#lst-codRchallenger-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRchallenger-2"><a href="#lst-codRchallenger-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRchallenger-3"><a href="#lst-codRchallenger-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando o banco de dados</span></span>
+<span id="lst-codRchallenger-4"><a href="#lst-codRchallenger-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">url</span>(<span class="st">"https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/challenger.RData"</span>)</span>
+<span id="lst-codRchallenger-5"><a href="#lst-codRchallenger-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(con); <span class="fu">close</span>(con)</span>
+<span id="lst-codRchallenger-6"><a href="#lst-codRchallenger-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="lst-codRchallenger-7"><a href="#lst-codRchallenger-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabulando os dados</span></span>
+<span id="lst-codRchallenger-8"><a href="#lst-codRchallenger-8" aria-hidden="true" tabindex="-1"></a>challenger <span class="sc">|&gt;</span></span>
+<span id="lst-codRchallenger-9"><a href="#lst-codRchallenger-9" aria-hidden="true" tabindex="-1"></a><span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRchallenger-10"><a href="#lst-codRchallenger-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tabfreq</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Tabela de frequência 
+Tipo de variável: continuous
+
+          Classes Fi   PM   Fr Fac1 Fac2 Fp  Fac1p  Fac2p
+1 25.7 |---  36.3  1 31.0 0.03    1   36  3   2.78 100.00
+2 36.3 |---  46.9  2 41.6 0.06    3   35  6   8.33  97.22
+3 46.9 |---  57.5  4 52.2 0.11    7   33 11  19.44  91.67
+4 57.5 |---  68.1 12 62.8 0.33   19   29 33  52.78  80.56
+5 68.1 |---  78.7 12 73.4 0.33   31   17 33  86.11  47.22
+6 78.7 |---  89.3  5 84.0 0.14   36    5 14 100.00  13.89
+
+============================================== 
+Classes: Agrupamento de classes 
+Fi: Frequência absoluta 
+PM: Ponto médio 
+Fr: Frequência relativa 
+Fac1: Frequência acumulada (abaixo de) 
+Fac2: Frequência acumulada (acima de) 
+Fp: Frequência percentual 
+Fac1p: Frequência acumulada percentual (abaixo de) 
+Fac2p: Frequência acumulada percentual (acima de) </code></pre>
+</div>
+</div>
+</section>
+<section id="sec-repgraficas" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-repgraficas"><span class="header-section-number">2.3</span> Representação gráfica</h2>
+<p>Ao final do que foi apresentado no Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a>, percebemos uma simplificação da apresentação dos dados. Mesmo assim, esse tipo de apresentação pode não ser satisfatório para que visualiza, seja pela complexidade que a disposição dessas informações ainda exige ou a sua própria limitação de conhecimento. Um apelo mais simples e rápido de ser entendido é a representação gráfica dos dados.</p>
+<p>A disposição gráfica de dados evolui bastante ao longo do tempo, e muitos recursos estão disponíveis hoje. Por exemplo, no ambiente R existe alguns pacotes nativos, mas em especial o pacote <a href="http://cran.r-project.org/">graphics</a>. Este pacote apresenta recursos para desenvolvimento de gráficos, apresentando funções de nível superior (nível de usuário) até funções específicas para a criação de nossos próprios gráficos. As funções de nível superior já nos dão suporte a criação de diversos tipos de gráficos, tais como: gráfico de barras, histogramas, gráfico de linhas, gráfico de dispersão, dentre outros. Não satisfeitos com estes, podemos criar também os nossos próprios gráficos com este pacote.</p>
+<p>Com o apoio de toda a comunidade científica ao ambiente R, um outro pacote que apresenta destaque hoje na apresentação gráfica de dados é o <a href="https://ggplot2.tidyverse.org/">ggplot2</a> <span class="citation" data-cites="wickham2016">(<a href="references.html#ref-wickham2016" role="doc-biblioref">Wickham, 2018</a>)</span>. Este pacote apresenta uma série de recursos gráficos para serem utilizados, mas não sendo objeto de estudo deste material.</p>
+<p>Pretendemos para esta seção apresentar apenas alguns tipos de gráficos com o intuito de motivar esse tipo de apresentação de dados, usando o pacote <a href="https://bendeivide.github.io/leem/">leem</a>. Os gráficos são:</p>
+<ul>
+<li>Gráfico de hastes ou bastão;</li>
+<li>Gráfico de barras;</li>
+<li>Gráfico de Pizzas;</li>
+<li>Histograma de frequências;</li>
+<li>Polígono de frequências;</li>
+<li>Gráfico de Ogivas;</li>
+</ul>
+<section id="gráfico-de-hastes-ou-bastão" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="gráfico-de-hastes-ou-bastão"><span class="header-section-number">2.3.1</span> Gráfico de hastes ou bastão</h3>
+<p>O gráfico de hastes ou bastão é utilizado para variáveis discretizadas, isto é, as variáveis qualitativas e a variável quantitativa discreta. Consiste em um gráfico no plano cartesiano do qual usamos os valores observados no eixo <span class="math inline">\(X\)</span> e a frequência dessas observações é verificada no eixo <span class="math inline">\(Y\)</span>. Para esta representação são usados as hastes ou bastões. Retornando ao exemplo dos dados da <a href="#tbl-erroscanaldf" class="quarto-xref">Tabela&nbsp;<span>2.3</span></a>, podemos representá-lo pelo gráfico de hastes ou bastão usando o <a href="#lst-codRgrafhastes" class="quarto-xref">Código R&nbsp;<span>2.4</span></a>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="cell">
+<div id="lst-codRgrafhastes" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRgrafhastes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.4: Gráfico de hastes ou bastão.
+</figcaption>
+<div aria-describedby="lst-codRgrafhastes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRgrafhastes"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRgrafhastes-1"><a href="#lst-codRgrafhastes-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRgrafhastes-2"><a href="#lst-codRgrafhastes-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRgrafhastes-3"><a href="#lst-codRgrafhastes-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando o banco de dados</span></span>
+<span id="lst-codRgrafhastes-4"><a href="#lst-codRgrafhastes-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">url</span>(<span class="st">"https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/nerros.RData"</span>)</span>
+<span id="lst-codRgrafhastes-5"><a href="#lst-codRgrafhastes-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(con); <span class="fu">close</span>(con)</span>
+<span id="lst-codRgrafhastes-6"><a href="#lst-codRgrafhastes-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabulando os dados</span></span>
+<span id="lst-codRgrafhastes-7"><a href="#lst-codRgrafhastes-7" aria-hidden="true" tabindex="-1"></a>nerros <span class="sc">|&gt;</span></span>
+<span id="lst-codRgrafhastes-8"><a href="#lst-codRgrafhastes-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRgrafhastes-9"><a href="#lst-codRgrafhastes-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabfreq</span>() <span class="sc">|&gt;</span></span>
+<span id="lst-codRgrafhastes-10"><a href="#lst-codRgrafhastes-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stickchart</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap02_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="gráfico-de-barras" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="gráfico-de-barras"><span class="header-section-number">2.3.2</span> Gráfico de barras</h3>
+<p>O gráfico de barras tem a mesma ideia que o gráfico de hastes, substituindo as hastes pelas barras, em que a largura das barras não apresenta interpretação prática. Lembrando que da mesma forma que a representação anterior, este tipo de gráfico pode ser utilizado para variáveis qualitativas e quantitativas discretizadas. Para ilustrar, retornemos ao Exemplo <a href="cap01.html#amazonialegal">1.3</a>, e vamos representar por meio do gráfico de barras os 9 estados que representam a Amazônia Legal quanto a variável “região”, apresentado no <a href="#lst-codRgrafbarras" class="quarto-xref">Código R&nbsp;<span>2.5</span></a>.</p>
+<p>Poderemos representar esse mesmo conjunto de dados por meio de um gráfico de pizzas ou gráfico de setores. Este gráfico consiste em representar as observações com que os valores se repetem em setores de um círculo. A área de cada setor é uma relação da frequência percentual dos dados e a área do círculo. Para a construção do gráfico de pizzas tomaremos por base o Exemplo <a href="cap01.html#amazonialegal">1.3</a>, referente aos dados da variável “região”, apresentada na <a href="#tbl-varregiao" class="quarto-xref">Tabela&nbsp;<span>2.8</span></a>.</p>
+<div class="cell">
+<div id="lst-codRgrafbarras" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRgrafbarras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.5: Gráfico de barras.
+</figcaption>
+<div aria-describedby="lst-codRgrafbarras-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRgrafbarras"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRgrafbarras-1"><a href="#lst-codRgrafbarras-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRgrafbarras-2"><a href="#lst-codRgrafbarras-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRgrafbarras-3"><a href="#lst-codRgrafbarras-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Regiao (Estados a amazonia legal)</span></span>
+<span id="lst-codRgrafbarras-4"><a href="#lst-codRgrafbarras-4" aria-hidden="true" tabindex="-1"></a>regiao <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Norte"</span>, <span class="dv">7</span>), <span class="st">"Centro-Oeste"</span>,</span>
+<span id="lst-codRgrafbarras-5"><a href="#lst-codRgrafbarras-5" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Nordeste"</span>)</span>
+<span id="lst-codRgrafbarras-6"><a href="#lst-codRgrafbarras-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabulando os dados</span></span>
+<span id="lst-codRgrafbarras-7"><a href="#lst-codRgrafbarras-7" aria-hidden="true" tabindex="-1"></a>regiao <span class="sc">|&gt;</span></span>
+<span id="lst-codRgrafbarras-8"><a href="#lst-codRgrafbarras-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRgrafbarras-9"><a href="#lst-codRgrafbarras-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabfreq</span>(<span class="at">namereduction =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRgrafbarras-10"><a href="#lst-codRgrafbarras-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">barplot</span>(<span class="at">barcol =</span> <span class="fu">heat.colors</span>(<span class="dv">3</span>), <span class="at">posx2 =</span> <span class="sc">-</span><span class="fl">0.2</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap02_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="tbl-varregiao" class="striped hover quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[10, 90, 10, 10, 10, 10, 10, 10, 10]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-varregiao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;2.8: Dados da variável região da Amazônia Legal, Exemplo <a href="cap01.html#amazonialegal">1.3</a>.
+</figcaption>
+<div aria-describedby="tbl-varregiao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 50%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>Região</strong></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_i}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{r_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac\downarrow_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac\uparrow_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{\%_i}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac_{\downarrow}\%}}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{f_{ac_{\uparrow}\%}}\)</span></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Centro-Oeste</td>
+<td style="text-align: center;">1,00</td>
+<td style="text-align: center;">0,11</td>
+<td style="text-align: center;">1,00</td>
+<td style="text-align: center;">9,00</td>
+<td style="text-align: center;">11,00</td>
+<td style="text-align: center;">11,11</td>
+<td style="text-align: center;">100,00</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Nordeste</td>
+<td style="text-align: center;">1,00</td>
+<td style="text-align: center;">0,11</td>
+<td style="text-align: center;">2,00</td>
+<td style="text-align: center;">8,00</td>
+<td style="text-align: center;">11,00</td>
+<td style="text-align: center;">22,22</td>
+<td style="text-align: center;">88,89</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Norte</td>
+<td style="text-align: center;">7,00</td>
+<td style="text-align: center;">0,78</td>
+<td style="text-align: center;">9,00</td>
+<td style="text-align: center;">7,00</td>
+<td style="text-align: center;">78,00</td>
+<td style="text-align: center;">100,00</td>
+<td style="text-align: center;">77,78</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Tomando por base o ângulo (<span class="math inline">\(360°\)</span>) de um círculo em torno do seu centro, em relação a soma da frequência percentual (<span class="math inline">\(100\%\)</span>) dos dados, podemos identificar o quanto que cada grupo (setor) pode ser representado em um círculo. Tomemos a região 1 (Centro-Oeste):</p>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(100\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\to\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(360\)</span>°</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(11\%\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\to\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(x\)</span>°</td>
+</tr>
+</tbody>
+</table>
+<p>Logo, por regra de três simples temos que <span class="math inline">\(x\)</span>° = <span class="math inline">\(39,6\)</span>°, isto é, o setor correspondente a região Centro-Oeste contempla uma área com <span class="math inline">\(39,6\)</span>° em torno do centro do círculo, e isso representa <span class="math inline">\(11\%\)</span> do círculo. Usando essa mesma ideia para os outros dois setores (grupos), temos para a região Nordeste (<span class="math inline">\(39,6\)</span>°) e região Norte (<span class="math inline">\(280,8\)</span>°). Para representa o gráfico de pizzas, usaremos o <a href="#lst-codRgrafpizzas" class="quarto-xref">Código R&nbsp;<span>2.6</span></a>. Lembrando que esta representação para dados contínuos poderia ser possível, desde que estes tivessem agrupados em classes. Outro ponto importante é que o gráfico de pizzas é bem mais utilizado para a área de publicidade do que na ciência de uma forma geral, uma vez que a visualização gráfica de barras ou de pontos se tornam muito mais fácil de ser visualizada por meio de suas frequências do que suas representações em forma de ângulo. Nossas percepções são melhores para julgamentos de medidas lineares do que áreas relativas.</p>
+<div class="cell">
+<div id="lst-codRgrafpizzas" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRgrafpizzas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.6: Gráfico de pizzas.
+</figcaption>
+<div aria-describedby="lst-codRgrafpizzas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRgrafpizzas"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRgrafpizzas-1"><a href="#lst-codRgrafpizzas-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRgrafpizzas-2"><a href="#lst-codRgrafpizzas-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRgrafpizzas-3"><a href="#lst-codRgrafpizzas-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Regiao (Estados a amazonia legal)</span></span>
+<span id="lst-codRgrafpizzas-4"><a href="#lst-codRgrafpizzas-4" aria-hidden="true" tabindex="-1"></a>regiao <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Norte"</span>, <span class="dv">7</span>), <span class="st">"Centro-Oeste"</span>,</span>
+<span id="lst-codRgrafpizzas-5"><a href="#lst-codRgrafpizzas-5" aria-hidden="true" tabindex="-1"></a><span class="st">"Nordeste"</span>)</span>
+<span id="lst-codRgrafpizzas-6"><a href="#lst-codRgrafpizzas-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabulando os dados</span></span>
+<span id="lst-codRgrafpizzas-7"><a href="#lst-codRgrafpizzas-7" aria-hidden="true" tabindex="-1"></a>regiao <span class="sc">|&gt;</span></span>
+<span id="lst-codRgrafpizzas-8"><a href="#lst-codRgrafpizzas-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRgrafpizzas-9"><a href="#lst-codRgrafpizzas-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabfreq</span>(<span class="at">namereduction =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRgrafpizzas-10"><a href="#lst-codRgrafpizzas-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">piechart</span>(<span class="at">main =</span> <span class="st">"Estados da Amazônia Legal"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap02_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Falamos anteriormente que poderíamos representar os dados de uma variável quantitativa contínua distribuída em intervalo de classes por meio de um gráfico de pizzas, porém uma representação mais adequada seria por meio do histograma de frequências, apresentado a seguir.</p>
+</section>
+<section id="histograma-de-frequências" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="histograma-de-frequências"><span class="header-section-number">2.3.3</span> Histograma de frequências</h3>
+<p>O histograma de frequências está relacionado diretamente com a distribuição de frequências em intervalo de classes. Esse gráfico apresenta a mesma ideia do gráfico de barras, porém a largura das barras apresentam um significado prático que é a amplitude de cada classe. Lembrando que as amplitudes das classes não necessariamente precisam ser iguais, depende de que metodologia está sendo adotada. Para o nosso caso, assumiremos que a amplitude da classe (<span class="math inline">\(c\)</span>) será sempre igual para todas as classes. Ainda, os extremos de cada barra representam o limite inferior e superior de cada classe.</p>
+<p>Usaremos como ilustração, os dados da tabela apresentados no Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a>. Por meio do <a href="#lst-codRhistfreq" class="quarto-xref">Código R&nbsp;<span>2.7</span></a>, verificamos o histograma de frequência destes dados.</p>
+<div class="cell">
+<div id="lst-codRhistfreq" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRhistfreq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.7: Gráfico de histograma.
+</figcaption>
+<div aria-describedby="lst-codRhistfreq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRhistfreq"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRhistfreq-1"><a href="#lst-codRhistfreq-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRhistfreq-2"><a href="#lst-codRhistfreq-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRhistfreq-3"><a href="#lst-codRhistfreq-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando o banco de dados</span></span>
+<span id="lst-codRhistfreq-4"><a href="#lst-codRhistfreq-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">url</span>(<span class="st">"https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/challenger.RData"</span>)</span>
+<span id="lst-codRhistfreq-5"><a href="#lst-codRhistfreq-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(con); <span class="fu">close</span>(con)</span>
+<span id="lst-codRhistfreq-6"><a href="#lst-codRhistfreq-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimindo os dados</span></span>
+<span id="lst-codRhistfreq-7"><a href="#lst-codRhistfreq-7" aria-hidden="true" tabindex="-1"></a><span class="co"># challenger</span></span>
+<span id="lst-codRhistfreq-8"><a href="#lst-codRhistfreq-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabulando os dados</span></span>
+<span id="lst-codRhistfreq-9"><a href="#lst-codRhistfreq-9" aria-hidden="true" tabindex="-1"></a>challenger <span class="sc">|&gt;</span></span>
+<span id="lst-codRhistfreq-10"><a href="#lst-codRhistfreq-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRhistfreq-11"><a href="#lst-codRhistfreq-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap02_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Verificando o histograma de frequências, visualmente se tentássemos predizer a frequência com que ocorre determinadas observações entre os limites, isso não seria possível. E que apesar de teoricamente a chance de uma observação de uma variável quantitativa contínua se repetir em um conjunto de dados, ser praticamente nula, sabemos que internamente em uma classe de distribuição de frequências esta região não é equitativa. Pode ser que a maior concentração dos dados em uma classe esteja mais próxima do limite superior, ou o contrário, ou nenhum dos dois. E isso pode ser verificado visualmente pelo polígono de frequências, apresentado a seguir.</p>
+</section>
+<section id="polígono-de-frequências" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="polígono-de-frequências"><span class="header-section-number">2.3.4</span> Polígono de frequências</h3>
+<p>O polígono de frequências consiste em observar o histograma de frequência e representar os pontos médios das classes por meio de um ponto, elevando-os a altura das barras. Posteriormente, une-as por uma linha.</p>
+<p>Podemos representar o mesmo conjunto de dados com o que foi abordado no <a href="#lst-codRhistfreq" class="quarto-xref">Código R&nbsp;<span>2.7</span></a> graficamente pelo polígonos de frequências na <a href="#fig-pfreq" class="quarto-xref">Figura&nbsp;<span>2.1</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-pfreq" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pfreq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cap02_files/figure-html/fig-pfreq-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pfreq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.1: Polígono de frequências dos dados representam a temperatura (°F) do anel de vedação de cada teste de acionamento ou lançamento real do motor do foguete Challenger.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>O polígono de frequências representa apenas os pontos ligados a um linha tracejada na <a href="#fig-pfreq" class="quarto-xref">Figura&nbsp;<span>2.1</span></a>. As barras representam apenas a ideia de como este gráfico foi originado. Uma outra observação interessante é que não iniciamos o polígono de frequências identificando como o primeiro ponto como o limite inferior da primeira classe, como também o último ponto sendo o limite superior da última classe. Estes pontos apresentam frequências iguais a zero, e acaba não sendo verdade afirmar que o limite inferior e o limite superior, ou valores próximos a eles tenham frequências próximas de zero. Assim, para representar melhor o conjunto de dados, criamos mais duas classes vizinhas às classes extremas, como apresentados na <a href="#fig-pfreq" class="quarto-xref">Figura&nbsp;<span>2.1</span></a>, que são as classes: “<span class="math inline">\(15,1\)</span> |— <span class="math inline">\(25,7\)</span>” e <span class="math inline">\(89,3\)</span> |— <span class="math inline">\(99,9\)</span>“, respectivamente. Assim, o ponto inicial e o final do polígono de frequências serão os pontos médios dessas classes criadas com frequência zero. Dessa forma, perceberemos que as frequências próximas do limite inferior e superior da primeira classe e da última classe, respectivamente, não são iguais a zero como de fato esperamos.</p>
+<p>Com isso apresentamos como de fato deve ficar o polígono de frequências usando o <a href="#lst-codRpfreq" class="quarto-xref">Código R&nbsp;<span>2.8</span></a>. Por fim, para representarmos graficamente de forma cumulativa a apresentados dos dados, abordaremos as ogivas na próxima seção.</p>
+<div class="cell">
+<div id="lst-codRpfreq" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRpfreq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.8: Gráfico do polígono de frequências.
+</figcaption>
+<div aria-describedby="lst-codRpfreq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRpfreq"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRpfreq-1"><a href="#lst-codRpfreq-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRpfreq-2"><a href="#lst-codRpfreq-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRpfreq-3"><a href="#lst-codRpfreq-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabulando os dados</span></span>
+<span id="lst-codRpfreq-4"><a href="#lst-codRpfreq-4" aria-hidden="true" tabindex="-1"></a>challenger <span class="sc">|&gt;</span></span>
+<span id="lst-codRpfreq-5"><a href="#lst-codRpfreq-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRpfreq-6"><a href="#lst-codRpfreq-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polyfreq</span>(<span class="at">bars =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap02_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ogivas" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="ogivas"><span class="header-section-number">2.3.5</span> Ogivas</h3>
+<p>As ogivas são a representação gráfica das frequências acumuladas. Para a frequência acumulada “<em>abaixo de</em>” (<span class="math inline">\(f_{ac\downarrow}\)</span>), temos a representação gráfica da ogiva crescente. Já para a frequência acumulada “*acima de”” (<span class="math inline">\(f_{ac\uparrow}\)</span>), temos a ogiva decrescente.</p>
+<section id="ogiva-crescente" class="level4" data-number="2.3.5.1">
+<h4 data-number="2.3.5.1" class="anchored" data-anchor-id="ogiva-crescente"><span class="header-section-number">2.3.5.1</span> Ogiva crescente</h4>
+<p>Para a criação da ogiva crescente, faremos um gráfico auxiliar com o eixo <span class="math inline">\(X\)</span> a representação das classes, e no eixo <span class="math inline">\(Y\)</span> frequência acumulada “<em>abaixo de</em>” (<span class="math inline">\(f_{ac\downarrow}\)</span>), como temos na <a href="#fig-ogivac01" class="quarto-xref">Figura&nbsp;<span>2.2</span></a>.</p>
+<p>O gráfico de ogivas é representado por pontos e uma linha que os une, sendo um tipo de gráfico similar ao polígono de frequências. A diferença é que a alturas das barras representa a frequência acumulada ao invés da frequência absoluta. A outra diferença é que os pontos no gráficos têm como coordenadas o limite superior de cada classe e a sua respectiva <span class="math inline">\(f_{ac\downarrow}\)</span>, exceto para o primeiro ponto que terá como coordenadas o limite inferior da primeira classe e o valor zero. Dessa forma, teremos a versão final do gráfico da ogiva crescente no <a href="#lst-codRogivac" class="quarto-xref">Código R&nbsp;<span>2.9</span></a>.</p>
+<div class="cell">
+<div id="lst-codRogivac" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRogivac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.9: Gráfico da ogiva crescente.
+</figcaption>
+<div aria-describedby="lst-codRogivac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRogivac"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRogivac-1"><a href="#lst-codRogivac-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRogivac-2"><a href="#lst-codRogivac-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRogivac-3"><a href="#lst-codRogivac-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ogiva crescente</span></span>
+<span id="lst-codRogivac-4"><a href="#lst-codRogivac-4" aria-hidden="true" tabindex="-1"></a>challenger <span class="sc">|&gt;</span></span>
+<span id="lst-codRogivac-5"><a href="#lst-codRogivac-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRogivac-6"><a href="#lst-codRogivac-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ogive</span>(<span class="at">bars =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div id="fig-ogivac01" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ogivac01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cap02_files/figure-html/fig-ogivac01-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ogivac01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.2: Representação inicial das barras acumuladas para a criação da ogiva crescente.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ogiva-decrescente" class="level4" data-number="2.3.5.2">
+<h4 data-number="2.3.5.2" class="anchored" data-anchor-id="ogiva-decrescente"><span class="header-section-number">2.3.5.2</span> Ogiva decrescente</h4>
+<p>A ogiva decrescente é similar a construção da ogiva crescente, exceto que a primeira leva em consideração a frequência acumulada “<em>acima de</em>” (<span class="math inline">\(f_{ac\uparrow}\)</span>) e que os pontos do gráfico tem como abscissa o limite inferior de cada classe, exceto para o último ponto que sua abscissa é o limite superior da última classe. Como a base de desenvolvimento da ogiva decrescente é a frequência acumulada “<em>acima de</em>” (<span class="math inline">\(f_{ac\uparrow}\)</span>), os pontos têm como ordenadas estas frequências para cada classe. Para criarmos um gráfico desse tipo, usamos o <a href="#lst-codRogivad" class="quarto-xref">Código R&nbsp;<span>2.10</span></a>.</p>
+<div class="cell">
+<div id="lst-codRogivad" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRogivad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.10: Gráfico da ogiva decrescente.
+</figcaption>
+<div aria-describedby="lst-codRogivad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRogivad"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRogivad-1"><a href="#lst-codRogivad-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRogivad-2"><a href="#lst-codRogivad-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRogivad-3"><a href="#lst-codRogivad-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ogiva descrescente</span></span>
+<span id="lst-codRogivad-4"><a href="#lst-codRogivad-4" aria-hidden="true" tabindex="-1"></a>challenger <span class="sc">|&gt;</span></span>
+<span id="lst-codRogivad-5"><a href="#lst-codRogivad-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRogivad-6"><a href="#lst-codRogivad-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ogive</span>(<span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap02_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="interseção-entre-as-ogivas" class="level4" data-number="2.3.5.3">
+<h4 data-number="2.3.5.3" class="anchored" data-anchor-id="interseção-entre-as-ogivas"><span class="header-section-number">2.3.5.3</span> Interseção entre as ogivas</h4>
+<p>Algo muito interessante surge quando plotamos as duas ogivas em um mesmo gráfico, <a href="#fig-duasogivas" class="quarto-xref">Figura&nbsp;<span>2.3</span></a>. Percebemos que existe um ponto em comum entre as duas curvas. A indagação que se segue é de saber a existência de como calcular o ponto de interseção entre essas duas curvas, denotado por <span class="math inline">\(x^*\)</span>. Vamos entender com maior profundidade mais a frente, quando estivermos falando nos próximos capítulos sobre variável aleatória e que sua caracterização e representada pelo seu modelo probabilístico. O modelo probabilístico pode ser representado pela função de distribuição, denotada por <span class="math inline">\(F_X(x) = \int^{x}_{-\infty}f_X(t)dt\)</span> para todo <span class="math inline">\(x \in \mathbb{R}\)</span>, em que denotamos <span class="math inline">\(f_X(x)\)</span> a função densidade de probabilidade de <span class="math inline">\(X\)</span>, sendo <span class="math inline">\(X\)</span> um variável aleatória contínua<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. A forma empírica da função de distribuição é justamente a frequência acumulada “<em>abaixo de</em>”, sendo que o objetivo da Função de distribuição é calcular área abaixo da função densidade até o ponto <span class="math inline">\(x\)</span>, cuja área total de <span class="math inline">\(x \to +\infty\)</span> é o valor unitário. Empiricamente o que fazemos por meio da ogiva, que podemos denotá-la por <span class="math inline">\(\hat{F}_X(x)\)</span>, é somar cumulativamente as frequências sendo uma aproximação da área desejada abaixo da densidade até o valor <span class="math inline">\(x\)</span> desejado. Ao passo que a ogiva decrescente representa a forma empírica da função suporte da Função de distribuição, isto é, <span class="math inline">\(1 - \hat{F}_X(x)\)</span>. É fato a equivalência de <span class="math inline">\(\hat{F}_X(x^*) = 1 - \hat{F}_X(x^*)\)</span> sendo <span class="math inline">\(x^*\)</span> o ponto de interseção entre a função de distribuição e a função suporte.</p>
+<div id="fig-duasogivas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-duasogivas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap2/duasogivas.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-duasogivas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2.3: Interseção entre as ogivas.
+</figcaption>
+</figure>
+</div>
+<p>Uma outra informação que vamos entender no <a href="cap03.html" class="quarto-xref"><span>Capítulo 3</span></a> é que uma medida de posição muito interessante é a mediana, que representa um ponto cuja área abaixo e acima desse ponto da função densidade (ou função de probabilidade), representa <span class="math inline">\(50\%\)</span> de área.</p>
+<p>Retornando a indagação anterior, e observarmos novamente a <a href="#fig-duasogivas" class="quarto-xref">Figura&nbsp;<span>2.3</span></a>, percebemos que a abscissa desse ponto é o mesmo nas duas ogivas, isto é,</p>
+<p><span id="eq-intogivas"><span class="math display">\[
+\begin{align}
+\hat{F}_X(x^*) = 1 - \hat{F}_X(x^*),
+\end{align}
+\tag{2.15}\]</span></span> sendo que o primeiro termo antes da igualdade representa a abscisa da ogiva crescente, e o segundo termo, a abscissa da ogiva decrescente. Podemos observar que a expressão (<a href="#eq-intogivas" class="quarto-xref"><span>2.15</span></a>) pode ser simplificada por:</p>
+<p><span class="math display">\[\begin{align}
+\hat{F}_X(x^*) = 1/2.
+\end{align}\]</span></p>
+<p>Logo, percebemos que o ponto <span class="math inline">\(x^*\)</span> cuja área abaixo é <span class="math inline">\(1/2\)</span> é justamente a mediana por definição, que pode ser confirmado no <a href="#lst-codRogivamediana" class="quarto-xref">Código R&nbsp;<span>2.11</span></a>.</p>
+<div class="cell">
+<div id="lst-codRogivamediana" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRogivamediana-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;2.11: Ponto de interseção nas ogivas.
+</figcaption>
+<div aria-describedby="lst-codRogivamediana-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRogivamediana"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRogivamediana-1"><a href="#lst-codRogivamediana-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRogivamediana-2"><a href="#lst-codRogivamediana-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRogivamediana-3"><a href="#lst-codRogivamediana-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserindo a mediana nas ogivas</span></span>
+<span id="lst-codRogivamediana-4"><a href="#lst-codRogivamediana-4" aria-hidden="true" tabindex="-1"></a>challenger <span class="sc">|&gt;</span></span>
+<span id="lst-codRogivamediana-5"><a href="#lst-codRogivamediana-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRogivamediana-6"><a href="#lst-codRogivamediana-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ogive</span>(<span class="at">both =</span> <span class="cn">TRUE</span>, <span class="at">histogram =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="lst-codRogivamediana-7"><a href="#lst-codRogivamediana-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">insert</span>(<span class="at">type =</span> <span class="st">"median"</span>, <span class="at">lcol =</span> <span class="st">"red"</span>,</span>
+<span id="lst-codRogivamediana-8"><a href="#lst-codRogivamediana-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">ptext =</span> <span class="fl">0.08</span>, <span class="at">side =</span> <span class="st">"right"</span>, </span>
+<span id="lst-codRogivamediana-9"><a href="#lst-codRogivamediana-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">larrow =</span> <span class="fl">0.4</span>, <span class="at">parrow =</span> .<span class="dv">5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap02_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="exercícios-propostos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercícios-propostos">Exercícios propostos</h2>
+<div id="Exercise-2.1" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 2.1</strong></summary><div>Observamos nas expressões (<a href="#eq-facabaixode" class="quarto-xref"><span>2.3</span></a>) e (<a href="#eq-facacimade" class="quarto-xref"><span>2.4</span></a>), a forma de se calcular as frequências acumuladas <em>acima de</em> e <em>abaixo de</em>, quando indagamos questões que envolvem situações do tipo, quantas vezes observamos, <em>no máximo</em>, <span class="math inline">\(X = x\)</span>? Para isso, usamos a expressão (<a href="#eq-facabaixode" class="quarto-xref"><span>2.3</span></a>). Em outra situação, indagamos, quantas vezes observamos, <em>no mínimo</em>, <span class="math inline">\(X = x\)</span>? Para isso, usamos a expressão (<a href="#eq-facacimade" class="quarto-xref"><span>2.4</span></a>). Percebemos que a condição limiar está inclusa na situação. Por exemplo, na <a href="#tbl-erroscanalag" class="quarto-xref">Tabela&nbsp;<span>2.4</span></a>, podemos estar interessados em saber quantos {grupos de caracteres monitorados} <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> em um canal de comunicação, foram encontrados, <em>no mínimo</em>, <span class="math inline">\(2\)</span> erros? Isto significa, que desejamos saber todos os grupos, tais que <span class="math inline">\(X \geq 2\)</span>. Ou seja, o grupo que continha dois erros estava incluso na contagem. Para isso, usamos a expressão (<a href="#eq-facacimade" class="quarto-xref"><span>2.4</span></a>). Porém, podemos estar interessados na situação em que a condição limiar não esteja inclusa na contagem de elementos. Por exemplo, refazendo a indagação anterior, quantos grupos de caracteres apresentam <em>acima de</em> <span class="math inline">\(2\)</span> erros. Observe que os grupos apresentam dois erros não entram na contagem. Isso vale também para a outra situação. Logo, não será possível utilizar as expressões das frequências acumuladas (<a href="#eq-facabaixode" class="quarto-xref"><span>2.3</span></a>) e (<a href="#eq-facacimade" class="quarto-xref"><span>2.4</span></a>).<p></p>
+<p>Desenvolva as expressões, para essas últimas situações, de modo similar ao apresentado para as expressões (<a href="#eq-facabaixode" class="quarto-xref"><span>2.3</span></a>) e (<a href="#eq-facacimade" class="quarto-xref"><span>2.4</span></a>), fazendo as adaptações devidas.</p>
+</div></details>
+</div>
+<div id="Solution*-2.1" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Como desejamos não incluir as condições limiares às indagações, podemos expressar as frequências acumuladas <em>abaixo de</em> e <em>acima de</em> como <span id="eq-facabaixodeadapt"><span class="math display">\[
+\begin{align}
+  F_{ac\downarrow_i} &amp; = \sum_{j = 1}^{i - 1}F_j, \quad i = 1, 2, \ldots, k,
+\end{align}
+\tag{2.16}\]</span></span> e <span id="eq-facacimadeadapt"><span class="math display">\[
+\begin{align}
+  F_{ac\uparrow_i} &amp; = \sum_{j = i + 1}^{k}F_j, \quad i = 1, 2, \ldots, k,
+\end{align}
+\tag{2.17}\]</span></span> respectivamente, sendo <span class="math inline">\(k\)</span> o número de grupos ou classes.<p></p>
+</div></details>
+</div>
+<div id="exercise:Ex2.2" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 2.2</strong></summary><div>Os dados retirados de <span class="citation" data-cites="Tavares1999">Tavares e Anjos (<a href="references.html#ref-Tavares1999" role="doc-biblioref">1999</a>)</span>, representam a distribuição percentual do estado nutricional em homens idosos brasileiros (idade <span class="math inline">\(\geq\)</span> 60 anos), segundo Índice de Massa Corporal (IMC<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>), por macrorregião e situação de domicílio, Pesquisa Nacional sobre Saúde e Nutrição, 1989, que seguem abaixo. Como poderíamos, em notação usando as técnicas de somatório, representar a soma de todos os valores de IMC do Brasil, levando em consideração as demais variáveis? Se desejássemos, calcular o total dos valores observados de IMC dos homens do nordeste, considerando as demais condições? E se fosse do nordeste e da zona urbana, como representaríamos esse somatório?<p></p>
+<center>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-2gh7{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:middle}
+.tg .tg-jwah{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-w1ir{background-color:#c0c0c0;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-yzvu{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-jevw{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:middle}
+.tg .tg-jd9l{background-color:#dae8fc;border-color:#ffffff;font-size:12px;text-align:right;vertical-align:top}
+.tg .tg-xp2e{background-color:#be734c;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-u6gx{background-color:#c0c0c0;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-v50o{background-color:#dae8fc;border-color:#ffffff;font-size:12px;text-align:right;vertical-align:top}
+.tg .tg-9y54{background-color:#be734c;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:middle}
+.tg .tg-7vlo{background-color:#be734c;border-color:#ffffff;text-align:center;vertical-align:middle}
+.tg .tg-pznm{background-color:#dae8fc;border-color:#ffffff;font-size:12px;text-align:center;vertical-align:top}
+.tg .tg-x99d{background-color:#dae8fc;border-color:#ffffff;font-size:12px;text-align:center;vertical-align:top}
+.tg .tg-gwzd{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-fvhk{background-color:#c0c0c0;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-mlx2{background-color:#c0c0c0;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-p9bf{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+<tr>
+<th class="tg-9y54" rowspan="2">
+Regiões
+</th>
+<th class="tg-9y54" rowspan="2">
+Número
+</th>
+<th class="tg-xp2e" colspan="4">
+Estado Nutricional (%)
+</th>
+</tr>
+<tr>
+<th class="tg-7vlo">
+M
+</th>
+<th class="tg-7vlo">
+A
+</th>
+<th class="tg-7vlo">
+SI
+</th>
+<th class="tg-7vlo">
+SII e SIII
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tg-2gh7">
+Norte
+</td>
+<td class="tg-jwah">
+223
+</td>
+<td class="tg-jwah">
+4,4
+</td>
+<td class="tg-jwah">
+60,6
+</td>
+<td class="tg-jwah">
+29,4
+</td>
+<td class="tg-jwah">
+5,6
+</td>
+</tr>
+<tr>
+<td class="tg-jevw">
+Nordeste
+</td>
+<td class="tg-yzvu">
+586
+</td>
+<td class="tg-yzvu">
+8,8
+</td>
+<td class="tg-yzvu">
+68,3
+</td>
+<td class="tg-yzvu">
+19,8
+</td>
+<td class="tg-yzvu">
+3,1
+</td>
+</tr>
+<tr>
+<td class="tg-jd9l">
+Urbano
+</td>
+<td class="tg-pznm">
+267
+</td>
+<td class="tg-pznm">
+7,1
+</td>
+<td class="tg-pznm">
+62,3
+</td>
+<td class="tg-pznm">
+26,6
+</td>
+<td class="tg-pznm">
+4,0
+</td>
+</tr>
+<tr>
+<td class="tg-v50o">
+Rural
+</td>
+<td class="tg-x99d">
+319
+</td>
+<td class="tg-x99d">
+10,7
+</td>
+<td class="tg-x99d">
+74,6
+</td>
+<td class="tg-x99d">
+12,5
+</td>
+<td class="tg-x99d">
+2,2
+</td>
+</tr>
+<tr>
+<td class="tg-p9bf">
+Sudeste
+</td>
+<td class="tg-gwzd">
+463
+</td>
+<td class="tg-gwzd">
+7,9
+</td>
+<td class="tg-gwzd">
+59,0
+</td>
+<td class="tg-gwzd">
+26,7
+</td>
+<td class="tg-gwzd">
+6,4
+</td>
+</tr>
+<tr>
+<td class="tg-v50o">
+Urbano
+</td>
+<td class="tg-x99d">
+197
+</td>
+<td class="tg-x99d">
+5,6
+</td>
+<td class="tg-x99d">
+56,4
+</td>
+<td class="tg-x99d">
+30,2
+</td>
+<td class="tg-x99d">
+7,8
+</td>
+</tr>
+<tr>
+<td class="tg-jd9l">
+Rural
+</td>
+<td class="tg-pznm">
+266
+</td>
+<td class="tg-pznm">
+17,3
+</td>
+<td class="tg-pznm">
+69,5
+</td>
+<td class="tg-pznm">
+12,4
+</td>
+<td class="tg-pznm">
+0,8
+</td>
+</tr>
+<tr>
+<td class="tg-fvhk">
+Sul
+</td>
+<td class="tg-mlx2">
+429
+</td>
+<td class="tg-mlx2">
+5,1
+</td>
+<td class="tg-mlx2">
+56,5
+</td>
+<td class="tg-mlx2">
+29,2
+</td>
+<td class="tg-mlx2">
+9,2
+</td>
+</tr>
+<tr>
+<td class="tg-jd9l">
+Urbano
+</td>
+<td class="tg-pznm">
+197
+</td>
+<td class="tg-pznm">
+4,5
+</td>
+<td class="tg-pznm">
+51,2
+</td>
+<td class="tg-pznm">
+33,0
+</td>
+<td class="tg-pznm">
+11,3
+</td>
+</tr>
+<tr>
+<td class="tg-v50o">
+Rural
+</td>
+<td class="tg-x99d">
+232
+</td>
+<td class="tg-x99d">
+6,4
+</td>
+<td class="tg-x99d">
+66,4
+</td>
+<td class="tg-x99d">
+22,0
+</td>
+<td class="tg-x99d">
+5,2
+</td>
+</tr>
+<tr>
+<td class="tg-u6gx">
+Centro-Oeste
+</td>
+<td class="tg-w1ir">
+327
+</td>
+<td class="tg-w1ir">
+10,7
+</td>
+<td class="tg-w1ir">
+60,6
+</td>
+<td class="tg-w1ir">
+22,8
+</td>
+<td class="tg-w1ir">
+5,9
+</td>
+</tr>
+<tr>
+<td class="tg-v50o">
+Urbano
+</td>
+<td class="tg-x99d">
+154
+</td>
+<td class="tg-x99d">
+10,6
+</td>
+<td class="tg-x99d">
+55,2
+</td>
+<td class="tg-x99d">
+27,3
+</td>
+<td class="tg-x99d">
+6,9
+</td>
+</tr>
+<tr>
+<td class="tg-jd9l">
+Rural
+</td>
+<td class="tg-pznm">
+173
+</td>
+<td class="tg-pznm">
+11,0
+</td>
+<td class="tg-pznm">
+71,4
+</td>
+<td class="tg-pznm">
+13,7
+</td>
+<td class="tg-pznm">
+3,9
+</td>
+</tr>
+<tr>
+<td class="tg-fvhk">
+Brasil
+</td>
+<td class="tg-mlx2">
+2.028
+</td>
+<td class="tg-mlx2">
+7,8
+</td>
+<td class="tg-mlx2">
+61,8
+</td>
+<td class="tg-mlx2">
+24,7
+</td>
+<td class="tg-mlx2">
+5,7
+</td>
+</tr>
+<tr>
+<td class="tg-jd9l">
+Urbano
+</td>
+<td class="tg-pznm">
+1.038
+</td>
+<td class="tg-pznm">
+6,0
+</td>
+<td class="tg-pznm">
+57,2
+</td>
+<td class="tg-pznm">
+29,5
+</td>
+<td class="tg-pznm">
+7,3
+</td>
+</tr>
+<tr>
+<td class="tg-v50o">
+Rural
+</td>
+<td class="tg-x99d">
+990
+</td>
+<td class="tg-x99d">
+11,7
+</td>
+<td class="tg-x99d">
+71,7
+</td>
+<td class="tg-x99d">
+14,2
+</td>
+<td class="tg-x99d">
+2,4
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>Considere a variável estado nutricional como estudo, então como seria desenvolvido a distribuição de frequência baseado nas informações da tabela? Apresente-a(s).</p>
+</div></details>
+</div>
+<div id="Exercise-2.3" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 2.3</strong></summary><div>Considerando os dados do Exercício <a href="cap02.html#exercise:Ex2.2">2.2</a>, como poderíamos representá-los graficamente, considerando apenas um gráfico?<p></p>
+</div></details>
+</div>
+<div id="Solution*-2.2" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<p>Vamos representar esses dados por meio de um gráfico de barras, bem como o seu código em R, isto é,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacotes (Se nao tiver instalado, descomente a linha seguinte)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggplot2")</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>dado <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"dados/ex2.2.csv"</span>, <span class="at">h =</span> T, <span class="at">sep =</span> <span class="st">";"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerando o grafico</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dado) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a> <span class="fu">aes</span>(<span class="at">x =</span> estnut, <span class="at">fill =</span> zona, <span class="at">weight =</span> feq) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_fill_hue</span>() <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Estado Nutricional"</span>, <span class="at">y =</span> <span class="st">"Frequência"</span>, <span class="at">fill =</span> <span class="st">"Zona"</span>) <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a> <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a> <span class="fu">facet_grid</span>(<span class="fu">vars</span>(), <span class="fu">vars</span>(regiao))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap02_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></details>
+</div>
+<div id="Exercise-2.4" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 2.4</strong></summary><div>
+<p>Dados retirados de <span class="citation" data-cites="Montgomery2016">Montgomery e Runger (<a href="references.html#ref-Montgomery2016" role="doc-biblioref">2016</a>)</span>, mostram os dados retirados planta de fabricação de semicondutores. Nessa planta, o semicondutor é um fio colado a uma estrutura. A variável em estudo representa a resistência à tração (<span class="math inline">\(lbf/pol^2\)</span>), isto é, uma força requerida para romper a cola. Os dados são apresentados a seguir.</p>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">9,95</td>
+<td style="text-align: center;">24,45</td>
+<td style="text-align: center;">31,75</td>
+<td style="text-align: center;">35,00</td>
+<td style="text-align: center;">25,02</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">16,86</td>
+<td style="text-align: center;">14,38</td>
+<td style="text-align: center;">9,60</td>
+<td style="text-align: center;">24,35</td>
+<td style="text-align: center;">27,50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">17,08</td>
+<td style="text-align: center;">37,00</td>
+<td style="text-align: center;">41,95</td>
+<td style="text-align: center;">11,66</td>
+<td style="text-align: center;">21,65</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">17,89</td>
+<td style="text-align: center;">69,00</td>
+<td style="text-align: center;">10,30</td>
+<td style="text-align: center;">34,93</td>
+<td style="text-align: center;">46,59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">44,88</td>
+<td style="text-align: center;">54,12</td>
+<td style="text-align: center;">56,63</td>
+<td style="text-align: center;">22,13</td>
+<td style="text-align: center;">21,15</td>
+</tr>
+</tbody>
+</table>
+</div></details>
+</div>
+
+
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-banzato2006" class="csl-entry" role="listitem">
+BANZATTO, D. A.; NASCIMENTO KRONKA, S. DO. <strong>Experimentação Agrícola</strong>. Jaboticabal: Funep, 2006. p. 237
+</div>
+<div id="ref-barbin2003" class="csl-entry" role="listitem">
+BARBIN, D. <strong>Planejamento e Análise Estatística de Experimentos Agrômica</strong>. Arapongas: Midas, 2003. p. 208
+</div>
+<div id="ref-bolfarinebussab2005" class="csl-entry" role="listitem">
+BOLFARINE, H.; BUSSAB, W. O. <strong>Elementos de Amostragem</strong>. São Paulo: Edgard Blucher, 2005. p. 274
+</div>
+<div id="ref-bolfarine2010" class="csl-entry" role="listitem">
+BOLFARINE, H.; SANDOVAL, M. C. <strong>Introdução à <span>I</span>nferência <span>E</span>statística</strong>. 2. ed. São Paulo: SBM, 2010. p. 159
+</div>
+<div id="ref-cochrancox2005" class="csl-entry" role="listitem">
+COCHRAN, W.; COX, G. M. <strong>Experimental <span>D</span>esigns</strong>. 2. ed. New York: John Wiley &amp; Sons, 2005. p. 618
+</div>
+<div id="ref-crespo2009" class="csl-entry" role="listitem">
+CRESPO, A. A. <strong>Estatística Fácil</strong>. 19. ed. São Paulo: Saraiva, 2009. p. 232
+</div>
+<div id="ref-dantas2008" class="csl-entry" role="listitem">
+DANTAS, C. A. B. <strong>Probabilidade: Um <span>C</span>urso <span>I</span>ntrodutório</strong>. 3. ed. São Paulo: EDUSP, 2008. p. 256
+</div>
+<div id="ref-drapersmith1998" class="csl-entry" role="listitem">
+DRAPER, N. R.; SMITH, H. <strong>Applied regression analysis</strong>. 3. ed. New York: Wiley, 1998. p. 736
+</div>
+<div id="ref-Ferreira2009" class="csl-entry" role="listitem">
+FERREIRA, D. F. <strong>Estatística Básica</strong>. 2 Revisada ed. Lavras: Editora UFLA, 2009. p. 664
+</div>
+<div id="ref-magalhaes2011" class="csl-entry" role="listitem">
+MAGALHAES, M. N. <strong>Probabilidade e variáveis aleatórias</strong>. 3. ed. São Paulo: EDUSP, 2011. p. 424
+</div>
+<div id="ref-magalhaeslima2023" class="csl-entry" role="listitem">
+MAGALHAES, M. N.; LIMA, A. C. P. <strong>Noções de <span>P</span>robabilidade e <span>E</span>statística</strong>. 7. ed. São Paulo: EDUSP, 2023. p. 428
+</div>
+<div id="ref-meyer2000" class="csl-entry" role="listitem">
+MEYER, P. L. <strong>Probabilidade: aplicações á estatística</strong>. 2. ed. Rio de <span>J</span>aneiro: LTC, 2000. p. 426
+</div>
+<div id="ref-montgomery2019" class="csl-entry" role="listitem">
+MONTGOMERY, D. C. <strong>Design and <span>A</span>nalysis of <span>E</span>xperiments</strong>. 9. ed. New Jersey: Wiley, 2019. p. 752
+</div>
+<div id="ref-Montgomery2016" class="csl-entry" role="listitem">
+MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatística Aplicada e Probabilidade para Engenheiros</strong>. 6. ed. Rio de Janeiro: LTC, 2016. p. 629
+</div>
+<div id="ref-montgomery2021" class="csl-entry" role="listitem">
+MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatísta <span>A</span>plicada e <span>P</span>robabilidade para <span>E</span>ngenheiros</strong>. 7. ed. Rio de <span>J</span>aneiro: LTC, 2021. p. 416
+</div>
+<div id="ref-mood1974" class="csl-entry" role="listitem">
+MOOD, A. M.; GRAYBILL, F. A.; BOES, D. C. <strong>Introduction to the <span>T</span>heory of <span>S</span>tatistics</strong>. New York: John <span>W</span>iley &amp; <span>S</span>ons, 1974. p. 564
+</div>
+<div id="ref-pagano2004" class="csl-entry" role="listitem">
+PAGANO, M.; GAUVREAU, K. <strong>Princípios de Bioestatística</strong>. São Paulo: Thomson, 2004. p. 506
+</div>
+<div id="ref-pimentelgomes2022" class="csl-entry" role="listitem">
+PIMENTEL-GOMES, F. <strong>Curso de <span>E</span>statística <span>E</span>xperimental</strong>. 15. ed. Piracicaba: FEALQ, 2022. p. 451
+</div>
+<div id="ref-Nasa1986" class="csl-entry" role="listitem">
+PRESIDENTIAL COMISSION. <strong>On the Space Shuttle Challanger Accident</strong>. Washington: National Aeronautics; Space Administration, 1986.
+</div>
+<div id="ref-silva2015" class="csl-entry" role="listitem">
+SILVA, N. N. <strong>Amostragem <span>P</span>robabilística</strong>. 3. ed. São Paulo: EDUSP, 2015. p. 136
+</div>
+<div id="ref-souza1998" class="csl-entry" role="listitem">
+SOUZA, G. S. <strong>Introdução aos <span>M</span>odelos de <span>R</span>egressão <span>L</span>inear e <span>N</span>ão-<span>L</span>inear</strong>. Brasília: EMBRAPA, 1998. p. 489
+</div>
+<div id="ref-st1980" class="csl-entry" role="listitem">
+STEEL, R. G. D.; TORRIE, J. H. <strong>Principles and procedures of statistics: A biometrical approach</strong>. 2. ed. New York: McGraw-Hill Book Company, 1980. p. 512
+</div>
+<div id="ref-Tavares1999" class="csl-entry" role="listitem">
+TAVARES, E. L.; ANJOS, L. A. DO. Perfil antropométrico da população idosa brasileira. Resultados da Pesquisa Nacional sobre saúde e Nutrição. <strong>Cad. Saúde Pública</strong>, v. 15, n. 4, p. 759–768, 1999.
+</div>
+<div id="ref-wickham2016" class="csl-entry" role="listitem">
+WICKHAM, H. <strong><a href="https://ggplot2-book.org/">ggplot2: Elegant graphics for data analysis</a></strong>. 2. ed. New York: Springer, 2018. p. 276
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Caso ainda não tenha instalado o pacote <a href="https://bendeivide.github.io/leem/">leem</a>, deve ser executado o <a href="#lst-codRinstallleem" class="quarto-xref">Código R&nbsp;<span>2.1</span></a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Se observarmos esse mesmo raciocínio em termos de variável aleatória discreta, a ideia é a mesma, exceto que a função de distribuição será baseada em termos de somatório ao invés de ser expressada em termos de integração.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Entenda nessa situação que grupo de caracteres é um elemento da amostra.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>A unidade de IMC em <span class="math inline">\(kg/m^2\)</span>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./cap01.html" class="pagination-link" aria-label="Definições Gerais da Estatística e técnicas de somatórios">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Definições Gerais da Estatística e técnicas de somatórios</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./cap03.html" class="pagination-link" aria-label="Medidas de Posição">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas de Posição</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Estatística &amp; Probabilidade aplicada às Engenharias e Ciências foi escrito por <a href="https://bendeivide.github.io/">Ben Dêivide de O. Batista.</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Esse livro foi desenvolvido com o <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

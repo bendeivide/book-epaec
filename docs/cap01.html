@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Definições Gerais da Estatística e técnicas de somatórios – Estatística &amp; Probabilidade aplicada às Engenharias e Ciências</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./cap02.html" rel="next">
+<link href="./index.html" rel="prev">
+<link href="./hardcover.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<style>
+.Solution {
+  --color1: #9ad5f6;
+}
+.Proof {
+  --color1: #aaa6a3;
+}
+.Example {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Theorem {
+  --color1: #d14747;
+  --color2: #8b1f1f;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Definition {
+  --color1: #5e737f;
+  --color2: #49606d;
+}
+.Exercise {
+  --color1: #4485f6;
+  --color2: #479bd1;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="custom.scss">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cap01.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Definições Gerais da Estatística e técnicas de somatórios</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Estatística &amp; Probabilidade aplicada às Engenharias e Ciências</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo de leitor">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bem-vindo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap01.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Definições Gerais da Estatística e técnicas de somatórios</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coleta, organização e apresentação dos dados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas de Posição</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medidas de dispersão</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidades</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuições de probabilidades</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Amostragem</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Distribuição de amostragem</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Teoria da estimação</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria da decisão</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlação e regressão linear simples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#introd" id="toc-introd" class="nav-link active" data-scroll-target="#introd"><span class="header-section-number">1.1</span> Introdução</a></li>
+  <li><a href="#defgerest" id="toc-defgerest" class="nav-link" data-scroll-target="#defgerest"><span class="header-section-number">1.2</span> Definições gerais da Estatística</a></li>
+  <li><a href="#sec-estpesqcient" id="toc-sec-estpesqcient" class="nav-link" data-scroll-target="#sec-estpesqcient"><span class="header-section-number">1.3</span> Estatística na pesquisa científica</a></li>
+  <li><a href="#definições-básicas" id="toc-definições-básicas" class="nav-link" data-scroll-target="#definições-básicas"><span class="header-section-number">1.4</span> Definições básicas</a></li>
+  <li><a href="#técnicas-de-somatório" id="toc-técnicas-de-somatório" class="nav-link" data-scroll-target="#técnicas-de-somatório"><span class="header-section-number">1.5</span> Técnicas de Somatório</a></li>
+  <li><a href="#exercícios-propostos" id="toc-exercícios-propostos" class="nav-link" data-scroll-target="#exercícios-propostos">Exercícios propostos</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Definições Gerais da Estatística e técnicas de somatórios</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introd" class="level2" title="Clique aqui!" data-number="1.1">
+<h2 title="Clique aqui!" data-number="1.1" class="anchored" data-anchor-id="introd"><span class="header-section-number">1.1</span> Introdução</h2>
+<p>Em pleno século XXI, passamos por um processo de transformação na era digital. Uma grande massa de informações surge instantaneamente a cada momento sobre os mais diversos temas possíveis. Por exemplo, nas redes sociais quando percebemos o número de curtidas de uma determinada declaração, número de downloads de um determinado vídeo, a repercussão que determinada declaração proporciona, o número de propagandas, etc, tudo isso cria um grande banco de dados sobre os usuários, que hoje se torna mais valiosa do que a própria moeda local. Isso é a nova revolução chamada “Big Data”. Por meio de grande banco de dados, podemos por exemplo, traçar um perfil dos usuários, como eles se comportam, quais as suas preferências, escolhas, diversão, etc. Contudo, o entendimento dessas informações podem não ser tão claras, ou devido a complexidade do problema, ou pela quantidade de informações recebidas rapidamente, ou outros fatores. Diversos outros exemplos poderiam ser citados, tudo isso para mostrar a necessidade de entender o que está por trás desses dados, cuja compreensão é o grande objetivo nessa era global.</p>
+<p>Nesse enfoque, temos a Estatística como Ciência que fornece métodos para coleta, organização, descrição, análise e interpretação de dados (observacionais ou experimentais) e para a utilização dos mesmos na tomada de decisões. Os dados são informações retiradas de um conjunto de elementos de interesse. Podemos estar interessados na Produção anual de Gás Natural Não associado com o petróleo (GASN) de um determinado país, e ao longo dos anos, coletarmos informações para ao final, por exemplo, termos informações que nos indique o potencial energético desse recurso natural nesse local ou consequências dessa fonte energética na economia do país.</p>
+<p>Assim, por meio da utilização de técnicas estatísticas, tentamos entender as informações contidas nos dados. Devido a complexidade dessas informações em algumas situações, o estudo sobre essas técnicas têm aumentado, fazendo parte do nosso cotidiano. Nessa era digital, a grande quantidade de informações é gigantesca e valiosa, e as empresas tentam entender o que está por trás desses dados, ou você acha que o Facebook foi criado simplesmente para gerar entreterimento às pessoas? Ou você também acha que o Google criou uma plataforma de pesquisa simplesmente para facilitar a vida das pessoas? Algo muito nobre está por trás de tudo isso, os dados.</p>
+<p>No passado, tratar uma grande massa de números era uma tarefa custosa e cansativa, que exigia horas de trabalho tedioso. Porém, hoje, esse volume de informações pode ser analisado rapidamente por meio de um computador pessoal e programas adequados. O computador contribui positivamente na difusão e uso dos métodos estatísticos. Você já se perguntou como é que lojas virtuais lhe oferta produtos sendo que nunca acessou aquele site antes? Já percebeu que o Netflix quando lhe oferece uma série a tela de entrada as vezes se altera? Tudo isso é fruto das técnicas de máquinas de aprendizagem (do inglês, <em>Machine Learning</em>), uma área da inteligência artificial. Juntamente com a estatística, essas ferramentas estão presentes em várias das tecnologias que utilizamos hoje.</p>
+</section>
+<section id="defgerest" class="level2" title="Clique aqui!" data-number="1.2">
+<h2 title="Clique aqui!" data-number="1.2" class="anchored" data-anchor-id="defgerest"><span class="header-section-number">1.2</span> Definições gerais da Estatística</h2>
+<p>Inicialmente, podemos dividir a Estatística em três ramos:</p>
+<ul>
+<li>Estatística Descritiva;</li>
+<li>Probabilidade;</li>
+<li>Estatística Inferencial.</li>
+</ul>
+<p>Definimos cada uma dessas áreas a seguir. A primeira delas é a Estatística Descritiva, apresentada na Definição <a href="cap01.html#def:estdescritiva">1.1</a>.</p>
+<div id="def:estdescritiva" class="Definition" title="Estatística Descritiva ou Estatística Dedutiva">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 1.1: </strong>Estatística Descritiva ou Estatística Dedutiva</summary><div>Um conjunto de técnicas estatísticas destinadas a coleta, descrição e sintetização dos dados, a fim de podermos entender características de interesse da população<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, é chamada de Estatística Descritiva ou Estatística Dedutiva.<p></p>
+</div></details>
+</div>
+<p>As técnicas mencionadas na Definição <a href="cap01.html#def:estdescritiva">1.1</a> são: coleta, organização, tabulação, representação gráfica, bem como medidas que sintetizam todas as informações contidas nos dados.</p>
+<p>As quatro primeiras técnicas serão abordadas no <a href="cap02.html" class="quarto-xref"><span>Capítulo 2</span></a>. As medidas serão estudadas nos <a href="cap03.html" class="quarto-xref"><span>Capítulo 3</span></a> e <a href="cap04.html" class="quarto-xref"><span>Capítulo 4</span></a>. Essa fase é de grande relevância, pois com base na Estatística Descritiva podemos sintetizar as informações contidas nos dados, e torná-las mais compreensíveis que de outro modo seriam complexas de serem entendidas.</p>
+<p>No <a href="cap07.html" class="quarto-xref"><span>Capítulo 7</span></a>, daremos uma maior ênfase sobre a definição de uma população. De modo simples, podemos definir como um conjunto de elementos com uma característica em comum. Uma vez definida a característica que delimita essa população (<em>subseção</em> <a href="#sec-estpesqcient" class="quarto-xref"><span>1.3</span></a>), e também a característica de interesse (chamada de variável) da pesquisa, faremos a coleta dos valores observados da variável em cada elemento da população ou de um subconjunto (amostra). Os valores observados são chamados de dados.</p>
+<div id="def:dado" class="Definition" title="Dado ou valor observado">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 1.2: </strong>Dado ou valor observado</summary><div>A característica de interesse observada em cada elemento da população é definida como valor observado ou dado.<p></p>
+</div></details>
+</div>
+<p>Todas as técnicas mencionadas anteriormente auxiliam na descrição dos dados, uma não necessariamente sobrepõe a outra. Vejamos, a <span class="citation" data-cites="BP2018">Company (<a href="references.html#ref-BP2018" role="doc-biblioref">2018</a>)</span> lançou o relatório técnico de 2018 sobre os diversos tipos de produção de energias dos países, e na <a href="#fig-prodcons" class="quarto-xref">Figura&nbsp;<span>1.1</span></a> é mostrado um gráfico que sintetiza a produção e o consumo de petróleo do Brasil, em milhões de barris por dia (MMbbl/d), nos períodos de 2007 a 2017.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BP Statistical Review 2018</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando pacote</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Se nao existir o pacote, use</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ggplot2")</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Producao e consumo de petroleo no brasil (Mtoe)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ano  <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="dv">2007</span><span class="sc">:</span><span class="dv">2017</span>, <span class="dv">2007</span><span class="sc">:</span><span class="dv">2017</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>prodcons <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1831</span>, <span class="dv">1897</span>, <span class="dv">2029</span>, <span class="dv">2137</span>, <span class="dv">2179</span>, <span class="dv">2145</span>, <span class="dv">2110</span>, <span class="dv">2341</span>, <span class="dv">2525</span>, <span class="dv">2608</span>, <span class="dv">2734</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>              <span class="dv">2308</span>, <span class="dv">2481</span>, <span class="dv">2498</span>, <span class="dv">2716</span>, <span class="dv">2839</span>, <span class="dv">2915</span>, <span class="dv">3124</span>, <span class="dv">3242</span>, <span class="dv">3181</span>, <span class="dv">3013</span>, <span class="dv">3017</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Produção"</span>, <span class="dv">11</span>), <span class="fu">rep</span>(<span class="st">"Consumo"</span>,<span class="dv">11</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Objeto que armazena as informacoes</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(ano, <span class="at">Legenda =</span> id, prodcons)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Funcao para criacao do grafico de barras</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, <span class="fu">aes</span>(<span class="at">x =</span> ano, <span class="at">y =</span> prodcons, <span class="at">fill =</span> Legenda)) <span class="sc">+</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>, <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Ano"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Petróleo (MMbbl/d)"</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-prodcons" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prodcons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cap01_files/figure-html/fig-prodcons-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prodcons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.1: Produção e consumo de petróleo do Brasil nos períodos de 2007 a 2017.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>O gráfico nos revela que o Brasil produz petróleo abaixo do que necessitaria para o consumo, de tal modo que a produção é 27,71% a menos do que o consumo. Isso explica o porquê do Brasil como grande produtor de petróleo, ainda assim, necessita importar essa fonte de energia. Contudo, o gráfico não apresenta um resumo perfeito. Por exemplo, mesmo a produção de petróleo sendo mais baixa do que o consumo, o coeficiente de variação (assunto abordado no <a href="cap04.html" class="quarto-xref"><span>Capítulo 4</span></a> dessas dessas duas variáveis, são 12,99% e 10,93%, respectivamente, calculados de acordo com a <a href="#tbl-prodcons" class="quarto-xref">Tabela&nbsp;<span>1.1</span></a>. Isso implica, que as variações da produção de petróleo são maiores do que as do consumo, no Brasil. Observe que essas últimas informações não podem ser vistas facilmente na <a href="#fig-prodcons" class="quarto-xref">Figura&nbsp;<span>1.1</span></a>, mas juntamente com o auxílio das medidas numéricas (medidas de posição e dispersão) e as medidas gráficas, podemos complementar as informações, e assim, obter uma melhor descrição sobre essas informações.</p>
+<div id="tbl-prodcons" class="quarto-layout-panel anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-prodcons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1.1: Produção e consumo de petróleo do Brasil nos períodos de 2007 a 2017.
+</figcaption>
+<div aria-describedby="tbl-prodcons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-prodcons" style="flex-basis: 100.0%;justify-content: center;">
+<div id="tbl-prodcons1" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-prodcons1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Dados de 2007 a 2012
+</figcaption>
+<div aria-describedby="tbl-prodcons1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Ano</strong></th>
+<th style="text-align: center;"><strong>2007</strong></th>
+<th style="text-align: center;"><strong>2008</strong></th>
+<th style="text-align: center;"><strong>2009</strong></th>
+<th style="text-align: center;"><strong>2010</strong></th>
+<th style="text-align: center;"><strong>2011</strong></th>
+<th style="text-align: center;"><strong>2012</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Produção</strong></td>
+<td style="text-align: center;">1831</td>
+<td style="text-align: center;">1897</td>
+<td style="text-align: center;">2029</td>
+<td style="text-align: center;">2137</td>
+<td style="text-align: center;">2179</td>
+<td style="text-align: center;">2145</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Consumo</strong></td>
+<td style="text-align: center;">2308</td>
+<td style="text-align: center;">2481</td>
+<td style="text-align: center;">2498</td>
+<td style="text-align: center;">2716</td>
+<td style="text-align: center;">2839</td>
+<td style="text-align: center;">2915</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-prodcons" style="flex-basis: 100.0%;justify-content: center;">
+<div id="tbl-prodcons2" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-prodcons2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Dados de 2013 a 2017
+</figcaption>
+<div aria-describedby="tbl-prodcons2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Ano</strong></th>
+<th style="text-align: center;"><strong>2013</strong></th>
+<th style="text-align: center;"><strong>2014</strong></th>
+<th style="text-align: center;"><strong>2015</strong></th>
+<th style="text-align: center;"><strong>2016</strong></th>
+<th style="text-align: center;"><strong>2017</strong></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>Produção</strong></td>
+<td style="text-align: center;">2110</td>
+<td style="text-align: center;">2341</td>
+<td style="text-align: center;">2525</td>
+<td style="text-align: center;">2608</td>
+<td style="text-align: center;">2734</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Consumo</strong></td>
+<td style="text-align: center;">3124</td>
+<td style="text-align: center;">3242</td>
+<td style="text-align: center;">3181</td>
+<td style="text-align: center;">3013</td>
+<td style="text-align: center;">3017</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<p>Quando precisamos estender as informações contidas em um subconjunto (amostra) de dados para todo o conjunto (população), necessitamos de técnicas específicas dentro da estatística para garantir que estas informações sejam o mais verossímil possível. Técnicas estas são chamadas de Estatística Inferencial, definida a seguir.</p>
+<div id="def:estinf" class="Definition" title="Estatística Inferencial ou Estatística Indutiva">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 1.3: </strong>Estatística Inferencial ou Estatística Indutiva</summary><div>O estudo de técnicas que visam estender (extrapolar) a informação contida na amostra à população, chamamos de Estatística Inferencial ou Estatística Indutiva.<p></p>
+</div></details>
+</div>
+<p>As técnicas abordadas na Estatística Inferencial estão relacionadas a determinar características (parâmetros) populacionais desconhecidas, ou até mesmo fazer afirmações sobre esses parâmetros.</p>
+<p>A determinação de parâmetros por meio de características amostrais (estimadores) que chamamos de Estimação será abordado no <a href="cap09.html" class="quarto-xref"><span>Capítulo 9</span></a>. As afirmações realizadas sobre estes parâmetros, chamadas de hipóteses, e serão estudadas no <a href="cap10.html" class="quarto-xref"><span>Capítulo 10</span></a>.</p>
+<p>A Definição <a href="cap01.html#def:estinf">1.3</a> nos mostra que por meio da Estatística, podemos tomar decisões sobre uma população através da amostra. Isso se faz necessário muitas vezes em uma pesquisa, devido a duas coisas preciosas: tempo e dinheiro. Muito embora, se tivermos acesso a todos os elementos de uma população, não se faz necessário o uso de técnicas da inferência estatística, e daí realizamos o que chamamos de Censo.</p>
+<p>A forma de como se obter uma amostra é um dos passos mais importante em todo o processo da análise, uma vez que não adianta está com todo o aparato técnico se as informações contidas nessas amostra não são representativas da população. Para isso, temos uma área na estatística chamada Amostragem, que será responsável pelo desenvolvimento de métodos de como selecionar os elementos populacionais para compor a amostra de modo que as principais características contidas na população sejam preservadas na amostra. Esse assunto será estudado no <a href="cap07.html" class="quarto-xref"><span>Capítulo 7</span></a>.</p>
+<p>Contudo, sabemos que entender uma população por um subconjunto desta, gera-se uma incerteza ou erro. A estatística tenta minimizar esse erro o máximo possível, isto é, reduzir as incertezas das informações contidas na amostra e extrapolar essas informações para a população. Para isso, usamos a probabilidade como suporte, assunto estudado nos Capítulos <a href="cap05.html" class="quarto-xref"><span>5</span></a>, <a href="cap06.html" class="quarto-xref"><span>6</span></a> e <a href="cap08.html" class="quarto-xref"><span>8</span></a>.</p>
+<div id="def:prob" class="Definition" title="Probabilidade">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 1.4: </strong>Probabilidade</summary><div>A teoria matemática que estuda a incerteza de fenômenos aleatórios é chamada de probabilidade.<p></p>
+</div></details>
+</div>
+<p>Os fenômenos aleatórios estão relacionados a situações que dificilmente saberemos com certeza do que pode acontecer. Por exemplo, se arremessarmos um dado de seis faces de tamanhos iguais e desejarmos saber a face superior desse dado antes do arremesso, não temos como afirmar com certeza qual o valor, se considerarmos as faces numerados de 1 a 6. Observe que, mesmo sabendo quais os valores das faces, não podemos afirmar com exatidão qual o valor da face superior antes do arremesso. Mas, por meio da probabilidade, podemos minimizar essa incerteza e dizer que há aproximadamete 17% de chance de um número escolhido ocorrer.</p>
+<p>Em nosso cotidiano, a probabilidade auxilia na decisão de um fabricante de cola de empreender uma grande publicidade no seu produto visando aumentar sua participação no mercado, ou na decisão de parar de imunizar pessoas com menos de vinte anos contra determinada doença, ou ainda na decisão de arriscar-se a atravessar uma rua no meio do quarteirão. Esses pequenos exemplos mostram a relação que a probabilidade tem com a inferência estatística, pois ela nos auxiliará a tomar decisões em procedimento inferencias tentando traduzir para a nossa linguagem do dia-a-dia.</p>
+<p>Ao final dessas definições gerais, podemos mostrar uma ilustração, <a href="#fig-dispgerais" class="quarto-xref">Figura&nbsp;<span>1.2</span></a>, que facilitará a compreensão do que abordamos nessa seção. Por fim, um último assunto estudado nesse livro, <a href="cap11.html" class="quarto-xref"><span>Capítulo 11</span></a>, será o estudo da correlação e regressão linear, quando estamos interessado em estudar a forma e o grau relação entre duas ou mais variáveis.</p>
+<p>Todos esses assuntos estudaremos nos capítulos seguintes com um certo detalhamento, dando ênfase a exemplos práticos estudados em nosso campo de trabalho. Alguns Capítulos poderão conter uma seção chamada <em>Aprofundamento</em>, com o intuito de apresentar uma maior profundidade sobre o tema estudado. Alguns apêndices serão criados nesse livro para dar suporte ao conteúdo.</p>
+<div id="fig-dispgerais" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dispgerais-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Producao_Videos/Video001_Populacao_e_amostra/pop_amostra.PNG" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dispgerais-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.2: <a href="https://youtu.be/mASLUwyaC5Q">Ilustração animada sobre as disposições gerais da Estatística.</a>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="sec-estpesqcient" class="level2" title="Clique aqui!" data-number="1.3">
+<h2 title="Clique aqui!" data-number="1.3" class="anchored" data-anchor-id="sec-estpesqcient"><span class="header-section-number">1.3</span> Estatística na pesquisa científica</h2>
+<p>O trabalho estatístico é parte integrante do método científico. Segundo <span class="citation" data-cites="silva2005">Silva (<a href="references.html#ref-silva2005" role="doc-biblioref">2007</a>)</span>, definimos,</p>
+<div id="def:metcient" class="Definition" title="Método científico">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 1.5: </strong>Método científico</summary><div>Um conjunto de regras e procedimentos para a obtenção de resultados, isto é, uma conclusão, sobre um determinado problema de uma pesquisa científica, é denominado de Método científico.<p></p>
+</div></details>
+</div>
+<p>A pesquisa científica por sua vez, desenvolve conhecimentos para um saber mínimo de um determinado fenômeno estudado. A pesquisa científica se inicia a partir de um problema dentro da população em estudo. Por meio desse problema surgem diversas indagações.</p>
+<div id="MGbarragens" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 1.1</strong></summary><div>
+<p>No Estado de Minas Gerais houveram dois acidentes, de grandes proporções nos últimos anos, envolvendo barragens que armazenam rejeitos de mineração. Os acidentes ocorreram na cidade de Mariana e Brumadinho, vitimando centenas de pessoas e um impacto ambiental imenso com o arrombamentos dessas barragens. Indagamos:</p>
+<ul>
+<li><em>Quem</em> são os responsáveis por essas duas tragédias?</li>
+<li><em>Quanto</em> será o custo o impacto dessas tragédias?</li>
+<li><em>Quando</em> começou esse problema trágico?</li>
+<li><em>Que</em> medidas poderiam ter sido tomadas para que isso não acontecesse?</li>
+<li><em>Onde</em> estão os órgãos de fiscalização para coibir esses acontecimentos, uma vez que no intervalo de três anos ocorreram duas catástrofes dessas?</li>
+</ul>
+</div></details>
+</div>
+<p>Com essas indagações lançadas para o estudo do problema, e definido a questão inicial dentre as citadas ou outras que possam surgir, o método científico se encarregará de estruturar a pesquisa de modo preciso e sistemático. A resposta a essas indagações resultam em um plano de pesquisa que consiste em:</p>
+<ol type="1">
+<li><p>Identificar o problema e o objetivo da pesquisa</p>
+<p><em>A identificação do problema é o norte da pesquisa. Por meio das perguntas iniciais, procuraremos entender as possíveis causas e efeitos da situação, formulando assim o problema. Nessa fase, devemos identificar a população e os elementos que a compõe, como também os demais procedimentos da pesquisa, inclusive o objetivo do trabalho, no qual se estipula a finalidade do presente estudo. Esse passo é o combustível que impulsiona a pesquisa científica.</em></p></li>
+<li><p>Formular a hipótese estudada</p>
+<p><em>A hipótese é uma afirmação atribuída pelo pesquisador sobre a população, com o intuito de responder a(s) indagação(ões) do problema, atingindo o objetivo da pesquisa. Essa afirmação pode ser sugerida pela literatura ou até mesmo construída pelo próprio pesquisador. De toda forma, a elaboração dessa hipótese deve ser bem formulada para que sua não rejeição ou rejeição consiga responder a indagação inicial e o objetivo seja atingido, ou desencadeie novas dúvidas e outras pesquisas possam surgir.</em></p></li>
+</ol>
+<div id="contqualidade" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 1.2</strong></summary><div>Tentando inspecionar, como controle de qualidade, uma remessa de peças enviadas por um fornecedor de uma determinada fábrica de peças para indústria de automóveis, garante que essa remessa não há mais de 8% de peças com defeito. Dessa forma o problema foi lançado com a seguinte indagação: será que essa remessa não há mais de 8% de peças com defeito? Lancemos a hipótese a ser testada<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>: <span class="math display">\[\begin{align*}
+      \left\{\begin{array}{cl}
+      H_0: &amp; \textrm{A porcentagem de peças com defeito é igual}\\
+           &amp; \textrm{ou superior a 8\%.}\\
+      \end{array}\right.
+\end{align*}\]</span><p></p>
+<p>Perguntamos aos leitores: essa indagação elucida a indagação do problema? A avaliação dessa hipótese será realizada na <em>análise e interpretação de dados</em> do qual aplicaremos técnicas específicas para refutar ou não a hipótese estudada <span class="math inline">\(H_0\)</span>. Supondo que não tenhamos evidências estatísticas para a rejeição dessa hipótese, e decidimos não rejeitá-la, a dúvida que fica é: será que a hipótese estudada foi não rejeitada porque a quantidade de peças é igual ou superior a 8%? Observe, se foi 8% a afirmação inicial do fornecedor das peças está correta. Entretanto, se o número de peças foi superior a 8%, o que o fornecedor afirmou está equivocado. Concluímos, que a hipótese não foi bem elaborada para responder a indagação inicial no problema levantado. A forma correta deveria ser:</p>
+<p><span class="math display">\[\begin{align*}
+      \left\{\begin{array}{cl}
+      H_0: &amp; \textrm{A porcentagem de peças com defeito é menor }\\
+           &amp; \textrm{ou igual a 8\%.}\\
+      \end{array}\right.
+\end{align*}\]</span></p>
+<p>A importância do desenvolvimento das hipóteses é muito importante, uma vez que podemos tomar decisões totalmente equivocadas, e assim, todo o trabalho estudado ser desperdiçado em vão.</p>
+</div></details>
+</div>
+<ol start="3" type="1">
+<li><p>Revisão de literatura</p>
+<p><em>Um passo importante na pesquisa é a confirmação ou o não das respostas encontradas no estudo. É por meio dos trabalhos já publicados que embasamos nossas argumentações, corroborando-as ou refutando-as. Com isso, surge o progresso da ciência, não havendo uma verdade absoluta.</em></p></li>
+<li><p>Formular um Plano amostral e Identificar as variáveis de interesse para a pesquisa (<a href="cap07.html" class="quarto-xref"><span>Capítulo 7</span></a>).</p></li>
+<li><p>Coleta, crítica e tratamento dos dados</p>
+<p><em>Após definirmos cuidadosamente o problema que se quer pesquisar, elabora-se um delineamento e damos início á coleta dos dados necessários à sua descrição. Obtidos os dados, eles devem ser cuidadosamente criticados, à procura de possíveis falhas e imperfeições, a fim de não incorrermos em erros grosseiros, que possam influir sensivelmente os resultados. Por fim, tratamos os dados, que consiste no processamento das informações e a disposição mediante critérios de classificação, podendo ser manual ou eletrônico.</em></p></li>
+<li><p>Apresentação dos dados</p>
+<p><em>Por mais diversa que seja a finalidade, os dados devem ser apresentados sob forma adequada (tabelas e gráficos) tornando mais fácil e simples a sua descrição.</em></p></li>
+<li><p>Análise e interpretação dos resultados</p>
+<p><em>Após a apresentação dos dados devemos calcular as medidas típicas convenientes para fazermos uma análise dos resultados obtidos, através de métodos estatísticos (Estatística inferencial ou indutiva), e tirarmos desses resultados conclusões e previsões.</em></p></li>
+<li><p>Conclusão e derivação da conclusão que poderá rejeitar ou não a hipótese estudada, gerando assim, uma confirmação ou indagações para outros problemas</p>
+<p><em>É de responsabilidade de um especialista no assunto que está sendo pesquisado, que não é necessariamente um estatístico, relatar as conclusões de maneira que sejam facilmente entendidas por quem as for usar na tomada de decisões.</em></p></li>
+<li><p>Apresentação dos resultados por meio de trabalhos científicos para a propagação do conhecimento sobre o problema estudado.</p></li>
+</ol>
+<p>Esses pontos do plano de pesquisa podem sofrer alterações em algumas metodologias científicas. Contudo, elas estão envolvidas direta ou indiretamente nas metodologias estudadas, sendo que não necessariamente elas ocorrem em todas as pesquisas nessa ordem, e que podem ser ilustrados na <a href="#fig-fases_pesq_cientifica" class="quarto-xref">Figura&nbsp;<span>1.3</span></a>.</p>
+<div id="fig-fases_pesq_cientifica" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fases_pesq_cientifica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap1/fases_pesq_cientifica.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fases_pesq_cientifica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1.3: Fases do plano da pesquisa científica.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="definições-básicas" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="definições-básicas"><span class="header-section-number">1.4</span> Definições básicas</h2>
+<p>Ao ser discutido na seção anterior sobre as definições gerais da Estatística, iniciaremos agora ao que chamamos de definições básicas, que consiste em definir formalmente alguns termos tais como população e amostra, como também os termos variável, dado ou valor observado. Essas definições serão importantes para o desenvolvimento do conteúdo do livro.</p>
+<p>O conjunto de todos os elementos dos quais temos o interesse de suas informações, chamamos esse conjunto de população. A palavra população, em nosso cotidiano, está sempre relacionado a um conjunto de pessoas que habitam um determinado local (país, cidade, etc.). Contudo, na estatística ampliamos a definição de população da seguinte forma,</p>
+<div id="def:populacao" class="Definition" title="População">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 1.6: </strong>População</summary><div>O conjunto finito ou infinito de todos os elementos com pelo menos uma característica comum, dos quais é de interesse para a pesquisa, denominamos de População. O número de elementos é denominado tamanho da população, denotado por <span class="math inline">\(N\)</span>.<p></p>
+</div></details>
+</div>
+<p>Percebemos pela Definição <a href="cap01.html#def:populacao">1.6</a> que a idéia sobre população é mais geral. Podemos dizer que o conjunto de peças com defeitos fabricados por uma determinada empresa constitui uma população. Um outro exemplo é a concentração de metais pesados no Rio, sendo que o rio constitui a população. No primeiro caso, a população constitui a empresa que fabrica essas peças com defeitos, que por sua vez, essas peças representam os elementos dos quais a característica em comum a todas as peças é que foi fabricada por essa empresa e apresenta defeito. No segundo caso, a especificação dos elementos poderá não ser muito claro, pois é um caso de população infinita. Daremos mais detalhes sobre isso no <a href="cap07.html" class="quarto-xref"><span>Capítulo 7</span></a>.</p>
+<p>Essa(s) característica(s) comum(s) deve(m) delimitar inequivocamente quais elementos que pertencem ou não à população. A notação usual para o número de elementos da população é “<span class="math inline">\(N\)</span>”. A população pode ser <em>Finita</em> (quando pode ser enumerada) ou <em>Infinita</em> (quando não pode ser enumerada).</p>
+<div id="def:amostra" class="Definition" title="Amostra">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 1.7: </strong>Amostra</summary><div>Um subconjunto de elementos da população é denominado amostra. O número de elementos da amostra é chamado de tamanho da amostra, sendo denotado por “<span class="math inline">\(n\)</span>”.<p></p>
+</div></details>
+</div>
+<p>A amostra é necessariamente finita, pois todos os seus elementos serão examinados para efeito da realização do estudo estatístico desejado. Esse estudo está baseado em características de interesse da população para tentar responder as indagações iniciais do problema da pesquisa (<em>Ver seção</em> <a href="#sec-estpesqcient" class="quarto-xref"><span>1.3</span></a>). Definimos essa característica como variável.</p>
+<div id="def:variavel" class="Definition" title="Variável">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 1.8: </strong>Variável</summary><div>A característica pela qual desejamos que a população seja descrita é denominada de variável.<p></p>
+</div></details>
+</div>
+<p>A variável representa o mecanismo pelo qual podemos atingir o objetivo da pesquisa. Será por meio dos dados observados, isto é, do valor observado dessa variável assumido por cada elemento da população (ou da amostra), que faremos as análises específicas para se chegar a uma conclusão. Muitas vezes não trabalhamos apenas com uma única variável, dependendo da complexidade da pesquisa, poderemos estudar diversas variáveis ao mesmo tempo.</p>
+<p>A variável pode assumir diferentes valores de elemento para elemento, chamado de dado ou valor observado, como foi apresentado na Definição <a href="cap01.html#def:dado">1.2</a>. A notação usual para a variável é <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, <span class="math inline">\(Z\)</span>, ou <span class="math inline">\(X_i\)</span>, <span class="math inline">\(Y_i\)</span>, <span class="math inline">\(Z_i\)</span> para um particular elemento amostral, em que <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>. Definimos a natureza das variáveis, a seguir.</p>
+<div id="def:natvar" class="Definition" title="Natureza de uma variável">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 1.9: </strong>Natureza de uma variável</summary><div>
+<p>Definimos o tipo de variável pela sua natureza, isto é, pelo valor assumido em cada elemento da população ou amostra como:</p>
+<ol type="1">
+<li><p><strong>Variável qualitativa</strong>: é a variável cujo valor observado assume um valor com natureza de atributo ou categoria. Esta ainda se subdivide:</p>
+<ul>
+<li><strong>Nominal</strong>: Quando os valores não são possíveis de ordenação;</li>
+<li><strong>Ordinal</strong>: Quando os valores são possíveis de ordenação, segundo um critério quantitativo.</li>
+</ul></li>
+<li><p><strong>Variável quantitativa</strong>: é a variável cujo valor observado assume um valor com natureza numérica (enumerável ou não). Ainda podem ser divididas:</p>
+<ul>
+<li><strong>Discreta</strong>: Quando os valores são dados de contagem, isto é, descrevem uma quantidade contável, cujos potenciais valores dessa variável podem ser enumerados em um conjunto de valores;</li>
+<li><strong>Contínua</strong>: Quando os valores resultam de uma medida (ou mensuração), podendo assumir qualquer valor real entre dois extremos, e dessa forma não podemos enumerar seus valores.</li>
+</ul></li>
+</ol>
+</div></details>
+</div>
+<p>Vejamos o Exemplo <a href="cap01.html#amazonialegal">1.3</a>, para elucidar todas essas definições mencionadas anteriormente.</p>
+<div id="amazonialegal" class="Example" title="Desmatamento da Amazônia Legal">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 1.3: </strong>Desmatamento da Amazônia Legal</summary><div>O Brasil vem passando por um processo de desmatamento na Amazônia legal, que o mundo vem acompanhando nesses últimos anos. O Instituto Nacional de Pesquisas Espaciais (INPE) desenvolveu o PRODES<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> (Programa de Monitoramento do Desmatamento da Amazônia) que vem acompanhando desde 1988, as taxas de desmatamento na região. Apresentamos a seguir, a <a href="#tbl-amazlegal" class="quarto-xref">Tabela&nbsp;<span>1.2</span></a>, que apresenta algumas informações sobre esse tema em cada estado do qual compreende a Amazônia Legal, em que os dados da taxa acumulada de desmatamento por estado, estão disponíveis na página do INPE, em <a href="http://terrabrasilis.dpi.inpe.br/app/dashboard/deforestation/biomes/legal_amazon/rates">Amazônia Legal</a>. Podemos verificar que apresentamos diversas variáveis para um melhor detalhamento da taxa de desmatamento na Amazônia legal, em relação a algumas informações sobre os estados que compõe essa região. Observemos que, quanto a natureza das variáveis, Região, UF, e Classificação, são variáveis qualitativas, pois os valores observados representam uma categoria. Apesar de representar uma qualidade, percebamos que classificação apresenta um ordenamento, referente a quantidade de desmatamento acumulado de cada estado, em que, o estado do Pará está em primeiro lugar, por ter sido o estado que mais desmatou, desde 1988. No caso, as variáveis Região e UF representam apenas categorias que não apresentam qualquer forma de ordenamento. Muito embora, os valores de Classificação estejam representados por números, a natureza é qualitativa. Portanto, Região e UF são variáveis qualitativas nominais, e Classificação, variável qualitativa ordinal.<p></p>
+<p>As demais variáveis são Número de cidades, Desmatamento acumulado, Área total e População estimada. Conseguimos observar que Número de cidades e População estimada apresentam dados de contagem, logo, essas variáveis são quantitativas discretas. Isso significa, que entre dois valores consecutivos, há uma discretização, ou seja, o estado do Amapá está dentro da região da Amazônia legal, e tem 14 município. Já o estado de Roraima apresenta 15 municípios dentro da Amazônia Legal. Dessa forma, não há um potencial valor para a variável Número de Cidades, entre esses dois valores, isto é, 14,5. De outro modo, podemos ordenar em um conjunto enumerável todos os valores de uma variável quantitativa discreta.</p>
+<p>Agora, para o caso das variáveis Desmatamento e Área total, percebemos que os valores assumidos por essas variáveis não são dados de contagem, mas de medição, isto significa que não contamos área ou taxa de Desmatamento acumulado, mas sim, medimos. De outro modo, teoricamente nós não conseguimos identificar os potenciais valores de uma variável quantitativa contínua em certo certo conjunto enumerável, porque observe o valor da área total do estado do Pará, <span class="math inline">\(1.245.870,00~km^2\)</span>, se tivéssemos instrumentos de medidas mais precisos, esse valor não seria exatamente esse, poderia ter sido <span class="math inline">\(1.245.870,001~km^2\)</span>, <span class="math inline">\(1.245.870,0001~km^2\)</span>, <span class="math inline">\(1.245.870,00001~k
+  m^2\)</span>, e assim por diante. Dessa forma, em uma determinada ordem nós não conseguiríamos saber qual o próximo valor ordenado para a área, após observarmos a área do estado do Pará.</p>
+</div></details>
+</div>
+<div id="tbl-amazlegal" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-amazlegal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1.2: Taxa de desmatamento acumulado, por estado, na Amazônia Legal, compreendido desde 1988 a 07/12/2020.
+</figcaption>
+<div aria-describedby="tbl-amazlegal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Região</strong></th>
+<th style="text-align: center;"><strong>UF</strong></th>
+<th style="text-align: center;"><strong>Nº de cidades</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></th>
+<th style="text-align: center;"><strong>Desmat. acum. (km<span class="math inline">\(^2\)</span>)</strong></th>
+<th style="text-align: center;"><strong>Área total (km<span class="math inline">\(^2\)</span>)</strong></th>
+<th style="text-align: center;"><strong>Clas.</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></th>
+<th style="text-align: center;"><strong>Pop. estimada</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Norte</td>
+<td style="text-align: center;">PA</td>
+<td style="text-align: center;">144</td>
+<td style="text-align: center;">157.667,00</td>
+<td style="text-align: center;">1.245.870,00</td>
+<td style="text-align: center;">1º</td>
+<td style="text-align: center;">8.690.745</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Centro-Oeste</td>
+<td style="text-align: center;">MT</td>
+<td style="text-align: center;">141</td>
+<td style="text-align: center;">147.926,00</td>
+<td style="text-align: center;">903.207,02</td>
+<td style="text-align: center;">2º</td>
+<td style="text-align: center;">3.526.220</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Norte</td>
+<td style="text-align: center;">RO</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">62.936,00</td>
+<td style="text-align: center;">237.765,20</td>
+<td style="text-align: center;">3º</td>
+<td style="text-align: center;">1.796.460</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Norte</td>
+<td style="text-align: center;">AM</td>
+<td style="text-align: center;">62</td>
+<td style="text-align: center;">28.493,00</td>
+<td style="text-align: center;">1.559.167,89</td>
+<td style="text-align: center;">4º</td>
+<td style="text-align: center;">4.207.714</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Nordeste</td>
+<td style="text-align: center;">MA</td>
+<td style="text-align: center;">181</td>
+<td style="text-align: center;">25.707,00</td>
+<td style="text-align: center;">276.419,84</td>
+<td style="text-align: center;">5º</td>
+<td style="text-align: center;">7.114.598</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Norte</td>
+<td style="text-align: center;">AC</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">15.725,00</td>
+<td style="text-align: center;">164.123,96</td>
+<td style="text-align: center;">6º</td>
+<td style="text-align: center;">894.470</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Norte</td>
+<td style="text-align: center;">TO</td>
+<td style="text-align: center;">139</td>
+<td style="text-align: center;">8.727,00</td>
+<td style="text-align: center;">277.466,76</td>
+<td style="text-align: center;">7º</td>
+<td style="text-align: center;">1.590.248</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Norte</td>
+<td style="text-align: center;">RO</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">8.597,00</td>
+<td style="text-align: center;">223.644,53</td>
+<td style="text-align: center;">8º</td>
+<td style="text-align: center;">631.181</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Norte</td>
+<td style="text-align: center;">AP</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1.696,00</td>
+<td style="text-align: center;">142.470,76</td>
+<td style="text-align: center;">9º</td>
+<td style="text-align: center;">861.773</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pensando em uma variável
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Uma variável originalmente quantitativa pode ser coletada de forma qualitativa. Por exemplo, a variável idade, medida em anos completos, é quantitativa (discreta). Porém, se considerarmos uma nova variável como faixa etária, do qual os valores possíveis são: “criança” (0 a 12 anos), “adolescente” (12 a 17 anos), “adulto” (18 a 60 anos) e “idoso” (acima de 60 anos), cujos valores foram originais da variável idade estão entre parênteses, a variável faixa etária passa é considerada uma variável qualitativa (ordinal). Outro exemplo é o peso dos lutadores de boxe, uma variável quantitativa (contínua) se trabalhamos com o valor obtido na balança, mas qualitativa (ordinal) se o classificarmos nas categorias do boxe (peso-pena, peso-leve, peso-pesado, etc.);</li>
+<li>Outro ponto importante é que nem sempre uma variável representada por números é quantitativa. O número do telefone de uma pessoa, o número da casa, o número de sua identidade. Às vezes o sexo do indivíduo é registrado na planilha de dados como 1 se macho e 2 se fêmea, por exemplo. Isto não significa que a variável sexo passou a ser quantitativa!</li>
+<li>É fato que a rigor, as variáveis quantitativas seriam todas discretizadas devido a limitação dos nossos instrumentos de medidas. Observe que o tamanho de uma pessoa não está limitado às escalas de metros, centímetros, milímetros, etc.. Porém, os instrumentos de medida que obtém essa informação, estão limitados a essas escalas. De toda forma, precisamos dessa limitação para que as análises sejam possíveis, e possamos tomar decisões a partir dos dados.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="técnicas-de-somatório" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="técnicas-de-somatório"><span class="header-section-number">1.5</span> Técnicas de Somatório</h2>
+<p>Um tipo de notação muito importante para a Estatística é o uso de técnicas de somatório, muito usado, por exemplo, na notação de medidas estatísticas. A ideia da técnica de somatório é simplificar a notação da soma de dados, de modo que possamos representar essas operações por meio de notação matemática de modo simplificado.</p>
+<p>Como já falado anteriormente, representamos por <span class="math inline">\(X\)</span> uma determinada variável. Nesse caso, não fará sentido falar de variáveis qualitativas, uma vez que o objetivo nessa notação é a representação de operações matemáticas. Assim, estaremos restritos as variáveis quantitativas.</p>
+<p>Baseado nos dados da <a href="#tbl-amazlegal" class="quarto-xref">Tabela&nbsp;<span>1.2</span></a>, supomos que <span class="math inline">\(X\)</span> representa o número de cidades pertencentes a Amazônia legal de um terminado estado, então nesse caso, como temos a representação de todos os estados, estamos diante de dados populacionais. Assim, <span class="math inline">\(N = 9\)</span>, podemos representar a variável com um índice para se referir ao número de cidade de um determinado estado. Por exemplo, <span class="math inline">\(X_1\)</span> representa a variável número de cidades do Pará, o seu valor observado <span class="math inline">\(x_1 = 144\)</span> cidades. A variável <span class="math inline">\(X\)</span> pode ser representada nos demais elementos da seguinte forma: <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_9\)</span>. Podemos nos interessar em saber o total de cidades na Amazônia legal. Em notação, podemos calcular esse total da seguinte forma: <span class="math display">\[\begin{align*}
+x_1 + x_2 + x_3 + \ldots + x_9 &amp; = 144 + 141 + 52 + 62 + 181 + \\
+                                                    &amp; \quad 22 + 139 + 15 + 14\\
+                                                    &amp; = 770~\textrm{cidades.}
+\end{align*}\]</span></p>
+<p>Percebemos que com apenas nove observações, a notação para essa simples operação se torna extensa. E isso acaba aumentando à medida que o número de observações aumentam. Também, quando realizamos operações mais complexas, essa representação também se tornam mais complexas. Pensando nisso, surgem as técnicas de somatórios, para simplificar essas representações. Representaremos um somatório pela letra grega sigma maiúsculo (<span class="math inline">\(\Sigma\)</span>), que indica a soma de determinados valores. Agregado ao símbolo do somatório, usaremos uma (ou algumas) indexação(ões) para representar qual(is) os elementos fazem parte desta operação, seguido da(s) variável(is) de interesse, isto é, <span class="math display">\[\begin{align*}
+\sum_{i = 1}^{m} X_i &amp; = X_1 + X_2 + \ldots + X_m,
+\end{align*}\]</span> sendo que <span class="math inline">\(m\)</span> pode representar o tamanho amostral, <span class="math inline">\(n\)</span>, ou o tamanho populacional, <span class="math inline">\(N\)</span>. No caso da representação anterior, podemos simplicar a representação da soma de um conjunto de valores usando as técnicas de somatório, apresentadas a seguir, <span class="math display">\[\begin{align*}
+X_1 + X_2 + X_3 + X_4 + X_5 + X_6 + X_7 + X_8 + X_9 &amp; = \sum_{i = 1}^{9} X_i.
+\end{align*}\]</span> Tornamos a notação mais simples de ser representada. Isso será muito importante, quando formos definir medidas estatísticas, provas de teoremas, etc.</p>
+<p>De modo similar, podemos realizar as mesmas alterações com transformações na(s) variável(is). Por exemplo, quando formos estudar medidas de dispersão, no <a href="cap04.html" class="quarto-xref"><span>Capítulo 4</span></a>, será útil as seguintes operações, considerando uma amostra de tamanho <span class="math inline">\(n\)</span>, <span class="math display">\[\begin{align*}
+\sum_{i = 1}^{n} X_i^2 = X_1^2 + X_2^2 + \ldots, X_n^2,
+\end{align*}\]</span> isto é, a soma do quadrado da variável. Outra operação interessante, é o quadrado da soma, apresentado a seguir, <span id="eq-quadsoma"><span class="math display">\[
+\left(\sum_{i = 1}^{n} X_i\right)^2 = \left(X_1 + X_2 + \ldots, X_n\right)^2.
+\tag{1.1}\]</span></span> Uma técnica muito utilizada na Estatística é o estudo da Regressão linear, que estuda a relação entre duas ou mais variáveis, e será abordado no <a href="cap11.html" class="quarto-xref"><span>Capítulo 11</span></a>. Assim, uma das operações utilizadas é a soma do produto entre duas variáveis, por exemplo, <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, do qual podemos representar esta soma para um conjunto de pares <span class="math inline">\((X_i, Y_i)\)</span>, de tamanho <span class="math inline">\(n\)</span>, da seguinte forma, <span id="eq-somaprod"><span class="math display">\[
+\sum_{i = 1}^{n} X_iY_i = X_1Y_1 + X_2Y_2 + \ldots, X_nY_n.
+\tag{1.2}\]</span></span> Outra forma é o produto das somas de variáveis, que nesse caso, nos limitaremos as duas variáveis <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Por exemplo, para um amostra de pares <span class="math inline">\((X_i, Y_i)\)</span> de tamanho <span class="math inline">\(n\)</span>, pode ser representada por: <span id="eq-somaprod2"><span class="math display">\[
+\begin{align}
+\left(\sum_{i = 1}^{n} X_i\right)\times \left(\sum_{i = 1}^{n} Y_i \right) &amp; = \left(X_1 + X_2 + \ldots, X_n\right)\times \nonumber\\
+&amp; \times \left( Y_1 + Y_2 + \ldots, Y_n \right) \nonumber\\
+&amp; = \sum_{i = 1}^{n} X_iY_i + \mathop{\sum_{i = 1}^{n}\sum_{j = 1}^{n}}_{i\neq j}X_iY_j,
+\end{align}
+\tag{1.3}\]</span></span> em que o primeiro dessa último resultado é dado pela notação expressa em (<a href="#eq-somaprod" class="quarto-xref"><span>1.2</span></a>). O segundo termo, apresenta uma nova notação que é o duplo somatório. A ideia dessa notação é simples, fixaremos o índice no primeiro somatório e percorremos a soma dos valores usando o segundo índice. Após ter realizado toda a operação, passaremos para o próximo índice no primeiro somatório e realizamos o mesmo procedimento para o índice no segundo somatório. Toda a operação será finalizada, quando tivermos percorrido a soma em todos os valores. Vejamos para um caso de duplo somatório, com um par de variáveis <span class="math inline">\((X_i, Y_i)\)</span>, para <span class="math inline">\(n = 3\)</span>, <span class="math display">\[\begin{align*}
+\sum_{i = 1}^{3}\sum_{j = 1}^{3}X_iY_j &amp; = \sum_{j = 1}^{3}X_1Y_j + \sum_{j = 1}^{3}X_2Y_j + \sum_{j = 1}^{3}X_3Y_j\\
+                                       &amp; = (X_1Y_1 + X_1Y_2 + X_1Y_3) + (X_2Y_1 + X_2Y_2 + X_2Y_3) + \\
+                                       &amp; \quad + (X_3Y_1 + X_3Y_2 + X_3Y_3).
+\end{align*}\]</span> Para uma amostra de tamanho <span class="math inline">\(n\)</span>, podemos generalizar essa notação da seguinte forma, <span id="eq-sumprodxy"><span class="math display">\[
+\begin{align}
+\sum_{i = 1}^{n}\sum_{j = 1}^{n}X_iY_j &amp; = \sum_{j = 1}^{n}X_1Y_j + \sum_{j = 1}^{n}X_2Y_j + \ldots + \sum_{j = 1}^{n}X_nY_j \nonumber\\
+&amp; = (X_1Y_1 + X_1Y_2 + \ldots + X_1Y_n) +\\
+&amp;\quad + (X_2Y_1 + X_2Y_2+ \ldots + X_2Y_n) + \nonumber\\
+&amp;\quad \ldots + (X_nY_1 + X_nY_2 + \ldots + X_nY_n).
+\end{align}
+\tag{1.4}\]</span></span></p>
+<p>Porém, observe que o resultado em (<a href="#eq-sumprodxy" class="quarto-xref"><span>1.4</span></a>), soma todos os produtos <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Como desejamos fazer uma relação entre a expressão (<a href="#eq-somaprod2" class="quarto-xref"><span>1.3</span></a>) e a expressão (<a href="#eq-somaprod" class="quarto-xref"><span>1.2</span></a>), separamos a soma de produtos <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> com índices iguais das demais situações. Para isso, impomos a restrição no segundo termo, depois da igualdade na expressão (<a href="#eq-sumprodxy" class="quarto-xref"><span>1.4</span></a>), para enfatizar que somaremos o produto de todos os <span class="math inline">\(X_i \times Y_i\)</span>, tais que <span class="math inline">\(i \neq j\)</span>, resultando na expressão (<a href="#eq-somaprod2" class="quarto-xref"><span>1.3</span></a>).</p>
+<p>Podemos também representar a notação <span class="math inline">\(\sum_{i = 1}^{n}\sum_{j = 1}^{n}X_iY_j\)</span> da seguinte forma, <span class="math display">\[\begin{align}
+\sum_{i = 1}^{n}\sum_{j = 1}^{n}X_iY_j &amp; = \mathop{\sum_{i = 1}^{n}}_{j = 1}X_iY_j.
+\end{align}\]</span></p>
+<p>Uma outra notação que pode ser apresentada para o duplo somatório é abrindo o quadrado da soma no resultado da expressão (<a href="#eq-quadsoma" class="quarto-xref"><span>1.1</span></a>), dada da seguinte forma, <span id="eq-sumprodxx"><span class="math display">\[
+\begin{align}
+\left(X_1 + X_2 + \ldots, X_n\right)^2 &amp; = (X_1 + X_2 + \ldots + X_n) \times\\
+&amp; \quad \times (X_1 + X_2 + \ldots + X_n) \nonumber\\
+                                       &amp; = X_1X_1 + X_1X_2 + \ldots + X_1X_n + \nonumber\\
+                                       &amp; \quad + X_2X_1 + X_2X_2 + \ldots + X_2X_n + \ldots \nonumber\\
+                                       &amp; \quad \ldots + X_nX_1 + X_nX_2 + \ldots + X_nX_n \nonumber\\
+                                       &amp; = \sum_{i = 1}^{n} X_i^2 + 2\sum_{j &gt; i = 1}^{n}X_iX_j.
+\end{align}
+\tag{1.5}\]</span></span></p>
+<p>Nesse caso, impomos também uma outra restrição no somatório do segundo termo após a igualdade, que foi somar todos os produtos <span class="math inline">\(X_i\times X_j\)</span>s, exceto aqueles com ele mesmo. Assim, observamos que situações do tipo <span class="math inline">\(X_1 \times X_2 = X_2 \times X_1\)</span>, e desse modo, podemos representar <span class="math inline">\(X_1 \times X_2 + X_2 \times X_1 = 2X_1X_2\)</span> que o resultado será o mesmo, e simplifica a notação. Generalizando a soma para os demais casos, temos <span class="math inline">\(2\sum_{j &gt; i = 1}^{n}X_iX_j\)</span>, como verificado na expressão (<a href="#eq-sumprodxx" class="quarto-xref"><span>1.5</span></a>).</p>
+<p>Por fim, queremos enfatizar uma última situação que é usar um indexador não como a identificação da variável para um determinado elemento da população ou amostra, mas como valor observado. Essas situações serão muito utilizadas em notações no <a href="cap05.html" class="quarto-xref"><span>Capítulo 5</span></a> e <a href="cap06.html" class="quarto-xref"><span>Capítulo 6</span></a>, do qual somaremos as probabilidades da variável assumir valores em um determinado conjunto. A ideia de variável nesses capítulos será entendida como uma função, mas isso é assunto mais para frente. Nesse caso, vamos entender que <span class="math inline">\(P(.)\)</span> é uma função que mede a chance de determinado <span class="math inline">\(X\)</span> assumir um determinado valor, isto é, <span class="math inline">\(P(.)\)</span> assume um valor entre <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span>. Essa função será chamada mais a frente de probabilidade. Assuma também que os valores possíveis de <span class="math inline">\(X\)</span> assumam valores em um conjunto <span class="math inline">\(A = \{1, 2, 3, 4, 5\}\)</span>, e estamos interessados em representar a chance de <span class="math inline">\(X\)</span> assumir valor <span class="math inline">\(3\)</span>. Nesse caso, usamos <span class="math inline">\(P(X = 3)\)</span>. Agora desejarmos representar a chance de <span class="math inline">\(X\)</span> assumir valores, no mínimo, igual a 3. Dessa forma, representamos essa chance da seguinte forma, <span id="eq-sumprob"><span class="math display">\[
+\begin{align}
+  P(X \geq 3)  &amp; = \sum_{x = 3}^{5}P(X = x) \nonumber\\
+               &amp; = \quad P(X = 3) + P(X = 4) + P(X = 5).
+\end{align}
+\tag{1.6}\]</span></span></p>
+<p>Observamos que o indexador no somatório agora é o valor assumido pela variável, e não a identificação da variável a um deteminado elemento da amostra ou população. Se desejarmos somar todas as chances que <span class="math inline">\(X\)</span> assume, podemos apresentar duas notações diferentes, apresentadas na sequência, <span id="eq-sumprob2"><span class="math display">\[
+\begin{align}
+\sum_{x = 1}^{5}P(X = x) &amp; = \sum_{x \in A}P(X = x) .
+\end{align}
+\tag{1.7}\]</span></span> O índice no somatório indica agora que iremos somar as chances de <span class="math inline">\(X\)</span> assumir todos os valores pertencentes ao conjunto <span class="math inline">\(A\)</span>. Claro que, muitas outras formas de apresentar as técnicas de somatório podem ocorrer ao longo do texto, uma vez que outras formas podem ser abordadas, dependendo do assunto, como também da área estudada. De todo modo, tentamos passar parte da notação que será utilizada ao longo do livro, para que o leitor possa se ambientar nesse tipo de representação matemática.</p>
+<p>Para complementar essas informações, o Teorema <a href="cap01.html#thmPropSom">1.12</a> apresenta algumas propriedades sobre técnicas de somatório que serão importantes para os próximos capítulos.</p>
+<div id="teo:PropSom" class="Theorem" title="Propriedades de somatório">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 1.1: </strong>Propriedades de somatório</summary><div>
+<p>Considere <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(k\)</span> constantes, e que <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são variáveis quantitativas, então as seguintes propriedades envolvendo somatório são válidas:</p>
+<ol type="I">
+<li><span class="math inline">\(\sum\limits_{i = 1}^n {aX_i }  = a\sum\limits_{i = 1}^n {X_i }\)</span></li>
+<li><span class="math inline">\(\sum\limits_{i = 1}^n X_i Y_i  \leq \sum\limits_{i = 1}^n {X_i } \sum\limits_{i = 1}^n {Y_i }\)</span>;</li>
+<li><span class="math inline">\(\sum\limits_{i = 1}^n {(aX_i  \pm b} Y_i ) = a\sum\limits_{i = 1}^n {X_i  \pm b} \sum\limits_{i = 1}^n {Y_i }\)</span>;</li>
+<li><span class="math inline">\(\sum\limits_{i = 1}^n {k = \,nk}\)</span>;</li>
+<li><span class="math inline">\(\sum\limits_{i = 1}^n {\left( {X_i  - \bar X} \right)}  = 0\)</span>, em que <span class="math inline">\(\bar X = \frac{1}{n}\sum\limits_{i = 1}^n {X_i }\)</span>;</li>
+<li><span class="math inline">\(\displaystyle\sum_{i = 1}^n X_i^2 \leq \left(\displaystyle\sum_{i = 1}^n X_i\right)^2\)</span>;</li>
+<li><span class="math inline">\(n\bar{X}^2 = \frac{(\sum_{i = 1}^{n}X_i)^2}{n}\)</span>, em que <span class="math inline">\(\bar X = \frac{1}{n}\sum\limits_{i = 1}^n {X_i }\)</span>;</li>
+<li><span class="math inline">\(\displaystyle\sum_{i = 1}^n \left( {X_i  - \bar X} \right)^2 = \displaystyle\sum_{i = 1}^{n}X_i^2 - \frac{1}{n} \left(\sum_{i = 1}^{n}X_i\right)^2\)</span>;</li>
+<li><span class="math inline">\(\displaystyle\sum_{i = 1}^{n}Y_i(X_i - \bar{X}) = \displaystyle\sum_{i = 1}^{n}\left( {Y_i  - \bar Y} \right)\left( {X_i  - \bar X} \right)\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="Proof*-1.1" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<ol type="i">
+<li><p>Segue que: <span class="math display">\[\begin{align*}
+\sum_{i = 1}^n {aX_i }  &amp; = aX_1  + aX_2  +  \ldots  + aX_n\\
+&amp; = a\left( {X_1  +  \ldots  + X_n } \right)\\
+&amp; = a\sum_{i = 1}^n {X_i };
+\end{align*}\]</span></p></li>
+<li><p>Observando as expressões (<a href="#eq-somaprod" class="quarto-xref"><span>1.2</span></a>) e (<a href="#eq-somaprod2" class="quarto-xref"><span>1.3</span></a>), claramente que <span class="math inline">\(\sum\limits_{i = 1}^n X_i Y_i  &lt; \sum\limits_{i = 1}^n {X_i } \sum\limits_{i = 1}^n {Y_i }\)</span>. A única condição de igualdade acontece se <span class="math inline">\(n = 1\)</span>. Porém, em termos práticos para contexto estatístico, essa informação é inútil, uma vez que com apenas uma observação na amostra ou população não haverá condições apresentarmos alguma informação sobre a mesma.</p></li>
+<li><p>Segue, <span class="math display">\[\begin{align*}
+    \sum\limits_{i = 1}^n {(aX_i  + b} Y_i ) &amp; = aX_1  + bY_1  + aX_2  + bY_2  +  \ldots  + aX_n  + bY_n  \\
+    &amp; = aX_1  + aX_2  + aX_n  + bY_2  + bY_1  +  \ldots  + bY_n  \\
+    &amp; = a\left( {X_1  +  \ldots  + X_n } \right) + b\left( {Y_1  +  \ldots  + Y_n } \right)\\ &amp; = a\sum\limits_{i = 1}^n {X_i }  + b\sum\limits_{i = 1}^n {Y_i }
+  \end{align*}\]</span></p></li>
+<li><p><span class="math inline">\(\sum_{i = 1}^n k  = \underbrace {k + k +  \ldots  + k}_{n\,vezes} = nk\)</span>;</p></li>
+<li><p>Segue, <span class="math display">\[\begin{align*}
+\sum\limits_{i = 1}^n {\left( {X_i  - \bar X} \right)}  &amp; = \sum\limits_{i = 1}^n {X_i }  - \sum\limits_{i = 1}^n {\bar X}  = \sum\limits_{i = 1}^n {X_i }  - n\left( {\frac{1}{n}\sum\limits_{i = 1}^n {X_i } } \right) \\
+&amp; = \sum\limits_{i = 1}^n {X_i }  - \sum\limits_{i = 1}^n {X_i }  = 0.
+  \end{align*}\]</span></p></li>
+<li><p>Verificando a expressão (<a href="#eq-sumprodxx" class="quarto-xref"><span>1.5</span></a>), percebemos claramente que <span class="math inline">\(\displaystyle\sum_{i = 1}^n X_i^2 &lt; \left(\displaystyle\sum_{i = 1}^n X_i\right)^2\)</span>. A única condição de igualdade acontece se <span class="math inline">\(n = 1\)</span>, e em termos práticos para uso estatístico, usamos a mesma justificativa dada na propriedade (I);</p></li>
+<li><p><span class="math inline">\(n\bar{X}^2 = n\displaystyle\left( \frac{\sum_{i = 1}^{n}X_i}{n}\right)^2 = \frac{(\sum_{i = 1}^{n}X_i)^2}{n}\)</span>;</p></li>
+<li><p>Vejamos a seguinte dedução, <span class="math display">\[\begin{align*}
+    \displaystyle\sum_{i = 1}^n \left( {X_i  - \bar X} \right)^2 &amp; = \displaystyle\sum_{i = 1}^n \left(X_i^2  - 2X_i\bar X + {\bar X}^2 \right)\\
+    &amp; = \displaystyle\sum_{i = 1}^n X_i^2 - 2\bar X\displaystyle\sum_{i = 1}^n X_i + \displaystyle\sum_{i = 1}^n {\bar X}^2\\
+    &amp; = \displaystyle\sum_{i = 1}^n X_i^2 - 2\frac{1}{n}\displaystyle\sum_{i = 1}^{n}X_i \times \displaystyle\sum_{i = 1}^n X_i + n {\bar X}^2\\
+    &amp; = \displaystyle\sum_{i = 1}^n X_i^2 - 2\frac{\left(\sum_{i = 1}^{n}X_i\right)^2}{n} + n \frac{\left(\sum_{i = 1}^{n}X_i\right)^2}{n^2}\\
+    &amp; = \displaystyle\sum_{i = 1}^n X_i^2 - 2\frac{\left(\sum_{i = 1}^{n}X_i\right)^2}{n} + \frac{\left(\sum_{i = 1}^{n}X_i\right)^2}{n}\\
+    &amp; = \displaystyle\sum_{i = 1}^n X_i^2 - \frac{\left(\sum_{i = 1}^{n}X_i\right)^2}{n};
+  \end{align*}\]</span></p></li>
+<li><p>Antes de mostrarmos a prova da propriedade (IX), vejamos que <span class="math display">\[\begin{align*}
+\displaystyle\sum_{i = 1}^{n}\bar{Y}(X_i - \bar{X}) &amp; = \bar{Y}\underbrace{\displaystyle\sum_{i = 1}^{n}(X_i - \bar{X})}_{=0,~\textrm{Propriedade (V)}} = 0.
+  \end{align*}\]</span> Desse modo, temos que <span class="math display">\[\begin{align*}
+\displaystyle\sum_{i = 1}^{n}Y_i(X_i - \bar{X}) &amp; = \displaystyle\sum_{i = 1}^{n}Y_i(X_i - \bar{X}) - \underbrace{\displaystyle\sum_{i = 1}^{n}\bar{Y}(X_i - \bar{X})}_{=0,~\textrm{Propriedade (VIII)}},
+  \end{align*}\]</span> logo, <span class="math display">\[\begin{align*}
+\displaystyle\sum_{i = 1}^{n}Y_i(X_i - \bar{X}) = \displaystyle\sum_{i = 1}^{n}\left( {Y_i  - \bar Y} \right)\left( {X_i  - \bar X} \right).
+  \end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="exercícios-propostos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercícios-propostos">Exercícios propostos</h2>
+<div id="Exercise-1.1" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 1.1</strong></summary><div>Baseado no Exemplo <a href="cap01.html#MGbarragens">1.1</a>, identifique um problema para essa pesquisa bem como um objetivo, e desenvolva hipóteses a serem estudadas, de modo que estas possam responder as indagações do problema e atinja o objetivo proposto.<p></p>
+</div></details>
+</div>
+<div id="Solution*-1.2" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<!-- https://www.bbc.com/portuguese/brasil-47048439 -->
+<p>Sabemos que no Brasil as barragens de mineração apresentam três tipos: barragem a montante, barragem a jusante e barragem linha de centro, dos quais esses tipos levam o custo e a segurança da barragem, porém todos eles depositam água juntamente com os rejeitos, e isto proporciona uma certa instabilidade para a barragem. Desse modo, podemos ter como problema inicial que a instabilidade das barragens podem estar relacionados aos tipos de barragens desenvolvidas no Brasil. Existe um outro tipo de barragem que pode ser desenvolvido a seco, porém pouco conhecido no Brasil, do qual o material acumulado é drenado e acumulado em pilhas, de modo a ficarem expostos à secagem do sol.</p>
+<p>Assim, como estudo inicial sobre essa alternativa de construção de barragem, poderíamos nortear a pesquisa sob duas hipóteses a serem estudadas:</p>
+<ul>
+<li>Pesquisa 1: <span class="math inline">\(H_0:\)</span> Barragens do tipo depósito de rejeito a seco são mais baratas que as existentes no Brasil;</li>
+<li>Pesquisa 2: <span class="math inline">\(H_0:\)</span> Barragens do tipo depósito de rejeito a seco são mais seguras que as existentes no Brasil;</li>
+</ul>
+</div></details>
+</div>
+<div id="Exercise-1.2" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 1.2</strong></summary><div>Usando os resultados do Teorema <a href="cap01.html#teo:PropSom">1.1</a>, mostre em quais aplicações na estatística poderemos utilizar esses resultados.<p></p>
+</div></details>
+</div>
+<div id="Exercise-1.3" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 1.3</strong></summary><div>Baseado em <span class="citation" data-cites="Devore2006">Devore (<a href="references.html#ref-Devore2006" role="doc-biblioref">2006</a>)</span>, um famoso experimento executado em 1882, Michelson e Newcomb fizeram 66 observações do tempo levado pela luz para percorrer a distância entre dois locais em Washington, D.C. Algumas das medidas (codificadas de certa forma) foram 31, 23, 32, 36, -2, 26, 27 e 31. Por que essas medidas não são idênticas?<p></p>
+</div></details>
+</div>
+<div id="Solution*-1.3" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Essas medidas não são iguais por diversos fatores, dentre elas, a imprecisão dos instrumentos de medida. Isso é o que define chamarmos essa característica de interesse no estudo de variável, pois de elemento a elemento, o valor assumido dessa característica varia. Outros aspectos dessa variação podem ser as diferentes condições ambientais referentes ao tempo de medida, dentre outros.<p></p>
+</div></details>
+</div>
+<div id="Exercise-1.4" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 1.4</strong></summary><div>
+Sejam as amostras de tamanho n = 5 de duas variáveis, dadas por:
+<center>
+<span class="math inline">\(X = \{2,4,5,1,2\}\)</span>,<br> <span class="math inline">\(Y = \{1,2,3,5,8\}\)</span>.
+</center>
+<p>Obtenha:</p>
+<ol type="a">
+<li><span class="math inline">\(\sum_{i = 1}^{4}X_i\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{5}4\times X_i^2\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 2}^{n}X_i\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n}X_i\times Y_i\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n}(3X_i + 2Y_i)\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n}X_iY_i + \sum_{i = 1}^{n}Y_i^2\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n} X_i\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n} Y_i\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n} X_i^2\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n} Y_i^2\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n} (Y_iX_i)\)</span>;</li>
+<li><span class="math inline">\((\sum_{i = 1}^{n} Y_i)^2\)</span>;</li>
+<li><span class="math inline">\((\sum_{i = 1}^{n} X_i)^2\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n} (X_i - \frac{\sum_{i = 1}^{n}X_i}{n})^2\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n} (Y_i - \frac{\sum_{i = 1}^{n}Y_i}{n})^2\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n}X_i^2 - \frac{\left(\sum_{i = 1}^{n}X_i\right)^2}{n}\)</span>;</li>
+<li><span class="math inline">\(\sum_{i = 1}^{n}Y_i^2 - \frac{\left(\sum_{i = 1}^{n}Y_i\right)^2}{n}\)</span>;</li>
+<li>Qual conclusão se pode chegar sobre os itens (n) e (p), bem como (o) e (q)?</li>
+</ol>
+</div></details>
+</div>
+<div id="Exercise-1.5" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 1.5</strong></summary><div>
+<p>Forneça uma amostra possível, de tamanho 5, de cada uma das populações a seguir:</p>
+<ol type="a">
+<li>todos os jornais publicados no Brasil;</li>
+<li>todas as empresas na área de telecomunicações;</li>
+<li>todos os alunos da Universidade Federal de São João del-Rei;</li>
+<li>todas as notas, pontuados de 0 a 100, dos alunos da disciplina de Estatística e Probabilidade;</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-1.4" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<ol type="a">
+<li>O Globo (Rio de Janeiro), Folha de São Paulo (São Paulo), Tribuna do Norte (Rio Grande do Norte), A crítica (Manaus), A Gazeta (São Paulo);</li>
+<li>NET, TIM, Brisanet, Vivo, Oi;</li>
+<li>Samara, Diego, Anna Albuquerque, Matheus, Giliwiline;</li>
+<li>85, 75, 65, 42, 57.</li>
+</ol>
+</div></details>
+</div>
+<div id="Exercise-1.6" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 1.6</strong></summary><div>
+<p>Observou-se o tempo, em minutos, que <span class="math inline">\(10\)</span> atendimentos de clientes de uma determinada empresa telefônica demoraram para serem atendidos, que seguem: <span class="math inline">\(5\)</span>, <span class="math inline">\(10\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(13\)</span>, <span class="math inline">\(7\)</span>, <span class="math inline">\(15\)</span>, <span class="math inline">\(8\)</span>, <span class="math inline">\(12\)</span>, <span class="math inline">\(6\)</span> e <span class="math inline">\(5\)</span>. O objetivo do estudo foi verificar se o tempo médio, em minutos, do atendimento era superior a 10 minutos. Pergunta-se:</p>
+<ol type="a">
+<li>Qual a população em estudo?</li>
+<li>Qual o problema indagado?</li>
+<li>Qual(is) a(s) variável(is) em estudo do trabalho, como também a natureza dessa(s) variável(is)?</li>
+<li>Podemos identificar o tamanho da população e da amostra, com essas informações?</li>
+</ol>
+</div></details>
+</div>
+<div id="Exercise-1.7" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 1.7</strong></summary><div>Como podemos relacionar os ramos da Estatística com os itens do plano de pesquisa científica, presentes nesse capítulo?<p></p>
+</div></details>
+</div>
+<div id="Solution*-1.5" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Pesquisa científica</strong></th>
+<th style="text-align: center;"><strong>Ramos da Estatística</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Identificar o problema e o objetivo da pesquisa</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Formular a hipótese estudada</td>
+<td style="text-align: center;">Estatística Inferencial</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Revisão de literatura</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Formular um plano amostral e identificar as variáveis de interesse para a pesquisa</td>
+<td style="text-align: center;">Amostragem (Não o classificamos com um ramo da estatística)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Coleta, crítica e tratamento dos dados</td>
+<td style="text-align: center;">Estatística descritiva</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Apresentação dos dados</td>
+<td style="text-align: center;">Estatística descritiva</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Análise e interpretação dos dados</td>
+<td style="text-align: center;">Estatística inferencial e Probabilidade</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Conclusão e derivação da conclusão que poderá rejeitar ou não a hipótese estudada, gerando assim, uma confirmação ou indagações para outros problemas</td>
+<td style="text-align: center;">Estatística inferencial e Probabilidade</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Apresentação dos dados por meio de trabalhos científicos para a propagação do conhecimento sobre o problema estudado</td>
+<td style="text-align: center;">Estatística descritiva</td>
+</tr>
+</tbody>
+</table>
+</div></details>
+</div>
+<div id="Exercise-1.8" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 1.8</strong></summary><div>
+<p>Os dados retirados de <span class="citation" data-cites="Tavares1999">Tavares e Anjos (<a href="references.html#ref-Tavares1999" role="doc-biblioref">1999</a>)</span>, representam a distribuição percentual do estado nutricional em homens idosos brasileiros (idade <span class="math inline">\(\geq\)</span> 60 anos), segundo Índice de Massa Corporal (IMC<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>), por macrorregião e situação de domicílio, Pesquisa Nacional sobre Saúde e Nutrição, 1989, que seguem abaixo. Como poderíamos, em notação usando as técnicas de somatório, representar a soma de todos os valores de IMC do Brasil, levando em consideração as demais variáveis? Se desejássemos, calcular o total dos valores observados de IMC dos homens do nordeste, considerando as demais condições? E se fosse do nordeste e da zona urbana, como representaríamos esse somatório?</p>
+<center>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;}
+.tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-2gh7{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:middle}
+.tg .tg-jwah{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-w1ir{background-color:#c0c0c0;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-yzvu{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-jevw{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:middle}
+.tg .tg-jd9l{background-color:#dae8fc;border-color:#ffffff;font-size:12px;text-align:right;vertical-align:top}
+.tg .tg-xp2e{background-color:#be734c;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-u6gx{background-color:#c0c0c0;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-v50o{background-color:#dae8fc;border-color:#ffffff;font-size:12px;text-align:right;vertical-align:top}
+.tg .tg-9y54{background-color:#be734c;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:middle}
+.tg .tg-7vlo{background-color:#be734c;border-color:#ffffff;text-align:center;vertical-align:middle}
+.tg .tg-pznm{background-color:#dae8fc;border-color:#ffffff;font-size:12px;text-align:center;vertical-align:top}
+.tg .tg-x99d{background-color:#dae8fc;border-color:#ffffff;font-size:12px;text-align:center;vertical-align:top}
+.tg .tg-gwzd{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-fvhk{background-color:#c0c0c0;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-mlx2{background-color:#c0c0c0;border-color:#ffffff;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-p9bf{background-color:#9b9b9b;border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+<tr>
+<th class="tg-9y54" rowspan="2">
+Regiões
+</th>
+<th class="tg-9y54" rowspan="2">
+Número
+</th>
+<th class="tg-xp2e" colspan="4">
+Estado Nutricional (%)
+</th>
+</tr>
+<tr>
+<th class="tg-7vlo">
+M
+</th>
+<th class="tg-7vlo">
+A
+</th>
+<th class="tg-7vlo">
+SI
+</th>
+<th class="tg-7vlo">
+SII e SIII
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tg-2gh7">
+Norte
+</td>
+<td class="tg-jwah">
+223
+</td>
+<td class="tg-jwah">
+4,4
+</td>
+<td class="tg-jwah">
+60,6
+</td>
+<td class="tg-jwah">
+29,4
+</td>
+<td class="tg-jwah">
+5,6
+</td>
+</tr>
+<tr>
+<td class="tg-jevw">
+Nordeste
+</td>
+<td class="tg-yzvu">
+586
+</td>
+<td class="tg-yzvu">
+8,8
+</td>
+<td class="tg-yzvu">
+68,3
+</td>
+<td class="tg-yzvu">
+19,8
+</td>
+<td class="tg-yzvu">
+3,1
+</td>
+</tr>
+<tr>
+<td class="tg-jd9l">
+Urbano
+</td>
+<td class="tg-pznm">
+267
+</td>
+<td class="tg-pznm">
+7,1
+</td>
+<td class="tg-pznm">
+62,3
+</td>
+<td class="tg-pznm">
+26,6
+</td>
+<td class="tg-pznm">
+4,0
+</td>
+</tr>
+<tr>
+<td class="tg-v50o">
+Rural
+</td>
+<td class="tg-x99d">
+319
+</td>
+<td class="tg-x99d">
+10,7
+</td>
+<td class="tg-x99d">
+74,6
+</td>
+<td class="tg-x99d">
+12,5
+</td>
+<td class="tg-x99d">
+2,2
+</td>
+</tr>
+<tr>
+<td class="tg-p9bf">
+Sudeste
+</td>
+<td class="tg-gwzd">
+463
+</td>
+<td class="tg-gwzd">
+7,9
+</td>
+<td class="tg-gwzd">
+59,0
+</td>
+<td class="tg-gwzd">
+26,7
+</td>
+<td class="tg-gwzd">
+6,4
+</td>
+</tr>
+<tr>
+<td class="tg-v50o">
+Urbano
+</td>
+<td class="tg-x99d">
+197
+</td>
+<td class="tg-x99d">
+5,6
+</td>
+<td class="tg-x99d">
+56,4
+</td>
+<td class="tg-x99d">
+30,2
+</td>
+<td class="tg-x99d">
+7,8
+</td>
+</tr>
+<tr>
+<td class="tg-jd9l">
+Rural
+</td>
+<td class="tg-pznm">
+266
+</td>
+<td class="tg-pznm">
+17,3
+</td>
+<td class="tg-pznm">
+69,5
+</td>
+<td class="tg-pznm">
+12,4
+</td>
+<td class="tg-pznm">
+0,8
+</td>
+</tr>
+<tr>
+<td class="tg-fvhk">
+Sul
+</td>
+<td class="tg-mlx2">
+429
+</td>
+<td class="tg-mlx2">
+5,1
+</td>
+<td class="tg-mlx2">
+56,5
+</td>
+<td class="tg-mlx2">
+29,2
+</td>
+<td class="tg-mlx2">
+9,2
+</td>
+</tr>
+<tr>
+<td class="tg-jd9l">
+Urbano
+</td>
+<td class="tg-pznm">
+197
+</td>
+<td class="tg-pznm">
+4,5
+</td>
+<td class="tg-pznm">
+51,2
+</td>
+<td class="tg-pznm">
+33,0
+</td>
+<td class="tg-pznm">
+11,3
+</td>
+</tr>
+<tr>
+<td class="tg-v50o">
+Rural
+</td>
+<td class="tg-x99d">
+232
+</td>
+<td class="tg-x99d">
+6,4
+</td>
+<td class="tg-x99d">
+66,4
+</td>
+<td class="tg-x99d">
+22,0
+</td>
+<td class="tg-x99d">
+5,2
+</td>
+</tr>
+<tr>
+<td class="tg-u6gx">
+Centro-Oeste
+</td>
+<td class="tg-w1ir">
+327
+</td>
+<td class="tg-w1ir">
+10,7
+</td>
+<td class="tg-w1ir">
+60,6
+</td>
+<td class="tg-w1ir">
+22,8
+</td>
+<td class="tg-w1ir">
+5,9
+</td>
+</tr>
+<tr>
+<td class="tg-v50o">
+Urbano
+</td>
+<td class="tg-x99d">
+154
+</td>
+<td class="tg-x99d">
+10,6
+</td>
+<td class="tg-x99d">
+55,2
+</td>
+<td class="tg-x99d">
+27,3
+</td>
+<td class="tg-x99d">
+6,9
+</td>
+</tr>
+<tr>
+<td class="tg-jd9l">
+Rural
+</td>
+<td class="tg-pznm">
+173
+</td>
+<td class="tg-pznm">
+11,0
+</td>
+<td class="tg-pznm">
+71,4
+</td>
+<td class="tg-pznm">
+13,7
+</td>
+<td class="tg-pznm">
+3,9
+</td>
+</tr>
+<tr>
+<td class="tg-fvhk">
+Brasil
+</td>
+<td class="tg-mlx2">
+2.028
+</td>
+<td class="tg-mlx2">
+7,8
+</td>
+<td class="tg-mlx2">
+61,8
+</td>
+<td class="tg-mlx2">
+24,7
+</td>
+<td class="tg-mlx2">
+5,7
+</td>
+</tr>
+<tr>
+<td class="tg-jd9l">
+Urbano
+</td>
+<td class="tg-pznm">
+1.038
+</td>
+<td class="tg-pznm">
+6,0
+</td>
+<td class="tg-pznm">
+57,2
+</td>
+<td class="tg-pznm">
+29,5
+</td>
+<td class="tg-pznm">
+7,3
+</td>
+</tr>
+<tr>
+<td class="tg-v50o">
+Rural
+</td>
+<td class="tg-x99d">
+990
+</td>
+<td class="tg-x99d">
+11,7
+</td>
+<td class="tg-x99d">
+71,7
+</td>
+<td class="tg-x99d">
+14,2
+</td>
+<td class="tg-x99d">
+2,4
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+</div></details>
+</div>
+<div id="Solution*-1.6" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<p>Devemos observar nessa tabela, a presença de algumas variáveis como: Região (Norte, Nordeste, Sudeste, Sul, Centro-Oeste e Brasil), Zona (Urbano e Rural), Estado Nutricional (Magreza, Adequado, Sobrepeso I e Sobrepeso II e III) e Número.</p>
+<p>Vale lembrar que os valores internos da tabela representam a distribuição percentual de pessoas que se enquadram em um determinado estado nutricional, separados por região. Assim, considerando que temos todos os valores de IMC das pessoas entrevistadas (2.028 pessoas), e que esta é representada pela variável <span class="math inline">\(X\)</span>, (a) a soma de todos os IMCs do Brasil, levando em consideração a todas as outras variáveis, pode ser representada por: <span class="math display">\[\begin{align*}
+  \sum_{i = 1}^{2.028}X_i.
+\end{align*}\]</span></p>
+<ol start="2" type="a">
+<li>Agora o total do IMC de homens do nordeste (586 pessoas), e que estes são representados pela variável <span class="math inline">\(Y\)</span>, então <span id="eq-imc1"><span class="math display">\[
+\begin{align}
+  \sum_{j = 1}^{586}Y_j
+\end{align}
+\tag{1.8}\]</span></span></li>
+<li>Por fim, considerando o total do IMC de homens da zona urbana, podemos aproveitar a notação anterior, e complementar com um outro indexador, <span class="math inline">\(k = 1, 2\)</span>; se <span class="math inline">\(k = 1\)</span> teremos uma pessoa da zona urbana, e se <span class="math inline">\(k = 2\)</span>, teremos uma pessoa da zona rural, então como representação de soma geral teríamos <span id="eq-imc2"><span class="math display">\[
+\begin{align}
+  \sum_{j = 1}^{586}Y_{jk}, \quad k = 1, 2.
+\end{align}
+\tag{1.9}\]</span></span> As expressões (<a href="#eq-imc1" class="quarto-xref"><span>1.8</span></a>) e (<a href="#eq-imc2" class="quarto-xref"><span>1.9</span></a>) são equivalentes. Restringindo a soma apenas para homens da zona urbana, temos <span class="math display">\[\begin{align*}
+  \sum_{j = 1}^{586}Y_{j1}.
+\end{align*}\]</span> Este último resultado significa que alguns valores de <span class="math inline">\(Y_{j1}\)</span> serão iguais a 0, pois sabemos pela tabela que há apenas 267 homens da zona urbana.</li>
+</ol>
+</div></details>
+</div>
+<div id="Exercise-1.9" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 1.9</strong></summary><div>Considere a expressão <span class="math inline">\(\displaystyle \sum_{i = 1}^{n}(X_i - A)^2\)</span>. Qual o valor de <span class="math inline">\(A\)</span> para que essa expressão seja minizada?<p></p>
+</div></details>
+</div>
+<div id="Exercise-1.10" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 1.10</strong></summary><div>Os famosos estudos sobre o tempo de oscilação de um pêndulo, do qual se afirmava que este tempo não dependia do peso do corpo suspenso na extremidade do fio, motivou Galileu a realizar diversos experimentos, que levou a fazer determinadas afirmações, como por exemplo: se dois objetos com pesos diferentes caíssem da mesma altura ao mesmo tempo no vácuo chegariam ao chão ao mesmo tempo. Esses estudos foram muito importantes para a criação das leis da queda dos corpos, para enunciar a base do princípio da inércia e a lei da composição das velocidades. Baseado na afirmação de Galileu anteriormente, como poderíamos relacionar o método científico e as suas fases diante dessa situação?<p></p>
+</div></details>
+</div>
+
+
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-banzato2006" class="csl-entry" role="listitem">
+BANZATTO, D. A.; NASCIMENTO KRONKA, S. DO. <strong>Experimentação Agrícola</strong>. Jaboticabal: Funep, 2006. p. 237
+</div>
+<div id="ref-barbin2003" class="csl-entry" role="listitem">
+BARBIN, D. <strong>Planejamento e Análise Estatística de Experimentos Agrômica</strong>. Arapongas: Midas, 2003. p. 208
+</div>
+<div id="ref-bolfarinebussab2005" class="csl-entry" role="listitem">
+BOLFARINE, H.; BUSSAB, W. O. <strong>Elementos de Amostragem</strong>. São Paulo: Edgard Blucher, 2005. p. 274
+</div>
+<div id="ref-bolfarine2010" class="csl-entry" role="listitem">
+BOLFARINE, H.; SANDOVAL, M. C. <strong>Introdução à <span>I</span>nferência <span>E</span>statística</strong>. 2. ed. São Paulo: SBM, 2010. p. 159
+</div>
+<div id="ref-cochrancox2005" class="csl-entry" role="listitem">
+COCHRAN, W.; COX, G. M. <strong>Experimental <span>D</span>esigns</strong>. 2. ed. New York: John Wiley &amp; Sons, 2005. p. 618
+</div>
+<div id="ref-BP2018" class="csl-entry" role="listitem">
+COMPANY, B. P. <strong>BP statistical review of world energy</strong>. London: British Petroleum Company, 2018.
+</div>
+<div id="ref-crespo2009" class="csl-entry" role="listitem">
+CRESPO, A. A. <strong>Estatística Fácil</strong>. 19. ed. São Paulo: Saraiva, 2009. p. 232
+</div>
+<div id="ref-dantas2008" class="csl-entry" role="listitem">
+DANTAS, C. A. B. <strong>Probabilidade: Um <span>C</span>urso <span>I</span>ntrodutório</strong>. 3. ed. São Paulo: EDUSP, 2008. p. 256
+</div>
+<div id="ref-Devore2006" class="csl-entry" role="listitem">
+DEVORE, J. L. <strong>Probabilidade e Estatística para Engenharia e Ciências</strong>. 6. ed. São Paulo: Cengage Learning, 2006. p. 692
+</div>
+<div id="ref-drapersmith1998" class="csl-entry" role="listitem">
+DRAPER, N. R.; SMITH, H. <strong>Applied regression analysis</strong>. 3. ed. New York: Wiley, 1998. p. 736
+</div>
+<div id="ref-magalhaes2011" class="csl-entry" role="listitem">
+MAGALHAES, M. N. <strong>Probabilidade e variáveis aleatórias</strong>. 3. ed. São Paulo: EDUSP, 2011. p. 424
+</div>
+<div id="ref-magalhaeslima2023" class="csl-entry" role="listitem">
+MAGALHAES, M. N.; LIMA, A. C. P. <strong>Noções de <span>P</span>robabilidade e <span>E</span>statística</strong>. 7. ed. São Paulo: EDUSP, 2023. p. 428
+</div>
+<div id="ref-meyer2000" class="csl-entry" role="listitem">
+MEYER, P. L. <strong>Probabilidade: aplicações á estatística</strong>. 2. ed. Rio de <span>J</span>aneiro: LTC, 2000. p. 426
+</div>
+<div id="ref-montgomery2019" class="csl-entry" role="listitem">
+MONTGOMERY, D. C. <strong>Design and <span>A</span>nalysis of <span>E</span>xperiments</strong>. 9. ed. New Jersey: Wiley, 2019. p. 752
+</div>
+<div id="ref-montgomery2021" class="csl-entry" role="listitem">
+MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatísta <span>A</span>plicada e <span>P</span>robabilidade para <span>E</span>ngenheiros</strong>. 7. ed. Rio de <span>J</span>aneiro: LTC, 2021. p. 416
+</div>
+<div id="ref-mood1974" class="csl-entry" role="listitem">
+MOOD, A. M.; GRAYBILL, F. A.; BOES, D. C. <strong>Introduction to the <span>T</span>heory of <span>S</span>tatistics</strong>. New York: John <span>W</span>iley &amp; <span>S</span>ons, 1974. p. 564
+</div>
+<div id="ref-pagano2004" class="csl-entry" role="listitem">
+PAGANO, M.; GAUVREAU, K. <strong>Princípios de Bioestatística</strong>. São Paulo: Thomson, 2004. p. 506
+</div>
+<div id="ref-pimentelgomes2022" class="csl-entry" role="listitem">
+PIMENTEL-GOMES, F. <strong>Curso de <span>E</span>statística <span>E</span>xperimental</strong>. 15. ed. Piracicaba: FEALQ, 2022. p. 451
+</div>
+<div id="ref-silva2005" class="csl-entry" role="listitem">
+SILVA, J. G. C. DA. <strong>Planejamento da Pesquisa Experimental: Base Conceitual e Metodológica</strong>. Pelotas: Instituto de Física e Matemática, 2007. p. 509
+</div>
+<div id="ref-silva2015" class="csl-entry" role="listitem">
+SILVA, N. N. <strong>Amostragem <span>P</span>robabilística</strong>. 3. ed. São Paulo: EDUSP, 2015. p. 136
+</div>
+<div id="ref-souza1998" class="csl-entry" role="listitem">
+SOUZA, G. S. <strong>Introdução aos <span>M</span>odelos de <span>R</span>egressão <span>L</span>inear e <span>N</span>ão-<span>L</span>inear</strong>. Brasília: EMBRAPA, 1998. p. 489
+</div>
+<div id="ref-st1980" class="csl-entry" role="listitem">
+STEEL, R. G. D.; TORRIE, J. H. <strong>Principles and procedures of statistics: A biometrical approach</strong>. 2. ed. New York: McGraw-Hill Book Company, 1980. p. 512
+</div>
+<div id="ref-Tavares1999" class="csl-entry" role="listitem">
+TAVARES, E. L.; ANJOS, L. A. DO. Perfil antropométrico da população idosa brasileira. Resultados da Pesquisa Nacional sobre saúde e Nutrição. <strong>Cad. Saúde Pública</strong>, v. 15, n. 4, p. 759–768, 1999.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Ver Definição <a href="cap01.html#def:populacao">1.6</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>A forma de como construir as hipóteses de uma pesquisa científica será abordada no <a href="cap10.html" class="quarto-xref"><span>Capítulo 10</span></a>, do qual dissertaremos sobre a Teoria da decisão.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Para quem desejar entender com detalhes a metodologia baseada para o programa, acesse: <a href="http://www.obt.inpe.br/OBT/assuntos/programas/amazonia/prodes">PRODES</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Dados coletados da página do IBGE, edição 2019, <a href="https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/amazonia_legal/2019/lista_de_municipios_da_amazonia_legal_2019.ods" class="uri">https://geoftp.ibge.gov.br/organizacao_do_territorio/estrutura_territorial/amazonia_legal/2019/lista_de_municipios_da_amazonia_legal_2019.ods</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Essa variável se refere a classificação do estado que obteve maior taxa de desmatamento acumulado, desde 1988 a 2020.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Essa variável se refere a população estimada de cada estado, e os dados foram retirados do IBGE, disponível em <a href="https://www.ibge.gov.br/cidades-e-estados" class="uri">https://www.ibge.gov.br/cidades-e-estados</a>**<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>A unidade de IMC em <span class="math inline">\(kg/m^2\)</span>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Bem-vindo">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Bem-vindo</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./cap02.html" class="pagination-link" aria-label="Coleta, organização e apresentação dos dados">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coleta, organização e apresentação dos dados</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Estatística &amp; Probabilidade aplicada às Engenharias e Ciências foi escrito por <a href="https://bendeivide.github.io/">Ben Dêivide de O. Batista.</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Esse livro foi desenvolvido com o <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

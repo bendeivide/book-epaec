@@ -1,5 +1,5 @@
 #=================================================================================
-# Código 2.1 - Os dados representam a temperatura (ºF) do anel de vedação de cada 
+# Código 2.5 - Os dados representam a temperatura (ºF) do anel de vedação de cada 
 #              teste de acionamento ou lançamento real do motor do foguete Challen
 #              ger
 #-----------

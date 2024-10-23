@@ -37,12 +37,74 @@ O número de leitores  que acessaram esse livro:
 
 Sugestões e críticas sobre o livro podem ser enviadas para [livrosdeben@gmail.com](mailto:livrosdeben@gmail.com).
 
-## Licença {-}
+# Livro físico {.unnumbered}
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />Este trabalho está licenciado com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons - Atribuição-NãoComercial 4.0 Internacional</a>.
+# ISBN {.unnumbered}
+
+- __ISBN__ (Digital): 978-65-01-05500-8
+- __ISBN__ (Físico): 978-65-01-05508-4
+
+# Licença {.unnumbered}
+
+:::: {.columns}
+
+::: {.column width="30%" .v-center-container}
+
+</br>
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
 
 
-<a href="https://bendeivide.github.io/dc/"><img src="Logo-DC-preto2.png" align="left" width="180" /></a>
+:::
+
+::: {.column width="70%"}
+
+</a><br />Este trabalho está sob a Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons - Atribuição-NãoComercial 4.0 Internacional</a>.
+
+:::
+
+::::
+
+
+:::: {.columns}
+
+::: {.column width="30%" .v-center-container}
+
+</br>
+
+<a href="https://bendeivide.github.io/dc/"><img src="SeloDC-preto.png" align="left" width="100" /></a>
+
+:::
+
+::: {.column width="70%"}
+
+Usamos também a filosofia de trabalho com o Selo Democratizando Conhecimento (DC), que pode ser acessada em <https://bendeivide.github.io/dc/>. O leitor é livre para compartilhar, redistribuir, transformar ou adaptar esta obra, desde que não venha a utilizá-la em nenhuma atividade de propósito comercial. Por fim, a única exigência é a atribuição dos créditos aos autores da obra.
+
+:::
+
+::::
+
+
+
+</br>
+</br>
+
+# Como citar {.unnumbered}
+
+- Como citar essa obra (Impressa):
+
+CUSTÓDIO, T. C.; BATISTA, B. D. O.. **Estatística Básica Aplicada às Ciências Agrárias**. Ouro
+Branco, MG: [s.n.]. 2024. 336 p. ISBN 978-65-01-05508-4.
+
+
+- Como citar essa obra (Digital):
+
+CUSTÓDIO, T. C.; BATISTA, B. D. O.. **Estatística Básica Aplicada às Ciências Agrárias**. Ouro
+Branco, MG: [s.n.]. 2024. ISBN 978-65-01-05500-8. Disponível em: [https://bendeivide.
+github.io/book-estbasica/](https://bendeivide.
+github.io/book-estbasica/). Acesso em: 10 de junho de 2024.
+
+
 
 # Epígrafe {-}
 

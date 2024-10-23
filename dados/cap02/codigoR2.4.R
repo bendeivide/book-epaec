@@ -1,5 +1,5 @@
 #=================================================================================
-# Cídigo 2.3 - Regiao dos 9 estados da Amazonia Legal
+# Cídigo 2.4 - Regiao dos 9 estados da Amazonia Legal
 #-----------
 # Como citar o livro:
 # BATISTA, B. D. O.. Estatística e Probabilidade: aplicadas às Engenharias e Ciên-

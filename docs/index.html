@@ -1,131 +1,33 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Estatística &amp; Probabilidade</title>
-  <meta name="description" content="Estatística &amp; Probabilidade" />
-  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
 
-  <meta property="og:title" content="Estatística &amp; Probabilidade" />
-  <meta property="og:type" content="book" />
-  <meta property="og:image" content="https://bendeivide.github.io/book-epaec/images/cover.png" />
-  
-  <meta name="github-repo" content="bendeivide/book-epaec" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Estatística &amp; Probabilidade" />
-  
-  
-  <meta name="twitter:image" content="https://bendeivide.github.io/book-epaec/images/cover.png" />
+<meta name="author" content="Ben Dêivide de O. Batista">
 
-<meta name="author" content="Ben Dêivide de Oliveira Batista" />
-
-
-<meta name="date" content="2022-09-02" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-
-<link rel="next" href="epígrafe.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+<title>Estatística &amp; Probabilidade aplicada às Engenharias e Ciências</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -139,295 +41,824 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./cap01.html" rel="next">
+<link href="./hardcover.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<style>
+.Definition {
+  --color1: #5e737f;
+  --color2: #49606d;
+}
+.Proof {
+  --color1: #aaa6a3;
+}
+.Theorem {
+  --color1: #d14747;
+  --color2: #8b1f1f;
+}
+.Exercise {
+  --color1: #4485f6;
+  --color2: #479bd1;
+}
+.Example {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Solution {
+  --color1: #9ad5f6;
 }
 </style>
 
-<link rel="stylesheet" href="ear.css" type="text/css" />
+
+<link rel="stylesheet" href="custom.scss">
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Estatística & Probabilidade aplicado às Engenharias e Ciências</a></li>
-
-<li class="divider"></li>
-<li><a href="index.html#bem-vindo" id="toc-bem-vindo">Bem-vindo<span></span></a>
-<ul>
-<li><a href="index.html#sugestões-e-críticas" id="toc-sugestões-e-críticas">Sugestões e críticas<span></span></a></li>
-<li><a href="index.html#licença" id="toc-licença">Licença<span></span></a></li>
-</ul></li>
-<li><a href="epígrafe.html#epígrafe" id="toc-epígrafe">Epígrafe<span></span></a></li>
-<li><a href="dgets.html#dgets" id="toc-dgets"><span class="toc-section-number">1</span> Definições Gerais da Estatística e técnicas de somatórios<span></span></a>
-<ul>
-<li><a href="dgets.html#introdução" id="toc-introdução"><span class="toc-section-number">1.1</span> Introdução<span></span></a></li>
-<li><a href="dgets.html#definições-gerais-da-estatística" id="toc-definições-gerais-da-estatística"><span class="toc-section-number">1.2</span> Definições gerais da Estatística<span></span></a>
-<ul>
-<li><a href="dgets.html#subsec:est-pesqcient" id="toc-subsec:est-pesqcient"><span class="toc-section-number">1.2.1</span> Estatística na pesquisa científica<span></span></a></li>
-</ul></li>
-<li><a href="dgets.html#definições-básicas" id="toc-definições-básicas"><span class="toc-section-number">1.3</span> Definições básicas<span></span></a></li>
-<li><a href="dgets.html#técnicas-de-somatório" id="toc-técnicas-de-somatório"><span class="toc-section-number">1.4</span> Técnicas de somatório<span></span></a></li>
-<li><a href="dgets.html#exercícios-propostos" id="toc-exercícios-propostos">Exercícios propostos<span></span></a></li>
-</ul></li>
-<li><a href="coad.html#coad" id="toc-coad"><span class="toc-section-number">2</span> Coleta, organização e apresentação dos dados<span></span></a>
-<ul>
-<li><a href="coad.html#introdução-1" id="toc-introdução-1"><span class="toc-section-number">2.1</span> Introdução<span></span></a></li>
-<li><a href="coad.html#sec:reptabular" id="toc-sec:reptabular"><span class="toc-section-number">2.2</span> Representação tabular<span></span></a></li>
-<li><a href="coad.html#representação-gráfica" id="toc-representação-gráfica"><span class="toc-section-number">2.3</span> Representação gráfica<span></span></a></li>
-<li><a href="coad.html#exercícios-propostos-1" id="toc-exercícios-propostos-1">Exercícios propostos<span></span></a></li>
-</ul></li>
-<li><a href="mp.html#mp" id="toc-mp"><span class="toc-section-number">3</span> Medidas de posição<span></span></a>
-<ul>
-<li><a href="mp.html#introdução-2" id="toc-introdução-2"><span class="toc-section-number">3.1</span> Introdução<span></span></a></li>
-<li><a href="mp.html#média" id="toc-média"><span class="toc-section-number">3.2</span> Média<span></span></a></li>
-<li><a href="mp.html#mediana" id="toc-mediana"><span class="toc-section-number">3.3</span> Mediana<span></span></a></li>
-<li><a href="mp.html#moda" id="toc-moda"><span class="toc-section-number">3.4</span> Moda<span></span></a></li>
-<li><a href="mp.html#exercícios-propostos-2" id="toc-exercícios-propostos-2">Exercícios propostos<span></span></a></li>
-</ul></li>
-<li><a href="md.html#md" id="toc-md"><span class="toc-section-number">4</span> Medidas de dispersão<span></span></a>
-<ul>
-<li><a href="md.html#introdução-3" id="toc-introdução-3"><span class="toc-section-number">4.1</span> Introdução<span></span></a></li>
-<li><a href="md.html#amplitude-total-ou-amplitude" id="toc-amplitude-total-ou-amplitude"><span class="toc-section-number">4.2</span> Amplitude total ou Amplitude<span></span></a></li>
-<li><a href="md.html#variância" id="toc-variância"><span class="toc-section-number">4.3</span> Variância<span></span></a></li>
-<li><a href="md.html#desvio-padrão" id="toc-desvio-padrão"><span class="toc-section-number">4.4</span> Desvio padrão<span></span></a></li>
-<li><a href="md.html#coeficiente-de-variação" id="toc-coeficiente-de-variação"><span class="toc-section-number">4.5</span> Coeficiente de Variação<span></span></a></li>
-<li><a href="md.html#erro-padrão-da-média" id="toc-erro-padrão-da-média"><span class="toc-section-number">4.6</span> Erro padrão da média<span></span></a></li>
-<li><a href="md.html#exercícios-propostos-3" id="toc-exercícios-propostos-3">Exercícios propostos<span></span></a></li>
-</ul></li>
-<li><a href="prob.html#prob" id="toc-prob"><span class="toc-section-number">5</span> Probabilidades<span></span></a>
-<ul>
-<li><a href="prob.html#conceitos-básicos" id="toc-conceitos-básicos"><span class="toc-section-number">5.1</span> Conceitos básicos<span></span></a>
-<ul>
-<li><a href="prob.html#leis-básicas-da-teoria-de-conjuntos" id="toc-leis-básicas-da-teoria-de-conjuntos"><span class="toc-section-number">5.1.1</span> Leis básicas da teoria de conjuntos<span></span></a></li>
-<li><a href="prob.html#teoremas-clássicos-da-teoria-de-conjuntos" id="toc-teoremas-clássicos-da-teoria-de-conjuntos"><span class="toc-section-number">5.1.2</span> Teoremas clássicos da teoria de conjuntos<span></span></a></li>
-</ul></li>
-<li><a href="prob.html#definições-de-probabilidades" id="toc-definições-de-probabilidades"><span class="toc-section-number">5.2</span> Definições de probabilidades<span></span></a></li>
-<li><a href="prob.html#propriedades" id="toc-propriedades"><span class="toc-section-number">5.3</span> Propriedades<span></span></a>
-<ul>
-<li><a href="prob.html#regra-de-adição-de-probabilidades" id="toc-regra-de-adição-de-probabilidades"><span class="toc-section-number">5.3.1</span> Regra de adição de probabilidades<span></span></a></li>
-<li><a href="prob.html#probabilidade-de-um-evento-complementar" id="toc-probabilidade-de-um-evento-complementar"><span class="toc-section-number">5.3.2</span> Probabilidade de um evento complementar<span></span></a></li>
-</ul></li>
-<li><a href="prob.html#eventos-independentes-e-probabilidade-condicional" id="toc-eventos-independentes-e-probabilidade-condicional"><span class="toc-section-number">5.4</span> Eventos independentes e probabilidade condicional<span></span></a></li>
-<li><a href="prob.html#teorema-de-bayes" id="toc-teorema-de-bayes"><span class="toc-section-number">5.5</span> Teorema de Bayes<span></span></a></li>
-<li><a href="prob.html#variável-aleatória" id="toc-variável-aleatória"><span class="toc-section-number">5.6</span> Variável Aleatória<span></span></a></li>
-<li><a href="prob.html#distribuição-de-probabilidade-discreta" id="toc-distribuição-de-probabilidade-discreta"><span class="toc-section-number">5.7</span> Distribuição de probabilidade discreta<span></span></a></li>
-<li><a href="prob.html#distribuição-de-probabilidade-contínua" id="toc-distribuição-de-probabilidade-contínua"><span class="toc-section-number">5.8</span> Distribuição de probabilidade contínua<span></span></a></li>
-<li><a href="prob.html#função-de-distribuição-acumulada-fda" id="toc-função-de-distribuição-acumulada-fda"><span class="toc-section-number">5.9</span> Função de distribuição acumulada (FDA)<span></span></a>
-<ul>
-<li><a href="prob.html#fda-para-x-discreta" id="toc-fda-para-x-discreta"><span class="toc-section-number">5.9.1</span> FDA para <span class="math inline">\(X\)</span> discreta<span></span></a></li>
-<li><a href="prob.html#fda-para-x-contínua" id="toc-fda-para-x-contínua"><span class="toc-section-number">5.9.2</span> FDA para <span class="math inline">\(X\)</span> contínua<span></span></a></li>
-</ul></li>
-<li><a href="prob.html#esperança-matemática-e-variância" id="toc-esperança-matemática-e-variância"><span class="toc-section-number">5.10</span> Esperança matemática e variância<span></span></a>
-<ul>
-<li><a href="prob.html#esperança-matemática" id="toc-esperança-matemática"><span class="toc-section-number">5.10.1</span> Esperança matemática<span></span></a></li>
-<li><a href="prob.html#mediana-1" id="toc-mediana-1"><span class="toc-section-number">5.10.2</span> Mediana<span></span></a></li>
-<li><a href="prob.html#moda-1" id="toc-moda-1"><span class="toc-section-number">5.10.3</span> Moda<span></span></a></li>
-<li><a href="prob.html#variância-e-desvio-padrão" id="toc-variância-e-desvio-padrão"><span class="toc-section-number">5.10.4</span> Variância e desvio padrão<span></span></a></li>
-</ul></li>
-<li><a href="prob.html#exercícios-propostos-4" id="toc-exercícios-propostos-4">Exercícios propostos<span></span></a></li>
-</ul></li>
-<li><a href="distprob.html#distprob" id="toc-distprob"><span class="toc-section-number">6</span> Distribuições de probabilidade<span></span></a>
-<ul>
-<li><a href="distprob.html#introdução-4" id="toc-introdução-4"><span class="toc-section-number">6.1</span> Introdução<span></span></a></li>
-<li><a href="distprob.html#distribuições-discretas-de-probabilidades" id="toc-distribuições-discretas-de-probabilidades"><span class="toc-section-number">6.2</span> Distribuições discretas de probabilidades<span></span></a>
-<ul>
-<li><a href="distprob.html#distribuição-bernoulli" id="toc-distribuição-bernoulli"><span class="toc-section-number">6.2.1</span> Distribuição Bernoulli<span></span></a></li>
-<li><a href="distprob.html#distribuição-binomial" id="toc-distribuição-binomial"><span class="toc-section-number">6.2.2</span> Distribuição Binomial<span></span></a></li>
-<li><a href="distprob.html#distribuição-poisson" id="toc-distribuição-poisson"><span class="toc-section-number">6.2.3</span> Distribuição Poisson<span></span></a></li>
-<li><a href="distprob.html#relação-entre-a-distribuição-binomial-e-poisson" id="toc-relação-entre-a-distribuição-binomial-e-poisson"><span class="toc-section-number">6.2.4</span> Relação entre a distribuição Binomial e Poisson<span></span></a></li>
-</ul></li>
-<li><a href="distprob.html#distribuições-contínuas-de-probabilidades" id="toc-distribuições-contínuas-de-probabilidades"><span class="toc-section-number">6.3</span> Distribuições contínuas de probabilidades<span></span></a>
-<ul>
-<li><a href="distprob.html#distribuição-normal" id="toc-distribuição-normal"><span class="toc-section-number">6.3.1</span> Distribuição normal<span></span></a></li>
-</ul></li>
-</ul></li>
-<li><a href="amost.html#amost" id="toc-amost"><span class="toc-section-number">7</span> Amostragem<span></span></a>
-<ul>
-<li><a href="amost.html#introdução-5" id="toc-introdução-5"><span class="toc-section-number">7.1</span> Introdução<span></span></a></li>
-<li><a href="amost.html#amostragem-não-probabilística-e-probabilística" id="toc-amostragem-não-probabilística-e-probabilística"><span class="toc-section-number">7.2</span> Amostragem não-probabilística e probabilística<span></span></a></li>
-<li><a href="amost.html#técnicas-de-amostragem-probabilística" id="toc-técnicas-de-amostragem-probabilística"><span class="toc-section-number">7.3</span> Técnicas de amostragem probabilística<span></span></a></li>
-</ul></li>
-<li><a href="distamost.html#distamost" id="toc-distamost"><span class="toc-section-number">8</span> Distribuição de amostragem<span></span></a>
-<ul>
-<li><a href="distamost.html#introdução-6" id="toc-introdução-6"><span class="toc-section-number">8.1</span> Introdução<span></span></a></li>
-<li><a href="distamost.html#distribuição-de-amostragem-da-média" id="toc-distribuição-de-amostragem-da-média"><span class="toc-section-number">8.2</span> Distribuição de amostragem da média<span></span></a></li>
-<li><a href="distamost.html#distribuição-de-amostragem-de-proporções" id="toc-distribuição-de-amostragem-de-proporções"><span class="toc-section-number">8.3</span> Distribuição de amostragem de proporções<span></span></a></li>
-<li><a href="distamost.html#distribuição-de-amostragem-de-diferença-entre-médias" id="toc-distribuição-de-amostragem-de-diferença-entre-médias"><span class="toc-section-number">8.4</span> Distribuição de amostragem de diferença entre médias<span></span></a></li>
-<li><a href="distamost.html#distribuições-amostrais-para-variância" id="toc-distribuições-amostrais-para-variância"><span class="toc-section-number">8.5</span> Distribuições amostrais para variância<span></span></a></li>
-</ul></li>
-<li><a href="teoest.html#teoest" id="toc-teoest"><span class="toc-section-number">9</span> Teoria de estimação<span></span></a>
-<ul>
-<li><a href="teoest.html#introdução-7" id="toc-introdução-7"><span class="toc-section-number">9.1</span> Introdução<span></span></a></li>
-<li><a href="teoest.html#conceitos-básicos-1" id="toc-conceitos-básicos-1"><span class="toc-section-number">9.2</span> Conceitos básicos<span></span></a></li>
-<li><a href="teoest.html#tipos-de-estimador" id="toc-tipos-de-estimador"><span class="toc-section-number">9.3</span> Tipos de estimador<span></span></a></li>
-<li><a href="teoest.html#propriedades-de-um-estimador" id="toc-propriedades-de-um-estimador"><span class="toc-section-number">9.4</span> Propriedades de um estimador<span></span></a></li>
-<li><a href="teoest.html#estimação-por-ponto" id="toc-estimação-por-ponto"><span class="toc-section-number">9.5</span> Estimação por ponto<span></span></a></li>
-<li><a href="teoest.html#estimação-por-intervalo" id="toc-estimação-por-intervalo"><span class="toc-section-number">9.6</span> Estimação por intervalo<span></span></a>
-<ul>
-<li><a href="teoest.html#intervalo-de-confiança-para-a-média" id="toc-intervalo-de-confiança-para-a-média"><span class="toc-section-number">9.6.1</span> Intervalo de confiança para a média<span></span></a></li>
-<li><a href="teoest.html#intervalo-de-confiança-para-a-variância" id="toc-intervalo-de-confiança-para-a-variância"><span class="toc-section-number">9.6.2</span> Intervalo de confiança para a variância<span></span></a></li>
-<li><a href="teoest.html#intervalo-de-confiança-de-confiança-para-a-diferença-entre-médias" id="toc-intervalo-de-confiança-de-confiança-para-a-diferença-entre-médias"><span class="toc-section-number">9.6.3</span> Intervalo de confiança de confiança para a diferença entre médias<span></span></a></li>
-</ul></li>
-<li><a href="teoest.html#dimensionamento-de-amostras" id="toc-dimensionamento-de-amostras"><span class="toc-section-number">9.7</span> Dimensionamento de amostras<span></span></a></li>
-</ul></li>
-<li><a href="teodec.html#teodec" id="toc-teodec"><span class="toc-section-number">10</span> Teoria da decisão<span></span></a>
-<ul>
-<li><a href="teodec.html#introdução-8" id="toc-introdução-8"><span class="toc-section-number">10.1</span> Introdução<span></span></a></li>
-<li><a href="teodec.html#teste-de-hipóteses" id="toc-teste-de-hipóteses"><span class="toc-section-number">10.2</span> Teste de hipóteses<span></span></a></li>
-<li><a href="teodec.html#erros-tipo-i-e-ii" id="toc-erros-tipo-i-e-ii"><span class="toc-section-number">10.3</span> Erros tipo I e II<span></span></a></li>
-<li><a href="teodec.html#teste-unilateral-e-bilateral" id="toc-teste-unilateral-e-bilateral"><span class="toc-section-number">10.4</span> Teste unilateral e bilateral<span></span></a></li>
-<li><a href="teodec.html#passos-para-a-construção-de-um-teste-de-hipótese" id="toc-passos-para-a-construção-de-um-teste-de-hipótese"><span class="toc-section-number">10.5</span> Passos para a construção de um teste de hipótese<span></span></a></li>
-<li><a href="teodec.html#testes-de-hipóteses-para-a-média" id="toc-testes-de-hipóteses-para-a-média"><span class="toc-section-number">10.6</span> Testes de hipóteses para a média<span></span></a></li>
-<li><a href="teodec.html#testes-de-hipóteses-para-a-proporção" id="toc-testes-de-hipóteses-para-a-proporção"><span class="toc-section-number">10.7</span> Testes de hipóteses para a proporção<span></span></a></li>
-<li><a href="teodec.html#testes-de-hipóteses-para-a-variância" id="toc-testes-de-hipóteses-para-a-variância"><span class="toc-section-number">10.8</span> Testes de hipóteses para a variância<span></span></a></li>
-<li><a href="teodec.html#testes-de-hipóteses-para-a-diferença-entre-duas-médias" id="toc-testes-de-hipóteses-para-a-diferença-entre-duas-médias"><span class="toc-section-number">10.9</span> Testes de hipóteses para a diferença entre duas médias<span></span></a></li>
-</ul></li>
-<li><a href="correg.html#correg" id="toc-correg"><span class="toc-section-number">11</span> Correlação e regressão linear simples<span></span></a>
-<ul>
-<li><a href="correg.html#introdução-9" id="toc-introdução-9"><span class="toc-section-number">11.1</span> Introdução<span></span></a></li>
-<li><a href="correg.html#correlação-linear" id="toc-correlação-linear"><span class="toc-section-number">11.2</span> Correlação linear<span></span></a>
-<ul>
-<li><a href="correg.html#coeficiente-de-correlação-linear" id="toc-coeficiente-de-correlação-linear"><span class="toc-section-number">11.2.1</span> Coeficiente de correlação linear<span></span></a></li>
-<li><a href="correg.html#teste-de-hipóteses-acerca-do-coeficiente-de-correlação-linear" id="toc-teste-de-hipóteses-acerca-do-coeficiente-de-correlação-linear"><span class="toc-section-number">11.2.2</span> Teste de hipóteses acerca do coeficiente de correlação linear<span></span></a></li>
-</ul></li>
-<li><a href="correg.html#regressão-linear-simples" id="toc-regressão-linear-simples"><span class="toc-section-number">11.3</span> Regressão linear simples<span></span></a>
-<ul>
-<li><a href="correg.html#modelo" id="toc-modelo"><span class="toc-section-number">11.3.1</span> Modelo<span></span></a></li>
-<li><a href="correg.html#estimação-dos-parâmetros-do-modelo" id="toc-estimação-dos-parâmetros-do-modelo"><span class="toc-section-number">11.3.2</span> Estimação dos parâmetros do modelo<span></span></a></li>
-<li><a href="correg.html#teste-de-hipóteses-para-o-modelo-de-regressão" id="toc-teste-de-hipóteses-para-o-modelo-de-regressão"><span class="toc-section-number">11.3.3</span> Teste de hipóteses para o modelo de regressão<span></span></a></li>
-<li><a href="correg.html#medidas-de-adequação-do-modelo" id="toc-medidas-de-adequação-do-modelo"><span class="toc-section-number">11.3.4</span> Medidas de adequação do modelo<span></span></a></li>
-</ul></li>
-</ul></li>
-<li><a href="apêndice-a---introdução-ao-r.html#apêndice-a---introdução-ao-r" id="toc-apêndice-a---introdução-ao-r">Apêndice A - Introdução ao R<span></span></a></li>
-<li><a href="referências.html#referências" id="toc-referências">Referências<span></span></a></li>
-<li class="divider"></li>
-<li><a href="https://bendeivide.github.io/book-epaec" target="blank">Acesse o curso desse material!</a></li>
-
-</ul>
-
-      </nav>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Bem-vindo</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estatística &amp; Probabilidade</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Estatística &amp; Probabilidade</h1>
-<h2 class="subtitle"><em>aplicadas às Engenharias e Ciências</em></h2>
-<p class="author"><em>Ben Dêivide de Oliveira Batista</em></p>
-<p class="date"><em>2022-09-02</em></p>
-</div>
-<div id="bem-vindo" class="section level1 unnumbered hasAnchor">
-<h1>Bem-vindo<a href="index.html#bem-vindo" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><a href="http://bendeivide.github.io/books/epaec/"><img src="images/cover.png" align="right" width="250" height="366" class="cover" alt="Compre pela internet" /></a> Esse é um <em>livro digital</em> da 1ª edição do <strong>“<a href="">Estatística &amp; Probabilidade aplicado às Engenharias e Ciências</a>”</strong>, um livro com o selo <strong>Democratizando Conhecimento</strong> (<strong>DC</strong>). O Livro é voltado para quem deseja iniciar no estudo sobre a estatística. Daremos as bases e fundamentos, de modo aplicado a problemas na área das Engenharias e Ciências, de assuntos desde o que é uma população, amostra, até estudos sobre a teoria de decisão, estudo de regressão, dentre outros assuntos básicos, para que assim, a partir desse material, o leitor tenha base para ler, assuntos mais aprofundados na área da estatística.</p>
-O número de leitores que acessaram esse livro:
-</br>
-<div align="center">
-<a href='https://www.free-website-hit-counter.com'><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=127145&s=76' border='0' alt='Free Website Hit Counter'></a><br / ><small><a href='https://www.free-website-hit-counter.com' title="Free Website Hit Counter">Free website hit counter</a></small>
-</div>
-<div id="sugestões-e-críticas" class="section level2 unnumbered hasAnchor">
-<h2>Sugestões e críticas<a href="index.html#sugestões-e-críticas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Sugestões e críticas sobre o livro podem ser enviadas para <a href="mailto:livrosdeben@gmail.com">livrosdeben@gmail.com</a>.</p>
-</div>
-<div id="licença" class="section level2 unnumbered hasAnchor">
-<h2>Licença<a href="index.html#licença" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />Este trabalho está licenciado com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons - Atribuição-NãoComercial 4.0 Internacional</a>.</p>
-<p><a href="https://bendeivide.github.io/dc/"><img src="Logo-DC-preto2.png" align="left" width="180" /></a></p>
-</div>
-</div>
-            </section>
-
-          </div>
-        </div>
-      </div>
-
-<a href="epígrafe.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Estatística &amp; Probabilidade aplicada às Engenharias e Ciências</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo de leitor">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": true,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": true,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/bendeivide/book-epaec/edit/master/index.Rmd",
-"text": "Edite"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["book-epaec.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection",
-"scroll_highlight": true
-},
-"toolbar": {
-"position": "fixed"
-}
-});
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Bem-vindo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Definições Gerais da Estatística e técnicas de somatórios</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Coleta, organização e apresentação dos dados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Medidas de Posição</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medidas de dispersão</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidades</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Distribuições de probabilidades</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Amostragem</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Distribuição de amostragem</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Teoria da estimação</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria da decisão</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cap11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Correlação e regressão linear simples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#bem-vindo" id="toc-bem-vindo" class="nav-link active" data-scroll-target="#bem-vindo">Bem-vindo</a>
+  <ul class="collapse">
+  <li><a href="#sugestões-e-críticas" id="toc-sugestões-e-críticas" class="nav-link" data-scroll-target="#sugestões-e-críticas">Sugestões e críticas</a></li>
+  </ul></li>
+  <li><a href="#livro-físico" id="toc-livro-físico" class="nav-link" data-scroll-target="#livro-físico">Livro físico</a></li>
+  <li><a href="#isbn" id="toc-isbn" class="nav-link" data-scroll-target="#isbn">ISBN</a></li>
+  <li><a href="#licença" id="toc-licença" class="nav-link" data-scroll-target="#licença">Licença</a></li>
+  <li><a href="#como-citar" id="toc-como-citar" class="nav-link" data-scroll-target="#como-citar">Como citar</a></li>
+  <li><a href="#epígrafe" id="toc-epígrafe" class="nav-link" data-scroll-target="#epígrafe">Epígrafe</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Estatística &amp; Probabilidade aplicada às Engenharias e Ciências</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ben Dêivide de O. Batista </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+<section id="bem-vindo" class="level1 unnumbered">
+<h1 class="unnumbered">Bem-vindo</h1><p><img src="hardcover.png" title="Estatística &amp; Probabilidade aplicada às Engenharias e Ciências" class="quarto-cover-image img-fluid"></p>
+<p>Esse é um <em>livro digital</em> da 1ª edição do <strong>“<a href="">Estatística &amp; Probabilidade aplicado às Engenharias e Ciências</a>”</strong>, um livro com o selo <strong>Democratizando Conhecimento</strong> (<strong>DC</strong>). O Livro é voltado para quem deseja iniciar no estudo sobre a estatística. Daremos as bases e fundamentos, de modo aplicado a problemas na área das Engenharias e Ciências, de assuntos desde o que é uma população, amostra, até estudos sobre a teoria de decisão, estudo de regressão, dentre outros assuntos básicos, para que assim, a partir desse material, o leitor tenha base para ler, assuntos mais aprofundados na área da estatística.</p>
+O número de leitores que acessaram esse livro: <br>
+<center>
+<!-- hitwebcounter Code START -->
+<a href="https://www.hitwebcounter.com" target="_blank"> <img src="https://hitwebcounter.com/counter/counter.php?page=16854965&amp;style=0030&amp;nbdigits=9&amp;type=page&amp;initCount=3000" title="Counter Widget" alt="Visit counter For Websites" border="0"></a>
+</center>
+<section id="sugestões-e-críticas" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sugestões-e-críticas">Sugestões e críticas</h2>
+<p>Sugestões e críticas sobre o livro podem ser enviadas para <a href="mailto:livrosdeben@gmail.com">livrosdeben@gmail.com</a>.</p>
+</section>
+</section>
+<section id="livro-físico" class="level1 unnumbered">
+<h1 class="unnumbered">Livro físico</h1>
+</section>
+<section id="isbn" class="level1 unnumbered">
+<h1 class="unnumbered">ISBN</h1>
+<ul>
+<li><strong>ISBN</strong> (Digital): 978-65-00-66079-1</li>
+<li><strong>ISBN</strong> (Físico): 978-65-XX-XXXXX-X</li>
+</ul>
+</section>
+<section id="licença" class="level1 unnumbered">
+<h1 class="unnumbered">Licença</h1>
+<div class="columns">
+<div class="column v-center-container" style="width:30%;">
+<p><br></p>
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"></a></p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+</a></div><div class="column" style="width:70%;"><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+</a><p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"></a><br>Este trabalho está sob a Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons - Atribuição-NãoComercial 4.0 Internacional</a>.</p>
+</div>
+</div>
+<div class="columns">
+<div class="column v-center-container" style="width:30%;">
+<p><br></p>
+<p><a href="https://bendeivide.github.io/dc/"><img src="SeloDC-preto.png" align="left" width="100"></a></p>
+</div><div class="column" style="width:70%;">
+<p>Usamos também a filosofia de trabalho com o Selo Democratizando Conhecimento (DC), que pode ser acessada em <a href="https://bendeivide.github.io/dc/" class="uri">https://bendeivide.github.io/dc/</a>. O leitor é livre para compartilhar, redistribuir, transformar ou adaptar esta obra, desde que não venha a utilizá-la em nenhuma atividade de propósito comercial. Por fim, a única exigência é a atribuição dos créditos aos autores da obra.</p>
+</div>
+</div>
+<p><br> <br></p>
+</section>
+<section id="como-citar" class="level1 unnumbered">
+<h1 class="unnumbered">Como citar</h1>
+<ul>
+<li>Como citar essa obra (Impressa):</li>
+</ul>
+<p>BATISTA, B. D. O.. <strong>Estatística Básica aplicada às Engenharias e Ciências</strong>. Ouro Branco, MG: [s.n.]. 2024. XXX p.&nbsp;ISBN 978-65-XX-XXXXX-X.</p>
+<ul>
+<li>Como citar essa obra (Digital):</li>
+</ul>
+<p>BATISTA, B. D. O.. <strong>Estatística Básica aplicada às Engenharias e Ciências</strong>. Ouro Branco, MG: [s.n.]. 2024. XXX p.&nbsp;ISBN 978-65-00-66079-1. Disponível em: <a href="https://bendeivide.%20github.io/book-epaec/">https://bendeivide. github.io/book-epaec/</a>. Acesso em: 04:13, quarta, 23 outubro 2024.</p>
+</section>
+<section id="epígrafe" class="level1 unnumbered">
+<h1 class="unnumbered">Epígrafe</h1>
+<p><em>O pulsar de minha existência está intensa e totalmente no presente da vida</em> (Ben Dêivide)</p>
+
+
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-banzato2006" class="csl-entry" role="listitem">
+BANZATTO, D. A.; NASCIMENTO KRONKA, S. DO. <strong>Experimentação Agrícola</strong>. Jaboticabal: Funep, 2006. p. 237
+</div>
+<div id="ref-barbin2003" class="csl-entry" role="listitem">
+BARBIN, D. <strong>Planejamento e Análise Estatística de Experimentos Agrômica</strong>. Arapongas: Midas, 2003. p. 208
+</div>
+<div id="ref-bolfarinebussab2005" class="csl-entry" role="listitem">
+BOLFARINE, H.; BUSSAB, W. O. <strong>Elementos de Amostragem</strong>. São Paulo: Edgard Blucher, 2005. p. 274
+</div>
+<div id="ref-bolfarine2010" class="csl-entry" role="listitem">
+BOLFARINE, H.; SANDOVAL, M. C. <strong>Introdução à <span>I</span>nferência <span>E</span>statística</strong>. 2. ed. São Paulo: SBM, 2010. p. 159
+</div>
+<div id="ref-cochrancox2005" class="csl-entry" role="listitem">
+COCHRAN, W.; COX, G. M. <strong>Experimental <span>D</span>esigns</strong>. 2. ed. New York: John Wiley &amp; Sons, 2005. p. 618
+</div>
+<div id="ref-crespo2009" class="csl-entry" role="listitem">
+CRESPO, A. A. <strong>Estatística Fácil</strong>. 19. ed. São Paulo: Saraiva, 2009. p. 232
+</div>
+<div id="ref-dantas2008" class="csl-entry" role="listitem">
+DANTAS, C. A. B. <strong>Probabilidade: Um <span>C</span>urso <span>I</span>ntrodutório</strong>. 3. ed. São Paulo: EDUSP, 2008. p. 256
+</div>
+<div id="ref-drapersmith1998" class="csl-entry" role="listitem">
+DRAPER, N. R.; SMITH, H. <strong>Applied regression analysis</strong>. 3. ed. New York: Wiley, 1998. p. 736
+</div>
+<div id="ref-magalhaes2011" class="csl-entry" role="listitem">
+MAGALHAES, M. N. <strong>Probabilidade e variáveis aleatórias</strong>. 3. ed. São Paulo: EDUSP, 2011. p. 424
+</div>
+<div id="ref-magalhaeslima2023" class="csl-entry" role="listitem">
+MAGALHAES, M. N.; LIMA, A. C. P. <strong>Noções de <span>P</span>robabilidade e <span>E</span>statística</strong>. 7. ed. São Paulo: EDUSP, 2023. p. 428
+</div>
+<div id="ref-meyer2000" class="csl-entry" role="listitem">
+MEYER, P. L. <strong>Probabilidade: aplicações á estatística</strong>. 2. ed. Rio de <span>J</span>aneiro: LTC, 2000. p. 426
+</div>
+<div id="ref-montgomery2019" class="csl-entry" role="listitem">
+MONTGOMERY, D. C. <strong>Design and <span>A</span>nalysis of <span>E</span>xperiments</strong>. 9. ed. New Jersey: Wiley, 2019. p. 752
+</div>
+<div id="ref-montgomery2021" class="csl-entry" role="listitem">
+MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatísta <span>A</span>plicada e <span>P</span>robabilidade para <span>E</span>ngenheiros</strong>. 7. ed. Rio de <span>J</span>aneiro: LTC, 2021. p. 416
+</div>
+<div id="ref-mood1974" class="csl-entry" role="listitem">
+MOOD, A. M.; GRAYBILL, F. A.; BOES, D. C. <strong>Introduction to the <span>T</span>heory of <span>S</span>tatistics</strong>. New York: John <span>W</span>iley &amp; <span>S</span>ons, 1974. p. 564
+</div>
+<div id="ref-pagano2004" class="csl-entry" role="listitem">
+PAGANO, M.; GAUVREAU, K. <strong>Princípios de Bioestatística</strong>. São Paulo: Thomson, 2004. p. 506
+</div>
+<div id="ref-pimentelgomes2022" class="csl-entry" role="listitem">
+PIMENTEL-GOMES, F. <strong>Curso de <span>E</span>statística <span>E</span>xperimental</strong>. 15. ed. Piracicaba: FEALQ, 2022. p. 451
+</div>
+<div id="ref-silva2015" class="csl-entry" role="listitem">
+SILVA, N. N. <strong>Amostragem <span>P</span>robabilística</strong>. 3. ed. São Paulo: EDUSP, 2015. p. 136
+</div>
+<div id="ref-souza1998" class="csl-entry" role="listitem">
+SOUZA, G. S. <strong>Introdução aos <span>M</span>odelos de <span>R</span>egressão <span>L</span>inear e <span>N</span>ão-<span>L</span>inear</strong>. Brasília: EMBRAPA, 1998. p. 489
+</div>
+<div id="ref-st1980" class="csl-entry" role="listitem">
+STEEL, R. G. D.; TORRIE, J. H. <strong>Principles and procedures of statistics: A biometrical approach</strong>. 2. ed. New York: McGraw-Hill Book Company, 1980. p. 512
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./cap01.html" class="pagination-link" aria-label="Definições Gerais da Estatística e técnicas de somatórios">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Definições Gerais da Estatística e técnicas de somatórios</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Estatística &amp; Probabilidade aplicada às Engenharias e Ciências foi escrito por <a href="https://bendeivide.github.io/">Ben Dêivide de O. Batista.</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Esse livro foi desenvolvido com o <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-</body>
 
-</html>
+
+
+</body></html>
