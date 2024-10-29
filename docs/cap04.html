@@ -125,31 +125,31 @@ div.csl-indent {
   }
 }</script>
 <style>
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Proof {
-  --color1: #aaa6a3;
-}
-.Solution {
-  --color1: #9ad5f6;
+.Theorem {
+  --color1: #d14747;
+  --color2: #8b1f1f;
 }
 .Definition {
   --color1: #5e737f;
   --color2: #49606d;
 }
-.Exercise {
-  --color1: #4485f6;
-  --color2: #479bd1;
-}
 .Example {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Theorem {
-  --color1: #d14747;
-  --color2: #8b1f1f;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Solution {
+  --color1: #9ad5f6;
+}
+.Proof {
+  --color1: #aaa6a3;
+}
+.Exercise {
+  --color1: #4485f6;
+  --color2: #479bd1;
 }
 </style>
 
@@ -317,6 +317,9 @@ window.Quarto = {
   <ul>
   <li><a href="#amplitude-total-ou-amplitude" id="toc-amplitude-total-ou-amplitude" class="nav-link active" data-scroll-target="#amplitude-total-ou-amplitude"><span class="header-section-number">4.1</span> Amplitude total ou Amplitude</a></li>
   <li><a href="#variância" id="toc-variância" class="nav-link" data-scroll-target="#variância"><span class="header-section-number">4.2</span> Variância</a></li>
+  <li><a href="#desvio-padrão" id="toc-desvio-padrão" class="nav-link" data-scroll-target="#desvio-padrão"><span class="header-section-number">4.3</span> Desvio padrão</a></li>
+  <li><a href="#coeficiente-de-variação" id="toc-coeficiente-de-variação" class="nav-link" data-scroll-target="#coeficiente-de-variação"><span class="header-section-number">4.4</span> Coeficiente de Variação</a></li>
+  <li><a href="#erro-padrão-da-média" id="toc-erro-padrão-da-média" class="nav-link" data-scroll-target="#erro-padrão-da-média"><span class="header-section-number">4.5</span> Erro padrão da média</a></li>
   <li><a href="#exercícios-propostos" id="toc-exercícios-propostos" class="nav-link" data-scroll-target="#exercícios-propostos">Exercícios propostos</a></li>
   </ul>
 </nav>
@@ -343,7 +346,7 @@ window.Quarto = {
 </header>
 
 
-<p>Iniciamos este capítulo, motivados por três conjuntos de dados que resultaram em mesma média aritmética propositalmente. Vejamos o <a href="#lst-codRmeddisp" class="quarto-xref">Código R&nbsp;<span>4.1</span></a> a seguir. Esse código apresenta uma simulação de três grupos com 10 observações cada um. Os grupos formados foram , e , com suas respectivas médias <span class="math inline">\(\bar{X}_{\textrm{\textsf gA}} = 9,018686\)</span> unid., <span class="math inline">\(\bar{X}_{\textrm{\textsf gB}} = 9,018686\)</span> unid. e <span class="math inline">\(\bar{X}_{\textrm{\textsf gC}} = 9,018686\)</span> unid., respectivamente. Dessa forma, poderíamos concluir que os grupos de dados são iguais? A resposta é não. Isso significa, que somente a medida de posição não satisfaz quanto a caracterização dos dados.</p>
+<p>Iniciamos este capítulo, motivados por três conjuntos de dados que resultaram em mesma média aritmética propositalmente. Vejamos o <a href="#lst-codRmeddisp" class="quarto-xref">Código R&nbsp;<span>4.1</span></a> a seguir. Esse código apresenta uma simulação de três grupos com 10 observações cada um. Os grupos formados foram <code>gA</code>, <code>gB</code> e <code>gC</code>, com suas respectivas médias <span class="math inline">\(\bar{X}_{\textrm{\textsf gA}} = 9,018686\)</span> unid., <span class="math inline">\(\bar{X}_{\textrm{\textsf gB}} = 9,018686\)</span> unid. e <span class="math inline">\(\bar{X}_{\textrm{\textsf gC}} = 9,018686\)</span> unid., respectivamente. Dessa forma, poderíamos concluir que os grupos de dados são iguais? A resposta é não. Isso significa, que somente a medida de posição não satisfaz quanto a caracterização dos dados.</p>
 <div class="cell">
 <div id="lst-codRmeddisp" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
@@ -521,7 +524,7 @@ Tabela&nbsp;4.1: Dados dos três grupos simulados pelo <a href="#lst-codRmeddisp
 </tr>
 </tbody>
 </table>
-<p>Por esse resultado, podemos observar os grupos e que suas amplitudes foram iguais. Será que podemos, então afirmar que esses dois grupos são iguais? Quando observamos os dados, percebemos que os valores não são iguais. Isso ocorre por uma limitação nessa medida de dispersão. Vamos deixar para explorar essa situação mais a frente.</p>
+<p>Por esse resultado, podemos observar os grupos <code>gB</code> e <code>gC</code> que suas amplitudes foram iguais. Será que podemos, então afirmar que esses dois grupos são iguais? Quando observamos os dados, percebemos que os valores não são iguais. Isso ocorre por uma limitação nessa medida de dispersão. Vamos deixar para explorar essa situação mais a frente.</p>
 </div></details>
 </div>
 <p>Para a amplitude em termos de dados agrupados, temos a situação em que as variáveis podem ser discretas ou contínuas. No caso, das variáveis quantitativas contínuas, os grupos são classes, e os valores passam a ser representados pelos seus pontos médios de cada classe. Assim, apresentamos na Definição <a href="cap04.html#def:ampagrupado">4.3</a>, a amplitude para dados agrupados com e sem intervalo de classe.</p>
@@ -648,7 +651,7 @@ Tabela&nbsp;4.1: Dados dos três grupos simulados pelo <a href="#lst-codRmeddisp
 \tag{4.15}\]</span></span><p></p>
 </div></details>
 </div>
-<p>Para elucidar essas informações, vejamos o Exemplo <a href="cap04.html#ex:dadosimvar">4.4</a>.</p>
+<p>Para elucidar essas informações, vejamos o Exemplo <a href="cap04.html#ex:dadosimvar">4.6</a>.</p>
 <div id="ex:dadosimvar" class="Example">
 <p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 4.4</strong></summary><div>Retornando aos dados amostrais simulados na <a href="#tbl-tresgrupos" class="quarto-xref">Tabela&nbsp;<span>4.1</span></a>, podemos calcular a variância amostral para cada um dos grupos. Vamos usar a expressão (<a href="#eq-varamost3" class="quarto-xref"><span>4.15</span></a>) para isso, que segue:<p></p>
 <ul>
@@ -753,7 +756,7 @@ Código R&nbsp;4.2: Cálculo da variância.
 </figure>
 </div>
 </div>
-<p>Podemos observar no <a href="#lst-codRvari" class="quarto-xref">Código R&nbsp;<span>4.2</span></a>, que o cálculo da variância para as variáveis quantitativas discretas não mudam o resultado quando os dados estão agrupados ou não. Porém, o mesmo não ocorre para as variáveis quantitativas contínuas. Essa discussão será deixada como exercício proposto no Exercício <a href="cap04.html#exerc:Ex4.8">4.1</a>.</p>
+<p>Podemos observar no <a href="#lst-codRvari" class="quarto-xref">Código R&nbsp;<span>4.2</span></a>, que o cálculo da variância para as variáveis quantitativas discretas não mudam o resultado quando os dados estão agrupados ou não. Porém, o mesmo não ocorre para as variáveis quantitativas contínuas. Essa discussão será deixada como exercício proposto no Exercício <a href="cap04.html#exerc:Ex4.8">4.8</a>.</p>
 <p>Vejamos algumas características da variância:</p>
 <ul>
 <li>a unidade da variância está na escala ao quadrado da unidade da variável;</li>
@@ -776,27 +779,283 @@ Código R&nbsp;4.2: Cálculo da variância.
 <div id="Proof*-4.2" class="Proof">
 <details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
 <ol type="I">
-<li>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, , <span class="math inline">\(X_n\)</span>, e <span class="math inline">\(c\)</span> uma constante, e que <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então a variância de <span class="math inline">\(Y_i\)</span> é dado por: <span class="math display">\[\begin{align*}
+<li><p>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, e <span class="math inline">\(c\)</span> uma constante, e que <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então a variância de <span class="math inline">\(Y_i\)</span> é dado por: <span class="math display">\[\begin{align*}
 S^2_Y &amp; = \frac{\sum_{i = 1}^{n}(Y_i - \bar{Y})^2}{n - 1}\\
      &amp; = \frac{\sum_{i = 1}^{n}[(X_i \pm c) - (\bar{X} \pm c)]^2}{n - 1}\\
       &amp; = \frac{\sum_{i = 1}^{n}(X_i - \bar{X})^2}{n - 1}\\
      &amp; = S^2_X.
-  \end{align*}\]</span></li>
-<li>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, e <span class="math inline">\(c\)</span> uma constante, e que <span class="math inline">\(Y_i = X_i \times c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então a variância de <span class="math inline">\(Y_i\)</span> é dado por: <span class="math display">\[\begin{align*}
+  \end{align*}\]</span></p></li>
+<li><p>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, e <span class="math inline">\(c\)</span> uma constante, e que <span class="math inline">\(Y_i = X_i \times c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então a variância de <span class="math inline">\(Y_i\)</span> é dado por: <span class="math display">\[\begin{align*}
 S^2_Y &amp; = \frac{\sum_{i = 1}^{n}(Y_i - \bar{Y})^2}{n - 1}\\
     &amp; = \frac{\sum_{i = 1}^{n}[(X_i \times c) - (\bar{X} \times c)]^2}{n - 1}\\
     &amp; = \frac{\sum_{i = 1}^{n}c^2(X_i - \bar{X})^2}{n - 1}\\
     &amp; = c^2 \times \frac{\sum_{i = 1}^{n}(X_i - \bar{X})^2}{n - 1}, \quad \textrm{(Teorema 1.1, (I))}\\
     &amp; = c^2 \times S^2_X.
+  \end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="desvio-padrão" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="desvio-padrão"><span class="header-section-number">4.3</span> Desvio padrão</h2>
+<p>A variância apesar de ter resolvido alguns dos problemas mencionados anteriormente, para uma medida de dispersão, apresenta sua unidade ao quadrado da unidade da variável em estudo, isso significa que se tivermos usando uma variável na escala de metros, a dispersão dada pela variância estará na escala de área, isto é, em metros ao quadrado. Isso se torna difícil a percepção de dispersão quando observamos os dados. Dessa forma, surge a medida do desvio padrão, definida a seguir.</p>
+<div id="def:desvpad" class="Definition" title="Desvio padrão">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 4.7: </strong>Desvio padrão</summary><div>O desvio padrão é definido por: <span id="eq-desvpad1"><span class="math display">\[
+\begin{align}
+  \sigma &amp; = \sqrt{\sigma^2}, \quad \textrm{(População)}
+\end{align}
+\tag{4.18}\]</span></span> e <span id="eq-desvpad2"><span class="math display">\[
+\begin{align}
+    S &amp; = \sqrt{S^2}, \quad \textrm{(Amostra)}
+\end{align}
+\tag{4.19}\]</span></span> em que <span class="math inline">\(\sigma^2\)</span> e <span class="math inline">\(S\)</span> representam as variâncias populacional e amostral, respectivamente, apresentadas nas Definições <a href="cap04.html#def:varpop">4.4</a> e <a href="cap04.html#def:varamost">4.5</a> para o caso de dados não agrupados, e Definição <a href="cap04.html#def:varagrupado">4.6</a> na condição de dados agrupados.<p></p>
+</div></details>
+</div>
+<p>Com o desvio padrão, podemos verificar a medida de variabilidade na mesma unidade da variável. Cabe destacar que a expressão (<a href="#eq-desvpad1" class="quarto-xref"><span>4.18</span></a> mede a variabilidade das observações em torno da média populacional. Porém na prática, não conhecemos o parâmetro <span class="math inline">\(\mu\)</span> nem muito menos temos informações de todas as observações. Com isso usamos como estimador de <span class="math inline">\(\sigma\)</span>, o desvio padrão amostral dado na expressão (<a href="#eq-desvpad2" class="quarto-xref"><span>4.19</span></a>), que se baseia em apenas uma amostra. Vejamos o exemplo a seguir.</p>
+<div id="ex:dadosimvar" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 4.6</strong></summary><div>Retornando ao Exemplo <a href="cap04.html#ex:dadosim">4.2</a>, podemos então calcular os desvios padrões dos grupos, que segue:<p></p>
+<ul>
+<li>Desvio padrão amostral para o grupo <code>gA</code>: <span class="math display">\[\begin{align*}
+  S_{\textrm{gA}} &amp; = \sqrt{1,959404} = 1,399787~unid.
+\end{align*}\]</span></li>
+<li>Desvio padrão amostral para o grupo <code>gB</code>: <span class="math display">\[\begin{align*}
+  S_{\textrm{gB}} &amp; = \sqrt{19,51007} = 4,41702~und.
+\end{align*}\]</span></li>
+<li>Desvio padrão amostral para o grupo <code>gC</code>: <span class="math display">\[\begin{align*}
+S_{\textrm{gC}} &amp; =  \sqrt{19,72232} = 4,440982~und.
+\end{align*}\]</span></li>
+</ul>
+<p>Considerando que as unidades dos grupos são iguais, bem como as suas médias, podemos concluir que o grupo <code>gA</code> apresenta menor dispersão. Claro que esse resultado poderia ter sido observado pela variância. A diferença é que conseguimos entender na unidade da variável essa dispersão.</p>
+</div></details>
+</div>
+<p>Contudo, quando iremos comparar grupos de dados e verificar qual grupo apresenta maior variabilidade, devemos ter muito cuidado ao usar o desvio padrão ou a variância, sob dois aspectos:</p>
+<ol type="1">
+<li>Os grupos de observações devem estar na mesma unidade de mensuração;</li>
+<li>A média desses grupos devem ser iguais.</li>
+</ol>
+<p>O primeiro aspecto está muito claro, uma vez que não temos, por exemplo, como comparar uma unidade em gramas e saber se a dispersão desses dados é maior ou menor quando se compara com outro conjunto de dados cuja unidade esteja na escala de comprimento. O segundo aspecto está limitado devido a forma de como foram calculados o desvio padrão e a variância. A soma de seus desvios levam em consideração a média. Assim, quando comparamos dois desvios padrões de duas amostras de uma população, em que temos o desvio padrão <span class="math inline">\(S^2_1 = 10~unid\)</span> para a amostra 1, e <span class="math inline">\(S^2_2 = 20~unid\)</span> para a amostra 2. Não podemos afirmar que a amostra 2 apresenta maior dispersão que a amostra 1, isso porque não sabemos o quanto esse valor representa em relação a média. Supomos que a média da amostra 1 seja <span class="math inline">\(\bar{X}_1 = 100~unid\)</span> e para a amostra 2, seja <span class="math inline">\(\bar{X}_1 = 50~unid\)</span>. Desse modo, observemos que para a amostra 1, o desvio padrão representa apenas 10% do valor da média. Já na amostra 2, o desvio padrão representa 40% da média, uma variação muito mais considerável, isto é, os dados na amostra 2 são muito mais dispersos em torno da média. Isso justifica então, a criação de uma medida de dispersão relativa à média, que será definida na próxima seção.</p>
+<p>Vejamos algumas características do desvio padrão, que segue:</p>
+<ul>
+<li>a unidade do desvio padrão está na mesma escala da unidade da variável em estudo;</li>
+<li>limitada apenas as variáveis quantitativas;</li>
+<li>uma vez que a média é sensível aos dados, o desvio padrão também é sensível, uma vez que esta depende da média;</li>
+<li>embora a variância amostral, <span class="math inline">\(S^2\)</span> seja um estimador não viesado para a variância populacional <span class="math inline">\(\sigma^2\)</span>, o desvio padrão amostral <span class="math inline">\(S\)</span>, que é derivado de <span class="math inline">\(S^2\)</span>, é um estimador viesado do desvio padrão populacional <span class="math inline">\(\sigma\)</span>;</li>
+<li>assim como a variância, o desvio padrão é sempre uma medida positiva, exceto quando todos os valores são iguais que resultam em uma variância nula;</li>
+<li>assim como na variância, quanto mais próximo de zero o desvio padrão for, mas concentrado os dados estão em torno da média, ao passo que, à medida que o desvio padrão se distancia de zero, mas disperso os dados estão em torno da média.</li>
+</ul>
+<p>Complementando as características do desvio padrão, apresentamos algumas propriedades no Teorema <a href="cap04.html#teo:devpad">4.3</a>, do qual iremos usar a Definição <a href="cap04.html#def:desvpad">4.7</a> como base, e as demais seguem de forma similar.</p>
+<div id="teo:devpad" class="Theorem" title="Propriedades do Desvio Padrão">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 4.3: </strong>Propriedades do Desvio Padrão</summary><div>
+<p>Baseado na Definição <a href="cap04.html#def:desvpad">4.7</a>, e considerando <span class="math inline">\(c\)</span> uma constante, então:</p>
+<ol type="I">
+<li>Se para uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, o desvio padrão é dado por <span class="math inline">\(S_X\)</span>, então para uma transformação de <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então o novo desvio padrão não se altera, isto é, <span class="math inline">\(S_Y = S_X\)</span>.</li>
+<li>Se para uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, o desvio padrão é dado por <span class="math inline">\(S_X\)</span>, então para uma transformação de <span class="math inline">\(Y_i = X_i \times c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então o novo desvio padrão é dado por <span class="math inline">\(S_Y = S_X \times c\)</span>. Esse resultado vale também para a transformação <span class="math inline">\(Y_i = X_i / m\)</span>, sendo <span class="math inline">\(m\)</span> também uma constante. Basta usar <span class="math inline">\(c = 1 / m\)</span> e o resultado é o mesmo.</li>
+</ol>
+</div></details>
+</div>
+<div id="Proof*-4.3" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<ol type="I">
+<li>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, e <span class="math inline">\(c\)</span> uma constante, e que <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então o desvio padrão de <span class="math inline">\(Y_i\)</span> é dado por:</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+    S_Y &amp; = \sqrt{\frac{\sum_{i = 1}^{n}(Y_i - \bar{Y})^2}{n - 1}}\\
+        &amp; = \sqrt{\frac{\sum_{i = 1}^{n}[(X_i \pm c) - (\bar{X} \pm c)]^2}{n - 1}}\\
+         &amp; = \sqrt{\frac{\sum_{i = 1}^{n}(X_i - \bar{X})^2}{n - 1}}\\
+        &amp; = S_X.
+  \end{align*}\]</span></p>
+<ol start="2" type="I">
+<li>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, e <span class="math inline">\(c\)</span> uma constante, e que <span class="math inline">\(Y_i = X_i \times c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então a variância de <span class="math inline">\(Y_i\)</span> é dado por: <span class="math display">\[\begin{align*}
+S_Y &amp; = \sqrt{\frac{\sum_{i = 1}^{n}(Y_i - \bar{Y})^2}{n - 1}}\\
+    &amp; = \sqrt{\frac{\sum_{i = 1}^{n}[(X_i \times c) - (\bar{X} \times c)]^2}{n - 1}}\\
+    &amp; = \sqrt{\frac{\sum_{i = 1}^{n}c^2(X_i - \bar{X})^2}{n - 1}}\\
+    &amp; = \sqrt{c^2\frac{\sum_{i = 1}^{n}(X_i - \bar{X})^2}{n - 1}}, \quad \textrm{(Teorema 1.1, (I))}\\
+    &amp; = c \times \sqrt{S^2_X},\\
+    &amp; = c \times S_X.
   \end{align*}\]</span></li>
 </ol>
 </div></details>
 </div>
 </section>
+<section id="coeficiente-de-variação" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="coeficiente-de-variação"><span class="header-section-number">4.4</span> Coeficiente de Variação</h2>
+<p>As medidas de variabilidade tais como a variância e desvio padrão, são conhecidas como medidas de dispersão absoluta. Diante do que foi exposto no fim da seção anterior sobre alguns problemas do desvio padrão, apresentamos mais uma medida de dispersão, Definição <a href="cap04.html#def:coefvar">4.8</a>, agora uma medida relativa chamada de Coeficiente de Variação (CV), do qual pode ser usada para comparar a variabilidade entre quaisquer grupo de dados.</p>
+<div id="def:coefvar" class="Definition" title="Coeficiente de Variação">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 4.8: </strong>Coeficiente de Variação</summary><div>O coeficiente de variação é definido por: <span id="eq-cvpop"><span class="math display">\[
+\begin{align}
+    CV_p &amp; = \frac{\sigma}{\mu} \times 100, \quad \textrm{(População)}
+\end{align}
+\tag{4.20}\]</span></span> e <span id="eq-cvamost"><span class="math display">\[
+\begin{align}
+    CV &amp; = \frac{S}{\bar{X}} \times 100, \quad \textrm{(Amostra)}
+\end{align}
+\tag{4.21}\]</span></span><p></p>
+<p>em que <span class="math inline">\(\sigma\)</span> e <span class="math inline">\(S\)</span> representam o desvio padrão populacional e amostral, respectivamente, apresentados na Definição <a href="cap04.html#def:desvpad">4.7</a>, e <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\bar{X}\)</span> representam a média populacional e amostral, respectivamente, Definição <a href="cap03.html#def:medarit">3.1</a> para a condição de dados não agrupados, e Definição <a href="cap03.html#def:medaritagrupado">3.2</a> para a condição de dados agrupados.</p>
+</div></details>
+</div>
+<p>Apesar de não explicitarmos, como os desvios padrões populacional e amostral dependem das variâncias populacional e amostral na Definição <a href="cap04.html#def:coefvar">4.8</a>, fica subtendido que o cálculo do CV para os dados agrupados (com ou sem intervalo de classes), usaremos a Definição <a href="cap04.html#def:varagrupado">4.6</a> para o cálculo da variância. Da mesma forma, para calcularmos o CV para dados não agrupados, usaremos as Definições <a href="cap04.html#def:varpop">4.4</a> e <a href="cap04.html#def:varamost">4.5</a> para o cálculo das variâncias populacional e amostral, respectivamente. O coeficiente de variação permite comparar a dispersão de dois ou mais grupos com características completamente diferente e com médias diferentes. Vejamos o Exemplo <a href="cap04.html#ex:dadoscoefvar">4.7</a>, para ilustrar essa característica.</p>
+<div id="ex:dadoscoefvar" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 4.7</strong></summary><div>Com a medida do coeficiente de variação, podemos comparar a dispersão dos dados da <a href="cap02.html#tbl-erroscanal" class="quarto-xref">Tabela&nbsp;<span>2.1</span></a> com a dispersão do grupo <code>gA</code> da <a href="#tbl-tresgrupos" class="quarto-xref">Tabela&nbsp;<span>4.1</span></a>. Para o primeiro conjunto de dados, podemos calcular a média e o desvio padrão do número de erros encontrados em 20 conjuntos de caracteres, dados por: <span class="math display">\[\begin{align*}
+    \bar{X}_e &amp; = \frac{3 + 1 + \ldots + 1}{20} = 1,7~\textrm{erros},
+  \end{align*}\]</span> e <span class="math display">\[\begin{align*}
+    S_e &amp; = \sqrt{\frac{3^2 + 1^2 + \ldots + 1^2 - 1 / 20 \times (3 + 1 + \ldots + 1)^2}{19}}\\
+      &amp; = 1,174286~\textrm{erros},
+  \end{align*}\]</span> respectivamente. No caso dos dados do grupo <code>gA</code>, nós já temos os resultados da média e desvio padrão, dados na <a href="#tbl-tresgrupos" class="quarto-xref">Tabela&nbsp;<span>4.1</span></a> e no Exemplo <a href="cap04.html#ex:dadosimvar">4.6</a>, respectivamente. Desse modo, comparando a dispersão dos dois grupos pelo coeficiente de variação, temos:<p></p>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Dados</strong></th>
+<th style="text-align: center;"><strong>Coeficiente de Variação</strong> (<span class="math inline">\(\mathbf{CV}\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>gA</code></td>
+<td style="text-align: center;"><span class="math inline">\(CV_{\textrm{gA}} = \frac{1,399787}{9,018686} \times 100 = 15,52\%\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Número de erros</td>
+<td style="text-align: center;"><span class="math inline">\(CV_{e} = \frac{1,174286}{1,7} \times 100 = 69,08\%\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Nesse caso, percebemos que os dados de <code>gA</code> tem menor variabilidade do que os dados do número de erros, e com isso, esses dados são melhor representado pela sua média amostral quando se comparado com o outro grupo de dados.</p>
+</div></details>
+</div>
+<p>Mesmo resolvendo alguns problemas existentes nas medidas variância e desvio padrão, o coeficiente de variação apresenta algumas características importantes, que seguem:</p>
+<ul>
+<li>O <span class="math inline">\(CV\)</span> é adimensional e uma medida de dispersão relativa;</li>
+<li>Essa medida pode ser utilizada para comparar a dispersão entre grupos diferentes de dados;</li>
+<li>Como o <span class="math inline">\(CV\)</span> é uma medida de dispersão relativa, isto é, o desvio padrão ponderado pela média. Isso significa que o <span class="math inline">\(CV\)</span> calcula o quanto representa a dispersão (o desvio padrão) representa à média. Dessa forma, o <span class="math inline">\(CV\)</span> se torna limitado a variáveis em que a escala de mensuração das observações em que fornece um zero absoluto ou uma origem significativa. Por exemplo, a temperatura em graus celsius (ºC), uma observação igual a 0ºC não significa ausência de temperatura, logo, o <span class="math inline">\(CV\)</span> para esse tipo de variável não faz sentido. Já o a variável peso em quilos, isto é, o valor 0kg representa ausência de peso, de outro modo, esse tipo de variável permite magnitudes de valores na escala, tais como, uma observação de 40kg é o dobro de uma observação de 20kg. Assim, podemos utilizar o coeficiente de variação para verificar a dispersão da variável peso;</li>
+<li>O <span class="math inline">\(CV\)</span> pode superar o 100%. Isso ocorre quando o desvio padrão é maior do a média. Dizemos que esses superdispersos, um exemplo, são dados de contagem que seguem uma distribuição de Poisson.</li>
+</ul>
+<p>As propriedades do <span class="math inline">\(CV\)</span> levam em consideração as propriedade de <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(S\)</span>, que já foram demonstradas. Assim, ficam para estudo no Exercício proposto <a href="cap04.html#exerc:Ex4.1">4.1</a>, a demonstração para as propriedades do <span class="math inline">\(CV\)</span>.</p>
+</section>
+<section id="erro-padrão-da-média" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="erro-padrão-da-média"><span class="header-section-number">4.5</span> Erro padrão da média</h2>
+<p>Para iniciarmos uma última ideia sobre medidas de dispersão, dentre as medidas básicas, vamos iniciar como motivação, a Definição <a href="cap04.html#def:erroamost">4.9</a>.</p>
+<div id="def:erroamost" class="Definition" title="Erro da média amostral">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 4.9: </strong>Erro da média amostral</summary><div>Seja uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, de uma população com parâmetro <span class="math inline">\(\mu\)</span>, que representa a média populacional, e seu estimador <span class="math inline">\(\bar{X} = \sum_{i = 1}^{n} X_i / n\)</span>, então definimos o erro da média amostral, denotado por <span class="math inline">\(EA_{\bar{X}}\)</span>, da seguinte forma: <span id="eq-erroamost"><span class="math display">\[
+\begin{align}
+  EA_{\bar{X}} &amp; = \bar{X} - \mu.
+\end{align}
+\tag{4.22}\]</span></span><p></p>
+</div></details>
+</div>
+<p>A medida expressa em (<a href="#eq-erroamost" class="quarto-xref"><span>4.22</span></a>) representa o erro de assumirmos a média amostral como um representante da média populacional. O desvio padrão de <span class="math inline">\(EA_{\bar{X}}\)</span> é o que chamamos de erro padrão da média, definido a seguir.</p>
+<div id="def:erropadpop" class="Definition" title="Erro padrão da média (Populacional)">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 4.10: </strong>Erro padrão da média (Populacional)</summary><div>Seja uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, de uma população cujos parâmetros <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>, representam a média e o desvio padrão populacional, respectivamente, então o erro padrão da média, denotada por <span class="math inline">\(\sigma_{\bar{X}}\)</span>, é definido como: <span id="eq-epmediapop"><span class="math display">\[
+\begin{align}
+    \sigma_{\bar{X}} &amp; = \frac{\sigma}{\sqrt{n}},
+\end{align}
+\tag{4.23}\]</span></span> em que <span class="math inline">\(n\)</span> representa o tamanho da amostra.<p></p>
+</div></details>
+</div>
+<p>Quando fazemos um comparativo entre o desvio padrão amostral e o erro padrão da média, entendemos que a primeira medida reflete a variabilidade de cada observação em torno da média amostral. Já o erro padrão da média representa a variabilidade de cada média amostral de todas amostra possíveis, em relação a média populacional.</p>
+<p>Dessa forma, surgem alguns problemas para determinar a variabilidade da média amostral em torno da média populacional usando a expressão (<a href="#eq-epmediapop" class="quarto-xref"><span>4.23</span></a>). Primeiro, é praticamente impossível realizar todas as amostras possíveis de uma população para computar a sua média. Se isso é possível, não precisaremos de amostra, uma vez que temos todas as informações da população, e então, estamos diante de um censo. Os outros fatores, podemos destacar que na prática, realizamos apenas uma amostra para análise das informação, e que o desvio padrão populacional geralmente é desconhecido, e assim, torna-se inviável o cálculo de <span class="math inline">\(\sigma_{\bar{X}}\)</span>. Uma alternativa é usar o estimador <span class="math inline">\(S\)</span> ao invés de <span class="math inline">\(\sigma\)</span>, surgindo então um estimador para o erro padrão da média populacional, definido a seguir.</p>
+<div id="def:erropadamost" class="Definition" title="Erro padrão da média (Amostral)">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 4.11: </strong>Erro padrão da média (Amostral)</summary><div>Seja uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, de uma população cujos parâmetros <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>, representam a média e o desvio padrão populacional, respectivamente, então o erro padrão da média, denotada por <span class="math inline">\(\sigma_{\bar{X}}\)</span>, é definido como: <span id="eq-epmediaamost"><span class="math display">\[
+\begin{align}
+    S_{\bar{X}} &amp; = \frac{S}{\sqrt{n}},
+\end{align}
+\tag{4.24}\]</span></span> em que <span class="math inline">\(n\)</span> representa o tamanho da amostra, e <span class="math inline">\(S\)</span> é o desvio padrão da Definição <a href="cap04.html#def:desvpad">4.7</a>.<p></p>
+</div></details>
+</div>
+<p>É fácil observar que à medida que <span class="math inline">\(n \to N\)</span>, isto é, à medida que <span class="math inline">\(n\)</span> aumenta, a média amostral tende a <span class="math inline">\(\mu\)</span>, logo o <span class="math inline">\(EA_{\bar{X}} \to 0\)</span>. Isso significa que a média amostral é mais precisa porque se aproxima cada vez mais da média populacional. Assim, com apenas uma amostra poderemos ter uma estimativa do erro padrão da média, apresentado no Exemplo <a href="cap04.html#ex:exemerropadrao">4.8</a>.</p>
+<div id="ex:exemerropadrao" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 4.8</strong></summary><div>
+<p>Retornando ao Exemplo <a href="cap04.html#ex:dadosim">4.2</a>, podemos então calcular os erros padrões da média para as três amostras, que segue:</p>
+<ul>
+<li>Erro padrão da média amostral para o grupo <code>gA</code>: <span class="math display">\[\begin{align*}
+  S_{\bar{X}_{\textrm{gA}}} &amp; = 1,399787 / \sqrt{10} = 0,4665957~unid.
+\end{align*}\]</span></li>
+<li>Erro padrão da média amostral para o grupo <code>gB</code>: <span class="math display">\[\begin{align*}
+  S_{\bar{X}_{\textrm{gB}}} &amp; = 4,41702 / \sqrt{10} = 1,396784~und.
+\end{align*}\]</span>
+Erro padrão da média amostral para o grupo <code>gC</code>: <span class="math display">\[\begin{align*}
+S_{\bar{X}_{\textrm{gC}}} &amp; = = 4,440982 / \sqrt{10} = 1,404362~und.
+\end{align*}\]</span> \end{itemize} Percebemos que a média de <code>gA</code> estima melhor o parâmetro <span class="math inline">\(\mu\)</span>, uma vez que o erro padrão da média foi o menor dentre os demais.</li>
+</ul>
+</div></details>
+</div>
+<p>Desse modo, observamos que o erro padrão da média representa uma precisão com que a média amostral estimou o parâmetro <span class="math inline">\(\mu\)</span>. Além do erro padrão da média, há diversos outros erros padrões para outros estimadores de parâmetros diversos, sendo abordado mais a frente. Além do mais, essa medida será largamente usada na teoria de estimação e de decisão, tanto para a construção de intervalos de confiança, como também no desenvolvimento de testes de hipóteses, sendo também abordado nos próximos capítulos.</p>
+</section>
 <section id="exercícios-propostos" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="exercícios-propostos">Exercícios propostos</h2>
+<div id="exerc:Ex4.1" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 4.1</strong></summary><div>Com relação as propriedades do Coeficiente de Variação (CV), prove que: I) Se para uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, o coeficiente de variação, Definição <a href="cap04.html#def:coefvar">4.8</a>, então para uma transformação de <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span> e <span class="math inline">\(c\)</span> uma constante, então o novo coeficiente de variação é igual a <span class="math inline">\(CV_Y = S_X / (\bar{X} \pm c) \times 100\)</span>, em que <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(S_X\)</span> são a média e o desvio padrão de <span class="math inline">\(X_i\)</span>, <span class="math inline">\(i = 1, 2, \ldots, n\)</span>; II) Se para uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, o coeficiente de variação, Definição <a href="cap04.html#def:coefvar">4.8</a>, então para uma transformação de <span class="math inline">\(Y_i = X_i \times c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span> e <span class="math inline">\(c\)</span> uma constante, então o novo coeficiente de variação não se altera, isto é <span class="math inline">\(CV_Y = CV_X\)</span>. Esse resultado vale também para a transformação <span class="math inline">\(Y_i = X_i / m\)</span>, sendo <span class="math inline">\(m\)</span> também uma constante. Basta usar <span class="math inline">\(c = 1 / m\)</span> e o resultado é o mesmo.<p></p>
+</div></details>
+</div>
+<div id="Solution*-4.4" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<ol type="I">
+<li>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, assumimos que <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(S_X\)</span> são a média e o desvio padrão, dado a transformação <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span> e <span class="math inline">\(c\)</span> uma constante, podemos afirmar, pelos Teoremas <a href="cap03.html#teo:mediaaritm">3.1</a> e <a href="cap04.html#teo:devpad">4.3</a>, respectivamente, que a média e o desvio padrão de <span class="math inline">\(Y_i\)</span>, podem ser dadas por <span class="math inline">\(\bar{Y} = \bar{X} \pm c\)</span> e <span class="math inline">\(S_Y = S_X\)</span>, respectivamente. Dessa forma, sabendo que o coeficiente de variação de <span class="math inline">\(X_i\)</span> é dado por <span class="math inline">\(CV_X = S_X / \bar{X}\)</span>, então o coeficiente de variação de <span class="math inline">\(Y_i\)</span> é: <span class="math display">\[\begin{align*}
+     CV_Y &amp; = \frac{S_Y}{\bar{Y}} \\
+   \end{align*}\]</span></li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex4.2" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 4.2</strong></summary><div>A tabela abaixo apresenta a distribuição de frequências das notas (em pontos) obtidas num teste de matemática, realizado por 50 estudantes.<p></p>
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Notas</strong></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{F_i}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0 <span class="math inline">\(|\)</span>— 2</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2 <span class="math inline">\(|\)</span>— 4</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4 <span class="math inline">\(|\)</span>— 6</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6 <span class="math inline">\(|\)</span>— 8</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8 <span class="math inline">\(|\)</span>— 10</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<p>Apresente o cálculo para todas as medidas de dispersão estudadas e as interprete.</p>
+</div></details>
+</div>
+<div id="exerc:Ex4.3" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 4.3</strong></summary><div>Para uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span> de tamanho <span class="math inline">\(n\)</span>. Desejamos usar a transformação <span class="math inline">\(Y_i = \beta_0 + \beta_1X_i\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, considerando <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> constantes. Então, apresente as relação entre as médias e os desvios padrões de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex4.4" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 4.4</strong></summary><div>Sabemos que a conversão da temperatura de graus Celsius (°C) para a escala de Fahrenheit (°F) é dada por: <span class="math inline">\(F = 9 / 5 \times C + 32\)</span>, considerando a variável <span class="math inline">\(F\)</span> a temperatura em Fahrenheit, e <span class="math inline">\(C\)</span> a temperatura em graus Celsius. Se medíssemos a temperatura de um peça no momento de fabricação, e verificássemos que em média a peça é fabricada com temperatura de <span class="math inline">\(70\)</span>°C e variância de <span class="math inline">\(2(^oC)^2\)</span>, como poderíamos representar essas medidas na escala Fahrenheit?<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex4.5" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 4.5</strong></summary><div>Se tivéssemos estudando a variável temperatura em três escalas: graus Celsius, Fahrenheit e Kelvin, poderíamos calcular o coeficiente de variação para as três escalas? Explique.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex4.6" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 4.6</strong></summary><div>Considere uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\dots\)</span>, <span class="math inline">\(X_n\)</span> de tamanho <span class="math inline">\(n\)</span>, do qual conseguimos computar a média aritmética e variância amostral, sendo representadas por <span class="math inline">\(\bar{X}_n\)</span> e <span class="math inline">\(S^2_n\)</span>, respectivamente, e que esses índices representam que estas medidas foram calculadas baseadas em um tamanho de amostra <span class="math inline">\(n\)</span>. Por alguma situação precisamos adicionar mais uma variável a esta amostra, isto é, a variável <span class="math inline">\(X_{n+1}\)</span>. Como poderíamos calcular as medidas <span class="math inline">\(\bar{X}_{n+1}\)</span> e <span class="math inline">\(S^2_{n+1}\)</span>, partindo do pressuposto que só sabemos das informações <span class="math inline">\(\bar{X}_n\)</span>, <span class="math inline">\(S^2_n\)</span> e <span class="math inline">\(X_{n+1}\)</span>? Em um segundo momento considere o Exemplo <span class="math inline">\(\ref{Challanger1986}\)</span>, os dados sem agrupamento de classes, de modo que foi realizado uma nova medição da temperatura do anel de vedação no acionamento do foguete Challenger, sendo aferido o valor <span class="math inline">\(x_{37}=63\)</span>ºF, use os resultados obtidos e determine <span class="math inline">\(\bar{x}_{n+1}\)</span> e <span class="math inline">\(s^2_{n+1}\)</span> após desse novo dado as observações.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex4.7" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 4.7</strong></summary><div>Considere uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\dots\)</span>, <span class="math inline">\(X_n\)</span> de tamanho <span class="math inline">\(n\)</span>, do qual conseguimos computar as medidas de posição <span class="math inline">\(\bar{X}\)</span>, <span class="math inline">\(Md(X)\)</span> e <span class="math inline">\(Mo(X)\)</span>, isto é, a média, mediana e moda, respectivamente, bem como a variância <span class="math inline">\(S^2_X\)</span>. Considere também as transformações <span class="math inline">\(Y_i = X_i - \bar{X}\)</span> e <span class="math inline">\(Z_i = (X_i - \bar{X}) / S\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, sendo <span class="math inline">\(S = \sqrt{S^2}\)</span>. Apresente as medidas de dispersão, desvio padrão e variância, para essas transformações, <span class="math inline">\(Y\)</span> e <span class="math inline">\(Z\)</span>.<p></p>
+</div></details>
+</div>
 <div id="exerc:Ex4.8" class="Exercise">
-<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 4.1</strong></summary><div>De acordo com o <a href="#lst-codRvari" class="quarto-xref">Código R&nbsp;<span>4.2</span></a>, percebemos que o cálculo da variância para as variáveis quantitativas discretas e contínuas apresentam resultados diferentes quando os dados são agrupados e não agrupados em distribuição de frequências. No caso das variáveis quantitativas discretas, agrupar ou não agrupar não faz diferença no resultado do cálculo da variância. Já para o caso das variáveis quantitativas contínuas os resultados se apresentam diferentes. Por que isso ocorre? Se fosse para escolher a medida de dispersão da variância para o caso das variáveis quantitativas contínuas, seria melhor apresentar o resultado dos resultados não agrupados ou agrupados? Apresente uma breve discussão sobre essas indagações.<p></p>
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 4.8</strong></summary><div>De acordo com o <a href="#lst-codRvari" class="quarto-xref">Código R&nbsp;<span>4.2</span></a>, percebemos que o cálculo da variância para as variáveis quantitativas discretas e contínuas apresentam resultados diferentes quando os dados são agrupados e não agrupados em distribuição de frequências. No caso das variáveis quantitativas discretas, agrupar ou não agrupar não faz diferença no resultado do cálculo da variância. Já para o caso das variáveis quantitativas contínuas os resultados se apresentam diferentes. Por que isso ocorre? Se fosse para escolher a medida de dispersão da variância para o caso das variáveis quantitativas contínuas, seria melhor apresentar o resultado dos resultados não agrupados ou agrupados? Apresente uma breve discussão sobre essas indagações.<p></p>
 </div></details>
 </div>
 
