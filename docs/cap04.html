@@ -125,31 +125,31 @@ div.csl-indent {
   }
 }</script>
 <style>
-.Theorem {
-  --color1: #d14747;
-  --color2: #8b1f1f;
-}
-.Definition {
-  --color1: #5e737f;
-  --color2: #49606d;
-}
-.Example {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Proof {
+  --color1: #aaa6a3;
 }
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Solution {
-  --color1: #9ad5f6;
-}
-.Proof {
-  --color1: #aaa6a3;
-}
 .Exercise {
   --color1: #4485f6;
   --color2: #479bd1;
+}
+.Definition {
+  --color1: #5e737f;
+  --color2: #49606d;
+}
+.Solution {
+  --color1: #9ad5f6;
+}
+.Theorem {
+  --color1: #d14747;
+  --color2: #8b1f1f;
+}
+.Example {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 </style>
 
@@ -390,7 +390,7 @@ Código R&nbsp;4.1: Variabilidade dos dados.
 [10,]  9.487043 18.787223 20.000000</code></pre>
 </div>
 </div>
-<p>Os dados para os três grupos são apresentados na Tabela <span class="math inline">\(\ref{tab:tresgrupos}\)</span>. Ao observarmos com mais detalhes os valores observados nos grupos, percebemos que eles não são iguais, de fato. Logo, poderíamos erroneamente afirmar que aqueles grupos eram semelhantes, simplemente olhando para as suas médias. O que ocorre é uma variabilidade nos dados diferenciada em cada grupo, e que a medida de dispersão não consegue caracterizá-la. Dizemos que variabilidade é a dispersão com que ocorre nos dados, e as medidas responsáveis em expressar essa variabilidade, chamamos na estatística descritiva de medidas de dispersão. Geralmente, usamos a representação dessa dispersão em torno de um valor central nos dados, que em nosso caso, será a média aritmética, devido a algumas propriedades matemáticas e estatísticas que essa medida tem, e que será vista ao longo de todo o livro.</p>
+<p>Os dados para os três grupos são apresentados na <a href="#tbl-tresgrupos" class="quarto-xref">Tabela&nbsp;<span>4.1</span></a>. Ao observarmos com mais detalhes os valores observados nos grupos, percebemos que eles não são iguais, de fato. Logo, poderíamos erroneamente afirmar que aqueles grupos eram semelhantes, simplemente olhando para as suas médias. O que ocorre é uma variabilidade nos dados diferenciada em cada grupo, e que a medida de dispersão não consegue caracterizá-la. Dizemos que variabilidade é a dispersão com que ocorre nos dados, e as medidas responsáveis em expressar essa variabilidade, chamamos na estatística descritiva de medidas de dispersão. Geralmente, usamos a representação dessa dispersão em torno de um valor central nos dados, que em nosso caso, será a média aritmética, devido a algumas propriedades matemáticas e estatísticas que essa medida tem, e que será vista ao longo de todo o livro.</p>
 <p>A seguir, mostraremos algumas medidas de dispersão que auxiliarão na caracterização dos dados, bem como no auxílio a fundamentação de temas tão importantes como a inferência estatística e teoria de decisão, abordado em capítulos posteriores.</p>
 <div id="tbl-tresgrupos" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -711,7 +711,7 @@ S^2_{\textrm{gC}} &amp; = \frac{4,706090^2 + \ldots + 20,000000^2 +}{10 - 1}\\
 \end{align*}\]</span> cujo valor da média foi obtido do Exemplo <a href="cap03.html#ex:medchallanger">3.3</a>.</p>
 </div></details>
 </div>
-<p>Para finalizar, podemos replicar o procedimento do Exemplo <a href="cap04.html#ex:dadosagrupados">4.5</a> usando o pacote <a href="https://bendeivide.github.io/leem/">leem}</a> apresentado no <a href="#lst-codRvari" class="quarto-xref">Código R&nbsp;<span>4.2</span></a>.</p>
+<p>Para finalizar, podemos replicar o procedimento do Exemplo <a href="cap04.html#ex:dadosagrupados">4.5</a> usando o pacote <a href="https://bendeivide.github.io/leem/">leem</a> apresentado no <a href="#lst-codRvari" class="quarto-xref">Código R&nbsp;<span>4.2</span></a>.</p>
 <div class="cell">
 <div id="lst-codRvari" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-lst figure">
