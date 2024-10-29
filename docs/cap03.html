@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -94,6 +128,10 @@ div.csl-indent {
 .Proof {
   --color1: #aaa6a3;
 }
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
 .Solution {
   --color1: #9ad5f6;
 }
@@ -105,20 +143,45 @@ div.csl-indent {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
+.Exercise {
+  --color1: #4485f6;
+  --color2: #479bd1;
 }
 .Theorem {
   --color1: #d14747;
   --color2: #8b1f1f;
 }
-.Exercise {
-  --color1: #4485f6;
-  --color2: #479bd1;
-}
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="custom.scss">
 </head>
@@ -247,8 +310,19 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">3.1</span> Introdução</a></li>
+  <li><a href="#média-aritmética" id="toc-média-aritmética" class="nav-link" data-scroll-target="#média-aritmética"><span class="header-section-number">3.2</span> Média aritmética</a></li>
+  <li><a href="#mediana" id="toc-mediana" class="nav-link" data-scroll-target="#mediana"><span class="header-section-number">3.3</span> Mediana</a></li>
+  <li><a href="#moda" id="toc-moda" class="nav-link" data-scroll-target="#moda"><span class="header-section-number">3.4</span> Moda</a></li>
+  <li><a href="#aplicações-com-o-pacote-leem" id="toc-aplicações-com-o-pacote-leem" class="nav-link" data-scroll-target="#aplicações-com-o-pacote-leem"><span class="header-section-number">3.5</span> Aplicações com o pacote leem</a></li>
+  <li><a href="#exercícios-propostos" id="toc-exercícios-propostos" class="nav-link" data-scroll-target="#exercícios-propostos">Exercícios propostos</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -272,6 +346,789 @@ div.csl-indent {
 </header>
 
 
+<section id="introdução" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="introdução"><span class="header-section-number">3.1</span> Introdução</h2>
+<p>Após tabularmos os dados ou apresentarmos graficamente, percebemos que ainda assim a quantidade de informações pode ser muito grande para descrevê-los. Desse modo, surgem algumas medidas que podem resumir tudo isso, de modo a preservar as principais características contidas nessas observações, são as denominadas medidas de posição ou tendência central, e as medidas de dispersão ou de variabilidade, que tem a propriedade de localizar a distribuição dos dados e também caracterizar sua variabilidade, respectivamente. Nesse capítulo trataremos das medidas de posição, e no <a href="cap04.html" class="quarto-xref"><span>Capítulo 4</span></a>, as medidas de dispersão.</p>
+<p>As medidas de posição representam o ponto central da massa de dados, de modo que o seu valor indica que as observações estão em torno dele, mas que não necessariamente, o valor dessa medida central exista no conjunto de dados. A escolha das medidas de posição apresentadas, dependerá da natureza das variáveis, bem como algumas peculiaridades existentes nos dados, como por exemplo, a existência de dados discrepantes. Vamos apresentar na sequência, a primeira medida de tendência central e a mais conhecida e utilizada na estatística, a média aritmética.</p>
+</section>
+<section id="média-aritmética" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="média-aritmética"><span class="header-section-number">3.2</span> Média aritmética</h2>
+<p>Quando iniciamos uma conversa e percebemos que alguém está no meio termo em um determinado posicionamento, dizemos que a pessoa está fazendo “média”, vulgarmente, dizemos que está em cima do muro. Nesse mesmo raciocínio, é a média aritmética, uma medida em que o seu valor representa o valor central das observações. Podemos comparar a média como um ponto de equilíbrio em um sistema de pesos, do qual se cada observação pode ser representada com uma certa massa no ponto no eixo X de um plano cartesiano, então o ponto que representa a média equilibrará esse sistema de pesos. Definimos,</p>
+<div id="def:medarit" class="Definition" title="Média aritmética">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 3.1: </strong>Média aritmética</summary><div>Seja uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, , <span class="math inline">\(X_n\)</span>, de uma população <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_N\)</span>, de tamanhos <span class="math inline">\(n\)</span> e <span class="math inline">\(N\)</span>, respectivamente, definimos a média aritmética por: <span id="eq-medaritpop"><span class="math display">\[
+\begin{align}
+\mu &amp; = \frac{\displaystyle\sum_{i=1}^{N}X_i}{N}, \quad \textrm{(População)}
+\end{align}
+\tag{3.1}\]</span></span> e <span id="eq-medaritamost"><span class="math display">\[
+\begin{align}
+\bar{X} = \frac{\displaystyle\sum_{i=1}^{n}X_i}{n}. \quad \textrm{(Amostra)}
+\end{align}
+\tag{3.2}\]</span></span><p></p>
+</div></details>
+</div>
+<p>Em notação, dizemos que <span class="math inline">\(\mu\)</span> é uma característica amostral, isto é, representa a média populacional e chamamos de parâmetro. Na prática, essa informação é desconhecida e a representamos por uma medida amostral, que chamamos de estimador, uma função que depende apenas dos dados amostrais. Um estimador para <span class="math inline">\(\mu\)</span> representa a média aritmética <span class="math inline">\(\bar{X}\)</span>. O valor observado de <span class="math inline">\(\bar{X}\)</span> pode ser representado por <span class="math inline">\(\bar{x}\)</span>, em termos de notação. Vejamos um exemplo a seguir.</p>
+<div id="exemmedamost" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 3.1</strong></summary><div>Considerando os dados da <a href="cap02.html#tbl-erroscanal" class="quarto-xref">Tabela&nbsp;<span>2.1</span></a>, podemos calcular a média amostral da seguinte forma:<p></p>
+<p><span class="math display">\[\begin{align*}
+  \bar{X} =  \frac{3 + 1 + \ldots + 1}{20}=\frac{34}{20}= 1,7~\textrm{erros}.
+\end{align*}\]</span></p>
+<p>Portanto, o número de erros encontrados em um conjunto de caracteres, podem ser representados por uma única medida, que é a média amostral. A interpretação é que, em média, ocorreram <span class="math inline">\(1,7\)</span> erros nos caracteres monitorados em um meio de comunicação, e significa, que os 20 conjuntos de caracteres apresentam um número de erros em torno desse valor.</p>
+</div></details>
+</div>
+<p>A Definição <a href="cap03.html#def:medarit">3.1</a> é utilizada para dados sem agrupamento, isto é, dados brutos ou dados elaborados. Para o caso de dados agrupados em distribuição de frequência, definimos,</p>
+<div id="def:medaritagrupado" class="Definition" title="Média aritmética em dados agrupados">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 3.2: </strong>Média aritmética em dados agrupados</summary><div>Seja uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, de tamanho <span class="math inline">\(n\)</span>, agrupados em <span class="math inline">\(k\)</span> grupos com variáveis <span class="math inline">\(X_i\)</span> e frequência <span class="math inline">\(F_i\)</span>, ou <span class="math inline">\(k\)</span> classes com pontos médios <span class="math inline">\(\tilde{X}_i\)</span> e <span class="math inline">\(F_i\)</span> frequências, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(k\)</span> e <span class="math inline">\(\sum_{i = 1}^{k}F_i = n\)</span>, então a média aritmética de uma amostra, é definida por: <span id="eq-mediaagrup"><span class="math display">\[
+\begin{align}
+\bar{X} &amp; = \left\{\begin{array}{ll}
+                   \frac{\sum_{i = 1}^{k}X_i \times F_i}{\sum_{i = 1}^{k}F_i}, &amp;  \textrm{agrupados sem intervalo de classe}, \\
+                   &amp;\\
+                   \frac{\sum_{i = 1}^{k}\tilde{X}_i \times F_i}{\sum_{i = 1}^{k}F_i}, &amp;  \textrm{agrupados com intervalo de classe},\\
+                 \end{array}\right.
+\end{align}
+\tag{3.3}\]</span></span> sendo <span class="math inline">\(\tilde{X}_{i}\)</span> o ponto médio das classes.<p></p>
+</div></details>
+</div>
+<p>Podemos representar a Definição <a href="cap03.html#def:medaritagrupado">3.2</a> em termos populacionais, substituindo o tamanho <span class="math inline">\(n\)</span> por <span class="math inline">\(N\)</span>, como também representar a expressão em termos de valor observado. Porém, para simplificarmos a notação, preferimos usar dessa forma. Vejamos mais um exemplo a seguir.</p>
+<div id="ex:mednerros" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 3.2</strong></summary><div><span class="math display">\[\begin{align*}
+  \bar{X} = \frac{0 \times 3 + 1 \times 7 + \ldots + 4 \times 1}{20}=\frac{34}{20}=1,7~\textrm{erros}.
+\end{align*}\]</span> Notamos que o resultado para a média amostral é o mesmo obtido no Exemplo <a href="cap03.html#exemmedamost">3.1</a>, porque mesmo agrupando os dados, o cálculo da média para esse tipo de dado, se baseia nos próprios valores observados.<p></p>
+</div></details>
+</div>
+<p>Porém, para o caso da variáveis quantitativas contínuas isso não ocorre, porque usamos o ponto médio para representar as observações de cada classe. Vejamos o próximo exemplo, a seguir.</p>
+<div id="ex:medchallanger" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 3.3</strong></summary><div>Consideremos agora os dados agrupados do Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a>. Temos uma variável quantitativa contínua e, portanto, a média é baseada de acordo com a expressão (<a href="#eq-mediaagrup" class="quarto-xref"><span>3.3</span></a>), para o caso de dados agrupados com intervalo de classe, que segue: <span id="eq-mediacontinua"><span class="math display">\[
+\begin{align*}
+\bar{X} &amp; =\displaystyle\sum_{i=1}^{k}\frac{\tilde{X}_iF_i}{\sum_{i=1}^{k}F_i}\\
+&amp;= \frac{31 \times 1 + 41,60 \times 2 + \ldots + 84,00 \times 5}{1+2+\ldots+5}\\
+&amp; = 66,04\textrm{ºF}.
+\end{align*}  
+\tag{3.4}\]</span></span><p></p>
+<p>Se calculássemos a média sem agrupamento, o valor seria <span class="math inline">\(\bar{X} = 65,86\)</span>ºF. Observamos uma perda de precisão com os dados quando agrupados com intervalo de classe. Mas isso pode ser justificado por exemplo, se nesse experimento a diferença em <span class="math inline">\(0,18\)</span>ºF não altera os resultados da pesquisa, e assim, podemos apresentar os dados de forma mais organizada.</p>
+</div></details>
+</div>
+<p>Nos exemplos anteriores, observamos que a média leva em consideração a todas as observações, em seu cálculo. Apesar dessa ideia ser interessante, uma vez que conseguimos captar as informações de cada elemento da amostra ou população, qualquer alteração que houver em alguma observação, pode alterar completamente o resultado da média aritmética. É caso dos dados discrepantes, isto é, observações muito distante da grande parte dos dados. Isso pode ocorrer por diversas situações, como erro humano, ao digitar errado em uma planilha, elementos mal amostrados, de modo que, determinado elemento selecionado para a amostra não pertencia a população de interesse, ou até mesmo, uma condição atípica na realização da coleta dos dados. Vejamos mais algumas características da média aritmética:</p>
+<ul>
+<li>a unidade da média está na mesma escala da variável em estudo;</li>
+<li>a média é uma das medidas mais conhecidas e utilizadas, devido as suas propriedades estatísticas que serão vistas nos capítulos seguintes;</li>
+<li>é única para cada conjunto de dados;</li>
+<li>usada apenas para variáveis quantitativas;</li>
+<li>não pode ser calculada para dados agrupados que apresentam classes extremas abertas;</li>
+<li>é influenciada por dados discrepantes.</li>
+</ul>
+<p>Uma saída para contornar o problema dos dados discrepantes, pode ser abordado no exemplo a seguir.</p>
+<div id="ex:mediaaparado" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 3.4</strong></summary><div>Considere um conjunto de dados (<span class="math inline">\(n=17\)</span>) fictícios que apresentam a maior e a menor observação como suspeitos de serem atípicos quanto as suas ocorrências: <span class="math display">\[1, 5, 5, 6, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 10, 10, 40\]</span><p></p>
+<p>Para representar esse conjunto de dados, usamos a média aritmética para representá-los:</p>
+<p><span class="math display">\[\begin{align*}
+  \bar{X} &amp; = \frac{1 + 5 + \ldots + 40}{17} = 9,67~und.
+\end{align*}\]</span></p>
+<p>Observamos que as observações <span class="math inline">\(x_1 = 1~unid.\)</span> e <span class="math inline">\(x_{17} = 40~und.\)</span> podem ter influenciado o resultado, e como suspeitamos desses valores, vamos usar uma medida mais robusta a essa violação, isto é, que não será influenciado por esses valores. Chamamos de média aparada, denotada por <span class="math inline">\(\bar{X}_{ap}\)</span>, que para uma amostra de tamanho <span class="math inline">\(n\)</span>, temos: <span id="eq-medaparada"><span class="math display">\[
+\begin{align}
+  \bar{X}_{ap} &amp; = \displaystyle\frac{\sum_{i = 2}^{n - 1}X_{(i)}}{n - 2},
+\end{align}
+\tag{3.5}\]</span></span> em que <span class="math inline">\(X_{(i)}\)</span> é a <span class="math inline">\((i)\)</span>-ésima variável em ordem crescente de magnitude, tal que <span class="math inline">\(X_{(1)} = \min\limits_{i}X_i\)</span> e <span class="math inline">\(X_{(n)} = \max\limits_{i}X_i\)</span>.</p>
+<p>Usando a expressão (<a href="#eq-medaparada" class="quarto-xref"><span>3.5</span></a>), apresentamos a média aparada: <span class="math display">\[
+\bar{X}_{ap}=\frac{5 + 5 + \ldots + 10}{15} = 7,65~unid.
+\]</span></p>
+<p>Observamos pelo resultado, que os valores extremos acabam não influenciando no resultado da média aparada, e portanto, pode ser uma alternativa de medida de posição, para representar o conjunto de dados.</p>
+</div></details>
+</div>
+<p>Complementando as características da média, apresentamos algumas propriedades pelo Teorema <a href="cap03.html#teo:mediaaritm">3.1</a> a seguir, do qual iremos usar a Definição <a href="cap03.html#def:medarit">3.1</a> como base, e as demais seguem de forma similar.</p>
+<div id="teo:mediaaritm" class="Theorem" title="Propriedades da Média aritmética">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 3.1: </strong>Propriedades da Média aritmética</summary><div>
+<p>Baseado na Definição <a href="cap03.html#def:medarit">3.1</a>, e considerando <span class="math inline">\(c\)</span> uma constante, então:</p>
+<ol type="I">
+<li>Se para uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, , <span class="math inline">\(X_n\)</span>, a média aritmética é dada por <span class="math inline">\(\bar{X} = \frac{\sum_{i=1}^{n}X_i}{n}\)</span>, então para uma transformação de <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, a nova média aritmética é dada por <span class="math inline">\(\bar{Y} = \bar{X} \pm c\)</span>;</li>
+<li>Se para uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, , <span class="math inline">\(X_n\)</span>, a média aritmética é dada por <span class="math inline">\(\bar{X} = \frac{\sum_{i=1}^{n}X_i}{n}\)</span>, então para uma transformação de <span class="math inline">\(Y_i = X_i \times c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, a nova média aritmética é dada por <span class="math inline">\(\bar{Y} = \bar{X} \times c\)</span>. Esse resultado vale também para a transformação <span class="math inline">\(Y_i = X_i / m\)</span>, sendo <span class="math inline">\(m\)</span> também uma constante. Basta usar <span class="math inline">\(c = 1 / m\)</span> e o resultado é o mesmo.</li>
+<li>A soma de quadrado de desvios dos dados em relação a uma constante <span class="math inline">\(c\)</span>, é minimizada se <span class="math inline">\(c = \bar{X}\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="Proof*-3.1" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<ol type="I">
+<li><p>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, , <span class="math inline">\(X_n\)</span>, e <span class="math inline">\(c\)</span> uma constante, e que <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então a média aritmética de <span class="math inline">\(Y_i\)</span> é dado por: <span class="math display">\[\begin{align*}
+\bar{Y} &amp; = \frac{\sum_{i=1}^{n}Y_i}{n}\\
+         &amp; = \frac{\sum_{i=1}^{n}X_i \pm c}{n}\\
+         &amp; = \frac{\sum_{i=1}^{n}X_i}{n} \pm \frac{\sum_{i=1}^{n} c}{n}\\
+         &amp; = \frac{\sum_{i=1}^{n}X_i}{n} \pm \frac{n \times c}{n}\\
+         &amp; = \bar{X} \pm c. \quad \textrm{c.q.d.}
+  \end{align*}\]</span></p></li>
+<li><p>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, , <span class="math inline">\(X_n\)</span>, e <span class="math inline">\(c\)</span> uma constante, e que <span class="math inline">\(Y_i = X_i \times c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então a amplitude de <span class="math inline">\(Y_i\)</span> é dado por: <span class="math display">\[\begin{align*}
+\bar{Y} &amp; = \frac{\sum_{i=1}^{n}Y_i}{n}\\
+        &amp; = \frac{\sum_{i=1}^{n}X_i \times c}{n}\\
+        &amp; = \frac{X_1 \times c + X_2 \times c + \ldots + X_n \times c}{n} \\
+        &amp; = c \times \frac{X_1 + X_2 + \ldots + X_n }{n} \\
+        &amp; = c \times \bar{X}. \quad \textrm{c.q.d.}
+  \end{align*}\]</span></p></li>
+<li><p>Fazendo:</p></li>
+</ol>
+<p><span class="math display">\[
+D=\sum\limits_{i=1}^{n}(X_i-c)^2.
+\]</span> Expandindo o somatório e derivando <span class="math inline">\(D\)</span> em relação a “c”, temos que</p>
+<p><span class="math display">\[\begin{align*}
+  D &amp; =\sum\limits_{i=1}^{n}(X_i-c)^2=\sum\limits_{i=1}^{n}(X_i^2-2cX_i+c^2)\\
+    &amp; =\sum\limits_{i=1}^{n}X_i^2-\sum\limits_{i=1}^{n}2cX_i+\sum\limits_{i=1}^{n}c^2,
+\end{align*}\]</span> e que <span class="math display">\[
+\frac{dD}{dc}=-2\sum\limits_{i=1}^{n}X_i+2nc.
+\]</span></p>
+<p>Igualando a derivada a zero, e resolvendo em <span class="math inline">\(A\)</span>, temos: <span class="math display">\[
+\frac{dD}{dc}=-2\sum\limits_{i=1}^{n}X_i+2nc=0,
+\]</span> <span class="math display">\[
+2nc=2\sum\limits_{i=1}^{n}X_i,
+\]</span> <span class="math display">\[
+c=\frac{\sum\limits_{i=1}^{n}X_i}{n} = \bar{X}.
+\]</span> Certificando se o ponto é de máximo ou de mínimo, <span class="math display">\[
+\frac{d^2D}{d^2c}=2n&gt;0.
+\]</span> Como a segunda derivada é maior que zero, fica provado que o ponto é de mínimo.</p>
+</div></details>
+</div>
+</section>
+<section id="mediana" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="mediana"><span class="header-section-number">3.3</span> Mediana</h2>
+<p>Uma outra alternativa para contornarmos os problemas de dados discrepantes encontrados na média aritmética, pode ser apresentada por meio da medida de posição chamada de mediana, do qual leva em consideração a posição ordenada dos dados ao invés de usar or próprios valores observados. Mas especificamente, o valor da mediana é o ponto central dos dados, em que abaixo desse valor, representa as 50% menores observação, ao passo que, os valores acima da mediana representam as 50% maiores observações. De outro modo, dizemos que a mediana representa um ponto central no conjunto de dados em que a quantidade de elementos abaixo ou acima desse valor, não supera 50%. Essa última definição representa melhor o que significa a mediana, pois podemos ter valores centrais repetidos, e dessa forma isso ocorrendo, a primeira afirmação não será válida para a definição da mediana. Formalmente, definimos,</p>
+<div id="def:mediana" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 3.3</strong></summary><div>Seja uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, de uma população <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_N\)</span>, de tamanhos <span class="math inline">\(n\)</span> e <span class="math inline">\(N\)</span>, respectivamente, definimos a mediana por: <span id="eq-medianapop"><span class="math display">\[
+\begin{align}
+    \mu_d(X) &amp; = \left\{\begin{array}{ll}
+      \frac{X_{(\frac{N}{2})} + X_{\left( \frac{N}{2} + 1
+          \right)}}{2}, &amp; \textrm{se } N  \textrm{ for par} \\
+          &amp; \\
+      X_{(\frac{N + 1}{2})}, &amp; \textrm{se } N  \textrm{ for ímpar} \\
+    \end{array}\right., \quad \textrm{(População)}
+\end{align}
+\tag{3.6}\]</span></span> sendo <span class="math inline">\(\mu_d(X)\)</span> a mediana populacional e que <span class="math inline">\(X_{(i)}\)</span> é a <span class="math inline">\((i)\)</span>-ésima variável em ordem crescente de magnitude, tal que <span class="math inline">\(X_{(1)} = \min\limits_{i}X_i\)</span> e <span class="math inline">\(X_{(n)} = \max\limits_{i}X_i\)</span>. De modo similar, <span id="eq-medianaamost"><span class="math display">\[
+\begin{align}
+    Md(X) &amp; = \left\{\begin{array}{ll}
+      \frac{X_{(\frac{n}{2})} + X_{\left( \frac{n}{2} + 1
+          \right)}}{2}, &amp; \textrm{se } n  \textrm{ for par} \\
+          &amp; \\
+      X_{(\frac{n + 1}{2})}, &amp; \textrm{se } n  \textrm{ for ímpar} \\
+    \end{array}\right., \quad \textrm{(Amostra)}
+\end{align}
+\tag{3.7}\]</span></span> sendo <span class="math inline">\(Md(X)\)</span> a mediana amostral e que <span class="math inline">\(X_{(i)}\)</span> é a <span class="math inline">\((i)\)</span>-ésima variável em ordem crescente de magnitude, tal que <span class="math inline">\(X_{(1)} = \min\limits_{i}X_i\)</span> e <span class="math inline">\(X_{(n)} = \max\limits_{i}X_i\)</span>.<p></p>
+</div></details>
+</div>
+<p>A mediana amostral é o melhor estimador para a mediana populacional, e pode ser considerado também como um estimador para a média populacional (<span class="math inline">\(\mu\)</span>). Detalhes sobre a escolha de um melhor estimador para um determinado parâmetro, será estudado no <a href="cap09.html" class="quarto-xref"><span>Capítulo 9</span></a>. Como a mediana leva em consideração a posição das observações, a condição do tamanho amostral ou populacional acaba sendo importante para essa medida, de modo que, se o tamanho for um número par ou ímpar, teremos condições diferentes para o cálculo. Uma outra informação importante para o cálculo da mediana, é que será necessário ordenar as observações de modo crescente. Em notação para o caso de uma amostra de tamanho <span class="math inline">\(n\)</span>, dizemos que <span class="math inline">\(X_{(1)}\)</span>, <span class="math inline">\(X_{(2)}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_{(n)}\)</span> representa uma amostra em ordem crescente de magnitude, isto é, <span class="math inline">\(X_{(1)} = \min_{i}X_i\)</span> e <span class="math inline">\(X_{(n)} = \max_{i}X_i\)</span>, e precisaremos desse ordenamento para obter o valor da mediana, baseados na expressões da Definição <a href="cap03.html#def:mediana">3.3</a>. Se utilizarmos o Exemplo <a href="cap03.html#ex:mediaaparado">3.4</a>, perceberemos que não é necessário eliminar as observações extremas em ordem de magnitude, como foi realizado com a média aparada. Isso demonstra que a mediana é uma outra alternativa de medida robusta para a escolha de uma medida de posição de modo a representar um conjunto de dados. Vejamos o exemplo a seguir.</p>
+<div id="Example-3.5" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 3.5</strong></summary><div>Considerando o Exemplo <a href="cap03.html#ex:mediaaparado">3.4</a>, como <span class="math inline">\(n = 17\)</span> é ímpar, a mediana amostral desse conjunto de dados fictícios é dado por: <span class="math display">\[\begin{align*}
+      Md(X) &amp; = X_{(\frac{17 + 1}{2})} = X_{(9)} = 8~unid.
+    \end{align*}\]</span> Esse valor representa uma medida central do qual os 50% menores valores dos dados estão abaixo de <span class="math inline">\(8~unid.\)</span>, e que os 50% maiores valores dos dados estão acima de <span class="math inline">\(8~unid.\)</span>. Porém, percebemos que os valores <span class="math inline">\(x_{(1)} = 1\)</span> e <span class="math inline">\(x_{(17)} = 40\)</span> não influenciaram nesse resultado. Isso mostra, a robustez da mediana quanto a esse aspecto.<p></p>
+</div></details>
+</div>
+<p>Para o caso de variáveis quantitativas contínuas sem agrupamento, o procedimento é o mesmo realizado no Exemplo <a href="cap03.html#ex:exemmedsagrup">3.4</a>. Para os dados da <a href="cap02.html#tbl-erroscanaldf" class="quarto-xref">Tabela&nbsp;<span>2.3</span></a>, isto é, dados agrupados sem intervalo de classe (variáveis quantitativas discretas), podemos calcular a mediana usando a Definição <a href="cap03.html#def:mediana">3.3</a>. Precisaremos apenas complementar as informações com o acréscimo da frequência acumulada <em>abaixo de</em> (<span class="math inline">\(f_{ac\downarrow_i}\)</span>), que foi apresentada na <a href="cap02.html#tbl-erroscanalacum" class="quarto-xref">Tabela&nbsp;<span>2.6</span></a>. Vejamos o próximo exemplo.</p>
+<div id="ex:exemmedsagrup" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 3.4</strong></summary><div>Vejamos os dados do número de erros de caracteres em 20 conjuntos, descritos na <a href="cap02.html#tbl-erroscanalacum" class="quarto-xref">Tabela&nbsp;<span>2.6</span></a>, em que simplificamos os resultados, que segue:<p></p>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Número de erros</strong> <span class="math inline">\(\mathbf{(X_i)}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathbf{F_i}\)</span></th>
+<th style="text-align: center;"><strong>Frequência acumulada</strong> (<span class="math inline">\(\mathbf{F_{ac\downarrow_i}}\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(7\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(10\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(14\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(19\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+<p>O valor da mediana será dado da seguinte forma: <span class="math display">\[\begin{align*}
+    Md(X) &amp; = \frac{X_{(\frac{20}{2})} + X_{\left( \frac{20}{2} + 1
+          \right)}}{2}\\
+          &amp; = \frac{X_{(10)} + X_{(11)}}{2}.
+\end{align*}\]</span> Para sabermos qual o valor observado para a variável <span class="math inline">\(X_{(10)}\)</span> e <span class="math inline">\(X_{(11)}\)</span>, marcamos os grupos 2 (linhas 2 de vermelho) e 3 (linha 3 de amarelo). No grupo 2, temos sete elementos que correspondem as variáveis <span class="math inline">\(X_{(4)}\)</span>, <span class="math inline">\(X_{(5)}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_{(10)}\)</span>, uma vez que os três menores valores estão no grupo 1. Assim o <span class="math inline">\(X_{(10)} = 1\)</span> erros. No grupo 3, nós temos quatro elementos que correspondem as variáveis <span class="math inline">\(X_{(11)}\)</span>, <span class="math inline">\(X_{(12)}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_{(14)}\)</span>, uma vez que abaixo desse grupo nós temos as dez primeiras observações. Assim, o <span class="math inline">\(X_{(11)} = 2\)</span> erros. Usamos as frequências simples (<span class="math inline">\(F_i\)</span>) e acumulada <span class="math inline">\(F_{ac\downarrow_i}\)</span>, para obter essas informações. Retornando ao cálculo da mediana, temos: <span class="math display">\[\begin{align*}
+    Md(X) &amp; = \frac{X_{(10)} + X_{(11)}}{2}\\
+          &amp; = \frac{1 + 2}{2} = 1,5~\textrm{erros}.
+  \end{align*}\]</span> Caso os dados estivessem em rol, o resultado seria o mesmo.</p>
+</div></details>
+</div>
+<p>No caso de dados agrupados com intervalo de classe (variáveis quantitativas contínuas), vamos definir um estimador para a mediana populacional, usando uma dedução geométrica por meio do histograma de frequências e as ogivas. Para isso, vamos usar os dados do Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a> para facilitar a explicação, em que apresentamos na <a href="#fig-mediana1" class="quarto-xref">Figura&nbsp;<span>3.1</span></a> o histograma e as ogivas desses dados agrupados.</p>
+<div id="fig-mediana1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mediana1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap3/hist-mediana1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mediana1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3.1: Histograma de frequência e ogivas para a dedução do cálculo da mediana.
+</figcaption>
+</figure>
+</div>
+<p>Para estimar a mediana a partir dos dados arranjados em uma tabela de distribuição de frequência com intervalo de classe, é necessário definir a classe mediana e em seguida encontrar a mediana interpolando os resultados. A posição da mediana é obtida acumulando-se frequências das classes 1, 2, etc., até se encontrar o valor que seja igual ou imediatamente superior a <span class="math inline">\(n/2\)</span>. Apresentamos algumas notações importantes para o entendimento da dedução do estimador de <span class="math inline">\(\mu_d(X)\)</span>, que segue:</p>
+<ul>
+<li><span class="math inline">\(LI_{Md}\)</span>: Limite inferior da classe da mediana;</li>
+<li><span class="math inline">\(LS_{Md}\)</span>: Limite superior da classe da mediana;</li>
+<li><span class="math inline">\(f_{Md}\)</span>: Frequência absoluta da classe da Mediana;</li>
+<li><span class="math inline">\(f_{ant}\)</span>: Frequência acumulada (abaixo de) anterior à classe da Mediana;</li>
+<li><span class="math inline">\(f_{post}\)</span>: Frequência acumulada (acima de) posterior à classe da Mediana;</li>
+<li><span class="math inline">\(c\)</span>: Amplitude da classe da Mediana.</li>
+</ul>
+<p>Com essa notação apresentamos a <a href="#fig-mediana2" class="quarto-xref">Figura&nbsp;<span>3.2</span></a> para facilitar a compreensão da dedução. Iremos apresentar dois métodos, o primeiro baseado no limite inferior da classe da mediana, e o segundo baseado no limite superior da classe da mediana. Nesse tipo de natureza de dados, desprezaremos se o número de elementos é par ou ímpar. Entenderemos que a classe da mediana é aquela que contempla o valor observado para a variável <span class="math inline">\(X_{(n / 2)}\)</span>. Para isso, podemos observar esse valor na coluna da frequência acumulada (<em>abaixo de</em>), <span class="math inline">\(f_{ac\downarrow_i}\)</span>. Nos dados do Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a>, a classe da mediana é <span class="math inline">\(57,5\)</span> <span class="math inline">\(|\)</span>— <span class="math inline">\(68,1\)</span> porque <span class="math inline">\(f_{ac\downarrow_4} = 19\)</span>, isto é, abaixo de <span class="math inline">\(68,1~\textrm{ºF}\)</span> temos as primeiras <span class="math inline">\(19\)</span> observações, e nessa classe contemplamos as observações ordenadas <span class="math inline">\(x_{(8)}\)</span>, <span class="math inline">\(x_{(9)}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(x_{(19)}\)</span>, que contém <span class="math inline">\(x_{(n / 2)} = x_{(36 / 2)} = x_{(19)}\)</span>. Temos essas observações na classe 4 (classe da mediana), porque a frequência acumulada (<em>abaixo de</em>) anterior a classe da mediana, <span class="math inline">\(f_{ac\downarrow_3} = 7\)</span>. Isso significa que a partir do oitavo elemento ordenado até o décimo nono temos elementos pertencentes a classe da mediana.</p>
+<p>Feito essas considerações, apresentamos o primeiro método de dedução da expressão da mediana, a seguir.</p>
+<div id="fig-mediana2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mediana2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap3/hist-mediana2.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mediana2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3.2: Histograma de frequência e ogivas para a dedução do cálculo da mediana com as notações.
+</figcaption>
+</figure>
+</div>
+<p><strong>1° Método</strong></p>
+<p>Uma vez que sabemos a classe da mediana, pela <a href="#fig-mediana3" class="quarto-xref">Figura&nbsp;<span>3.3</span></a> podemos determinar o valor da mediana por:</p>
+<div id="fig-mediana3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mediana3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap3/hist-mediana3.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mediana3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3.3: Detalhamento do Histograma de frequência e ogivas para a dedução do cálculo da mediana com as notações.
+</figcaption>
+</figure>
+</div>
+<p><span id="eq-mediana3"><span class="math display">\[
+\begin{align}
+  Md(X) &amp; = LI_{Md}+x,
+\end{align}
+\tag{3.8}\]</span></span></p>
+<p>sendo necessário encontrar o valor <span class="math inline">\(x\)</span>. Assim, faremos uma regra de três simples pela semelhança de triângulos (triângulo verde e vermelho) que pode ser observado pela <a href="#fig-mediana4" class="quarto-xref">Figura&nbsp;<span>3.4</span></a>.</p>
+<div id="fig-mediana4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mediana4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap3/hist-mediana4.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mediana4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3.4: Semelhança de triângulos para a dedução do cálculo da mediana com as notações.
+</figcaption>
+</figure>
+</div>
+<p>Assim, temos</p>
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Variação</strong></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>Frequência</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(c\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{Md}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(x\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n/2-f_{ant}\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p>Determinando <span class="math inline">\(x\)</span>, <span class="math display">\[
+x=\left\lbrace \frac{\frac{n}{2}-f_{ant}}{f_{Md}}\right\rbrace c.
+\]</span></p>
+<p>Como <span class="math inline">\(Md(X) = LI_{Md} + x\)</span>, então <span id="eq-mediana"><span class="math display">\[
+\begin{equation}
+Md(X) = LI_{Md} + \left\lbrace \frac{\frac{n}{2}-f_{ant}}{f_{Md}}\right\rbrace \times c.
+\end{equation}
+\tag{3.9}\]</span></span></p>
+<p><strong>2° Método</strong></p>
+<p>Uma vez que sabemos a classe da mediana, pela <a href="#fig-mediana3" class="quarto-xref">Figura&nbsp;<span>3.3</span></a> podemos determinar o valor da mediana pelo segundo método, sendo necessário encontrar o valor <span class="math inline">\(y\)</span> na seguinte expressão (<a href="#eq-mediana4" class="quarto-xref"><span>3.10</span></a>). <span id="eq-mediana4"><span class="math display">\[
+\begin{align}
+  Md(X) &amp; = LS_{Md} - y.
+\end{align}
+\tag{3.10}\]</span></span></p>
+<p>Assim, faremos uma regra de três simples usando a semelhança de triângulos (triângulo verde e amarelo). Assim,</p>
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Variação</strong></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>Frequência</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(c\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_{Md}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(y\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\rightarrow\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n/2-f_{post}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Determinando <span class="math inline">\(y\)</span>, <span class="math display">\[
+y=\left\lbrace \frac{\frac{n}{2}-f_{post}}{f_{Md}}\right\rbrace c.
+\]</span> a mediana amostral pode ser expressa como</p>
+<p><span class="math display">\[\begin{equation}
+Md(X) = LS_{Md} - \left\lbrace \frac{\frac{n}{2}-f_{post}}{f_{Md}} \right\rbrace \times c.
+\end{equation}\]</span></p>
+<p>Formalizando essas ideias, definimos um estimador da mediana amostral para dados agrupados com intervalo de classe da seguinte forma,</p>
+<div id="def:medianadadclasse" class="Definition" title="Mediana em dados agrupados com intervalo de classe">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 3.5: </strong>Mediana em dados agrupados com intervalo de classe</summary><div>Seja uma amostra <span class="math inline">\(X_{(1)}\)</span>, <span class="math inline">\(X_{(2)}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_{(n)}\)</span> em ordem crescente de magnitude, de tamanho <span class="math inline">\(n\)</span>, agrupados em <span class="math inline">\(k\)</span> classes com pontos médios <span class="math inline">\(\tilde{X}_i\)</span> e <span class="math inline">\(F_i\)</span> frequências, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(k\)</span> e <span class="math inline">\(\sum_{i = 1}^{k}F_i = n\)</span>, então a mediana amostral é definida por: <span id="eq-medianadadclasse1"><span class="math display">\[
+\begin{align}
+    Md(X) = LI_{Md} + \left\lbrace \frac{\frac{n}{2}-f_{ant}}{f_{Md}}\right\rbrace \times c.
+\end{align}
+\tag{3.11}\]</span></span> em que <span class="math inline">\(LI_{Md}\)</span> é o limite inferior da classe da mediana, <span class="math inline">\(f_{ant}\)</span> é a frequência acumulada (<em>abaixo de</em>) anterior a classe da mediana, <span class="math inline">\(f_{Md}\)</span> frequência absoluta da classe da mediana, <span class="math inline">\(c\)</span> a amplitude da classe da mediana, ou de forma similar, <span id="eq-medianadadclasse2"><span class="math display">\[
+\begin{align}
+    Md(X) = LS_{Md} - \left\lbrace \frac{\frac{n}{2}-f_{post}}{f_{Md}} \right\rbrace \times c.
+\end{align}
+\tag{3.12}\]</span></span> em que <span class="math inline">\(LS_{Md}\)</span> é o limite superior da classe da mediana e <span class="math inline">\(f_{post}\)</span> é a frequência acumulada (<em>acima de</em>) posterior a classe da mediana.<p></p>
+</div></details>
+</div>
+<p>Vamos apresentar o resultado da mediana para os dados do Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a> a seguir.</p>
+<div id="Example-3.6" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 3.6</strong></summary><div>Retornando aos dados do Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a>, vamos calcular a mediana pelos dois métodos, do qual temos o primeiro resultado, usando a expressão (<a href="#eq-medianadadclasse1" class="quarto-xref"><span>3.11</span></a>), <span class="math display">\[\begin{align*}
+  Md(X) &amp; = 57,5 + \left\{ \frac{18 - 7}{12}\right\} \times 10,6 = 67,22~\textrm{ºF}.
+\end{align*}\]</span> Usando o segundo método, expressão (<a href="#eq-medianadadclasse2" class="quarto-xref"><span>3.12</span></a>), temos, <span class="math display">\[\begin{align*}
+  Md(X) &amp; = 68,1 - \left\{ \frac{18 - 17}{12}\right\} \times 10,6 = 67,22~\textrm{ºF}.
+\end{align*}\]</span> Os resultados são equivalentes como era de se esperar.<p></p>
+</div></details>
+</div>
+<p>Vejamos algumas características sobre a mediana, que seguem:</p>
+<ul>
+<li>A mediana não é influenciada por valores extremos;</li>
+<li>Uma medida que pode ser obtida em distribuições de frequências que apresentam classe com limites indefinidos;</li>
+<li>o resultado da mediana é obtida na mesma escala da variavel em estudo;</li>
+<li>a mediana é menos informativa que a média, por não levar em consideração os valores observados, mas as posições dessas observações;</li>
+<li>a mediana pode ser calculada em variáveis qualitativas ordinais, cuja média não pode ser obtida;</li>
+<li>a mediana ainda pode ser obtida em um conjunto de dados em que alguns valores ainda não foram registrados, caso em que a média não pode ser obtida.</li>
+</ul>
+<p>Para complementarmos essas características, vamos apresentar algumas propriedades da mediana no Teorema <a href="cap03.html#teo:propmediana">3.2</a>. Iremos a Definição <a href="cap03.html#def:mediana">3.3</a>, bem como a expressão (<a href="#eq-medianaamost" class="quarto-xref"><span>3.7</span></a>) para <span class="math inline">\(n\)</span> ímpar. Para os demais casos, os resultados são similares.</p>
+<div id="teo:propmediana" class="Theorem" title="Propriedades da mediana">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 3.2: </strong>Propriedades da mediana</summary><div>
+<p>Baseado na Definição <a href="cap03.html#def:mediana">3.3</a>, e considerando <span class="math inline">\(c\)</span> uma constante, então:</p>
+<ol type="I">
+<li>Se para uma amostra <span class="math inline">\(X_{(1)}\)</span>, <span class="math inline">\(X_{(2)}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_{(n)}\)</span> em ordem crescente de magnitude, a mediana é dada por <span class="math inline">\(Md{X} = X_{(\frac{n + 1}{2})}\)</span>, então para uma transformação de <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, a mediana aritmética é dada por <span class="math inline">\(Md(Y) = Md(X) \pm c\)</span>;</li>
+<li>Se para uma amostra <span class="math inline">\(X_{(1)}\)</span>, <span class="math inline">\(X_{(2)}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_{(n)}\)</span> em ordem crescente de magnitude, a mediana é dada por <span class="math inline">\(Md(X) = X_{(\frac{n + 1}{2})}\)</span>, então para uma transformação de <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, a nova mediana é dada por <span class="math inline">\(Md(Y) = Md(X) \times c\)</span>. Esse resultado vale também para a transformação <span class="math inline">\(Y_i = X_i / m\)</span>, sendo <span class="math inline">\(m\)</span> também uma constante. Basta usar <span class="math inline">\(c = 1 / m\)</span> e o resultado é equivalente;</li>
+<li>A soma do módulo dos desvios dos dados em relação a uma constante arbitrária <span class="math inline">\(c\)</span>, terá um valor mínimo se <span class="math inline">\(c=Md(X)\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="Proof*-3.2" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<ol type="I">
+<li>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, e <span class="math inline">\(c\)</span> uma constante, e que <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então a mediana de <span class="math inline">\(Y_i\)</span> é dado por: <span class="math display">\[\begin{align*}
+   Md(Y) &amp; =  Y_{(\frac{n + 1}{2})}\\
+       &amp; =  X_{(\frac{n + 1}{2})} \pm c\\
+       &amp; = Md(X) \pm c.
+\end{align*}\]</span></li>
+<li>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, e <span class="math inline">\(c\)</span> uma constante, e que <span class="math inline">\(Y_i = X_i \times c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, então a mediana de <span class="math inline">\(Y_i\)</span> é dado por: <span class="math display">\[\begin{align*}
+  Md(Y) &amp; =  Y_{(\frac{n + 1}{2})}\\
+      &amp; =  X_{(\frac{n + 1}{2})} \times c\\
+      &amp; = Md(X) \times c.
+\end{align*}\]</span></li>
+<li>Considerando uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, e a soma do módulo dos desvios entre os dados e uma constante <span class="math inline">\(c\)</span>, por <span class="math inline">\(h(c) = \sum_{i = 1}^{n} |X_i - c|\)</span>, tal que, <span class="math display">\[\begin{align*}
+   h_i(c) = |X_i - c| &amp; = \left\{\begin{array}{ll}
+                                                  (X_i - c) &amp; \textrm{se } X_i &gt; c, \\
+                                                  -(X_i - c) &amp; \textrm{se } X_i &lt; c.
+                                                \end{array}\right.
+\end{align*}\]</span> Para minimizar <span class="math inline">\(h(c)\)</span> em relação a <span class="math inline">\(c\)</span>, temos que <span class="math display">\[\begin{align*}
+   \frac{dh_i(c)}{dc} &amp; = - I_{\{X_I &gt; A\}}(x) + I_{\{X_i &lt; c\}}(x),
+\end{align*}\]</span> que resulta em <span class="math display">\[\begin{align*}
+   \frac{dh(c)}{dc} &amp; = \sum_{i = 1}^{n}[I_{\{X_i &lt; c\}}(x) - I_{\{X_I &gt; A\}}(x)],
+\end{align*}\]</span> em que <span class="math inline">\(I(x)\)</span> representa a função indicadora. Logo, <span class="math display">\[\begin{align*}
+   \frac{dh_i(c)}{dc} &amp; = 0,
+\end{align*}\]</span> se <span class="math display">\[\begin{align*}
+   \sum_{i = 1}^{n}I_{\{X_i &lt; c\}}(x) &amp; = \sum_{i = 1}^{n}I_{\{X_I &gt; A\}}(x)\\
+   n_{-} &amp; = n_{+}.
+\end{align*}\]</span> De modo que a igualdade <span class="math inline">\(n_{-} = n_{+}\)</span> só ocorrerá se <span class="math inline">\(c\)</span> for igual a <span class="math inline">\(Md(X)\)</span>, pois a quantidade de valores menores a <span class="math inline">\(c\)</span> é igual a quantidade de valores maiores que <span class="math inline">\(c\)</span>. Portanto, para <span class="math inline">\(n = n_{-} + n_{+}\)</span> um número par, <span class="math inline">\(c\)</span> deverá ser um valor entre <span class="math inline">\(X_{(n / 2)}\)</span> e <span class="math inline">\(X_{(\frac{n + 2}{2})}\)</span>, isto é, <span class="math display">\[\begin{align*}
+   c = Md(X) &amp; = \frac{X_{(n / 2)} + X_{\left(\frac{n}{2} + 1\right)}}{2},
+\end{align*}\]</span> e se <span class="math inline">\(n = n_{-} + n_{+}\)</span> for um número ímpar, <span class="math display">\[\begin{align*}
+   c = Md(X) &amp; = X_{\left(\frac{n + 1}{2}\right)}.
+\end{align*}\]</span></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="moda" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="moda"><span class="header-section-number">3.4</span> Moda</h2>
+<p>As medidas de posição até agora apresentadas não foram aplicadas para as variáveis qualitativas de um modo geral, apenas a mediana para o caso de variável quantitativa ordinal. Contudo, podemos apresentar um medida mais simples, que seja possível ser aplicada para todas as naturezas de variáveis apresentadas, definida a seguir.</p>
+<div id="def:modadisc" class="Example" title="Moda para natureza de dados discretizados">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 3.7: </strong>Moda para natureza de dados discretizados</summary><div>Seja uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span>, de uma população <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, , <span class="math inline">\(X_N\)</span>, de tamanhos <span class="math inline">\(n\)</span> e <span class="math inline">\(N\)</span>, respectivamente, cuja natureza da variável é discretizada<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Então a moda representa o valor que mais se repete em um conjunto de dados. Denotamos <span class="math inline">\(\mu_o\)</span> a moda populacional, e <span class="math inline">\(Mo(X)\)</span> a moda amostral.<p></p>
+</div></details>
+</div>
+<p>Dessa forma, podemos perceber que um conjunto de dados poderá ter mais de uma moda, isto é, se observarmos dois valores mais frequentes e iguais, teremos uma distribuição bimodal, três valores mais frequentes iguais, teremos uma distribuição trimodal, mais de três, uma distribuição multimodal, ou até mesmo uma distribuição amodal, quando todos os valores se repetem apenas uma vez.</p>
+<div id="ex:modaamazonialegal" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 3.8</strong></summary><div>Observando as variáveis da <a href="cap01.html#tbl-amazlegal" class="quarto-xref">Tabela&nbsp;<span>1.2</span></a>, percebemos que para a variável Região a moda é Norte. Já para UF e Número de cidades a distribuição é amodal.<p></p>
+</div></details>
+</div>
+<p>Para o caso das variáveis quantitativas contínuas, essa definição não se aplica, porque dificilmente dois valores serão iguais para esse tipo de variável. O que faz pensar que dois valores sejam iguais em uma variável quantitativa contínua é a limitação do instrumento de medida. Basta perceber que dois valores possivelmente iguais, se mensurados por outros instrumentos de medidas mais precisos, os valores serão diferentes à medida que o número de dígitos nas casas decimais aumentam. Assim, faz-se necessário pensarmos em uma definição para a moda como sendo o valor com alta densidade de observações em sua proximidade. Uma forma de determinarmos um estimador para <span class="math inline">\(\mu_o\)</span> em variáveis contínuas é por meio do histograma de frequências. Inicialmente, determinamos a classe de maior frequência para os dados agrupados com intervalo de classe, para determinarmos a moda. Se todas as classes apresentarem mesma frequência, não haverá moda. A classificação quanto a distribuição segue a mesma mencionada anteriormente, isto é, amodal, unimodal, bimodal, trimodal ou multimodal. A moda baseada no histograma de frequência é também chamada de moda de Czuber.</p>
+<p>A moda de Czuber pode ser facilmente obtida pela semelhança de triângulos ABC e DCE no esquema seguinte. A moda, se refere ao valor da abscissa correspondente ao vértice C comum aos dois triângulos. É fácil perceber que os segmentos de retas AB e DE correspondem aos valores <span class="math inline">\(\Delta_1\)</span> e <span class="math inline">\(\Delta_2\)</span>.</p>
+<p>Observamos pela <a href="#fig-moda" class="quarto-xref">Figura&nbsp;<span>3.5</span></a>, que o valor da moda é <span class="math inline">\(Mo=LI_{Mo}+x\)</span>, bastando determinar o valor <span class="math inline">\(x\)</span> pela semelhança de triângulos, isto é, <span class="math display">\[
+\frac{x}{c-x}=\frac{\Delta_1}{\Delta_2}\Rightarrow x=\left\lbrace \frac{\Delta_1}{\Delta_1+\Delta_2}\right\rbrace \times  c.
+\]</span> Assim, a moda é determinada por: <span class="math display">\[\begin{equation*}
+Mo(X)=LI_{Mo}+\left\lbrace \frac{\Delta_1}{\Delta_1+\Delta_2}\right\rbrace \times c,
+\end{equation*}\]</span> sendo <span class="math inline">\(LI_{Mo}\)</span> o limite inferior da classe da moda, <span class="math inline">\(\Delta_1 = f_{Mo} - f_{i_{ant}}\)</span>, <span class="math inline">\(\Delta_2 = f_{Mo} - f_{i_{post}}\)</span>, <span class="math inline">\(f_{Mo}\)</span> é a frequência absoluta da classe da moda, <span class="math inline">\(f_{i_{ant}}\)</span> frequência absoluta anterior à classe da moda, <span class="math inline">\(f_{i_{post}}\)</span> frequência posterior à classe da moda, e <span class="math inline">\(c\)</span> a amplitude da classe.</p>
+<div id="fig-moda" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-moda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap3/hist-moda.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-moda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3.5: Histograma de frequência para a dedução do cálculo da moda.
+</figcaption>
+</figure>
+</div>
+<p>Karl Pearson, observou a existência de uma relação empírica que permite calcular a moda quando são conhecidas a média (<span class="math inline">\(\overline{X}\)</span>) e a mediana (<span class="math inline">\(Md\)</span>) de uma distribuição assimétrica. Essas condições satisfazem a relação empírica, <span id="eq-modapearson"><span class="math display">\[
+\begin{equation}
+Mo(X)=3Md(X)-2\overline{X}.
+\end{equation}
+\tag{3.13}\]</span></span> Formalmente, definimos</p>
+<div id="def:modacont" class="Definition" title="Moda para dados agrupados com intervalo de classe">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 3.6: </strong>Moda para dados agrupados com intervalo de classe</summary><div>Seja uma amostra <span class="math inline">\(X_{(1)}\)</span>, <span class="math inline">\(X_{(2)}\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_{(n)}\)</span> em ordem crescente de magnitude, de tamanho <span class="math inline">\(n\)</span>, agrupados em <span class="math inline">\(k\)</span> classes com pontos médios <span class="math inline">\(\tilde{X}_i\)</span> e <span class="math inline">\(F_i\)</span> frequências, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(k\)</span> e <span class="math inline">\(\sum_{i = 1}^{k}F_i = n\)</span>, então a moda amostral é definida por: <span id="eq-modaagrup"><span class="math display">\[
+\begin{align}
+Mo(X) &amp; = LI_{Mo} + \left\lbrace \frac{\Delta_1}{\Delta_1 + \Delta_2}\right \rbrace \times c,
+\end{align}
+\tag{3.14}\]</span></span> em que <span class="math inline">\(LI_{Mo}\)</span> o limite inferior da classe da moda, <span class="math inline">\(\Delta_1 = f_{Mo} - f_{i_{ant}}\)</span>, <span class="math inline">\(\Delta_2 = f_{Mo} - f_{i_{post}}\)</span>, <span class="math inline">\(f_{Mo}\)</span> é a frequência absoluta da classe da moda, <span class="math inline">\(f_{i_{ant}}\)</span> frequência absoluta anterior à classe da moda, <span class="math inline">\(f_{i_{post}}\)</span> frequência posterior à classe da moda, e <span class="math inline">\(c\)</span> a amplitude da classe.<p></p>
+</div></details>
+</div>
+<p>Vejamos algumas características sobre a moda, que seguem:</p>
+<ul>
+<li>A moda não é influenciada por valores extremos, desde que estes não pertençam a classe modal;</li>
+<li>Uma medida que pode ser obtida em distribuições de frequências que apresentam classe com limites indefinidos;</li>
+<li>o resultado da moda é obtida na mesma escala da variavel em estudo;</li>
+<li>a moda é menos informativa que a média, por não levar em consideração os valores observados;</li>
+<li>a moda pode ser calculada para todas as naturezas de variáveis;</li>
+<li>a moda é a medida mais simples dentre as apresentadas;</li>
+</ul>
+<div id="ex:modaamazonialegal2" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 3.9</strong></summary><div>Observando a tabela de frequência dos dados de temperatura do anel de vedação do foguete Challenger no Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a>, percebemos que há duas classes de maior frequência, porém classes vizinhas. Perceberemos pelo cálculo que na realidade haverá apenas uma moda nesse caso. Vejamos, o cálculo da moda para a classe 4, <span class="math display">\[\begin{align*}
+  Mo(X) &amp; = 57,5 + \left\lbrace\frac{12 - 4}{(12 - 4) + (12 - 12)} \right\rbrace \times 10,6 = 68,1~\text{ºF}.
+\end{align*}\]</span> Vejamos a moda para a classe 5, <span class="math display">\[\begin{align*}
+  Mo(X) &amp; = 67,1 + \left\lbrace\frac{12 - 12}{(12 - 5) + (12 - 12)} \right\rbrace \times 10,6 = 68,1~\text{ºF}.
+\end{align*}\]</span> O que poderia ser feito para que não gerasse confusão quanto a distribuição ser unimodal ou bimodal, era reagrupar os dados com um outro número de classes, abaixo ou acima do valor de <span class="math inline">\(k\)</span> adotado.<p></p>
+</div></details>
+</div>
+<p>Para complementarmos essas características, vamos apresentar algumas propriedades da moda no Teorema <a href="cap03.html#teo:propmediana">3.2</a>. Iremos usar a Definição <a href="cap03.html#def:modadisc">3.7</a> como referência, porém, para os demais casos, os resultados são similares.</p>
+<div id="teo:propmoda" class="Theorem" title="Propriedades da moda">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 3.3: </strong>Propriedades da moda</summary><div>
+<p>Baseado na Definição <a href="cap03.html#def:modadisc">3.7</a>, e considerando <span class="math inline">\(c\)</span> uma constante, então:</p>
+<ol type="I">
+<li>Se para uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span> em ordem crescente de magnitude, a moda representa o valor de maior frequência e representado por <span class="math inline">\(Mo(X)\)</span>, então para uma transformação de <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, a moda é dada por <span class="math inline">\(Mo(Y) = Mo(X) \pm c\)</span>;</li>
+<li>Se para uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span> em ordem crescente de magnitude, a moda representa o valor de maior frequência e representado por <span class="math inline">\(Mo(X)\)</span>, então para uma transformação de <span class="math inline">\(Y_i = X_i \pm c\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, a nova moda é dada por <span class="math inline">\(Mo(Y) = Mo(X) \times c\)</span>. Esse resultado vale também para a transformação <span class="math inline">\(Y_i = X_i / m\)</span>, sendo <span class="math inline">\(m\)</span> também uma constante. Basta usar <span class="math inline">\(c = 1 / m\)</span> e o resultado é o mesmo.</li>
+</ol>
+</div></details>
+</div>
+<div id="Proof*-3.3" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<ol type="I">
+<li>A soma ou subtração de uma constante (<span class="math inline">\(c\)</span>) aos dados, altera a moda de tal forma que a nova moda fica adicionada ou subtraída pela constante.</li>
+</ol>
+<p>Seja <span class="math display">\[
+Y_i=X_i\pm c,
+\]</span> então <span class="math display">\[
+Mo(Y)=Mo(X) \pm c.
+\]</span></p>
+<ol start="2" type="I">
+<li>A multiplicação dos dados ou divisão por uma constante (<span class="math inline">\(c\)</span>), altera a moda de tal forma que a nova moda fica complicada ou dividida pela constante.</li>
+</ol>
+<p>Sejam <span class="math display">\[
+Y_i=cX_i,
+\]</span> então <span class="math display">\[
+Mo(Y)=cMo(X).
+\]</span></p>
+</div></details>
+</div>
+<p>Por fim, apresentamos o Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a> de <span class="citation" data-cites="Magalhaes2015">Magalhães e Lima (<a href="references.html#ref-Magalhaes2015" role="doc-biblioref">2015</a>)</span>, para termos uma noção sobre essas três medidas de posição, a seguir.</p>
+<div id="ex:mediamedmoda" class="Example" title="Retirado de Magalhães e Lima (2015)">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 3.10: </strong>Retirado de Magalhães e Lima (2015)</summary><div>Um estudante está procurando um estágio para o próximo ano. As companhias <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> têm programas de estágios e oferecem uma remuneração por 20 horas semanais com as seguintes características (em salários mínimos):<p></p>
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Companhia</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Média</td>
+<td style="text-align: center;">2,5</td>
+<td style="text-align: center;">2,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mediana</td>
+<td style="text-align: center;">1,7</td>
+<td style="text-align: center;">1,9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Moda</td>
+<td style="text-align: center;">1,5</td>
+<td style="text-align: center;">1,9</td>
+</tr>
+</tbody>
+</table>
+<p>Qual a companhia mais adequada? Inicialmente vamos discutir as informações fornecidas supondo que o estudante terá seu salário “escolhido” de acordo com uma política salarial cuja tabela acima é um resumo. A companhia <span class="math inline">\(A\)</span> tem 50% dos seus estagiários recebendo até 1,7 salários mínimos e o valor com mais chance de ocorrência é 1,5. Como a média é 2,5 devem haver alguns poucos estagiários com salário bem mais alto. A companhia B tem as três medidas bem próximas indicando uma razoável simetria entre salários altos e baixos. A opção do estudante dependerá de sua qualificação. Se ele for bem qualificado, deve preferir a companhia A pois terá maior chance de obter um dos altos salários. se tiver qualificação próxima ou abaixo dos outros estudantes, deve preferir B que parece ter uma política mais homogênea de salários.</p>
+</div></details>
+</div>
+</section>
+<section id="aplicações-com-o-pacote-leem" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="aplicações-com-o-pacote-leem"><span class="header-section-number">3.5</span> Aplicações com o pacote <a href="https://bendeivide.github.io/leem/">leem</a></h2>
+<p>Com o pacote <a href="https://bendeivide.github.io/leem/">leem</a> podemos utilizar todas os cálculos para as medidas de posição, tanto para dados agrupados quanto para dados não agrupados, sendo variável qualitativa ou quantitativa, e ainda inseri-los nos gráficos apresentados na <a href="cap02.html#sec-repgraficas" class="quarto-xref"><span>Seção 2.3</span></a> do <a href="cap02.html" class="quarto-xref"><span>Capítulo 2</span></a>. As funções para computar as medidas média, mediana e moda são: <code>mean()</code>, <code>median()</code> e <code>mfreq()</code>, respectivamente.</p>
+<p>Por questão didática, usaremos apenas os dados apresentados do Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a> a título de ilustração, no <a href="#lst-codRmedposicao" class="quarto-xref">Código R&nbsp;<span>3.3</span></a>, para computarmos as três medidas de posição abordadas neste capítulo.</p>
+<div class="cell">
+<div id="lst-codRmedposicao" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRmedposicao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;3.1: Medidas de posição para dados agrupados e não agrupados, bem como a representação gráfica no histograma.
+</figcaption>
+<div aria-describedby="lst-codRmedposicao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRmedposicao"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRmedposicao-1"><a href="#lst-codRmedposicao-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRmedposicao-2"><a href="#lst-codRmedposicao-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRmedposicao-3"><a href="#lst-codRmedposicao-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando o banco de dados</span></span>
+<span id="lst-codRmedposicao-4"><a href="#lst-codRmedposicao-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">url</span>(<span class="st">"https://raw.githubusercontent.com/bendeivide/book-epaec/master/dados/cap02/challenger.RData"</span>)</span>
+<span id="lst-codRmedposicao-5"><a href="#lst-codRmedposicao-5" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(con); <span class="fu">close</span>(con)</span>
+<span id="lst-codRmedposicao-6"><a href="#lst-codRmedposicao-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Medidas de posicao (dados agrupados)</span></span>
+<span id="lst-codRmedposicao-7"><a href="#lst-codRmedposicao-7" aria-hidden="true" tabindex="-1"></a>challenger <span class="sc">|&gt;</span></span>
+<span id="lst-codRmedposicao-8"><a href="#lst-codRmedposicao-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="co"># var. quant. continua</span></span>
+<span id="lst-codRmedposicao-9"><a href="#lst-codRmedposicao-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mpos</span>(<span class="at">grouped =</span> <span class="cn">TRUE</span>) <span class="co"># Medidas de posicao</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$average
+[1] 66.04
+
+$median
+[1] 67.22
+
+$mode
+[1] 68.1 68.1</code></pre>
+</div>
+<div id="lst-codRmedposicao" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRmedposicao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;3.2: Medidas de posição para dados agrupados e não agrupados, bem como a representação gráfica no histograma.
+</figcaption>
+<div aria-describedby="lst-codRmedposicao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRmedposicao"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRmedposicao-1"><a href="#lst-codRmedposicao-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Medidas de posicao (dados nao agrupados)</span></span>
+<span id="lst-codRmedposicao-2"><a href="#lst-codRmedposicao-2" aria-hidden="true" tabindex="-1"></a>challenger <span class="sc">|&gt;</span></span>
+<span id="lst-codRmedposicao-3"><a href="#lst-codRmedposicao-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="co"># var. quant. continua</span></span>
+<span id="lst-codRmedposicao-4"><a href="#lst-codRmedposicao-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mpos</span>(<span class="at">grouped =</span> <span class="cn">FALSE</span>) <span class="co"># Medidas de posicao</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$average
+[1] 65.86
+
+$median
+[1] 67.5
+
+$mode
+[1] 67 70</code></pre>
+</div>
+<div id="lst-codRmedposicao" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRmedposicao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;3.3: Medidas de posição para dados agrupados e não agrupados, bem como a representação gráfica no histograma.
+</figcaption>
+<div aria-describedby="lst-codRmedposicao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRmedposicao"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRmedposicao-1"><a href="#lst-codRmedposicao-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Insrindo as medidas no histograma</span></span>
+<span id="lst-codRmedposicao-2"><a href="#lst-codRmedposicao-2" aria-hidden="true" tabindex="-1"></a>challenger <span class="sc">|&gt;</span></span>
+<span id="lst-codRmedposicao-3"><a href="#lst-codRmedposicao-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">new_leem</span>(<span class="at">variable =</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="co"># var. quant. continua</span></span>
+<span id="lst-codRmedposicao-4"><a href="#lst-codRmedposicao-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(<span class="at">barcol =</span> <span class="fu">heat.colors</span>(<span class="dv">5</span>)) <span class="sc">|&gt;</span></span>
+<span id="lst-codRmedposicao-5"><a href="#lst-codRmedposicao-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">insert</span>(<span class="at">type =</span> <span class="st">"all"</span>, </span>
+<span id="lst-codRmedposicao-6"><a href="#lst-codRmedposicao-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lcol =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"blue"</span>, <span class="st">"brown"</span>),</span>
+<span id="lst-codRmedposicao-7"><a href="#lst-codRmedposicao-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">ptext =</span> <span class="fl">0.08</span>, <span class="at">larrow =</span> <span class="fl">0.4</span>) </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cap03_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercícios-propostos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercícios-propostos">Exercícios propostos</h2>
+<div id="Exercise-3.1" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 3.1</strong></summary><div>A tabela abaixo apresenta a distribuição de frequências das notas (em pontos) obtidas num teste de matemática, realizado por 50 estudantes.<p></p>
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Notas</th>
+<th style="text-align: center;"><span class="math inline">\(F_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0 <span class="math inline">\(|\)</span>— 2</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2 <span class="math inline">\(|\)</span>— 4</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4 <span class="math inline">\(|\)</span>— 6</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6 <span class="math inline">\(|\)</span>— 8</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8 <span class="math inline">\(|\)</span>— 10</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<p>Apresente o cálculo para todas as medidas de posição estudadas e as interprete.</p>
+</div></details>
+</div>
+<div id="Solution*-3.4" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<p>Vamos inicialmente inserir na tabela de notas, a coluna dos pontos médios das classes, e a frequência acumulada abaixo de (<span class="math inline">\(f_{ac\downarrow_i}\)</span>), do qual segue:</p>
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Notas</th>
+<th style="text-align: center;"><span class="math inline">\(F_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\tilde{X}_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(F_{ac\downarrow_i}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0 <span class="math inline">\(|\)</span>— 2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2 <span class="math inline">\(|\)</span>— 4</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4 <span class="math inline">\(|\)</span>— 6</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">31</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6 <span class="math inline">\(|\)</span>— 8</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">8 <span class="math inline">\(|\)</span>— 10</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">50</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Média <span class="math display">\[\begin{align*}
+  \bar{X} &amp; = \frac{1 \times 4 + 3 \times 12 + \ldots + 9 \times 6}{50} = 5,2~\textrm{pontos},
+\end{align*}\]</span> em que a notas dos estudantes se distribuem em torno desse valor;</li>
+<li>Mediana <span class="math display">\[\begin{align*}
+  Md(X) &amp; = 4 + \frac{25 - 16}{15} \times 2 = 5,2~\textrm{pontos},
+\end{align*}\]</span> em que a distribuição das notas dos estudantes abaixo e acima de <span class="math inline">\(5,2\)</span> pontos, representam 50% dos dados;</li>
+<li>Moda <span class="math display">\[\begin{align*}
+  Mo(X) &amp; = 4 + \frac{3}{3 + 2} \times 2 = 5,2~\textrm{pontos},
+\end{align*}\]</span> em que esta representa a nota de maior frequência.</li>
+</ul>
+</div></details>
+</div>
+<div id="Exercise-3.2" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 3.2</strong></summary><div>Observando as expressões <span class="math inline">\(\sum_{i = 1}^{n}(X_i - \bar{X})^2\)</span> e $ _{i = 1}^{n}(X_i - )^2$, em que <span class="math inline">\(\bar{X} = \sum_{i = 1}^{n} X_i / n\)</span> e <span class="math inline">\(\mu = \sum_{i = 1}^{N} X_i / N\)</span>, representam a média amostral e a média populacional, respectivamente, qual das duas somas de quadrados representa o menor valor para soma?<p></p>
+</div></details>
+</div>
+<div id="Exercise-3.3" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 3.3</strong></summary><div>Considere uma amostra <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\dots\)</span>, <span class="math inline">\(X_n\)</span> de tamanho <span class="math inline">\(n\)</span>, do qual conseguimos computar as medidas de posição <span class="math inline">\(\bar{X}\)</span>, <span class="math inline">\(Md(X)\)</span> e <span class="math inline">\(Mo(X)\)</span>, isto é, a média, mediana e moda, respectivamente, bem como a variância <span class="math inline">\(S^2_X\)</span>. Considere também as transformações <span class="math inline">\(Y_i = X_i - \bar{X}\)</span> e <span class="math inline">\(Z_i = (X_i - \bar{X}) / S\)</span>, para <span class="math inline">\(i\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(n\)</span>, sendo <span class="math inline">\(S = \sqrt{S^2}\)</span>. Apresente as medidas de posição para essas transformações, <span class="math inline">\(Y\)</span> e <span class="math inline">\(Z\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Solution*-3.5" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<p>Para as duas transformações <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, dada uma amostra fixada, as medidas <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(S\)</span> podem ser consideradas como uma constante, pois elas não se alteram. Então, usando a propriedade (II) para os Teoremas <a href="cap03.html#teo:mediaaritm">3.1</a>, <a href="cap03.html#teo:propmediana">3.2</a> e <a href="cap03.html#teo:propmoda">3.3</a>, temos que respectivamente, a média, a mediana e a moda de <span class="math inline">\(Y\)</span>, são iguais a 0. Usando esses mesmos teoremas para o cálculo da média, mediana e moda de <span class="math inline">\(Z\)</span>, precisamos redefinir essa variável como <span class="math inline">\(Z_i = X_i/S + \bar{X}/S\)</span>. Assim, para <span class="math inline">\(X_i/S\)</span> basta considerarmos que <span class="math inline">\(X_i\)</span> está multiplicado por uma constante <span class="math inline">\(k_1 = 1/ S\)</span> e daí usamos a propriedade (I) dos teoremas citados, acrescido de outra constante <span class="math inline">\(k_2 = \bar{X}/S\)</span>, do qual usamos a propriedade (II) desses mesmos teoremas, logo, a média, média e moda serão também iguais a 0. Para que haja um entendimento mais claro, faremos a prova apenas para a média nas duas transformações, e para as demais medidas, deixaremos como exercício para os leitores.</p>
+<ul>
+<li>Média de <span class="math inline">\(Y\)</span> <span class="math display">\[\begin{align*}
+  \bar{Y} &amp; = \sum_{i = 1}^{n}\frac{Y_i}{n}\\
+          &amp; = \sum_{i = 1}^{n}\frac{X_i - \bar{X}}{n}\\
+          &amp; = \sum_{i = 1}^{n}\frac{X_i}{n} - \bar{X}\\
+          &amp; = \bar{X} - \bar{X} = 0;
+\end{align*}\]</span></li>
+<li>Média de <span class="math inline">\(Z\)</span> <span class="math display">\[\begin{align*}
+  \bar{Z} &amp; = \sum_{i = 1}^{n}\frac{Z_i}{n}\\
+          &amp; = \sum_{i = 1}^{n}\frac{X_i\times k_1 - k_2}{n}\\
+          &amp; = \sum_{i = 1}^{n}\frac{X_i \times k_1}{n} - k_2\\
+          &amp; = k_1\sum_{i = 1}^{n}\frac{X_i}{n} - k_2\\
+          &amp; = k_1\times \bar{X} - k_2\\
+          &amp; = \bar{X}/S - \bar{X}/S, \quad k_1 = 1/S~\textrm{ e } k_2 = \bar{X}/S\\
+          &amp; = 0.
+\end{align*}\]</span></li>
+</ul>
+</div></details>
+</div>
+<div id="Exercise-3.4" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 3.4</strong></summary><div>Uma empresa de telecomunicações concedeu 10% de aumento de salário a todos os seus funcionários. A média salarial foi de 1.500 reais antes do reajuste. Qual será a nova média salarial após o reajuste?<p></p>
+</div></details>
+</div>
+<div id="Exercise-3.5" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 3.5</strong></summary><div>Uma prova de estatística foi aplicada com pontuação de 0 a 10 pontos, sendo que a média das notas de todos os alunos de uma turma foi de 5,8 pontos. Se a média das mulheres é 6,3 pontos e a dos rapazes é 4,3 pontos, então qual a porcentagem de mulheres na turma?<p></p>
+</div></details>
+</div>
+<div id="Solution*-3.6" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Considere que a nota dos alunos podem ser representados pela variável <span class="math inline">\(X_i\)</span>, com <span class="math inline">\(i = 1, 2, \ldots, n\)</span>, em que <span class="math inline">\(n\)</span> representa o número de alunos que fizeram a prova. Considere ainda o índice <span class="math inline">\(H\)</span> na variável <span class="math inline">\({X_H}_j\)</span>, representa o aluno <span class="math inline">\(j\)</span> do sexo masculino que obteve nota <span class="math inline">\({X_H}_j\)</span>, tal que <span class="math inline">\(j = 1, 2, \ldots, n_H\)</span>, sendo <span class="math inline">\(n_H\)</span> o número de rapazes que fizeram a prova. E de modo similar, o índice <span class="math inline">\(M\)</span> na variável <span class="math inline">\({X_M}_k\)</span>, representa a aluna <span class="math inline">\(k\)</span> do sexo feminino que obteve nota <span class="math inline">\({X_M}_j\)</span>, tal que <span class="math inline">\(k = 1, 2, \ldots, n_M\)</span>, sendo <span class="math inline">\(n_M\)</span> o número de moças que fizeram a prova. Dessa forma a proporção de mulheres que fizeram a prova é: <span class="math display">\[\begin{align*}
+        \sum_{i = 1}^{n}X_i &amp; = \sum_{k = 1}^{n_M}X_k + \sum_{j = 1}^{n_H}X_j\\
+        n\bar{X} &amp; = n_M \bar{X}_M + n_H \bar{X}_H \quad \\
+        5,8n &amp; = 6,3n_M + 4,3n_H \quad (n = n_H + n_M)\\
+        5,8n &amp; = 6,3n_M + 4,3(n - n_M)\\
+        5,8n - 4,3n &amp; = 6,3n_M - 4,3n_M\\
+        0,75n &amp; = n_M.
+      \end{align*}\]</span> Portanto, há 75% dos alunos que realizaram a prova, eram mulheres.<p></p>
+</div></details>
+</div>
+<div id="Exercise-3.6" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 3.6</strong></summary><div>Uma prova de estatística foi aplicada com pontuação de 0 a 10 pontos, numa turma com 30 alunos, sendo uma média de 70 pontos. Nenhum dos alunos obteve nota inferior a 60 pontos. Dessa forma, qual o número máximo de alunos que podem ter obtido nota igual a 90 pontos?<p></p>
+</div></details>
+</div>
 
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
@@ -305,6 +1162,9 @@ MAGALHAES, M. N. <strong>Probabilidade e variáveis aleatórias</strong>. 3. ed.
 <div id="ref-magalhaeslima2023" class="csl-entry" role="listitem">
 MAGALHAES, M. N.; LIMA, A. C. P. <strong>Noções de <span>P</span>robabilidade e <span>E</span>statística</strong>. 7. ed. São Paulo: EDUSP, 2023. p. 428
 </div>
+<div id="ref-Magalhaes2015" class="csl-entry" role="listitem">
+MAGALHÃES, M. N.; LIMA, A. C. P. DE. <strong>Noções de Probabilidade e Estatística</strong>. 7. ed. São Paulo: Edusp, 2015. p. 416
+</div>
 <div id="ref-meyer2000" class="csl-entry" role="listitem">
 MEYER, P. L. <strong>Probabilidade: aplicações á estatística</strong>. 2. ed. Rio de <span>J</span>aneiro: LTC, 2000. p. 426
 </div>
@@ -333,6 +1193,13 @@ SOUZA, G. S. <strong>Introdução aos <span>M</span>odelos de <span>R</span>egre
 STEEL, R. G. D.; TORRIE, J. H. <strong>Principles and procedures of statistics: A biometrical approach</strong>. 2. ed. New York: McGraw-Hill Book Company, 1980. p. 512
 </div>
 </div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Entendemos que uma variável tem natureza discretizada quando seus potenciais valores assumem em um conjunto enumerável ou categorizado, isto é, variável quantitativa discreta e variáveis qualitativas.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
