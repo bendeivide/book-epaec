@@ -91,19 +91,27 @@ div.csl-indent {
   }
 }</script>
 <style>
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
+.Example {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
-.Solution {
-  --color1: #9ad5f6;
-}
-.Proof {
-  --color1: #aaa6a3;
+.Corolary {
+  --color1: #df6d0d;
+  --color2: #b85604;
 }
 .Definition {
   --color1: #5e737f;
   --color2: #49606d;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Proof {
+  --color1: #aaa6a3;
+}
+.Solution {
+  --color1: #9ad5f6;
 }
 .Exercise {
   --color1: #4485f6;
@@ -113,12 +121,37 @@ div.csl-indent {
   --color1: #d14747;
   --color2: #8b1f1f;
 }
-.Example {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="custom.scss">
 </head>
@@ -247,8 +280,15 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#introd" id="toc-introd" class="nav-link active" data-scroll-target="#introd"><span class="header-section-number">5.1</span> Introdução</a></li>
+  <li><a href="#teoconj" id="toc-teoconj" class="nav-link" data-scroll-target="#teoconj"><span class="header-section-number">5.2</span> Introdução à teoria de conjuntos no contexto probabilístico</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -272,6 +312,256 @@ div.csl-indent {
 </header>
 
 
+<section id="introd" class="level2" title="Clique aqui!" data-number="5.1">
+<h2 title="Clique aqui!" data-number="5.1" class="anchored" data-anchor-id="introd"><span class="header-section-number">5.1</span> Introdução</h2>
+<p>Após finalizarmos as principais ideias sobre a Estatística Descritiva, Capítulos <a href="cap01.html" class="quarto-xref"><span>1</span></a> a <a href="cap04.html" class="quarto-xref"><span>4</span></a>, iniciamos o assunto de probabilidade, como passos iniciais para a tomada de decisão por meio dos dados. Para isto, usaremos a Estatística Inferencial (Teoria da Estimação e Teoria da decisão), assuntos vistos nos Capítulos <a href="cap09.html" class="quarto-xref"><span>9</span></a> e <a href="cap10.html" class="quarto-xref"><span>10</span></a>. Contudo, é imprescindível uma fundamentação teórica sobre a probabilidade, base para a tomada de decisão.</p>
+<p>A probabilidade vem aparecer como ramo da matemática no século XV, embora tenha surgido antes desse período. Entretanto, somente no século XVI, é que a teoria da probabilidade passa a ser estudada com profundidade, quando Jerónimo Cardano (1501-1576) passa a estudar problemas com os jogos de azar: cartas, dados, etc. Os jogadores de cassinos, tentavam encontrar meios de obter chances maiores de, por exemplo, ganhar um jogo, acertar um número ou uma carta. Daí surge a probabilidade para resolver esses problemas por meio dos matemáticos.</p>
+<p>Já a estatística inicialmente, tentava identificar determinados problemas do Estado, como o número de nascidos e de mortos, determinação do número de pessoas do sexo masculino e feminino, etc. Entretanto, apenas no início do século XX é que a probabilidade e a estatística passam a ser interligadas, isto é, a estatística agora necessita de técnicas probabilísticas para o estudo de dados.</p>
+<p>Hoje, a Estatística tem como um dos objetivos entender características atribuíveis a população de estudo. Com um subconjunto (amostra) da população, a estatística tenta se aproximar dessas características (parâmetros) por meio da inferência, através dos estimadores (características atribuíveis a amostra). Entretanto, se basear numa amostra para entender a população, gera uma incerteza. E essa incerteza é medida por meio da teoria da probabilidade, pela qual toda a estatística é desenvolvida.</p>
+<p>Inicialmente, faremos uma revisão sobre Teoria de conjuntos, já usando termos específicos dentro da probabilidade, como por exemplo, a definição de um Experimento aleatório, dentre outras. Isso porque se faz necessário o entendimento sobre o agrupamento de elementos, e a chance com que esses elementos podem ocorrer em um experimento.</p>
+</section>
+<section id="teoconj" class="level2" title="Clique aqui!" data-number="5.2">
+<h2 title="Clique aqui!" data-number="5.2" class="anchored" data-anchor-id="teoconj"><span class="header-section-number">5.2</span> Introdução à teoria de conjuntos no contexto probabilístico</h2>
+<p>Quando desejamos compreender algum fenômeno da natureza, tentamos estudá-lo por meio de um processo de observação chamado experimento. Para isso, definimos um experimento aleatório, Definição <a href="cap05.html#def:expaleatorio">5.1</a>, a seguir.</p>
+<div id="def:expaleatorio" class="Definition" title="Experimento Aleatório">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.1: </strong>Experimento Aleatório</summary><div>Todo experimento cujo resultado não pode ser previsto antes de sua execução, é chamado de experimento aleatório.<p></p>
+</div></details>
+</div>
+<p>Vejamos os Exemplos <a href="cap05.html#ex:espamos1">5.1</a>, <a href="cap05.html#ex:espamos2">5.2</a> e <a href="cap05.html#ex:espamos3">5.3</a> para exemplificar um experimento aleatório.</p>
+<div id="ex:espamos1" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.1</strong></summary><div>Lançar um dado equilibrado e observar o resultado obtido na face superior do dado.<p></p>
+</div></details>
+</div>
+<div id="ex:espamos2" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.2</strong></summary><div>Observar o número de chamadas telefônicas que chegam a uma central telefônica em um determinado intervalo de tempo.<p></p>
+</div></details>
+</div>
+<div id="ex:espamos3" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.3</strong></summary><div>Para a escolha ao acaso de uma lâmpada que acabou de sair do processo de fabricação, verificar o tempo de duração da lâmpada em funcionamento.<p></p>
+</div></details>
+</div>
+<p>Em um contexto aplicado, podemos nos interessar em estudar a resistência de um fio de cobre a uma determinada corrente. Para isso, replicamos diversas vezes esse fenômeno e medimos a resistência. Este é um exemplo do que chamamos de experimento. Para que esse experimento não tenha resultados inconsistentes, usamos muitas vezes um laboratório para tentar controlar outras variáveis que possam perturbar o experimento, isto é, medimos a resistência do fio, de modo que a maior influência dessa variável para o experimento, seja devida a corrente aplicada ao final. Por mais que limitemos as condições externas do experimento, surgem sempre variáveis não controláveis ao sistema que foge do controle do pesquisador nesses casos, que são as variáveis não controláveis, <a href="#fig-compaleatoria" class="quarto-xref">Figura&nbsp;<span>5.1</span></a>. Por mais que repliquemos o experimento, em mesmas condições, veremos que a medida da resistência do fio não será igual, devido a essas variáveis não controláveis, e que isso reflete em um componente aleatório, e por consequência, dizemos que estes tipos de experimentos são chamados de experimentos aleatórios.</p>
+<div id="fig-compaleatoria" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-compaleatoria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap5/expaleatorio.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compaleatoria-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.1: Componente aleatória de um experimento aleatório.
+</figcaption>
+</figure>
+</div>
+<p>Baseado, nos exemplos anteriores, percebemos pelo Exemplo <a href="cap05.html#ex:espamos1">5.1</a>, que não sabemos de fato qual o número da face superior que ocorrerá após o lançamento do dado. Mas sabemos, quais os resultados possíveis, que são: <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span>, <span class="math inline">\(4\)</span>, <span class="math inline">\(5\)</span> e <span class="math inline">\(6\)</span>. O conjunto de todos esses resultados, chamaremos de Espaço amostral, apresentado na Definição <a href="cap05.html#def:espamostral">5.2</a>, a seguir.</p>
+<div id="def:espamostral" class="Definition" title="Espaço amostral">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.2: </strong>Espaço amostral</summary><div>O conjunto de todos os resultados possíveis de um experimento, denotado por <span class="math inline">\(\Omega\)</span>, é chamado de espaço amostral.<p></p>
+</div></details>
+</div>
+<p>Cada um dos elementos do espaço amostral é representado por <span class="math inline">\(\omega\)</span>. Na Definição <a href="cap05.html#def:evento">5.6</a>, apresentaremos o significado de evento. Contudo, podemos antecipar como um subconjunto de <span class="math inline">\(\Omega\)</span>. Assim, diremos que um determinado evento ocorrerá se o resultado do experimento estiver nesse evento. Existem duas relações entre eventos que usaremos constantemente ao longo do conteúdo, que são:</p>
+<ul>
+<li>Continência: <span class="math inline">\(A \subset B \Leftrightarrow \omega \in A \Rightarrow \omega \in B\)</span>;</li>
+<li>Equivalência: <span class="math inline">\(A = B \Leftrightarrow A \subset B \textrm{ e } B \subset A\)</span>.</li>
+</ul>
+<p>E que fique claro, a relação de elemento para conjunto é de pertinência, isto é, <span class="math inline">\(\omega \in A\)</span>. Significa que <span class="math inline">\(\omega\)</span> é um elemento pertencente (ou membro) de <span class="math inline">\(A\)</span>. A relação entre conjuntos é uma relação de continência, isto é, <span class="math inline">\(A \subset B\)</span>, significando que todo elemento de <span class="math inline">\(A\)</span> é também elemento de <span class="math inline">\(B\)</span>.</p>
+<p>De forma mais abrangente, poderíamos apresentar a relação da equivalência da seguinte forma:</p>
+<ul>
+<li>Continência: <span class="math inline">\(A \subseteq B\)</span>.</li>
+</ul>
+<p>Esta representa difere da situação anterior da seguinte forma:</p>
+<ul>
+<li>dizemos que <span class="math inline">\(A \subset B\)</span>, implica que <span class="math inline">\(A\)</span> é um subconjunto estrito de <span class="math inline">\(B\)</span>, e que <span class="math inline">\(B\)</span> contém pelo menos um elemento <span class="math inline">\(\omega\)</span> que não pertence a <span class="math inline">\(A\)</span>, logo <span class="math inline">\(A\)</span> não pode ser igual <span class="math inline">\(B\)</span>;</li>
+<li>dizemos que <span class="math inline">\(A \subseteq B\)</span>, implica que <span class="math inline">\(A\)</span> é um subconjunto de <span class="math inline">\(B\)</span>, podendo <span class="math inline">\(A\)</span> ser igual ou não <span class="math inline">\(B\)</span>, isto é, todos os elementos de <span class="math inline">\(A\)</span> podem pertencer a <span class="math inline">\(B\)</span> ou <span class="math inline">\(B\)</span> pode ter elementos adicionais que não pertencem a <span class="math inline">\(A\)</span>, e daí <span class="math inline">\(A\)</span> pode não ser igual a <span class="math inline">\(B\)</span>.</li>
+</ul>
+<p>Retornando a Definição <a href="cap05.html#def:espamostral">5.2</a>, podemos apresentar um outro espaço amostral, para o experimento dado no Exemplo <a href="cap05.html#ex:espamos4">5.3</a>, a seguir.</p>
+<div id="ex:espamos4" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.3</strong></summary><div>Um experimento lança três moedas honestas, e desejamos verificar a face superior dessas moedas. Sabemos que cada moeda apresenta duas faces: cara (H) e coroa (T). Dessa forma, o espaço amostral é dado por: <span class="math display">\[\begin{eqnarray*}
+\Omega&amp;=&amp;\{(H,H,H),(H,H,T),(H,T,H),(H,T,T),\\
+&amp;&amp;(T,H,H),(T,H,T),(T,T,H),(T,T,T)\}.
+\end{eqnarray*}\]</span><p></p>
+</div></details>
+</div>
+<p>Contudo, como apresentamos a natureza das variáveis no <a href="cap01.html" class="quarto-xref"><span>Capítulo 1</span></a>, definimos também a natureza dos espaços amostrais de acordo os seus resultados, do qual podemos apresentá-la na Definição <a href="cap05.html#def:espdisccont">5.4</a>.</p>
+<div id="def:espdisccont" class="Definition" title="Espaços amostrais discretos e contínuos">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.4: </strong>Espaços amostrais discretos e contínuos</summary><div>Um espaço amostral é discreto se o conjunto dos possíveis resultados são finito ou infinito contável (ou enumerável). Um espaço amostral é dito contínuo se o conjunto dos possíveis resultados são infinitos não contável (ou não enumerável) .<p></p>
+</div></details>
+</div>
+<p>Vejamos o Exemplo <a href="cap05.html#ex:espdisccont">5.4</a>, retirado de <span class="citation" data-cites="Montgomery2016">Montgomery e Runger (<a href="references.html#ref-Montgomery2016" role="doc-biblioref">2016</a>)</span>, para distinguir espaços amostrais discretos e contínuos, apresentado a seguir.</p>
+<div id="ex:espdisccont" class="Example" title="Câmera Flash">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.4: </strong>Câmera Flash</summary><div>Considere um experimento em que é selecionado uma câmera de telefone celular e se registra o tempo de recarga de um <em>flash</em>. Os resultados possíveis para o tempo dependem da resolução do temporizador e dos tempos máximo e mínimo de recarga. Entretanto, podemos definir inicialmente o espaço amostral em termos da reta real positiva (<span class="math inline">\(\mathbb{R}_+\)</span>), isto é, <span class="math display">\[\begin{align*}
+  \Omega = \mathbb{R}_+  &amp; = \{ x ~:~ x &gt; 0\}.
+\end{align*}\]</span> Se soubermos que os tempos de recarga estão entre <span class="math inline">\(1,5\)</span> e <span class="math inline">\(5\)</span> segundos, podemos definir o espaço amostral da seguinte forma: <span class="math display">\[\begin{align*}
+  \Omega  &amp; = \{ x ~:~ 1,5 \leq x \leq 5\}.
+\end{align*}\]</span> Caso, consideremos o tempo de recarga como <em>baixo</em>, <em>médio</em> ou <em>alto</em>, reescrevemos o espaço amostral como: <span class="math display">\[\begin{align*}
+  \Omega &amp; =  \{baixo,~\textrm{\emph{médio}},~alto\}.
+\end{align*}\]</span> Por fim, podemos considerar apenas o fato da câmera satisfazer ou não as especificações do tempo de recarga mínimo, e assim, podemos assumir como resultados para esse espaço amostral: <em>sim</em> ou <em>não</em>, isto é, <span class="math display">\[\begin{align*}
+  \Omega &amp; =  \{sim,~\textrm{\emph{não}}\}.
+\end{align*}\]</span> Para as duas primeiras situações, temos exemplos de espaços amostrais contínuos, e nos dois últimos, exemplos de espaços amostrais discretos.<p></p>
+</div></details>
+</div>
+<p>Entretanto, também podemos ter um conjunto qualquer <span class="math inline">\(A\)</span>, que contém parte do elementos de <span class="math inline">\(\Omega\)</span>, isto é, <span class="math inline">\(A \subset \Omega\)</span>, e que <span class="math inline">\(A\)</span> passa a ser chamado de subconjunto de <span class="math inline">\(\Omega\)</span>, apresentado na Definição <a href="cap05.html#def:subcj">5.5</a>.</p>
+<div id="def:subcj" class="Definition" title="Subconjunto">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.5: </strong>Subconjunto</summary><div>Se todo elemento do conjunto A é também elemento do conjunto B, então A é definido como um subconjunto de B, sendo representado <span class="math inline">\(A\subset B\)</span> ou <span class="math inline">\(B\supset A\)</span> (A está contido em B ou B contém A), em notação dizemos que: <span class="math display">\[\begin{align*}
+  A \subset B \Leftrightarrow A \subseteq B \textrm{ e } A \neq B.
+\end{align*}\]</span><p></p>
+</div></details>
+</div>
+<p>Essa definição pode ser aplicada também a subconjuntos de <span class="math inline">\(\Omega\)</span>, como apresentado no Exemplo <a href="cap05.html#ex:subconjunto">5.5</a>, a seguir.</p>
+<div id="ex:subconjunto" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.5</strong></summary><div>Sejam os subconjuntos de <span class="math inline">\(\Omega\)</span> do experimento aleatório apresentado no Exemplo <a href="cap05.html#ex:espamos1">5.1</a>, dos quais temos: <span class="math display">\[
+B=\{1,2,3,4\} \ \mbox{e} \ A=\{1,2,3\},
+\]</span> então A é um subconjunto de B, pois, os elementos que contém em A, também contém em B.<p></p>
+</div></details>
+</div>
+<div id="def:evento" class="Definition" title="Evento">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.6: </strong>Evento</summary><div>Todo subconjunto do espaço amostral (<span class="math inline">\(\Omega\)</span>), representado por letras latinas em maiúsculo, A, B, <span class="math inline">\(\ldots\)</span>, é chamado de evento.<p></p>
+</div></details>
+</div>
+<p>Vejamos o Exemplo <a href="cap05.html#ex:subcj2">5.6</a>, para um entendimento inicial sobre um evento, apresentado a seguir.</p>
+<div id="ex:subcj2" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.6</strong></summary><div>Um evento retirado do espaço amostral do Exemplo <a href="cap05.html#ex:espamos4">5.3</a> seria <span class="math inline">\(A=\{(H,H,H)\)</span>, <span class="math inline">\((H,H,T)\)</span>, <span class="math inline">\((H,T,T)\}\)</span>, ou seja, o evento em que dos três arremessos de moedas, tenha saído ``cara” na primeira moeda.<p></p>
+</div></details>
+</div>
+<p>Um outro exemplo abordado em <span class="citation" data-cites="James2004">James (<a href="references.html#ref-James2004" role="doc-biblioref">2004</a>)</span>, pode exemplificar um evento dentro do círculo unitário, apresentado no Exemplo <a href="cap05.html#ex:subcj3">5.7</a>, a seguir.</p>
+<div id="ex:subcj3" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.7</strong></summary><div>
+<p>Escolher ao acaso um ponto no círculo de raio 1 centrado na origem. Então <span class="math display">\[\begin{align*}
+      \Omega &amp; = \textrm{círculo unitário } = \{(x,y) \in \mathbb{R}^2:~ x^2 + y^2 \leq 1\}.
+    \end{align*}\]</span> Vejamos alguns eventos para esse exemplo: <span class="math display">\[\begin{align*}
+      A &amp; = \textrm{``distância entre o ponto escolhido e a origem é'' } \leq 1/2 \\
+      B &amp; = \textrm{``distância entre o ponto escolhido e a origem é'' } \geq  15\\
+      C &amp; = \textrm{``1ª Coordenada do ponto escolhido é maior que a 2ª}.
+    \end{align*}\]</span> Se <span class="math inline">\(\omega = (x,y)\)</span> for um resultado do experimento, então <span class="math inline">\(\omega\)</span> pertencerá a <span class="math inline">\(A\)</span> se, e somente se, <span class="math inline">\(x^2 + y^2 \leq 1/4\)</span>. Pertencerá ao evento C se, e somente se, <span class="math inline">\(x &gt; y\)</span>. Nenhum ponto <span class="math inline">\(\omega\)</span> pertencerá a <span class="math inline">\(B\)</span>, como pode ser observado pela <a href="#fig-fig01" class="quarto-xref">Figura&nbsp;<span>5.2</span></a>. Logo, temos: <span class="math display">\[\begin{align*}
+      A &amp; =\{(x,y) \in \Omega:~ \sqrt{x^2 + y^2} \leq 1/2\}, \\
+      B &amp; =\emptyset = \textrm{conjunto vazio}, \\
+      A &amp; =\{(x,y) \in \Omega:~ x &gt; y\}. \\
+    \end{align*}\]</span> Então, todo evento associado a este experimento pode ser identificado por um subconjunto do espaço amostral.</p>
+<div id="fig-fig01" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-fig01" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-eventA" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-eventA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap5/exp3barryjames.png" class="img-fluid figure-img" data-ref-parent="fig-fig01">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-eventA-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Evento A
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-fig01" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-eventB" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-eventB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap5/exp3barryjames2.png" class="img-fluid figure-img" data-ref-parent="fig-fig01">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-eventB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Evento B
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.2: Escolha do ponto em um círculo unitário.
+</figcaption>
+</figure>
+</div>
+</div></details>
+</div>
+<p>Diante, do que falamos sobre a definição de evento, podemos apresentar três eventos básicos: o evento certo, impossível e o elementar, apresentados na Definição <a href="cap05.html#def:eventosbasicos">5.7</a>, a seguir.</p>
+<div id="def:eventosbasicos" class="Definition" title="Evento certo, impossível e elementar">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.7: </strong>Evento certo, impossível e elementar</summary><div>Seja <span class="math inline">\(\Omega\)</span> o espaço amostral do experimento. Então dizemos que <span class="math inline">\(\Omega\)</span> é o evento certo, e <span class="math inline">\(\emptyset\)</span> é o evento impossível, e o evento <span class="math inline">\(\{\omega\}\)</span> é dito elementar.<p></p>
+</div></details>
+</div>
+<p>Uma outra forma de definir o evento impossível é representá-lo como um conjunto vazio, apresentado na Definição <a href="cap05.html#def:conjvazio">5.8</a>, a seguir.</p>
+<div id="def:conjvazio" class="Definition" title="Conjunto Vazio">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.8: </strong>Conjunto Vazio</summary><div>Se o conjunto A não contém nenhum elemento, então A é chamado de conjunto nulo ou conjunto vazio, ou seja, <span class="math inline">\(A=\varnothing\)</span> ou <span class="math inline">\(A=\{ \ \}\)</span>, isto é, <span class="math display">\[\begin{align}
+  A &amp; = \{\omega \in \Omega: \omega \neq \omega \}.
+\end{align}\]</span><p></p>
+</div></details>
+</div>
+<p>Podemos perceber que todo conjunto vazio é um subconjunto de qualquer evento não vazio do espaço amostral, como pode ser apresentado no Teorema <a href="cap05.html#teo:vaziosubj">5.1</a>.</p>
+<div id="teo:vaziosubj" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.1</strong></summary><div>Considere o conjunto vazio, <span class="math inline">\(\emptyset\)</span>, e um evento não vazio, <span class="math inline">\(A\)</span>, definido no espaço amostral, <span class="math inline">\(\Omega\)</span>. Então <span class="math inline">\(\emptyset \subseteq A\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.1" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Vamos realizar a prova por contradição. Supomos que <span class="math inline">\(\emptyset {\not\subseteq} A\)</span>. Isso significa que <span class="math inline">\(\exists \omega: \omega \in \emptyset \textrm{ e } \omega \notin A\)</span>, porém <span class="math inline">\(\omega \in \emptyset\)</span> é um absurdo, logo <span class="math inline">\(\emptyset \subseteq A\)</span>, o que conclui a prova.<p></p>
+</div></details>
+</div>
+<p>E ainda podemos concluir que se existe um conjunto vazio, ele é único, como pode ser apresentado no Corolário <a href="cap05.html#corl:vaziounico">5.1</a>.</p>
+<div id="corl:vaziounico" class="Corolary">
+<p></p><details class="Corolary fbx-simplebox fbx-default" open=""><summary><strong>Corolário 5.1</strong></summary><div>Existe somente um conjunto vazio.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.2" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Suponha que exista dois conjuntos vazios, <span class="math inline">\(\emptyset_1\)</span> e <span class="math inline">\(\emptyset_2\)</span>. Pelo Teorema <a href="cap05.html#teo:vaziosubj">5.1</a>, sabemos que <span class="math inline">\(\emptyset_1 \subseteq \emptyset_2\)</span>, uma vez que <span class="math inline">\(\emptyset_1\)</span> é um conjunto vazio. Mas, também sabemos que <span class="math inline">\(\emptyset_2 \subseteq \emptyset_1\)</span>, uma vez que <span class="math inline">\(\emptyset_2\)</span> é um conjunto vazio. Logo, pela equivalência de conjuntos (eventos), Definição <a href="cap05.html#def:equieventos">5.13</a>, <span class="math inline">\(\emptyset_1 = \emptyset_2\)</span>, o que conclui a prova.<p></p>
+</div></details>
+</div>
+<p>Em algumas situações, podemos apresentar alguns eventos a partir da combinação de outros eventos. Dessa forma, se faz necessário apresentar algumas operações elementares de conjuntos e suas consequências, tais como a união, interseção, complemento, dentre outras definições abordadas a seguir. Inicialmente, apresentamos na Definição <a href="cap05.html#def:udoisevt">5.9</a>, a união de dois eventos.</p>
+<div id="def:udoisevt" class="Definition" title="União de dois eventos">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.9: </strong>União de dois eventos</summary><div>Sejam A e B, dois eventos quaisquer de <span class="math inline">\(\Omega\)</span>, então o conjunto de todos os elementos que estão em A ou B ou em ambos, é definido como o conjunto união de A e B, denotado por <span class="math inline">\(A\cup B\)</span>, tal que, <span id="eq-unionevents"><span class="math display">\[
+\begin{align}
+  A\cup B &amp; = \{\omega \in \Omega: ~\omega \in A \textrm{ ou } \omega \in B\}.
+\end{align}
+\tag{5.1}\]</span></span><p></p>
+</div></details>
+</div>
+<p>Vejamos o Exemplo <a href="cap05.html#ex:udoisevt">5.8</a>, sobre a união de dois eventos, a seguir.</p>
+<div id="ex:udoisevt" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.8</strong></summary><div>Sejam os conjuntos: <span class="math display">\[
+    A=\{1,2,3\} \ \mbox{e} \ B=\{3,4,5,6\},
+    \]</span> então <span class="math display">\[
+    A\cup B=\{1,2,3,4,5,6\}.
+    \]</span><p></p>
+</div></details>
+</div>
+<p>A Definição <a href="cap05.html#def:inteventos">5.10</a> apresenta a próxima propriedade de conjuntos, que é a interseção de de eventos, apresentada a seguir.</p>
+<div id="def:inteventos" class="Definition" title="Interseção de dois eventos">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.10: </strong>Interseção de dois eventos</summary><div>Sejam A e B, dois eventos quaisquer de <span class="math inline">\(\Omega\)</span>, então o conjunto que contém todos os elementos que estão em A e B, é definido como a interseção de A e B, denotado por <span class="math inline">\(A\cap B\)</span> ou <span class="math inline">\(AB\)</span>, tal que, <span id="eq-inteventos"><span class="math display">\[
+\begin{align}
+  A \cap B &amp; = \{\omega \in \Omega: ~\omega \in A \textrm{ e } \omega \in B\}.
+\end{align}
+\tag{5.2}\]</span></span><p></p>
+</div></details>
+</div>
+<p>Do Exemplo <a href="cap05.html#ex:udoisevt">5.8</a>, temos que a intersecção de <span class="math inline">\(AB = \{3\}\)</span>.</p>
+<div id="def:disjeventos" class="Definition" title="Eventos Disjuntos ou multuamente exclusivos">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.11: </strong>Eventos Disjuntos ou multuamente exclusivos</summary><div>Sejam A e B, dois eventos quaisquer de <span class="math inline">\(\Omega\)</span>, então estes são disjuntos ou mutuamente exclusivos quando não existir elementos em comum entre A e B, isto é, <span class="math inline">\(A\cap B = \emptyset\)</span>.<p></p>
+</div></details>
+</div>
+<p>Vejamos o Exemplo <a href="cap05.html#ex:disjeventos">5.9</a>, para entendermos sobre eventos disjuntos, apresentado a seguir.</p>
+<div id="ex:disjeventos" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.9</strong></summary><div>Sejam os eventos <span class="math inline">\(A=\{1,2,3,4\}\)</span> e <span class="math inline">\(B=\{5,6\}\)</span>, então <span class="math inline">\(A\cap B=\varnothing\)</span><p></p>
+</div></details>
+</div>
+<p>Em seguida, apresentamos mais duas definições interessantes, que são os eventos coletivamente exaustivos (Definição <a href="cap05.html#def:exauseventos">5.12</a>) e eventos equivalentes (Definição <a href="cap05.html#def:equieventos">5.13</a>), apresentados na sequência.</p>
+<div id="def:exauseventos" class="Definition" title="Eventos coletivamente exaustivos">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.12: </strong>Eventos coletivamente exaustivos</summary><div>Considere um conjunto de eventos em <span class="math inline">\(\Omega\)</span>, se ao menos um evento ocorrer durante um dado experimento, dizemos que esses eventos são coletivamente exaustivos.<p></p>
+</div></details>
+</div>
+<p>Na sequência, segue a definição sobre eventos equivalentes.</p>
+<div id="def:equieventos" class="Definition" title="Eventos equivalentes">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.13: </strong>Eventos equivalentes</summary><div>Dois eventos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são definidos equivalentes, ou iguais, se <span class="math inline">\(A\subseteq B\)</span> e <span class="math inline">\(B \subseteq A\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Example-5.10" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.10</strong></summary><div>Sejam os conjuntos: <span class="math display">\[
+B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
+\]</span> então <span class="math inline">\(A\)</span> é igual a <span class="math inline">\(B\)</span>, pois <span class="math inline">\(A\subset B\)</span> e <span class="math inline">\(B \subset A\)</span>.<p></p>
+</div></details>
+</div>
+<p>Uma relação de eventos que será muito importante para o estudo da teoria da probabilidade, é a definição de complemento, abordado a seguir.</p>
+<div id="Example-5.11" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.11</strong></summary><div>Sejam os conjuntos: <span class="math display">\[
+B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
+\]</span> então <span class="math inline">\(A\)</span> é igual a <span class="math inline">\(B\)</span>, pois <span class="math inline">\(A\subset B\)</span> e <span class="math inline">\(B \subset A\)</span>.<p></p>
+</div></details>
+</div>
+<p>Uma relação de eventos que será muito importante para o estudo da teoria da probabilidade, é a definição de complemento, abordado a seguir.</p>
 
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
@@ -299,6 +589,9 @@ DANTAS, C. A. B. <strong>Probabilidade: Um <span>C</span>urso <span>I</span>ntro
 <div id="ref-drapersmith1998" class="csl-entry" role="listitem">
 DRAPER, N. R.; SMITH, H. <strong>Applied regression analysis</strong>. 3. ed. New York: Wiley, 1998. p. 736
 </div>
+<div id="ref-James2004" class="csl-entry" role="listitem">
+JAMES, B. R. <strong>Probabilidade: um curso em nível intermediário</strong>. 3. ed. Rio de Janeiro: IMPA, 2004. p. 304
+</div>
 <div id="ref-magalhaes2011" class="csl-entry" role="listitem">
 MAGALHAES, M. N. <strong>Probabilidade e variáveis aleatórias</strong>. 3. ed. São Paulo: EDUSP, 2011. p. 424
 </div>
@@ -310,6 +603,9 @@ MEYER, P. L. <strong>Probabilidade: aplicações á estatística</strong>. 2. ed
 </div>
 <div id="ref-montgomery2019" class="csl-entry" role="listitem">
 MONTGOMERY, D. C. <strong>Design and <span>A</span>nalysis of <span>E</span>xperiments</strong>. 9. ed. New Jersey: Wiley, 2019. p. 752
+</div>
+<div id="ref-Montgomery2016" class="csl-entry" role="listitem">
+MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatística Aplicada e Probabilidade para Engenheiros</strong>. 6. ed. Rio de Janeiro: LTC, 2016. p. 629
 </div>
 <div id="ref-montgomery2021" class="csl-entry" role="listitem">
 MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatísta <span>A</span>plicada e <span>P</span>robabilidade para <span>E</span>ngenheiros</strong>. 7. ed. Rio de <span>J</span>aneiro: LTC, 2021. p. 416
@@ -333,6 +629,7 @@ SOUZA, G. S. <strong>Introdução aos <span>M</span>odelos de <span>R</span>egre
 STEEL, R. G. D.; TORRIE, J. H. <strong>Principles and procedures of statistics: A biometrical approach</strong>. 2. ed. New York: McGraw-Hill Book Company, 1980. p. 512
 </div>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
