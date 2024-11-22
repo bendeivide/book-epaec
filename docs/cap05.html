@@ -91,27 +91,19 @@ div.csl-indent {
   }
 }</script>
 <style>
-.Example {
-  --color1: #c0c0c0;
-  --color2: #808080;
+.Definition {
+  --color1: #5e737f;
+  --color2: #49606d;
+}
+.Solution {
+  --color1: #9ad5f6;
 }
 .Corolary {
   --color1: #df6d0d;
   --color2: #b85604;
 }
-.Definition {
-  --color1: #5e737f;
-  --color2: #49606d;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
 .Proof {
   --color1: #aaa6a3;
-}
-.Solution {
-  --color1: #9ad5f6;
 }
 .Exercise {
   --color1: #4485f6;
@@ -120,6 +112,14 @@ div.csl-indent {
 .Theorem {
   --color1: #d14747;
   --color2: #8b1f1f;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Example {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
 </style>
 
@@ -287,6 +287,11 @@ window.Quarto = {
   <ul>
   <li><a href="#introd" id="toc-introd" class="nav-link active" data-scroll-target="#introd"><span class="header-section-number">5.1</span> Introdução</a></li>
   <li><a href="#teoconj" id="toc-teoconj" class="nav-link" data-scroll-target="#teoconj"><span class="header-section-number">5.2</span> Introdução à teoria de conjuntos no contexto probabilístico</a></li>
+  <li><a href="#definições-de-probabilidades" id="toc-definições-de-probabilidades" class="nav-link" data-scroll-target="#definições-de-probabilidades"><span class="header-section-number">5.3</span> Definições de probabilidades</a>
+  <ul class="collapse">
+  <li><a href="#propriedades" id="toc-propriedades" class="nav-link" data-scroll-target="#propriedades"><span class="header-section-number">5.3.1</span> Propriedades</a></li>
+  </ul></li>
+  <li><a href="#teorema-de-bayes" id="toc-teorema-de-bayes" class="nav-link" data-scroll-target="#teorema-de-bayes"><span class="header-section-number">5.4</span> Teorema de Bayes</a></li>
   </ul>
 </nav>
     </div>
@@ -356,7 +361,7 @@ Figura&nbsp;5.1: Componente aleatória de um experimento aleatório.
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.2: </strong>Espaço amostral</summary><div>O conjunto de todos os resultados possíveis de um experimento, denotado por <span class="math inline">\(\Omega\)</span>, é chamado de espaço amostral.<p></p>
 </div></details>
 </div>
-<p>Cada um dos elementos do espaço amostral é representado por <span class="math inline">\(\omega\)</span>. Na Definição <a href="cap05.html#def:evento">5.6</a>, apresentaremos o significado de evento. Contudo, podemos antecipar como um subconjunto de <span class="math inline">\(\Omega\)</span>. Assim, diremos que um determinado evento ocorrerá se o resultado do experimento estiver nesse evento. Existem duas relações entre eventos que usaremos constantemente ao longo do conteúdo, que são:</p>
+<p>Cada um dos elementos do espaço amostral é representado por <span class="math inline">\(\omega\)</span>. Na Definição <a href="cap05.html#def:evento">5.5</a>, apresentaremos o significado de evento. Contudo, podemos antecipar como um subconjunto de <span class="math inline">\(\Omega\)</span>. Assim, diremos que um determinado evento ocorrerá se o resultado do experimento estiver nesse evento. Existem duas relações entre eventos que usaremos constantemente ao longo do conteúdo, que são:</p>
 <ul>
 <li>Continência: <span class="math inline">\(A \subset B \Leftrightarrow \omega \in A \Rightarrow \omega \in B\)</span>;</li>
 <li>Equivalência: <span class="math inline">\(A = B \Leftrightarrow A \subset B \textrm{ e } B \subset A\)</span>.</li>
@@ -371,22 +376,22 @@ Figura&nbsp;5.1: Componente aleatória de um experimento aleatório.
 <li>dizemos que <span class="math inline">\(A \subset B\)</span>, implica que <span class="math inline">\(A\)</span> é um subconjunto estrito de <span class="math inline">\(B\)</span>, e que <span class="math inline">\(B\)</span> contém pelo menos um elemento <span class="math inline">\(\omega\)</span> que não pertence a <span class="math inline">\(A\)</span>, logo <span class="math inline">\(A\)</span> não pode ser igual <span class="math inline">\(B\)</span>;</li>
 <li>dizemos que <span class="math inline">\(A \subseteq B\)</span>, implica que <span class="math inline">\(A\)</span> é um subconjunto de <span class="math inline">\(B\)</span>, podendo <span class="math inline">\(A\)</span> ser igual ou não <span class="math inline">\(B\)</span>, isto é, todos os elementos de <span class="math inline">\(A\)</span> podem pertencer a <span class="math inline">\(B\)</span> ou <span class="math inline">\(B\)</span> pode ter elementos adicionais que não pertencem a <span class="math inline">\(A\)</span>, e daí <span class="math inline">\(A\)</span> pode não ser igual a <span class="math inline">\(B\)</span>.</li>
 </ul>
-<p>Retornando a Definição <a href="cap05.html#def:espamostral">5.2</a>, podemos apresentar um outro espaço amostral, para o experimento dado no Exemplo <a href="cap05.html#ex:espamos4">5.3</a>, a seguir.</p>
-<div id="ex:espamos4" class="Definition">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.3</strong></summary><div>Um experimento lança três moedas honestas, e desejamos verificar a face superior dessas moedas. Sabemos que cada moeda apresenta duas faces: cara (H) e coroa (T). Dessa forma, o espaço amostral é dado por: <span class="math display">\[\begin{eqnarray*}
+<p>Retornando a Definição <a href="cap05.html#def:espamostral">5.2</a>, podemos apresentar um outro espaço amostral, para o experimento dado no Exemplo <a href="cap05.html#ex:espamos4">5.4</a>, a seguir.</p>
+<div id="ex:espamos4" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.4</strong></summary><div>Um experimento lança três moedas honestas, e desejamos verificar a face superior dessas moedas. Sabemos que cada moeda apresenta duas faces: cara (H) e coroa (T). Dessa forma, o espaço amostral é dado por: <span class="math display">\[\begin{eqnarray*}
 \Omega&amp;=&amp;\{(H,H,H),(H,H,T),(H,T,H),(H,T,T),\\
 &amp;&amp;(T,H,H),(T,H,T),(T,T,H),(T,T,T)\}.
 \end{eqnarray*}\]</span><p></p>
 </div></details>
 </div>
-<p>Contudo, como apresentamos a natureza das variáveis no <a href="cap01.html" class="quarto-xref"><span>Capítulo 1</span></a>, definimos também a natureza dos espaços amostrais de acordo os seus resultados, do qual podemos apresentá-la na Definição <a href="cap05.html#def:espdisccont">5.4</a>.</p>
+<p>Contudo, como apresentamos a natureza das variáveis no <a href="cap01.html" class="quarto-xref"><span>Capítulo 1</span></a>, definimos também a natureza dos espaços amostrais de acordo os seus resultados, do qual podemos apresentá-la na Definição <a href="cap05.html#def:espdisccont">5.3</a>.</p>
 <div id="def:espdisccont" class="Definition" title="Espaços amostrais discretos e contínuos">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.4: </strong>Espaços amostrais discretos e contínuos</summary><div>Um espaço amostral é discreto se o conjunto dos possíveis resultados são finito ou infinito contável (ou enumerável). Um espaço amostral é dito contínuo se o conjunto dos possíveis resultados são infinitos não contável (ou não enumerável) .<p></p>
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.3: </strong>Espaços amostrais discretos e contínuos</summary><div>Um espaço amostral é discreto se o conjunto dos possíveis resultados são finito ou infinito contável (ou enumerável). Um espaço amostral é dito contínuo se o conjunto dos possíveis resultados são infinitos não contável (ou não enumerável) .<p></p>
 </div></details>
 </div>
-<p>Vejamos o Exemplo <a href="cap05.html#ex:espdisccont">5.4</a>, retirado de <span class="citation" data-cites="Montgomery2016">Montgomery e Runger (<a href="references.html#ref-Montgomery2016" role="doc-biblioref">2016</a>)</span>, para distinguir espaços amostrais discretos e contínuos, apresentado a seguir.</p>
+<p>Vejamos o Exemplo <a href="cap05.html#ex:espdisccont">5.5</a>, retirado de <span class="citation" data-cites="Montgomery2016">Montgomery e Runger (<a href="references.html#ref-Montgomery2016" role="doc-biblioref">2016</a>)</span>, para distinguir espaços amostrais discretos e contínuos, apresentado a seguir.</p>
 <div id="ex:espdisccont" class="Example" title="Câmera Flash">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.4: </strong>Câmera Flash</summary><div>Considere um experimento em que é selecionado uma câmera de telefone celular e se registra o tempo de recarga de um <em>flash</em>. Os resultados possíveis para o tempo dependem da resolução do temporizador e dos tempos máximo e mínimo de recarga. Entretanto, podemos definir inicialmente o espaço amostral em termos da reta real positiva (<span class="math inline">\(\mathbb{R}_+\)</span>), isto é, <span class="math display">\[\begin{align*}
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.5: </strong>Câmera Flash</summary><div>Considere um experimento em que é selecionado uma câmera de telefone celular e se registra o tempo de recarga de um <em>flash</em>. Os resultados possíveis para o tempo dependem da resolução do temporizador e dos tempos máximo e mínimo de recarga. Entretanto, podemos definir inicialmente o espaço amostral em termos da reta real positiva (<span class="math inline">\(\mathbb{R}_+\)</span>), isto é, <span class="math display">\[\begin{align*}
   \Omega = \mathbb{R}_+  &amp; = \{ x ~:~ x &gt; 0\}.
 \end{align*}\]</span> Se soubermos que os tempos de recarga estão entre <span class="math inline">\(1,5\)</span> e <span class="math inline">\(5\)</span> segundos, podemos definir o espaço amostral da seguinte forma: <span class="math display">\[\begin{align*}
   \Omega  &amp; = \{ x ~:~ 1,5 \leq x \leq 5\}.
@@ -397,32 +402,32 @@ Figura&nbsp;5.1: Componente aleatória de um experimento aleatório.
 \end{align*}\]</span> Para as duas primeiras situações, temos exemplos de espaços amostrais contínuos, e nos dois últimos, exemplos de espaços amostrais discretos.<p></p>
 </div></details>
 </div>
-<p>Entretanto, também podemos ter um conjunto qualquer <span class="math inline">\(A\)</span>, que contém parte do elementos de <span class="math inline">\(\Omega\)</span>, isto é, <span class="math inline">\(A \subset \Omega\)</span>, e que <span class="math inline">\(A\)</span> passa a ser chamado de subconjunto de <span class="math inline">\(\Omega\)</span>, apresentado na Definição <a href="cap05.html#def:subcj">5.5</a>.</p>
+<p>Entretanto, também podemos ter um conjunto qualquer <span class="math inline">\(A\)</span>, que contém parte do elementos de <span class="math inline">\(\Omega\)</span>, isto é, <span class="math inline">\(A \subset \Omega\)</span>, e que <span class="math inline">\(A\)</span> passa a ser chamado de subconjunto de <span class="math inline">\(\Omega\)</span>, apresentado na Definição <a href="cap05.html#def:subcj">5.4</a>.</p>
 <div id="def:subcj" class="Definition" title="Subconjunto">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.5: </strong>Subconjunto</summary><div>Se todo elemento do conjunto A é também elemento do conjunto B, então A é definido como um subconjunto de B, sendo representado <span class="math inline">\(A\subset B\)</span> ou <span class="math inline">\(B\supset A\)</span> (A está contido em B ou B contém A), em notação dizemos que: <span class="math display">\[\begin{align*}
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.4: </strong>Subconjunto</summary><div>Se todo elemento do conjunto A é também elemento do conjunto B, então A é definido como um subconjunto de B, sendo representado <span class="math inline">\(A\subset B\)</span> ou <span class="math inline">\(B\supset A\)</span> (A está contido em B ou B contém A), em notação dizemos que: <span class="math display">\[\begin{align*}
   A \subset B \Leftrightarrow A \subseteq B \textrm{ e } A \neq B.
 \end{align*}\]</span><p></p>
 </div></details>
 </div>
-<p>Essa definição pode ser aplicada também a subconjuntos de <span class="math inline">\(\Omega\)</span>, como apresentado no Exemplo <a href="cap05.html#ex:subconjunto">5.5</a>, a seguir.</p>
+<p>Essa definição pode ser aplicada também a subconjuntos de <span class="math inline">\(\Omega\)</span>, como apresentado no Exemplo <a href="cap05.html#ex:subconjunto">5.6</a>, a seguir.</p>
 <div id="ex:subconjunto" class="Example">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.5</strong></summary><div>Sejam os subconjuntos de <span class="math inline">\(\Omega\)</span> do experimento aleatório apresentado no Exemplo <a href="cap05.html#ex:espamos1">5.1</a>, dos quais temos: <span class="math display">\[
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.6</strong></summary><div>Sejam os subconjuntos de <span class="math inline">\(\Omega\)</span> do experimento aleatório apresentado no Exemplo <a href="cap05.html#ex:espamos1">5.1</a>, dos quais temos: <span class="math display">\[
 B=\{1,2,3,4\} \ \mbox{e} \ A=\{1,2,3\},
 \]</span> então A é um subconjunto de B, pois, os elementos que contém em A, também contém em B.<p></p>
 </div></details>
 </div>
 <div id="def:evento" class="Definition" title="Evento">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.6: </strong>Evento</summary><div>Todo subconjunto do espaço amostral (<span class="math inline">\(\Omega\)</span>), representado por letras latinas em maiúsculo, A, B, <span class="math inline">\(\ldots\)</span>, é chamado de evento.<p></p>
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.5: </strong>Evento</summary><div>Todo subconjunto do espaço amostral (<span class="math inline">\(\Omega\)</span>), representado por letras latinas em maiúsculo, A, B, <span class="math inline">\(\ldots\)</span>, é chamado de evento.<p></p>
 </div></details>
 </div>
-<p>Vejamos o Exemplo <a href="cap05.html#ex:subcj2">5.6</a>, para um entendimento inicial sobre um evento, apresentado a seguir.</p>
+<p>Vejamos o Exemplo <a href="cap05.html#ex:subcj2">5.7</a>, para um entendimento inicial sobre um evento, apresentado a seguir.</p>
 <div id="ex:subcj2" class="Example">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.6</strong></summary><div>Um evento retirado do espaço amostral do Exemplo <a href="cap05.html#ex:espamos4">5.3</a> seria <span class="math inline">\(A=\{(H,H,H)\)</span>, <span class="math inline">\((H,H,T)\)</span>, <span class="math inline">\((H,T,T)\}\)</span>, ou seja, o evento em que dos três arremessos de moedas, tenha saído ``cara” na primeira moeda.<p></p>
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.7</strong></summary><div>Um evento retirado do espaço amostral do Exemplo <a href="cap05.html#ex:espamos4">5.4</a> seria <span class="math inline">\(A=\{(H,H,H)\)</span>, <span class="math inline">\((H,H,T)\)</span>, <span class="math inline">\((H,T,T)\}\)</span>, ou seja, o evento em que dos três arremessos de moedas, tenha saído “cara” na primeira moeda.<p></p>
 </div></details>
 </div>
-<p>Um outro exemplo abordado em <span class="citation" data-cites="James2004">James (<a href="references.html#ref-James2004" role="doc-biblioref">2004</a>)</span>, pode exemplificar um evento dentro do círculo unitário, apresentado no Exemplo <a href="cap05.html#ex:subcj3">5.7</a>, a seguir.</p>
+<p>Um outro exemplo abordado em <span class="citation" data-cites="James2004">James (<a href="references.html#ref-James2004" role="doc-biblioref">2004</a>)</span>, pode exemplificar um evento dentro do círculo unitário, apresentado no Exemplo <a href="cap05.html#ex:subcj3">5.8</a>, a seguir.</p>
 <div id="ex:subcj3" class="Example">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.7</strong></summary><div>
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.8</strong></summary><div>
 <p>Escolher ao acaso um ponto no círculo de raio 1 centrado na origem. Então <span class="math display">\[\begin{align*}
       \Omega &amp; = \textrm{círculo unitário } = \{(x,y) \in \mathbb{R}^2:~ x^2 + y^2 \leq 1\}.
     \end{align*}\]</span> Vejamos alguns eventos para esse exemplo: <span class="math display">\[\begin{align*}
@@ -471,14 +476,14 @@ Figura&nbsp;5.2: Escolha do ponto em um círculo unitário.
 </div>
 </div></details>
 </div>
-<p>Diante, do que falamos sobre a definição de evento, podemos apresentar três eventos básicos: o evento certo, impossível e o elementar, apresentados na Definição <a href="cap05.html#def:eventosbasicos">5.7</a>, a seguir.</p>
+<p>Diante, do que falamos sobre a definição de evento, podemos apresentar três eventos básicos: o evento certo, impossível e o elementar, apresentados na Definição <a href="cap05.html#def:eventosbasicos">5.6</a>, a seguir.</p>
 <div id="def:eventosbasicos" class="Definition" title="Evento certo, impossível e elementar">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.7: </strong>Evento certo, impossível e elementar</summary><div>Seja <span class="math inline">\(\Omega\)</span> o espaço amostral do experimento. Então dizemos que <span class="math inline">\(\Omega\)</span> é o evento certo, e <span class="math inline">\(\emptyset\)</span> é o evento impossível, e o evento <span class="math inline">\(\{\omega\}\)</span> é dito elementar.<p></p>
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.6: </strong>Evento certo, impossível e elementar</summary><div>Seja <span class="math inline">\(\Omega\)</span> o espaço amostral do experimento. Então dizemos que <span class="math inline">\(\Omega\)</span> é o evento certo, e <span class="math inline">\(\emptyset\)</span> é o evento impossível, e o evento <span class="math inline">\(\{\omega\}\)</span> é dito elementar.<p></p>
 </div></details>
 </div>
-<p>Uma outra forma de definir o evento impossível é representá-lo como um conjunto vazio, apresentado na Definição <a href="cap05.html#def:conjvazio">5.8</a>, a seguir.</p>
+<p>Uma outra forma de definir o evento impossível é representá-lo como um conjunto vazio, apresentado na Definição <a href="cap05.html#def:conjvazio">5.7</a>, a seguir.</p>
 <div id="def:conjvazio" class="Definition" title="Conjunto Vazio">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.8: </strong>Conjunto Vazio</summary><div>Se o conjunto A não contém nenhum elemento, então A é chamado de conjunto nulo ou conjunto vazio, ou seja, <span class="math inline">\(A=\varnothing\)</span> ou <span class="math inline">\(A=\{ \ \}\)</span>, isto é, <span class="math display">\[\begin{align}
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.7: </strong>Conjunto Vazio</summary><div>Se o conjunto A não contém nenhum elemento, então A é chamado de conjunto nulo ou conjunto vazio, ou seja, <span class="math inline">\(A=\varnothing\)</span> ou <span class="math inline">\(A=\{ \ \}\)</span>, isto é, <span class="math display">\[\begin{align}
   A &amp; = \{\omega \in \Omega: \omega \neq \omega \}.
 \end{align}\]</span><p></p>
 </div></details>
@@ -498,63 +503,56 @@ Figura&nbsp;5.2: Escolha do ponto em um círculo unitário.
 </div></details>
 </div>
 <div id="Proof*-5.2" class="Proof">
-<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Suponha que exista dois conjuntos vazios, <span class="math inline">\(\emptyset_1\)</span> e <span class="math inline">\(\emptyset_2\)</span>. Pelo Teorema <a href="cap05.html#teo:vaziosubj">5.1</a>, sabemos que <span class="math inline">\(\emptyset_1 \subseteq \emptyset_2\)</span>, uma vez que <span class="math inline">\(\emptyset_1\)</span> é um conjunto vazio. Mas, também sabemos que <span class="math inline">\(\emptyset_2 \subseteq \emptyset_1\)</span>, uma vez que <span class="math inline">\(\emptyset_2\)</span> é um conjunto vazio. Logo, pela equivalência de conjuntos (eventos), Definição <a href="cap05.html#def:equieventos">5.13</a>, <span class="math inline">\(\emptyset_1 = \emptyset_2\)</span>, o que conclui a prova.<p></p>
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Suponha que exista dois conjuntos vazios, <span class="math inline">\(\emptyset_1\)</span> e <span class="math inline">\(\emptyset_2\)</span>. Pelo Teorema <a href="cap05.html#teo:vaziosubj">5.1</a>, sabemos que <span class="math inline">\(\emptyset_1 \subseteq \emptyset_2\)</span>, uma vez que <span class="math inline">\(\emptyset_1\)</span> é um conjunto vazio. Mas, também sabemos que <span class="math inline">\(\emptyset_2 \subseteq \emptyset_1\)</span>, uma vez que <span class="math inline">\(\emptyset_2\)</span> é um conjunto vazio. Logo, pela equivalência de conjuntos (eventos), Definição <a href="cap05.html#def:equieventos">5.12</a>, <span class="math inline">\(\emptyset_1 = \emptyset_2\)</span>, o que conclui a prova.<p></p>
 </div></details>
 </div>
-<p>Em algumas situações, podemos apresentar alguns eventos a partir da combinação de outros eventos. Dessa forma, se faz necessário apresentar algumas operações elementares de conjuntos e suas consequências, tais como a união, interseção, complemento, dentre outras definições abordadas a seguir. Inicialmente, apresentamos na Definição <a href="cap05.html#def:udoisevt">5.9</a>, a união de dois eventos.</p>
+<p>Em algumas situações, podemos apresentar alguns eventos a partir da combinação de outros eventos. Dessa forma, se faz necessário apresentar algumas operações elementares de conjuntos e suas consequências, tais como a união, interseção, complemento, dentre outras definições abordadas a seguir. Inicialmente, apresentamos na Definição <a href="cap05.html#def:udoisevt">5.8</a>, a união de dois eventos.</p>
 <div id="def:udoisevt" class="Definition" title="União de dois eventos">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.9: </strong>União de dois eventos</summary><div>Sejam A e B, dois eventos quaisquer de <span class="math inline">\(\Omega\)</span>, então o conjunto de todos os elementos que estão em A ou B ou em ambos, é definido como o conjunto união de A e B, denotado por <span class="math inline">\(A\cup B\)</span>, tal que, <span id="eq-unionevents"><span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.8: </strong>União de dois eventos</summary><div>Sejam A e B, dois eventos quaisquer de <span class="math inline">\(\Omega\)</span>, então o conjunto de todos os elementos que estão em A ou B ou em ambos, é definido como o conjunto união de A e B, denotado por <span class="math inline">\(A\cup B\)</span>, tal que, <span id="eq-unionevents"><span class="math display">\[
 \begin{align}
   A\cup B &amp; = \{\omega \in \Omega: ~\omega \in A \textrm{ ou } \omega \in B\}.
 \end{align}
 \tag{5.1}\]</span></span><p></p>
 </div></details>
 </div>
-<p>Vejamos o Exemplo <a href="cap05.html#ex:udoisevt">5.8</a>, sobre a união de dois eventos, a seguir.</p>
+<p>Vejamos o Exemplo <a href="cap05.html#ex:udoisevt">5.9</a>, sobre a união de dois eventos, a seguir.</p>
 <div id="ex:udoisevt" class="Example">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.8</strong></summary><div>Sejam os conjuntos: <span class="math display">\[
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.9</strong></summary><div>Sejam os conjuntos: <span class="math display">\[
     A=\{1,2,3\} \ \mbox{e} \ B=\{3,4,5,6\},
     \]</span> então <span class="math display">\[
     A\cup B=\{1,2,3,4,5,6\}.
     \]</span><p></p>
 </div></details>
 </div>
-<p>A Definição <a href="cap05.html#def:inteventos">5.10</a> apresenta a próxima propriedade de conjuntos, que é a interseção de de eventos, apresentada a seguir.</p>
+<p>A Definição <a href="cap05.html#def:inteventos">5.9</a> apresenta a próxima propriedade de conjuntos, que é a interseção de de eventos, apresentada a seguir.</p>
 <div id="def:inteventos" class="Definition" title="Interseção de dois eventos">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.10: </strong>Interseção de dois eventos</summary><div>Sejam A e B, dois eventos quaisquer de <span class="math inline">\(\Omega\)</span>, então o conjunto que contém todos os elementos que estão em A e B, é definido como a interseção de A e B, denotado por <span class="math inline">\(A\cap B\)</span> ou <span class="math inline">\(AB\)</span>, tal que, <span id="eq-inteventos"><span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.9: </strong>Interseção de dois eventos</summary><div>Sejam A e B, dois eventos quaisquer de <span class="math inline">\(\Omega\)</span>, então o conjunto que contém todos os elementos que estão em A e B, é definido como a interseção de A e B, denotado por <span class="math inline">\(A\cap B\)</span> ou <span class="math inline">\(AB\)</span>, tal que, <span id="eq-inteventos"><span class="math display">\[
 \begin{align}
   A \cap B &amp; = \{\omega \in \Omega: ~\omega \in A \textrm{ e } \omega \in B\}.
 \end{align}
 \tag{5.2}\]</span></span><p></p>
 </div></details>
 </div>
-<p>Do Exemplo <a href="cap05.html#ex:udoisevt">5.8</a>, temos que a intersecção de <span class="math inline">\(AB = \{3\}\)</span>.</p>
-<div id="def:disjeventos" class="Definition" title="Eventos Disjuntos ou multuamente exclusivos">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.11: </strong>Eventos Disjuntos ou multuamente exclusivos</summary><div>Sejam A e B, dois eventos quaisquer de <span class="math inline">\(\Omega\)</span>, então estes são disjuntos ou mutuamente exclusivos quando não existir elementos em comum entre A e B, isto é, <span class="math inline">\(A\cap B = \emptyset\)</span>.<p></p>
+<p>Do Exemplo <a href="cap05.html#ex:udoisevt">5.9</a>, temos que a intersecção de <span class="math inline">\(AB = \{3\}\)</span>.</p>
+<div id="def:disjeventos" class="Definition" title="Eventos Disjuntos ou mutuamente exclusivos">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.10: </strong>Eventos Disjuntos ou mutuamente exclusivos</summary><div>Sejam A e B, dois eventos quaisquer de <span class="math inline">\(\Omega\)</span>, então estes são disjuntos ou mutuamente exclusivos quando não existir elementos em comum entre A e B, isto é, <span class="math inline">\(A\cap B = \emptyset\)</span>.<p></p>
 </div></details>
 </div>
-<p>Vejamos o Exemplo <a href="cap05.html#ex:disjeventos">5.9</a>, para entendermos sobre eventos disjuntos, apresentado a seguir.</p>
+<p>Vejamos o Exemplo <a href="cap05.html#ex:disjeventos">5.10</a>, para entendermos sobre eventos disjuntos, apresentado a seguir.</p>
 <div id="ex:disjeventos" class="Example">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.9</strong></summary><div>Sejam os eventos <span class="math inline">\(A=\{1,2,3,4\}\)</span> e <span class="math inline">\(B=\{5,6\}\)</span>, então <span class="math inline">\(A\cap B=\varnothing\)</span><p></p>
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.10</strong></summary><div>Sejam os eventos <span class="math inline">\(A=\{1,2,3,4\}\)</span> e <span class="math inline">\(B=\{5,6\}\)</span>, então <span class="math inline">\(A\cap B=\varnothing\)</span><p></p>
 </div></details>
 </div>
-<p>Em seguida, apresentamos mais duas definições interessantes, que são os eventos coletivamente exaustivos (Definição <a href="cap05.html#def:exauseventos">5.12</a>) e eventos equivalentes (Definição <a href="cap05.html#def:equieventos">5.13</a>), apresentados na sequência.</p>
+<p>Em seguida, apresentamos mais duas definições interessantes, que são os eventos coletivamente exaustivos (Definição <a href="cap05.html#def:exauseventos">5.11</a>) e eventos equivalentes (Definição <a href="cap05.html#def:equieventos">5.12</a>), apresentados na sequência.</p>
 <div id="def:exauseventos" class="Definition" title="Eventos coletivamente exaustivos">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.12: </strong>Eventos coletivamente exaustivos</summary><div>Considere um conjunto de eventos em <span class="math inline">\(\Omega\)</span>, se ao menos um evento ocorrer durante um dado experimento, dizemos que esses eventos são coletivamente exaustivos.<p></p>
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.11: </strong>Eventos coletivamente exaustivos</summary><div>Considere um conjunto de eventos em <span class="math inline">\(\Omega\)</span>, se ao menos um evento ocorrer durante um dado experimento, dizemos que esses eventos são coletivamente exaustivos.<p></p>
 </div></details>
 </div>
 <p>Na sequência, segue a definição sobre eventos equivalentes.</p>
 <div id="def:equieventos" class="Definition" title="Eventos equivalentes">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.13: </strong>Eventos equivalentes</summary><div>Dois eventos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são definidos equivalentes, ou iguais, se <span class="math inline">\(A\subseteq B\)</span> e <span class="math inline">\(B \subseteq A\)</span>.<p></p>
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.12: </strong>Eventos equivalentes</summary><div>Dois eventos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são definidos equivalentes, ou iguais, se <span class="math inline">\(A\subseteq B\)</span> e <span class="math inline">\(B \subseteq A\)</span>.<p></p>
 </div></details>
 </div>
-<div id="Example-5.10" class="Example">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.10</strong></summary><div>Sejam os conjuntos: <span class="math display">\[
-B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
-\]</span> então <span class="math inline">\(A\)</span> é igual a <span class="math inline">\(B\)</span>, pois <span class="math inline">\(A\subset B\)</span> e <span class="math inline">\(B \subset A\)</span>.<p></p>
-</div></details>
-</div>
-<p>Uma relação de eventos que será muito importante para o estudo da teoria da probabilidade, é a definição de complemento, abordado a seguir.</p>
 <div id="Example-5.11" class="Example">
 <p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.11</strong></summary><div>Sejam os conjuntos: <span class="math display">\[
 B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
@@ -562,6 +560,992 @@ B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
 </div></details>
 </div>
 <p>Uma relação de eventos que será muito importante para o estudo da teoria da probabilidade, é a definição de complemento, abordado a seguir.</p>
+<div id="def:compevento" class="Definition" title="Evento Complementar">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.13: </strong>Evento Complementar</summary><div>Seja <span class="math inline">\(A\)</span> um evento de <span class="math inline">\(\Omega\)</span>. Então o complemento do evento A com respeito a <span class="math inline">\(\Omega\)</span>, denotado por <span class="math inline">\(\overline{A}\)</span>, <span class="math inline">\(A^c\)</span>, ou <span class="math inline">\(\Omega-A\)</span>, é o subconjunto dos elementos de <span class="math inline">\(\Omega\)</span> exceto os elementos do evento A, isto é, <span id="eq-compeventos"><span class="math display">\[
+\begin{align}
+  A^c &amp; = \{\omega \in \Omega: ~ \omega \notin A\}.
+\end{align}
+\tag{5.3}\]</span></span><p></p>
+</div></details>
+</div>
+<div id="ex:compevento" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.12</strong></summary><div>Seja o espaço amostral <span class="math inline">\(\Omega\)</span> do experimento que consiste em arremessar três moedas honestas. Diremos que <span class="math inline">\(H\)</span> consiste na face superior da moeda ser cara, e <span class="math inline">\(T\)</span> coroa. Assim <span class="math display">\[\begin{eqnarray*}
+\Omega&amp;=&amp;\{(H,H,H),(H,H,T),(H,T,H),(H,T,T),\\
+&amp;&amp;(T,H,H),(T,H,T),(T,T,H),(T,T,T)\}.
+\end{eqnarray*}\]</span> e um subconjunto de <span class="math inline">\(\Omega\)</span>, cujo evento será aparecer cara na primeira moeda, dado por <span class="math display">\[A=\{(H,H,H),(H,H,T),(H,T,H), (H,T,T)\}.\]</span> Então o complemento de A será: <span class="math display">\[\overline{A}=\{(T,H,H),(T,H,T), (T,T,H), (T,T,T)\}.\]</span><p></p>
+</div></details>
+</div>
+<div id="def:difeventos" class="Definition" title="Diferença de dois eventos">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.14: </strong>Diferença de dois eventos</summary><div>Sejam A e B dois eventos de <span class="math inline">\(\Omega\)</span>. O conjunto de todos os elementos de <span class="math inline">\(A\)</span> que não estão em <span class="math inline">\(B\)</span>, serão denotados por <span class="math inline">\(A-B\)</span> ou <span class="math inline">\(A\setminus B\)</span>, sendo definido por conjunto diferença, isto é, <span id="eq-confdif"><span class="math display">\[
+\begin{align}
+  A - B &amp; = \{\omega \in \Omega: ~\omega \in A \textrm{ e } \omega \notin B\}.
+\end{align}
+\tag{5.4}\]</span></span><p></p>
+</div></details>
+</div>
+<p>A Definição <a href="cap05.html#def:difeventos">5.14</a> pode ser confundida com a Definição <a href="cap05.html#def:compevento">5.13</a>, porém esta última se remete ao espaço amostral, e a diferença entre dois eventos se refere apenas a existência dos elementos de um evento que não estão em outro evento. Vejamos o Exemplo <a href="cap05.html#ex:difeventos">5.13</a>, e depois compare com o Exemplo <a href="cap05.html#ex:compevento">5.12</a>, para elucidar essas duas definições.</p>
+<div id="ex:difeventos" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.13</strong></summary><div>Sejam os conjuntos <span class="math inline">\(A=\{1,2,3,4\}\)</span> e <span class="math inline">\(B=\{3,4\}\)</span>, então <span class="math inline">\(A-B=\{1,2\}\)</span>.<p></p>
+</div></details>
+</div>
+<p>Por fim, uma última definição é a partição de conjuntos, apresentado na Definição <a href="cap05.html#def:particao">5.15</a>, a seguir.</p>
+<div id="def:particao" class="Definition" title="Partição de A">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.15: </strong>Partição de <span class="math inline">\(A\)</span></summary><div>
+<p>Considerando uma sequência de eventos <span class="math inline">\(\{A_i\}_{i = 1}^{n}\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, não vazios, é uma partição do evento <span class="math inline">\(A\)</span>, se e somente se,</p>
+<ol type="I">
+<li><span class="math inline">\(A = \bigcup_{i = 1}^{n}A_i\)</span>;</li>
+<li><span class="math inline">\(\{A_i\}_{i = 1}^{n}\)</span> são mutuamente disjuntos, tais que <span class="math inline">\(A_i \cap A_j, ~\forall i \neq j\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<p>Considerando que <span class="math inline">\(A = \Omega\)</span>, dizemos que temos uma . A seguir, apresentamos algumas leis importantes para a teoria de conjuntos, que estabelece algumas propriedades. Vejamos o Teorema <a href="cap05.html#teo:leiconj">5.2</a>.</p>
+<div id="teo:leiconj" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.2</strong></summary><div>
+<p>Considere três eventos <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, e <span class="math inline">\(C\)</span> definidos em <span class="math inline">\(\Omega\)</span>, então segue que:</p>
+<ol type="I">
+<li>Lei comutativa: <span class="math inline">\(A\cup B = B \cup A\)</span> e <span class="math inline">\(A\cap B = B \cap A\)</span>;</li>
+<li>Lei associativa: <span class="math inline">\(A \cup (B\cup C)=(A\cup B)\cup C\)</span>;</li>
+<li>Lei distributiva: <span class="math inline">\(A \cup (B \cap C)=(A\cup B)\cap (A\cup C)\)</span> e <span class="math inline">\(A \cap (B \cup C)=(A\cap B)\cup (A\cap C)\)</span>;</li>
+<li>Lei DeMorgan: <span class="math inline">\((A \cup B)^c = A^c \cap B^c\)</span> e <span class="math inline">\((A \cap B)^c = A^c \cup B^c\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="Proof*-5.3" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<p>Para provar que dois conjuntos são iguais, devemos demonstrar que todo elemento que está em um conjunto, também está no outro, e vice-versa.</p>
+<ol type="I">
+<li>Supomos que <span class="math inline">\(\omega \in A \cup B\)</span>, portanto, <span class="math inline">\(\omega \in A \textrm{ ou } \omega \in B\)</span>. Logo, <span class="math inline">\(\omega \in B \cup A\)</span>. Da mesma forma, supomos que <span class="math inline">\(\omega \in B \cup A\)</span>, portanto, <span class="math inline">\(\omega \in B \textrm{ ou } \omega \in A\)</span>. Logo, <span class="math inline">\(\omega \in A \cup B\)</span>. De forma resumida, podemos expressar essa prova da seguinte forma: <span class="math inline">\(\omega \in A \cup B \Leftrightarrow \omega \in A \textrm{ ou } \omega \in B \Leftrightarrow \omega \in B \cup A\)</span>; Para a outra parte da prova, supomos que <span class="math inline">\(\omega \in A \cap B\)</span>, portanto, <span class="math inline">\(\omega \in A \textrm{ e } \omega \in B\)</span>. Logo, <span class="math inline">\(\omega \in B \cap A\)</span>. Da mesma forma, supomos que <span class="math inline">\(\omega \in B \cap A\)</span>, portanto, <span class="math inline">\(\omega \in B \textrm{ e } \omega \in A\)</span>. Logo, <span class="math inline">\(\omega \in A \cap B\)</span>. De forma resumida, podemos expressar essa prova da seguinte forma: <span class="math inline">\(\omega \in A \cap B \Leftrightarrow \omega \in A \textrm{ e } \omega \in B \Leftrightarrow \omega \in B \cap A\)</span>, o que finaliza a prova da Lei comutativa;</li>
+<li>Supomos que <span class="math inline">\(\omega \in A \cup (B\cup C)\)</span>, portanto, <span class="math inline">\(\omega \in A \textrm{ ou } \omega \in B \cup C\)</span>, e que isso implica em <span class="math inline">\(\omega \in A \cup B \textrm{ ou } \omega \in C\)</span>. Logo, <span class="math inline">\(\omega \in (A \cup B) \cup C\)</span>. Da mesma forma, supomos que <span class="math inline">\(\omega \in (A \cup B) \cup C\)</span>, portanto, <span class="math inline">\(\omega \in A \cup B \textrm{ ou } \omega \in C\)</span>, e que isso implica em <span class="math inline">\(\omega \in A \textrm{ ou } \omega \in B \cup C\)</span>. Logo, <span class="math inline">\(\omega \in A \cup (B\cup C)\)</span>. De forma resumida, podemos expressar essa prova da seguinte forma: <span class="math inline">\(\omega \in A \cup (B\cup C)\)</span> <span class="math inline">\(\Leftrightarrow \omega \in A\)</span> <span class="math inline">\(\textrm{ ou } \omega \in B \cup C\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in A \cup B \textrm{ ou } \omega \in C\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in (A \cup B) \cup C\)</span>, o que finaliza a prova da Lei associativa;</li>
+<li>Supomos que <span class="math inline">\(\omega \in A \cup (B \cap C)\)</span>, portanto, <span class="math inline">\(\omega \in A \textrm{ ou } \omega \in (B \cap C)\)</span>. Considerando que <span class="math inline">\(\omega \in A\)</span>, então <span class="math inline">\(\omega \in (A \cup B) \textrm{ e } \omega \in (A \cup C)\)</span>, logo, <span class="math inline">\(\omega \in (A \cup B) \cap (A \cup C)\)</span>. Considerando que <span class="math inline">\(\omega \in (B \cap C)\)</span>, então <span class="math inline">\(\omega \in B\)</span> e <span class="math inline">\(\omega \in C\)</span>. Logo, <span class="math inline">\(\omega \in (A \cup B) \cap (A \cup C)\)</span>. Agora, assumimos que <span class="math inline">\(\omega \in (A \cup B)\cap (A \cup C)\)</span>, portanto, <span class="math inline">\(\omega \in (A \cup B) \textrm{ e } \omega \in (A \cup C)\)</span>. Isso significa que, ou <span class="math inline">\(\omega \in A\)</span> ou <span class="math inline">\(\omega \in (B \cap C)\)</span>, logo, <span class="math inline">\(\omega \in A \cup (B \cap C)\)</span>. Para a segunda parte, assumimos que <span class="math inline">\(\omega \in A \cap (B \cup C)\)</span>. Isso implica que <span class="math inline">\(\omega \in A\)</span> e <span class="math inline">\(\omega \in (B \cup C)\)</span>. Como <span class="math inline">\(\omega \in A\)</span>, então <span class="math inline">\(\omega \in (A \cap B)\)</span> e <span class="math inline">\(\omega \in (A \cap C)\)</span>. Logo, <span class="math inline">\(\omega \in (A \cap B) \cup (A \cap C)\)</span>. Agora, assumimos que <span class="math inline">\(\omega \in (A \cap B) \cup (A \cap C)\)</span>, portanto, <span class="math inline">\(\omega \in (A \cap B)\)</span> ou <span class="math inline">\(\omega \in (A \cap C)\)</span>. Se <span class="math inline">\(\omega \in (A \cap B)\)</span>, então <span class="math inline">\(\omega\)</span> está em <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>. Como <span class="math inline">\(\omega \in B\)</span>, então <span class="math inline">\(\omega \in (B \cup C)\)</span>. Se <span class="math inline">\(\omega \in (A \cap C)\)</span>, então <span class="math inline">\(\omega\)</span> está em <span class="math inline">\(A\)</span> e <span class="math inline">\(C\)</span>. Como <span class="math inline">\(\omega \in C\)</span>, então <span class="math inline">\(\omega \in (B \cup C)\)</span>. Logo, <span class="math inline">\(\omega \in A \cap (B \cup C)\)</span>, o que finaliza a prova da Lei distributiva.</li>
+<li>Supomos que <span class="math inline">\(\omega \in (A \cup B)^c\)</span>, então <span class="math inline">\(\omega \notin (A \cup B)\)</span>, isto é, <span class="math inline">\(\omega \notin A\)</span> ou <span class="math inline">\(\omega \notin B\)</span>. Como <span class="math inline">\(\omega \notin A\)</span> ou <span class="math inline">\(\omega \notin B\)</span>, então <span class="math inline">\(\omega \in A^c\)</span> e <span class="math inline">\(\omega \in B^c\)</span>. Logo, <span class="math inline">\(\omega \in A^c \cap B^c\)</span>. Agora, assumimos que <span class="math inline">\(\omega \in A^c \cap B^c\)</span>. Isso implica que <span class="math inline">\(\omega \in A^c\)</span> e <span class="math inline">\(\omega \in B^c\)</span>, de modo que ou <span class="math inline">\(\omega \notin A\)</span> ou <span class="math inline">\(\omega \notin B\)</span>. Assim, <span class="math inline">\(\omega \notin (A \cup B)\)</span>, e pela definição de evento complementar, concluímos que <span class="math inline">\(\omega \in (A \cup B)^c\)</span>. De forma resumida, podemos expressar essa prova da seguinte forma: <span class="math inline">\(\omega \in (A \cup B)^c \Leftrightarrow\)</span> <span class="math inline">\(\omega \notin A \textrm{ ou } \omega \notin B \Leftrightarrow \omega \in A^c \textrm{ e } \omega \in B^c \Leftrightarrow \omega \in A^c \cap B^c\)</span>. Na segunda parte, assumimos que <span class="math inline">\(\omega \in (A \cap B)^c\)</span>, então <span class="math inline">\(\omega \notin (A \cap B)\)</span>. Assim, <span class="math inline">\(\omega \notin A\)</span> e nem <span class="math inline">\(\omega \notin B\)</span>. Como consequência, <span class="math inline">\(\omega \in A^c\)</span> ou <span class="math inline">\(\omega \in B^c\)</span>, logo <span class="math inline">\(\omega \in A^c \cup B^c\)</span>. Da mesma forma, assumimos que <span class="math inline">\(\omega \in A^c \cup B^c\)</span>, isto é, <span class="math inline">\(\omega \in A^c\)</span> ou <span class="math inline">\(\omega \in B^c\)</span>. Isso implica que <span class="math inline">\(\omega \notin (A \cap B)\)</span>. Usando a definição de evento complementar, logo <span class="math inline">\(\omega \in (A \cap B)^c\)</span>, o que conclui a prova para a Lei DeMorgan. De forma resumida, podemos expressar essa prova da seguinte forma: <span class="math inline">\(\omega \in (A \cap B)^c \Leftrightarrow \omega \notin (A \cap B) \Leftrightarrow\)</span> <span class="math inline">\(\omega \notin A \textrm{ e } \omega \notin B \Leftrightarrow \omega \in A^c \textrm{ ou } \omega \in B^c\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in A^c \cup B^c\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<p>Para finalizar, apresentamos pelo Teorema <a href="cap05.html#teo:identeventos">5.3</a>, algumas identidades que serão importantes na teoria de conjuntos para o estudo sobre a probabildade.</p>
+<div id="teo:identeventos" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.3</strong></summary><div>
+<p>Sejam os eventos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> definidos no espaço amostral <span class="math inline">\(\Omega\)</span>, não vazio. Então, apresentamos as seguintes identidades:</p>
+<ol type="I">
+<li><span class="math inline">\(A\cap A^c = \emptyset\)</span>;</li>
+<li><span class="math inline">\(A \cup A^c = \Omega\)</span>;</li>
+<li><span class="math inline">\(\Omega^c = \emptyset\)</span>;</li>
+<li><span class="math inline">\(\emptyset^c = \Omega\)</span>;</li>
+<li><span class="math inline">\((A^C)^C=\overline{(\overline{A})}=A\)</span>, em outras palavras, o complemento de <span class="math inline">\(\overline{A}\)</span> é igual a <span class="math inline">\(A\)</span>;</li>
+<li><span class="math inline">\(A\Omega=A\)</span> (Elemento neutro);</li>
+<li><span class="math inline">\(A\cup \Omega=\Omega\)</span>;</li>
+<li><span class="math inline">\(A \cap A = A\)</span> (Idempotência);</li>
+<li><span class="math inline">\(A\varnothing=\varnothing\)</span> (Elemento absorvente);</li>
+<li><span class="math inline">\(A\cup \varnothing = A\)</span>;</li>
+<li><span class="math inline">\(A - B = A - (A \cap B) = A \cap B^c\)</span>;</li>
+<li><span class="math inline">\(B = (B \cap A) \cup (B \cap A^c)\)</span>;</li>
+<li><span class="math inline">\(B - A = B \cap A^c\)</span>;</li>
+<li><span class="math inline">\(A \cup B = A \cup (B \cap A^c)\)</span>;</li>
+<li><span class="math inline">\(A \cup B = (A^c \cap B)\cup (A \cap B) \cup (A \cap B^c)\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="Proof*-5.4" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<p>Para provar que dois conjuntos são iguais, devemos demonstrar que todo elemento que está em um conjunto, também está no outro, e vice-versa.</p>
+<ol type="I">
+<li>Vamos apresentar a prova por contradição. Suponha que <span class="math inline">\(\omega \in A \cap A^c \neq \emptyset\)</span>, então <span class="math inline">\(\exists \omega \in A \cap A^c: \omega \in A \textrm{ e } \omega \in A^c\)</span>. Mas por definição <span class="math inline">\(A^c = \{\omega \in \Omega: \omega \notin A\}\)</span>, então a afirmação <span class="math inline">\(\exists \omega \in A \cap A^c: \omega \in A \textrm{ e } \omega \in A^c\)</span>, é absurdo. Logo, <span class="math inline">\(A \cap A^c = \emptyset\)</span>. Vejamos a representação em diagrama de Venn, a seguir.</li>
+</ol>
+<center>
+<img src="figures/cap5/diagAAc.png" class="img-fluid" style="width:60.0%">
+</center>
+<ol start="2" type="I">
+<li><span class="math inline">\(\omega \in A \cup A^c \Leftrightarrow \omega \in A \textrm{ ou } \omega \in A^c \Leftrightarrow \omega \in A \textrm{ ou } \omega \notin A\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in \Omega\)</span>. Vejamos a representação em diagrama de Venn, a seguir.</li>
+</ol>
+<center>
+<img src="figures/cap5/diagAuAc.png" class="img-fluid" style="width:60.0%">
+</center>
+<ol start="3" type="I">
+<li><p>Vamos apresentar a prova por contradição. Supomos que <span class="math inline">\(\Omega^c \neq \emptyset\)</span>. Isso significa que <span class="math inline">\(\exists \omega: \omega \in \Omega^c \textrm{ e } \omega \notin \Omega\)</span>, e isso é absurdo, pois <span class="math inline">\(\Omega\)</span> representa o conjunto de todos os resultados possíveis em um experimento. Logo, <span class="math inline">\(\Omega^c = \emptyset\)</span>;</p></li>
+<li><p>Vamos provar por contradição. Supomos que <span class="math inline">\(\emptyset^c \neq \Omega\)</span>. Isso implica que, <span class="math inline">\(\exists \omega: \omega \in \Omega \textrm{ e }\omega \notin \emptyset^c\)</span>. Então, isso implica que <span class="math inline">\(\omega \in \emptyset\)</span>, que é absurdo. Logo, <span class="math inline">\(\emptyset^c = \Omega\)</span>. Uma outra forma de apresentar essa prova é usar a definição de evento complementar, isto é, <span class="math inline">\(A^c = \Omega - A\)</span>. Considerando <span class="math inline">\(A = \emptyset\)</span>, então <span class="math inline">\(\emptyset^c = \Omega - \emptyset\)</span>. Logo, <span class="math inline">\(\emptyset^c = \Omega\)</span>;</p></li>
+<li><p><span class="math inline">\(\omega \in (A^c)^c \Leftrightarrow \omega \notin A^c \Leftrightarrow \omega \in A\)</span>;</p></li>
+<li><p><span class="math inline">\(\omega \in A \cap \Omega \Leftrightarrow \omega \in A \textrm{ e } \omega \in \Omega \Leftrightarrow \omega \in A\)</span>, como pode ser observado pelo diagrama a seguir.</p></li>
+</ol>
+<center>
+<img src="figures/cap5/diagAOmega.png" class="img-fluid" style="width:60.0%">
+</center>
+<ol start="7" type="I">
+<li><span class="math inline">\(\omega \in A \cup \Omega \Leftrightarrow \omega \in A \textrm{ ou } \omega \in \Omega \Leftrightarrow \omega \in \Omega\)</span>, como pode ser visto no diagrama a seguir.</li>
+</ol>
+<center>
+<img src="figures/cap5/diagAuOmega.png" class="img-fluid" style="width:60.0%">
+</center>
+<ol start="8" type="I">
+<li><span class="math inline">\(\omega \in A \cap A \Leftrightarrow \omega \in A \textrm{ e } \omega \in A \Leftrightarrow \omega \in A\)</span>, como pode ser observado no diagrama a seguir.</li>
+</ol>
+<center>
+<img src="figures/cap5/diagAA.png" class="img-fluid" style="width:60.0%">
+</center>
+<ol start="9" type="I">
+<li><p>Vamos apresentar a prova por contradição, isto é, vamos supor que <span class="math inline">\(A \cap \emptyset \neq \emptyset\)</span>, então <span class="math inline">\(\exists\omega: \omega \in A \cap \emptyset\)</span>. Assim, <span class="math inline">\(\omega \in A\)</span> e <span class="math inline">\(\omega \in \emptyset\)</span>. Porém, <span class="math inline">\(\omega \in \emptyset\)</span> é falso. Então <span class="math inline">\(\omega \in A \cap \emptyset\)</span> é falso. Logo, <span class="math inline">\(A \cap \emptyset = \emptyset\)</span>;</p></li>
+<li><p>Considerando que <span class="math inline">\(\omega \in A \cup \emptyset\)</span>, então ou <span class="math inline">\(\omega \in A\)</span> ou <span class="math inline">\(\omega \in \emptyset\)</span>. Mas <span class="math inline">\(\omega \in \emptyset\)</span> é falso, logo <span class="math inline">\(\omega \in A\)</span>. Do mesmo modo se <span class="math inline">\(\omega \in A\)</span>, então <span class="math inline">\(\omega \in A \cup \emptyset\)</span>;</p></li>
+<li><p><span class="math inline">\(\omega \in (A - B)\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in\)</span> <span class="math inline">\(A\)</span> <span class="math inline">\(\textrm{ e }\)</span> <span class="math inline">\(\omega\notin B\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in A \textrm{ e } \omega \notin (A \cap B) \Leftrightarrow A - (A \cap B)\)</span>. Da mesma forma, <span class="math inline">\(\omega \in (A - B)\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in A\)</span> <span class="math inline">\(\textrm{ e }\)</span> <span class="math inline">\(\omega \notin B \Leftrightarrow \omega \in A \textrm{ e } \omega \in B^c \Leftrightarrow \omega \in A \cap B^c\)</span>. Vejamos o diagrama a seguir.</p></li>
+</ol>
+<center>
+<img src="figures/cap5/diagA-B.png" class="img-fluid" style="width:60.0%">
+</center>
+<ol start="12" type="I">
+<li>Considerando que <span class="math inline">\(\omega \in B\)</span>, então ou <span class="math inline">\(\omega \in A\)</span> ou <span class="math inline">\(\omega \in A^c\)</span>. Se <span class="math inline">\(\omega \in A\)</span>, então <span class="math inline">\(\omega \in (B \cap A)\)</span>. Se <span class="math inline">\(\omega \in A^c\)</span>, então <span class="math inline">\(\omega \in (B \cap A^c)\)</span>. Logo, <span class="math inline">\(\omega \in (B \cap A)\cup (B \cap A^c)\)</span>. Agora, considerando que <span class="math inline">\(\omega \in (B \cap A)\cup (B \cap A^c)\)</span>, sabemos que <span class="math inline">\(\omega \in (B \cap A)\)</span> ou <span class="math inline">\(\omega \in (B \cap A^c)\)</span>. Se <span class="math inline">\(\omega \in (B \cap A)\)</span>, então <span class="math inline">\(\omega \in B\)</span>. Se <span class="math inline">\(\omega \in (B \cap A^c)\)</span>, então <span class="math inline">\(\omega \in B\)</span>. Logo, <span class="math inline">\(\omega \in B\)</span>. Uma outra forma de provar mais facilmente essa identidade é usar a Lei distributiva (Teorema <a href="cap05.html#teo:leiconj">5.2</a>, III), isto é, <span class="math inline">\((B \cap A)\cup (B \cap A^c) = B \cap (A \cup A^c) = B \cap \Omega = B\)</span>. Vejamos o diagrama de Venn para uma melhor elucidação, a seguir.</li>
+</ol>
+<center>
+<img src="figures/cap5/diagB.png" class="img-fluid" style="width:60.0%">
+</center>
+<ol start="13" type="I">
+<li>Basta usar a propriedade VI desse teorema;</li>
+<li><span class="math inline">\(\omega \in (A \cap B)\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in A \textrm{ ou } \omega \in B\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in A \textrm{ ou } \omega \in (B \cap A^c)\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in A\cup (B \cap A^c)\)</span>. Vejamos o diagrama a seguir.</li>
+</ol>
+<center>
+<img src="figures/cap5/diagAuB.png" class="img-fluid" style="width:60.0%">
+</center>
+<ol start="15" type="I">
+<li><span class="math inline">\(\omega \in A \cup B\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in A \textrm{ ou } \omega \in B\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in (A \cap B) \textrm{ ou } \omega \in \underbrace{(A^c \cap B) \cup (A \cap B)}_{prop.~(XII)}\)</span> <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\omega \in (A \cap B) \cup (A^c \cap B) \cup (A \cap B)\)</span>. Vejamos o diagrama a seguir.</li>
+</ol>
+<center>
+<img src="figures/cap5/diagAuB2.png" class="img-fluid" style="width:60.0%">
+</center>
+</div></details>
+</div>
+<p>Baseado em tudo o que foi estudado sobre uma introdução à teoria de conjuntos, iremos a partir da próxima seção, contextualizar todas essas informações com o estudo sobre a medida de probabilidade.</p>
+</section>
+<section id="definições-de-probabilidades" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="definições-de-probabilidades"><span class="header-section-number">5.3</span> Definições de probabilidades</h2>
+<p>Após um contexto sobre a teoria de conjuntos, iniciamos o contexto probabilístico, com o interesse de saber a chance de determinado elemento de um evento ocorrer como resultado de um experimento, ao invés de estar interessado nesse resultado. Isso tem total importância prática, pois é dessa forma, por exemplo, que prevemos determinados resultados de um fenômeno de interesse. Consideremos um evento <span class="math inline">\(A\)</span> contido no espaço amostral <span class="math inline">\(\Omega\)</span>, e desejamos associar ao evento <span class="math inline">\(A\)</span> uma medida que assume valores entre 0 e 1, que chamamos de medida de probabilidade de <span class="math inline">\(A\)</span>, denotada por <span class="math inline">\(P(A)\)</span>. Assim, diremos que <span class="math inline">\(P(A)\)</span> é a probabilidade de que o evento <span class="math inline">\(A\)</span> ocorra no espaço amostral <span class="math inline">\(\Omega\)</span>. De outro modo, a probabilidade do evento <span class="math inline">\(A\)</span> representa a chance de ao menos um de seus elementos ocorrerem como resultado de um experimento. Voltando ao Exemplo <a href="cap05.html#ex:espamos1">5.1</a>, considerando que esse dado é equilibrado, e o evento <span class="math inline">\(A\subset \Omega\)</span>, então poderemos atribuir uma probabilidade para <span class="math inline">\(A\)</span> da seguinte forma: <span class="math display">\[\begin{align*}
+  P(A) &amp; = \frac{\#A}{6} = \frac{\textrm{número de resultados favoráveis a }A}{\textrm{número de resultados possíveis}}.
+\end{align*}\]</span></p>
+<p>Esta é a definição clássica de probabilidade quando <span class="math inline">\(\Omega\)</span> é finito. Entretanto, a probabilidade que o evento <span class="math inline">\(A\)</span> ocorra no espaço amostral nem sempre é possível, devido a complexidade desses eventos. Retornando ao Exemplo <a href="cap05.html#ex:subcj3">5.8</a>, podemos interpretar a probabilidade de <span class="math inline">\(A\subset \Omega\)</span> como: <span class="math display">\[\begin{align*}
+  P(A) &amp; = \frac{\textrm{área } A}{\textrm{área }\Omega} = \frac{\textrm{área } A}{\pi},
+\end{align*}\]</span> sendo a área de <span class="math inline">\(A\)</span> bem definida. Segundo um teorema profundo da teoria da medida, não se pode definir <span class="math inline">\(P(A)\)</span> para <span class="math inline">\(A \subset \Omega\)</span> de modo que a área de <span class="math inline">\(A\)</span> não esteja bem definida. A prova disso depende do <strong>Axioma da escolha</strong>. Um exemplo clássico desses eventos são os <strong>conjuntos de Vitali de <span class="math inline">\(\mathbb{R}\)</span></strong>, os quais não podemos atribuir nenhuma medida quando ela generaliza o comprimento de intervalos de <span class="math inline">\(\mathbb{R}\)</span>. De fato é impossível atribuir comprimento a todos subconjuntos de <span class="math inline">\(\mathbb{R}\)</span> preservando a aditividade e invariância por translação.</p>
+<p>Dessa forma, estaremos apenas interessados em eventos cuja área esteja bem definida, apresentada na Definição <a href="cap05.html#def:aleateventos">5.16</a>, a seguir.</p>
+<div id="def:aleateventos" class="Definition" title="Evento Aleatório">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.16: </strong>Evento Aleatório</summary><div>Todo evento de <span class="math inline">\(\Omega\)</span> que podemos atribuir uma probabilidade, chamamos de evento aleatório.<p></p>
+</div></details>
+</div>
+<p>Definimos a medida de probabilidade apresentada na Definição <a href="cap05.html#def:medprob">5.17</a>, a seguir.</p>
+<div id="def:medprob" class="Definition" title="Medida de Probabilidade">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.17: </strong>Medida de Probabilidade</summary><div>
+<p>Seja <span class="math inline">\(\Omega\)</span> o espaço amostral, então uma função <span class="math inline">\(P\)</span>, tal que <span class="math inline">\(P:\Omega \to \mathbb{R}\)</span>, é chamada de medida de probabilidade ou probabilidade, aos eventos do espaço amostral satisfazendo os seguintes axiomas de Kolmogorov:</p>
+<ol type="i">
+<li><em>(Normalização).</em> <span class="math inline">\(P(\Omega)=1\)</span>;</li>
+<li><em>(Não-negatividade).</em> <span class="math inline">\(0\leq  P(A) \leq 1\)</span>, <span class="math inline">\(\forall \ A \subset \Omega\)</span>;</li>
+<li><em>(Aditividade).</em> <span class="math inline">\(P(A_1 \cup A_2)=P(A_1) + P(A_2)\)</span>, com <span class="math inline">\(A_1 \cap A_2 = \emptyset\)</span>, para <span class="math inline">\(A_1, ~A_2 \subset \Omega\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<p>Assim como mencionado por <span class="citation" data-cites="Montgomery2016">Montgomery e Runger (<a href="references.html#ref-Montgomery2016" role="doc-biblioref">2016</a>)</span>, os axiomas não determinam probabilidades, mas capacitam a calcular facilmente as probabilidade de alguns eventos, a partir do conhecimento de outras probabilidades. Na realidade, a probabilidade se baseia no conhecimento do sistema em estudo.</p>
+<p>Poderíamos ampliar o <em><strong>Axioma} [<span class="math inline">\(iii\)</span>]</strong></em>, Definição <a href="cap05.html#def:medprob">5.17</a>, da seguinte forma:</p>
+<p><em><strong>Axioma [iii<span class="math inline">\(^*\)</span>]. (Aditividade finita)</strong></em>. Se <span class="math inline">\(\{A_i\}_{i = 1}^{n}\)</span> é uma sequência disjunta dois a dois de eventos em <span class="math inline">\(\Omega\)</span>, então <span class="math inline">\(P\left(\bigcup_{i = 1}^nA_i\right)=\sum^{n}_{ i = 1} P(A_i)\)</span>.}</p>
+<p>Para isso, basta considerarmos <span class="math inline">\(A_2 = \bigcup_{i = 1}^{n-1}A_i\)</span>. Para <span class="math inline">\(n \to \infty\)</span>, podemos generalizar esse <em>Axioma</em> da seguinte forma:</p>
+<p><em><strong>Axioma [iii<span class="math inline">\(^{**}\)</span>]. (<span class="math inline">\(\sigma\)</span>-Aditividade)</strong></em>. Se <span class="math inline">\(\{A_i\}_{i \geq 1}\)</span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> é uma sequência disjunta dois a dois em <span class="math inline">\(\Omega\)</span>, então <span class="math inline">\(P\left(\bigcup_{i = 1}^\infty A_i\right)=\sum^{\infty}_{ i = 1} P(A_i)\)</span>.}</p>
+<p>Podemos verificar que o <em><strong>Axioma [iii<span class="math inline">\(^{**}\)</span>]</strong></em> implica nos <em><strong>Axioma [iii<span class="math inline">\(^{*}\)</span>]</strong></em> e <em><strong>[iii]</strong></em>, apresentado no Teorema <a href="cap05.html#teo:axisigadt">5.4</a>.</p>
+<div id="teo:axisigadt" class="Theorem" title="\sigma-adivitividade implica em aditividade finita">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.4: </strong><span class="math inline">\(\sigma\)</span>-adivitividade implica em aditividade finita</summary><div>O <em><strong>Axioma [iii<span class="math inline">\(^{**}\)</span>]</strong></em> implica nos <em><strong>Axioma [iii<span class="math inline">\(^{*}\)</span>]</strong></em> e <em><strong>[iii]</strong></em>, isto é, se <span class="math inline">\(P\)</span> é <span class="math inline">\(\sigma\)</span>-aditiva, então é finitamente aditiva.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.5" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Supondo satisfeito o <em><strong>Axioma [iii<span class="math inline">\(^{**}\)</span>]</strong></em>, seja uma sequência de eventos <span class="math inline">\(\{A_i\}_{i = 1}^{n} \subset \Omega\)</span>, e que <span class="math inline">\(P(\emptyset) = 0\)</span> (Teorema <span class="math inline">\(\ref{teo:propP(x)}\)</span>, <span class="math inline">\(ii\)</span>), então<p></p>
+<p><span class="math display">\[\begin{align*}
+        P(\Omega) = P(\Omega \cup \emptyset \cup \emptyset \cup \ldots
+        ) = P(\Omega) + P(\emptyset) + P(\emptyset) + \ldots.
+\end{align*}\]</span></p>
+<p>Definimos <span class="math inline">\(A_i = \emptyset\)</span>, para <span class="math inline">\(i = n + 1, n + 2, \ldots\)</span>. Como <span class="math inline">\(A_1, A_2, \ldots\)</span> são disjuntos, então</p>
+<p><span class="math display">\[\begin{align*}
+        P\left(\bigcup^{n}_{i = 1}A_i\right)&amp; = P\left(\bigcup^{\infty}_{i = 1}A_k\right)\\
+        &amp; = \sum^{\infty}_{i = 1}P(A_i)\\
+        &amp; = \sum^{n}_{i = 1}P(A_i) + P(\emptyset) + P(\emptyset) + \ldots\\
+        &amp; = \sum^{n}_{i = 1}P(A_i),
+\end{align*}\]</span> o que conclui a prova.</p>
+</div></details>
+</div>
+<p>Um quarto Axioma, pode ser complementado sobre a medida de probabilidade <span class="citation" data-cites="James2004">James (<a href="references.html#ref-James2004" role="doc-biblioref">2004</a>)</span>, que segue:</p>
+<p><em><strong>Axioma [iv]. (Continuidade do vazio)</strong></em>. Se a sequência <span class="math inline">\(\{A_i\}_{i \geq 1}\)</span>, em que <span class="math inline">\(A_i \subset \Omega ~\forall i \in \mathbb{N}^{+}\)</span>, decrescer para o vazio, então <span class="math inline">\(\lim\limits_{i \to \infty}P(A_i) \to 0\)</span>.</p>
+<p>Este axioma indica que se <span class="math inline">\(\{A_i\}_{i \geq 1}\)</span> decrescer para o vazio, isto é <span class="math inline">\(A_i \downarrow \emptyset\)</span>, significa que <span class="math inline">\(A_i \supset A_{i + 1}~\forall i\in \mathbb{N}^{+}\)</span>, ou seja, <span class="math inline">\(\{A_i\}_{i \geq 1}\)</span> decresce, e <span class="math inline">\(\bigcap_{i \geq 1}A_i = \emptyset\)</span>.</p>
+<div id="teo:eqvAxiomas4e3" class="Theorem" title="Equivalência dos Axiomas [iv] e [iii^{**}]">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.5: </strong>Equivalência dos Axiomas [<span class="math inline">\(iv\)</span>] e [<span class="math inline">\(iii^{**}\)</span>]</summary><div>Dados os axiomas de Kolmogorov, Definição <a href="cap05.html#def:medprob">5.17</a>, o <em><strong>Axioma [iv]</strong></em> é equivalente ao <em><strong>Axioma [iii<span class="math inline">\(^{**}\)</span>]</strong></em>, isto é, uma probabilidade finitamente aditiva é uma probabilidade se, e somente se, é contínua no vazio.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.6" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<ol type="i">
+<li>Supomos o <em><strong>Axioma [iii<span class="math inline">\(^{**}\)</span>]</strong></em>. Seja uma sequência de eventos <span class="math inline">\(\{A_i\}_{i \geq 1} \subset \Omega\)</span>, tais que <span class="math inline">\(A_i \downarrow \emptyset\)</span>. Vamos provar que <span class="math inline">\(\lim\limits_{i \to \infty}P(A_i) \to 0\)</span>. Considere</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+        A_1 = (A_1 - A_2) \cup (A_2 - A_3) \cup \ldots = \bigcup_{i = 1}^{\infty}(A_i - A_{i + 1}),
+\end{align*}\]</span> pelo diagrama:</p>
+<center>
+<img src="figures/cap5/exbarryjamesp-11diagrama.png" class="img-fluid" style="width:80.0%">
+</center>
+<p>As regiões <span class="math inline">\(A_i - A_{i + 1}\)</span> são disjuntas, uma vez que a sequência é decrescente. Considere também que <span class="math inline">\(\Omega\)</span> é fechado para diferenças. Pelo <em><strong>Axioma [iii<span class="math inline">\(^*\)</span>]</strong></em>, temos</p>
+<p><span class="math display">\[\begin{align*}
+        P(A_1) &amp;  = P\left(\bigcup^{\infty}_{i = 1}(A_i - A_{i + 1})\right) = \sum_{i = 1}^{\infty} P(A_i - A_{i + 1}),
+\end{align*}\]</span> portanto a série é convergente e <span class="math display">\[\begin{align*}
+    \sum_{i = 1}^{\infty} P(A_i - A_{i + 1}) &amp; = \sum_{i = 1}^{n - 1} P(A_i - A_{i + 1}) + P(\emptyset) + P(\emptyset) + P(\emptyset) + \ldots\\
+        &amp; = \sum_{i = 1}^{n - 1} P(A_i - A_{i + 1}) \stackrel[n \to \infty]{}{\to} P(A_1).
+\end{align*}\]</span> Pela aditividade finita, <span class="math display">\[\begin{align*}
+        P(A_i - A_{i + 1}) &amp; = P(A_i) - P(A_{i + 1}),
+\end{align*}\]</span> e portanto, <span class="math display">\[\begin{align*}
+        P(A_1) &amp; = \lim\limits_{n \to \infty}\sum_{i = 1}^{n - 1}[P(A_i) - P(A_{i + 1})]\\
+        &amp; = \lim\limits_{n \to \infty}\left\{[P(A_1) - P(A_2)] + [P(A_2) - P(A_3)] + \ldots \right. \\
+        &amp; \quad \left. \ldots + [P(A_{n-1}) - P(A_n)]\right\}\\
+        &amp; = \lim\limits_{n \to \infty}\left[P(A_1) - \centernot{\color{red}{P(A_2)}} + \centernot{\color{red}{P(A_2)}} - \centernot{\color{red}{P(A_3)}} + \ldots \right.\\
+        &amp; \quad \left. \ldots + \centernot{\color{red}{P(A_{n-1})}} - P(A_n)\right]\\
+        &amp; = \lim\limits_{n\to \infty} [P(A_1) - P(A_n)],
+\end{align*}\]</span> Logo, <span class="math inline">\(P(A_n) \to 0\)</span>.</p>
+<ol start="2" type="i">
+<li>Supomos o <em><strong>Axioma [iv]</strong></em> e seja a sequência decrescente <span class="math inline">\(\{A_i\}_{i \geq 1}\)</span> de eventos disjuntos. Vamos provar que <span class="math inline">\(P\left(\bigcup_{i = 1}^{\infty}A_k\right) = \sum_{i = 1}^{\infty}P(A_i)\)</span>. Seja <span class="math inline">\(A = \bigcup_{i = 1}^{\infty}A_i\)</span>, então</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+        A &amp;  = \left(\bigcup_{i = 1}^{n}A_i \right)\cup \left(\bigcup_{i = n + 1}^{\infty}A_i \right)
+\end{align*}\]</span> e como a <span class="math inline">\(\sigma\)</span>-aditividade implica em aditividade finita, Teorema <a href="cap05.html#teo:axisigadt">5.4</a>, temos que <span class="math display">\[\begin{align*}
+        P(A) &amp; = \sum_{i = 1}^{n}P(A_i) + P\left(\bigcup_{i = n + 1}^{\infty}A_i \right).
+\end{align*}\]</span> Seja <span class="math inline">\(B_n = \bigcup_{i = n + 1}^{\infty}A_i\)</span>, então <span class="math inline">\(B_n\downarrow \emptyset\)</span> e portanto <span class="math inline">\(P(B_n) \to 0\)</span> (Pelo <em><strong>Axioma [iv]</strong></em>). Logo, <span class="math display">\[\begin{align*}
+    \sum_{i = 1}^{n}P(A_i)&amp; \stackrel[n \to \infty]{\rightarrow}{}P(A),
+\end{align*}\]</span> isto é, <span class="math inline">\(P(A) = \sum_{i = 1}^{\infty}P(A_k)\)</span>, como queríamos demonstrar.</p>
+</div></details>
+</div>
+<p>Por fim, o Corolário <a href="cap05.html#corl:eqsistaxiomas">5.2</a> apresenta as relações entre os Axiomas apresentados sobre a medida de probabilidade, a seguir.</p>
+<div id="corl:eqsistaxiomas" class="Corolary">
+<details class="Corolary fbx-simplebox fbx-default" open=""><summary><strong>Corolário 5.2</strong></summary><div>
+<p>Os dois seguintes sistemas de axiomas são equivalentes:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Sistema I:</td>
+<td style="text-align: center;"><em><strong>Axiomas [i]</strong></em>, <em><strong>[ii]</strong></em>, <em><strong>[iii<span class="math inline">\(^{**}\)</span>]</strong></em>,</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Sistema II:</td>
+<td style="text-align: center;"><em><strong>Axiomas [i]</strong></em>, <em><strong>[ii]</strong></em>, <em><strong>[iii<span class="math inline">\(^{*}\)</span>]</strong></em> e <em><strong>[iv]</strong></em>.</td>
+</tr>
+</tbody>
+</table>
+</div></details>
+</div>
+<div id="Proof*-5.7" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>O sistema I é equivalente aos <em><strong>Axiomas</strong></em> <em><strong>[i]</strong></em>, <em><strong>[ii]</strong></em>, <em><strong>[iii<span class="math inline">\(^{*}\)</span>]</strong></em> e <em><strong>[iii<span class="math inline">\(^{**}\)</span>]</strong></em>, pois já vimos que o <em><strong>Axiomas</strong></em> <em><strong>[iii<span class="math inline">\(^{**}\)</span>]</strong></em> implica no <em><strong>Axiomas</strong></em> <em><strong>[iii<span class="math inline">\(^{*}\)</span>]</strong></em>, Teorema <a href="cap05.html#teo:axisigadt">5.4</a>. Agora, usando o Teorema <a href="cap05.html#teo:eqvAxiomas4e3">5.5</a>, provamos que o Axioma 3 implica no Axioma 4, e a prova é concluída.<p></p>
+</div></details>
+</div>
+<p>Vejamos o Exemplo <a href="cap05.html#ex:prob1">5.14</a>, para elucidar a definição de probabilidade, a seguir.</p>
+<div id="ex:prob1" class="Example" title="Montgomery e Runger (2016)">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.14: </strong>Montgomery e Runger (2016)</summary><div>Uma peça moldada de injeção é igualmente provável de ser obtida, a partir de qualquer uma das oito cavidades de um molde.<p></p>
+<ol type="a">
+<li>Qual é o espaço amostral?</li>
+<li>Qual é a probabilidade de a peça ser proveniente da cavidade 1 ou 2?</li>
+<li>Qual é a probabilidade de a peça não ser proveniente nem da cavidade 3 nem da 4?</li>
+</ol>
+<p>Nesse caso, (a) o espaço amostral é <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6, 7, 8\}\)</span>. Como a peça moldada de injeção é igualmente provável, então (b) a probabilidade de a peça ser proveniente da cavidade 1 ou 2, é dada por: <span class="math display">\[\begin{align*}
+  P(\{1\} \cup \{2\}) &amp; = P(\{1\}) + P(\{2\}), \quad \textrm{(Eventos disjuntos)}\\
+                      &amp; = 1 / 8 + 1 / 8\\
+                      &amp; = 2 / 8.
+\end{align*}\]</span> Por fim, (c) a probabilidade de a peça não ser proveniente nem da cavidade 3 nem da 4, é dada por: <span class="math display">\[\begin{align*}
+  P(\{3\}^c \cap \{4\}^c) &amp; = P[(\{3\} \cup \{4\})^c], \quad \textrm{(Lei DeMorgan}\\
+                          &amp; = 1 - P(\{3\} \cup \{4\}), \quad \textrm{(Evento complementar)}\\
+                          &amp; = 1 - [P(\{3\}) + P( \{4\})], \quad \textrm{(Eventos disjuntos)}\\
+                          &amp; = 1 - [1 / 8 + 1 /8]\\
+                          &amp; = 1 - 2 /8\\
+                          &amp; = 6 / 8.
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<p>O ítem (c) do Exemplo <a href="cap05.html#ex:prob1">5.14</a> exigiria um conhecimento sobre algumas propriedades da medida de probabilidade como consequência das propriedades da teoria de conjuntos abordadas na seção anterior, mas que serão abordadas a seguir.</p>
+<p>Apesar da definição formal sobre a probabilidade, há duas formas para atribuir probabilidades aos elementos do espaço amostral, que em algumas situações são aplicáveis, que seguem:</p>
+<ol type="1">
+<li>A primeira delas, consiste na atribuição de probabilidades, baseando-se em características teóricas da realização do fenômeno, chamado de <em>probabilidade clássica ou a priori</em>; formalmente, se um experimento aleatório obtiver resultados mutuamente exclusivos e igualmente prováveis, e se <span class="math inline">\(n_A\)</span> desses resultados têm um atributo <span class="math inline">\(A\)</span>, então, a probabilidade de acontecer <span class="math inline">\(A\)</span> é a fração <span class="math inline">\(n_A/n\)</span>. Mais ainda, Laplace define a probabilidade de um acontecimento como sendo o quociente entre o número de casos favoráveis e o número de casos possíveis, supondo todos equiprováveis. A principal limitação é que os eventos tenham que ser igualmente prováveis.</li>
+<li>Uma outra maneira de obter probabilidades é através das frequências de ocorrências, também conhecida como <em>probabilidade frequentista ou a posteriori</em>, em que a probabilidade de um dado acontecimento pode ser medida observando a frequência relativa do mesmo acontecimento numa sucessão numerosa de provas ou experiências, idênticas e independentes. A principal limitação é que os eventos possam repetir-se indefinidamente nas mesmas circunstâncias.</li>
+</ol>
+<div id="Example-5.15" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.15</strong></summary><div>Um lançamento de um dado, temos o espaço amostral <span class="math inline">\(\Omega=\{1,~2,~3,~4,\)</span> <span class="math inline">\(5,~6\}\)</span>. Considere também que o dado foi construído de forma homogênea e com medidas rigorosamente simétricas, não havendo qualquer razão para privilegiar essa ou aquela face. Logo, podemos considerar <span class="math inline">\(P(X=1)=P(X=2)=P(X=3)=\ldots=P(X=6)=1/6\)</span>, fato que se enquadra na probabilidade clássica ou <em>a priori</em>.<p></p>
+</div></details>
+</div>
+<div id="Example-5.16" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.16</strong></summary><div>Suponha que seja conhecida a frequência de cada possível elemento do espaço amostral, <span class="math inline">\(\Omega\)</span>. Se sorteamos aleatoriamente um elemento dessa população, a probabilidade de sortear esse ou aquele elemento será a sua respectiva frequência relativa, fato que se enquadra no tipo de probabilidade frequentista ou a <em>posteriori</em>.<p></p>
+</div></details>
+</div>
+<section id="propriedades" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="propriedades"><span class="header-section-number">5.3.1</span> Propriedades</h3>
+<p>Vejamos algumas propriedades da medida de probabilidade, consequências dos Teoremas <a href="cap05.html#teo:leiconj">5.2</a> e <a href="cap05.html#teo:identeventos">5.3</a>, a seguir.</p>
+<div id="teo:propPx" class="Theorem" title="Propriedades de P">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.6: </strong>Propriedades de <span class="math inline">\(P\)</span></summary><div>
+<p>Seja <span class="math inline">\(P\)</span> uma medida de probabilidade associada a sequênia de eventos aleatórios <span class="math inline">\(A_i \in \Omega\)</span>, <span class="math inline">\(\forall i \in \mathbb{N}\)</span>. Então são válidas as seguintes propriedades:</p>
+<ol type="i">
+<li>(Complemento) <span class="math inline">\(P(A)=1-P(A^c)\)</span>;</li>
+<li><span class="math inline">\(P(\emptyset)=0\)</span>;</li>
+<li><span class="math inline">\(P(B)=P(A\cap B)+P(A^c\cap B)\)</span>;</li>
+<li>(Monotonicidade) Se <span class="math inline">\(A \subseteq B\)</span>, então <span class="math inline">\(P(A)\leq P(B)\)</span>;</li>
+<li><span class="math inline">\(P(A\cup B)= P(A)+P(B) - P(A\cap B)\)</span>;</li>
+<li>(Limitante Superior) <span class="math inline">\(0 \leq P(A) \leq 1\)</span>;</li>
+<li>(Continuidade da probabilidade) Se <span class="math inline">\(A_i \downarrow A\)</span>, então <span class="math inline">\(P(A_i) \downarrow P(A)\)</span>. Se <span class="math inline">\(A_i \uparrow A\)</span>, então <span class="math inline">\(P(A_i) \uparrow P(A)\)</span>.</li>
+<li>(Desigualdade de Boole) <span class="math inline">\(P(\bigcup^{\infty}_{i=1}A_i)\leq \sum^{\infty}_{i=1}P(A_i)\)</span>;</li>
+<li>(subaditividade) <span class="math inline">\(P(\bigcup^{n}_{i=1}A_i)\leq \sum^{n}_{i=1}P(A_i)\)</span>;</li>
+<li>(Desigualdade de Bonferroni) <span class="math inline">\(P(\bigcap_{i = 1}^{n}A_i) \geq 1 - \sum_{i = 1}^{n}P(A_i^c)\)</span></li>
+<li>(Inclusão-Exclusão) <span class="math inline">\(P(\bigcup_{i = 1}^{n}A_i)\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(\sum_{i = 1}^{n}P(A_i)\)</span> <span class="math inline">\(-\)</span> <span class="math inline">\(\sum_{i &lt; j}^{n}P(A_i \cap A_j)\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(\sum_{i &lt; j &lt; k}^{n}P(A_i \cap A_j \cap A_k)\)</span> <span class="math inline">\(-\)</span> <span class="math inline">\(\ldots + (-1)^{n + 1}P(\cap_{i = 1}^{n} A_n)\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="Proof*-5.8" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<ol type="i">
+<li>Sabemos que <span class="math inline">\(A\cup A^c=\Omega\)</span>, Teorema <a href="cap05.html#teo:identeventos">5.3</a> (<span class="math inline">\(i\)</span>), e que estes eventos são disjuntos, então</li>
+</ol>
+<p><span class="math display">\[\begin{eqnarray*}
+    P(A\cup A^c)&amp;=&amp;P(A)+P(A^c)\\
+    1 &amp;=&amp; P(A)+P(A^c)\\
+    P(A) &amp;=&amp; 1 - P(A^c);
+\end{eqnarray*}\]</span></p>
+<ol start="2" type="i">
+<li><p>Sabemos que <span class="math inline">\(\Omega\)</span> e <span class="math inline">\(\emptyset\)</span> são eventos disjuntos. Assim, <span class="math display">\[\begin{eqnarray*}
+P(\Omega\cup \emptyset)&amp;=&amp;P(\Omega)+P(\emptyset)\\
+1 &amp;=&amp; 1+P(\emptyset)\\
+P(\emptyset) &amp;=&amp; 0,
+\end{eqnarray*}\]</span> o que conclui a prova;</p></li>
+<li><p>Podemos observar que <span class="math inline">\(B=\{A\cap B\}\cup \{A^c\cap B\}\)</span>, Teorema <a href="cap05.html#teo:identeventos">5.3</a> (<span class="math inline">\(xii\)</span>), e que <span class="math inline">\(\{A\cap B\}\)</span> e <span class="math inline">\(\{A^c\cap B\}\)</span> são disjuntos. Portanto,</p></li>
+</ol>
+<p><span class="math display">\[\begin{eqnarray*}
+        P(B) &amp;=&amp; P(\{A\cap B\}\cup \{A^c\cap B\})\\
+        &amp;=&amp; P(A\cap B) + P(A^c\cap B),
+\end{eqnarray*}\]</span> como esperado;</p>
+<ol start="4" type="i">
+<li><p>Se <span class="math inline">\(A\subset B\)</span>, então <span class="math inline">\(A\cap B = A\)</span>. Usando <span class="math inline">\((i)\)</span>, temos <span class="math display">\[\begin{eqnarray*}
+P(B) &amp; = &amp; P(A\cap B)+P(A^c\cap B) \\
+&amp; = &amp; P(A)+P(A^c\cap B) \geq P(A),
+\end{eqnarray*}\]</span> como queríamos demonstrar.</p></li>
+<li><p>Observando a seguinte identidade encontrada no Teorema <a href="cap05.html#teo:identeventos">5.3</a> (<span class="math inline">\(XV\)</span>), isto é,</p></li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+    A\cup B = &amp; (A \cap B^c)\cup (A \cap B) \cup (A^c \cap B),
+\end{align*}\]</span> união de eventos disjuntos, que pode ser observado pelo diagrama de Venn, então <span id="eq-itemv01"><span class="math display">\[
+\begin{align}
+    P(A\cup B) &amp;= P(A \cap B^c) + P(A \cap B) + P(A^c \cap B).
+\end{align}
+\tag{5.5}\]</span></span></p>
+<p>Por (<span class="math inline">\(iii\)</span>) sabemos que <span class="math inline">\(P(A) = P(B\cap A)+P(B^c\cap A)\)</span>, assim <span id="eq-itemv02"><span class="math display">\[
+\begin{align}
+  P(B^c\cap A) = P(A) - P(B\cap A).
+\end{align}
+\tag{5.6}\]</span></span> Ainda, temos que <span class="math inline">\(P(B) = P(A\cap B)+P(A^c\cap B)\)</span> o que implica <span id="eq-itemv03"><span class="math display">\[
+\begin{align}
+  P(A^c\cap B) = P(B) - P(A\cap B).
+\end{align}
+\tag{5.7}\]</span></span> Portanto, substituindo (<a href="#eq-itemv02" class="quarto-xref"><span>5.6</span></a>) e (<a href="#eq-itemv03" class="quarto-xref"><span>5.7</span></a>) em (<a href="#eq-itemv01" class="quarto-xref"><span>5.5</span></a>), obtemos <span class="math display">\[\begin{eqnarray*}
+    P(A\cup B) &amp;=&amp; P(A) + P(B) - P(A \cap B),
+\end{eqnarray*}\]</span> o que conclui a prova;</p>
+<ol start="6" type="i">
+<li><p>Pela Definição <a href="cap05.html#def:medprob">5.17</a>, usando o Axioma da Não-aditividade, a prova é imediata;</p></li>
+<li><p>Vamos supor que <span class="math inline">\(A_i \downarrow A\)</span>, isto é, <span class="math inline">\(A_i \supset A_{i + 1}\)</span> e <span class="math inline">\(\bigcap\limits_{i \geq 1} A_i = A\)</span>. Então <span class="math inline">\(P(A_i) \geq P(A_{i + 1})\)</span> pelo item (iv), e <span class="math inline">\((A_i - A) \downarrow \emptyset \Rightarrow P(A_i - A) \to 0\)</span> pela continuidade do vazio. Pela aditividade finita <span class="math inline">\(P(A_i - A) = P(A_i) - P(A)\)</span>, e como <span class="math inline">\(\{P(A_i)\}_{i\in \mathbb{N}}\)</span> é decrescente, logo <span class="math inline">\(P(A_i)\downarrow P(A)\)</span>. Agora, se <span class="math inline">\(A_i \uparrow A\)</span>, isto é, <span class="math inline">\(A_i \subset A_{i + 1}\)</span> e <span class="math inline">\(\bigcup\limits_{i \geq 1} A_i = A\)</span>, então <span class="math inline">\(A^c_i \downarrow A^c\)</span>, logo <span class="math inline">\(P(A^c_i) \downarrow P(A^c) \Rightarrow 1 - P(A_i)\downarrow 1 - P(A)\)</span>. Portanto, <span class="math inline">\(P(A_i)\uparrow P(A)\)</span>, como queríamos demonstrar;</p></li>
+<li><p>Vamos inicialmente criar uma sequência disjunta <span class="math inline">\(A^*_1,A^*_2,\ldots,\)</span> com a propriedade <span class="math inline">\(\bigcup^{\infty}_{i=1}A^*_i=\bigcup^{\infty}_{i=1}A_i\)</span>. Definimos <span class="math display">\[
+A^*_1=A_1, \qquad A^*_i=A_i \cap \left(\bigcup^{i-1}_{j=1}A_j\right)^c, \quad i=2,3,\ldots.
+\]</span> É fácil perceber que <span class="math display">\[
+P\left(\bigcup^{\infty}_{i=1}A_i\right)= P\left(\bigcup^{\infty}_{i=1}A^*_i\right)=\sum^{\infty}_{i=1} P(A^*_i),
+\]</span> onde a última igualdade segue, pois <span class="math inline">\(A^*_i\)</span> são disjuntos. Observemos que pela construção, <span class="math inline">\(A^*_i\subseteq A_i\)</span>, portanto, pela propriedade (<span class="math inline">\(iv\)</span>), <span class="math inline">\(P(A^*_i)\leq P(A_i)\)</span>, logo <span class="math display">\[
+\sum^{\infty}_{i=1}P(A^*_i) \leq \sum^{\infty}_{i=1}P(A_i).
+\]</span> Concluindo a prova, <span class="math display">\[\begin{eqnarray*}
+    P\left(\bigcup^{\infty}_{i=1}A_i\right) = \sum^{\infty}_{i=1} P(A^*_i) &amp;\leq&amp; \sum^{\infty}_{i=1}P(A_i);
+\end{eqnarray*}\]</span></p></li>
+<li><p>Assumindo que <span class="math inline">\(A_{n+i} = \emptyset\)</span> para todo <span class="math inline">\(i = 1, 2, \ldots\)</span>, então a propriedade (<span class="math inline">\(vii\)</span>) implica na propriedade (<span class="math inline">\(viii\)</span>), o que conclui a prova.</p></li>
+<li><p>Pela Lei DeMorgan, Teorema <a href="cap05.html#teo:leiconj">5.2</a> (<span class="math inline">\(iv\)</span>), podemos generalizar a equivalência: <span class="math inline">\((\cap^{n}_{i = 1}A_i)^c =   \cup^{n}_{i = 1}A_i^c\)</span>, e como consequência temos que <span class="math inline">\(\cap^{n}_{i = 1}A_i = (\cup^{n}_{i = 1}A_i^c)^c\)</span> (Teorema <a href="cap05.html#teo:identeventos">5.3</a>, <span class="math inline">\(v\)</span>). Ainda pelo Teorema <a href="cap05.html#teo:identeventos">5.3</a> (<span class="math inline">\(ii\)</span>), <span class="math inline">\(\Omega = (\cup^{n}_{i = 1}A_i^c) \cup (\cup^{n}_{i = 1}A_i^c)^c\)</span>. Portanto, podemos afirmar que <font size="-1"> <span id="eq-bonferroni01"><span class="math display">\[
+\begin{align}
+  P(\Omega) &amp; = P(\cup^{n}_{i = 1}A_i^c) + (\cup^{n}_{i = 1}A_i^c)^c \quad \textrm{(eventos disjuntos)} \nonumber\\
+  1      &amp; = P(\cup^{n}_{i = 1}A_i^c) + (\cup^{n}_{i = 1}A_i^c)^c. \quad \textrm{(Def. 5.17, axioma $i$)}
+\end{align}
+\tag{5.8}\]</span></span> </font> Logo, pela expressão (<a href="#eq-bonferroni01" class="quarto-xref"><span>5.8</span></a>) e as equivalências apresentadas anteriormente, temos que <span id="eq-bonferroni02"><span class="math display">\[
+\begin{align}
+P(\cap^{n}_{i = 1}A_i) = 1 - P(\cup^{n}_{i = 1}A_i^c).
+\end{align}
+\tag{5.9}\]</span></span> Pela subaditividade, propriedade (<span class="math inline">\(viii\)</span>), observamos que <span id="eq-bonferroni03"><span class="math display">\[
+\begin{align}
+P(\cup^{n}_{i=1}A_i^c)\leq \sum^{n}_{i=1}P(A_i^c).
+\end{align}
+\tag{5.10}\]</span></span> Portanto, substituindo (<a href="#eq-bonferroni02" class="quarto-xref"><span>5.9</span></a>) em (<a href="#eq-bonferroni03" class="quarto-xref"><span>5.10</span></a>), temos <span class="math display">\[\begin{align*}
+1- P(\cap_{i = 1}^{n}A_i) &amp; \leq \sum_{i = 1}^{n}P(A_i^c)\\
+-P(\cap_{i = 1}^{n}A_i) &amp; \leq - 1 + \sum_{i = 1}^{n}P(A_i^c) \quad \times (-1)\\
+P(\cap_{i = 1}^{n}A_i) &amp; \geq 1 - \sum_{i = 1}^{n}P(A_i^c),\\
+\end{align*}\]</span> o que se conclui a prova; =</p></li>
+<li><p>Vamos apresentar duas provas:</p></li>
+</ol>
+<p><em>Primeira demonstração</em></p>
+<ul>
+<li><p>Primeiro para <span class="math inline">\(n = 2\)</span>, temos a propriedade <span class="math inline">\((iv)\)</span> do Teorema <a href="cap05.html#teo:propPx">5.6</a>, isto é, <span id="eq-aux11"><span class="math display">\[
+\begin{align}
+P(A_1 \cup A_2) &amp; = P(A_1)+P(A_2) - P(A_1\cap A_2)
+\end{align}
+\tag{5.11}\]</span></span></p></li>
+<li><p>Para <span class="math inline">\(n = 3\)</span>, vamos considerar <span class="math inline">\(A = \{A_1 \cup A_2\}\)</span>, e que <span id="eq-aux21"><span class="math display">\[
+\begin{align}
+      P(A_1 \cup A_2 \cup A_3) &amp; = P(A \cup A_3) \nonumber\\
+      &amp; = P(A) + P(A_3) - P(A \cap A_3).
+\end{align}
+\tag{5.12}\]</span></span></p></li>
+</ul>
+<p>Segue que <span class="math inline">\(P(A) = P(A_1 \cup A_2)  =  P(A_1)+P(A_2) - P(A_1\cap A_2)\)</span> e que <span id="eq-aux31"><span class="math display">\[
+\begin{align}
+        P(A \cap A_3) &amp; = P[(A_1 \cup A_2) \cap A_3] \nonumber\\
+        &amp; = P[(A_1 \cap A_3) \cup (A_2 \cap A_3)] \nonumber\\
+        &amp; = P(A_1 \cap A_3) + P(A_2 \cap A_3)\\
+        &amp; \quad - P(A_1 \cap A_2 \cap A_3) \nonumber
+\end{align}
+\tag{5.13}\]</span></span></p>
+<p>Substituindo as expressões (<a href="#eq-aux11" class="quarto-xref"><span>5.29</span></a>) e (<a href="#eq-aux31" class="quarto-xref"><span>5.13</span></a>) em (<a href="#eq-aux21" class="quarto-xref"><span>5.24</span></a>), logo <span class="math display">\[\begin{align*}
+        P(A_1 \cup A_2 \cup A_3) &amp; = P(A_1)+ P(A_2) + P(A_3) - P(A_1\cap A_2)\\
+                                 &amp; \quad -  P(A_1 \cap A_3) -  P(A_2 \cap A_3)\\
+        &amp; \quad + P(A_1 \cap A_2 \cap A_3).
+\end{align*}\]</span></p>
+<ul>
+<li><p>Para <span class="math inline">\(n = 4\)</span>, já apresentando o resultado direto, temos <span class="math display">\[\begin{align}
+      P(A_1 \cup A_2 \cup A_3 \cup A_4) &amp;  = \sum_{i = 1}^{4}P(A_i) - \sum_{1\leq i &lt; j}^{4}P(A_i \cap A_j) +\nonumber\\
+      &amp; \quad + \sum_{1 \leq i &lt; j &lt; k}^{4}P(A_i \cap A_j \cap A_k) + \nonumber\\
+      &amp; \quad - P(\cap_{i = 1}^{4}A_i).
+\end{align}\]</span></p></li>
+<li><p>Para <span class="math inline">\(n = 5\)</span>, já apresentando o resultado direto, temos <span id="eq-aux41"><span class="math display">\[
+\begin{align}
+      P\left(\bigcup_{i = 1}^{5}A_i\right) &amp;  = \sum_{i = 1}^{5}P(A_i) - \sum_{1 \leq i &lt; j}^{5}P(A_i \cap A_j) +\nonumber \\
+      &amp; \quad + \sum_{1 \leq i &lt; j &lt; k}^{5}P(A_i \cap A_j \cap A_k) +\nonumber\\
+      &amp; \quad - \sum_{1 \leq i &lt; j &lt; k &lt; l}^{5}P(A_i \cap A_j \cap A_k \cap A_l) +\nonumber\\
+      &amp; \quad + P(\cap_{i = 1}^{5}A_i).
+\end{align}
+\tag{5.14}\]</span></span></p></li>
+</ul>
+<p>Observe que a última expressão para a união das probabilidades alterna o sinal à medida que <span class="math inline">\(n\)</span> aumenta, isto é, quando <span class="math inline">\(n\)</span> é par, a interseção de todos os eventos é subtraída. Quando <span class="math inline">\(n\)</span> é ímpar, a interseção de todos os eventos é somada. Assim, para um <span class="math inline">\(n\)</span> qualquer induzindo pela expressão (<a href="#eq-aux41" class="quarto-xref"><span>5.14</span></a>), temos</p>
+<p><span class="math display">\[\begin{align*}
+        P\left(\bigcup_{i = 1}^{n}A_i\right) &amp;  = \sum_{i = 1}^{n}P(A_i) - \sum_{1 \leq i &lt; j}^{n}P(A_i \cap A_j) + \nonumber\\
+        &amp; \quad  + \sum_{1 \leq i &lt; j &lt; k}^{n}P(A_i \cap A_j \cap A_k) - \ldots\nonumber\\
+        &amp; \quad \ldots +(-1)^{n + 1}P(\cap_{i = 1}^{n} A_i).
+\end{align*}\]</span></p>
+<p><em>Segunda demonstração</em></p>
+<p>Para uma segunda demonstração, vamos provar para <span class="math inline">\(n - 1\)</span> eventos e induzir para <span class="math inline">\(n\)</span>. Considere a probabilidade da união de eventos <span class="math inline">\(\{A_i\}_{i = 1}^{n}\)</span>, isto é, <span id="eq-aux51"><span class="math display">\[
+\begin{align}
+        P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = P\left( \bigcup_{i = 1}^{n-1}A_i \cup A_n\right)\nonumber\\
+        &amp; = P\left( \bigcup_{i = 1}^{n-1}A_i \right) + P\left(A_n\right) - P\left( \bigcup_{i = 1}^{n-1}A_i \cap A_n\right) \nonumber\\
+        &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \sum_{1 \leq i &lt; j}^{n-1}P(A_i \cap A_j)+\right. \nonumber\\
+        &amp; \quad +\left.\sum_{1 \leq i &lt; j &lt; k}^{n-1}P(A_i \cap A_j \cap A_k) - \ldots\right.\nonumber\\
+        &amp; \quad \left.\ldots + (-1)^{(n - 1) + 1}P\left(\cap_{i =1}^{n-1}A_i\right)\right]+ \nonumber\\
+        &amp; \quad +P\left(A_n\right) - P\left( \bigcup_{i = 1}^{n-1}A_i \cap A_n\right).
+\end{align}
+\tag{5.15}\]</span></span> Observe que <font size="+0"> <span id="eq-aux61"><span class="math display">\[
+\begin{align}
+        P\left( \bigcup_{i = 1}^{n-1}A_i \cap A_n\right) &amp; = \sum_{i = 1}^{n-1}P(A_i\cap A_n) - \sum_{1 \leq i&lt;j}^{n-1}P[(A_i\cap A_n)\cap (A_j\cap A_n)] +\nonumber\\
+        &amp; \quad  \ldots + (-1)^{(n-1) + 1}P\left(\bigcap_{i = 1}^{n-1}(A_i\cap A_n)\right) \nonumber\\
+        &amp; = \sum_{i = 1}^{n-1}P(A_i\cap A_n) - \sum_{1 \leq i&lt;j}^{n-1}P(A_i\cap A_j \cap A_n) +  \ldots \nonumber \\
+        &amp; \quad +(-1)^{n-1}\sum_{1 \leq i_1 &lt; \ldots &lt; i_{n-2}}^{n-1}P(\cap^{n-2}_{j = 1} A_{i_{j}}\cap A_n)+\nonumber\\
+        &amp; \quad + (-1)^{(n-1) + 1}P\left(\cap_{i = 1}^{n}A_i\right).
+\end{align}
+\tag{5.16}\]</span></span> </font> Então, a expressão <span class="math inline">\(P\left( \bigcup_{i = 1}^{n-1}A_i \cap A_n\right)\)</span> recebe o sinal negativo, e portanto iremos substituir (<a href="#eq-aux61" class="quarto-xref"><span>5.16</span></a>) em (<a href="#eq-aux51" class="quarto-xref"><span>5.21</span></a>), levando em consideração a substituição do sinal, que segue <font size="-1"> <span id="eq-aux7"><span class="math display">\[
+\begin{align}
+P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \sum_{1 \leq i &lt; j}^{n-1}P(A_i \cap A_j) + \sum_{1 \leq i &lt; j &lt; k}^{n-1}P(A_i \cap A_j \cap A_k) - \ldots\right.\nonumber\\
+    &amp; \quad \left. \ldots + (-1)^{(n - 1) + 1}P\left(\cap_{i =1}^{n-1}A_i\right)\right]+ P\left(A_n\right) - \left[\sum_{i = 1}^{n-1}P(A_i\cap A_n) - \right. \nonumber\\
+    &amp; \quad \left. - \sum_{1 \leq i&lt;j}^{n-1}P(A_i\cap A_j \cap A_n)  + \ldots + (-1)^{n-1}\times \right. \nonumber\\
+    &amp; \quad \left. \times \sum_{1 \leq i_1 &lt; \ldots &lt; i_{n-2}}^{n-1}P(\cap^{n-2}_{j = 1} A_{i_{j}}\cap A_n) + (-1)^{(n-1) + 1}P\left(\cap_{i = 1}^{n}A_i\right) \right]  \nonumber\\
+    &amp; = \sum_{i = 1}^{n-1}P(A_i) + P\left(A_n\right) - \sum_{1 \leq i &lt; j}^{n-1}P(A_i \cap A_j) - \sum_{i = 1}^{n-1}P(A_i\cap A_n) + \nonumber\\
+    &amp; \quad + \sum_{i &lt; j &lt; k}^{n-1}P(A_i \cap A_j \cap A_k) +\sum_{1 \leq i&lt;j}^{n-1}P(A_i\cap A_j \cap A_n) + \ldots\nonumber\\
+    &amp; \quad \ldots + (-1)^{n-1}\sum_{1 \leq i_1 &lt; \ldots &lt; i_{n-2}}^{n-1}P(\cap^{n-2}_{j = 1} A_{i_{j}}\cap A_n) +\nonumber\\
+    &amp; \quad \ldots + (-1)^{(n - 1) + 1}P\left(\cap_{i =1}^{n-1}A_i\right) + (-1)^{(n-1) + 1}P\left(\cap_{i = 1}^{n}A_i\right)
+\end{align}
+\tag{5.17}\]</span></span> </font></p>
+<p>Nesse momento, precisamos verificar algumas equivalências:</p>
+<ul>
+<li>Primeira equivalência:</li>
+</ul>
+<p><span id="eq-aux8"><span class="math display">\[
+\begin{align}
+    \sum_{i = 1}^{n-1}P(A_i) + P\left(A_n\right) &amp; = P(A_1) + \ldots + P(A_{n-1}) + P(A_n) \nonumber\\
+    &amp; = \sum_{i = 1}^{n}P(A_i).
+\end{align}
+\tag{5.18}\]</span></span></p>
+<ul>
+<li><p>Segunda equivalência: <font size="-1"> <span id="eq-aux9"><span class="math display">\[
+\begin{align}
+  \sum_{1 \leq i &lt; j}^{n-1}P(A_i \cap A_j) + \sum_{i = 1}^{n-1}P(A_i\cap A_n) &amp; =  \left[P(A_1 \cap A_2) + \ldots + P(A_1 \cap A_{n-1}) +\right. \nonumber\\
+  &amp; \quad + P(A_2 \cap A_3) + \ldots + P(A_2 \cap A_{n-1}) + \ldots \nonumber\\
+  &amp; \quad \left. \quad + P(A_{n-2}\cap A_{n-1})\right] + \left[ P(A_1 \cap A_n) +  \right. \nonumber\\
+  &amp; \quad \left.  + P(A_2 \cap A_n) + \ldots +  P(A_{n-1} \cap A_{n}) + \right] \nonumber\\
+  &amp; = \sum_{1 \leq i &lt; j}^{n}P(A_i \cap A_j).
+\end{align}
+\tag{5.19}\]</span></span> </font></p></li>
+<li><p>Terceira equivalência:</p></li>
+</ul>
+<p><span id="eq-aux10"><span class="math display">\[
+\begin{align}
+        \sum_{i &lt; j &lt; k}^{n-1}P(A_i \cap A_j \cap A_k) +\sum_{1 \leq i&lt;j}^{n-1}P(A_i\cap A_j \cap A_n) &amp; =  \sum_{i &lt; j &lt; k}^{n}P(A_i \cap A_j \cap A_k)
+\end{align}
+\tag{5.20}\]</span></span></p>
+<ul>
+<li>Demais equivalências: os demais termos apresentados em (<a href="#eq-aux7" class="quarto-xref"><span>5.17</span></a>) seguem as mesmas ideias das equivalências apresentadas anteriormente, exceto o último termo <span class="math inline">\((-1)^{(n-1) + 1}P\left(\cap_{i = 1}^{n}A_i\right)\)</span>.</li>
+</ul>
+<p>Portanto, substituindo as expressões (<a href="#eq-aux8" class="quarto-xref"><span>5.18</span></a>), (<a href="#eq-aux9" class="quarto-xref"><span>5.19</span></a>) e (<a href="#eq-aux10" class="quarto-xref"><span>5.20</span></a>) em (<a href="#eq-aux7" class="quarto-xref"><span>5.17</span></a>), chegamos ao resultado esperado <span class="math display">\[\begin{align*}
+  P(\bigcup_{i = 1}^{n}A_i) &amp; = \sum_{i = 1}^{n}P(A_i) - \sum_{i &lt; j}^{n}P(A_i \cap A_j) + \sum_{i &lt; j &lt; k}^{n}P(A_i \cap A_j \cap A_k) - \ldots \\
+  &amp; \quad \dots + (-1)^{n + 1}P(\cap_{i = 1}^{n} A_n),
+\end{align*}\]</span> o que conclui a prova.</p>
+</div></details>
+</div>
+<p>Percebemos ainda no Teorema <a href="cap05.html#teo:propPx">5.6</a> que a propriedade (<span class="math inline">\(xi\)</span>) é uma generalização da propriedade (<span class="math inline">\(v\)</span>). Ao passo que a condição de uma sequência de eventos serem disjuntos dois a dois, Definição <a href="cap05.html#def:disjeventos">5.10</a>, temos <span class="math display">\[\begin{align}
+  P\left(\bigcup^{\infty}_{i = 1}A_i\right) = \sum_{i = 1}^{\infty}P(A_i).
+\end{align}\]</span> Se considerarmos <span class="math inline">\(A_i = \emptyset\)</span> para todo <span class="math inline">\(i = n + 1, n + 2, \ldots\)</span>, então restringimos a probabilidade de uma soma finita, isto é, <span class="math display">\[\begin{align}
+  P\left(\bigcup^{n}_{i = 1}A_i\right) = \sum_{i = 1}^{n}P(A_i),
+\end{align}\]</span> uma vez que <span class="math inline">\(P(\emptyset) = 0\)</span> (Teorema <a href="cap05.html#teo:propPx">5.6</a>, <span class="math inline">\(ii\)</span>). Por fim, para a situação de termo apenas dois eventos, o resultado é o Axioma (<span class="math inline">\(iii\)</span>) da Definição <a href="cap05.html#def:medprob">5.17</a>. Vejamos mais um exemplo, a seguir.</p>
+<div id="ex:prob2" class="Example" title="Retirado de Devore (2006)">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.17: </strong>Retirado de Devore (2006)</summary><div>Uma empresa de eletricidade oferece uma taxa vitalícia de energia a qualquer lar cuja utilização de energia esteja abaixo de <span class="math inline">\(240\)</span>~kWh durante um determinado mês. Represente por <span class="math inline">\(A\)</span> o evento de um lar selecionado aleatoriamente em um comunidade que não excede a utilização da taxa vitalícia em janeiro e por <span class="math inline">\(B\)</span> o evento análogo para o mês de julho (<span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> se referem ao mesmo lar). Suponha que <span class="math inline">\(P(A) = 0,8\)</span>, <span class="math inline">\(P(B) = 0,7\)</span> e <span class="math inline">\(P(A \cup B) = 0,9\)</span>. Calcule:<p></p>
+<ol type="a">
+<li><span class="math inline">\(P(A \cap B)\)</span>;</li>
+<li>A probabilidade de a quantia da taxa vitalícia ser excedida em exatamente um dos dois meses. Descreva esse evento em termos de <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>.</li>
+</ol>
+<p>Considere, <span class="math display">\[\begin{align*}
+  A &amp; = \{\omega \in \Omega: \omega = \textrm{``lar X que não excede 240kWh em janeiro''}\}, \\
+  B &amp; = \{\omega \in \Omega: \omega = \textrm{``lar X que não excede 240kWh em julho''}\}.\\
+\end{align*}\]</span></p>
+<p>Isso ocorre porque os eventos não são disjuntos, uma vez que os dois eventos consistem no mesmo <em>lar X</em>, em ser selecionado. Assim, usando a propriedade (<span class="math inline">\(v\)</span>) do Teorema <a href="cap05.html#teo:propPx">5.6</a>, podemos obter <span class="math inline">\(P(A \cap B)\)</span>, dado por: <span id="eq-aux51"><span class="math display">\[
+\begin{align}
+  P(A\cap B) &amp; = P(A) + P(B) - P(A \cup B) \nonumber\\
+             &amp; =  0,8 + 0,7 - 0,9 \nonumber\\
+             &amp; = 0,6.
+\end{align}
+\tag{5.21}\]</span></span> No caso do ítem (b), o evento que representa o <em>lar X de a quantia vitalícia ser excedida em exatamente um dos dois meses</em> por ser representado por: <span class="math inline">\((A^c \cap B) \cup (A \cap B^c)\)</span>, uma vez que,</p>
+<p><span class="math display">\[\begin{align*}
+  A^c  = \{\omega \in \Omega: \omega = \textrm{``lar X que exceder 240kWh em janeiro''}\}, \\
+  B^c  = \{\omega \in \Omega: \omega = \textrm{``lar X que exceder 240kWh em julho''}\}.\\
+\end{align*}\]</span></p>
+<p>Podemos ainda observar pelo Teorema <a href="cap05.html#teo:identeventos">5.3</a> (prop. XV), que <span class="math inline">\(A \cup B = (A^c \cap B)\cup (A \cap B) \cup (A \cap B^c)\)</span>, e que cada um dos eventos dentro do parêntese são disjuntos dois a dois, logo, <span class="math display">\[\begin{align*}
+  P(A \cup B) &amp; = P[(A^c \cap B)\cup (A \cap B) \cup (A \cap B^c)]\\
+              &amp; = P[(A^c \cap B) \cup (A \cap B^c)] + P(A \cap B).
+\end{align*}\]</span> Desse modo, percebemos que <span class="math inline">\(P[(A^c \cap B) \cup (A \cap B^c)] = P(A \cup B) - P(A \cap B)\)</span>, logo, <span class="math display">\[\begin{align*}
+  P[(A^c \cap B) \cup (A \cap B^c)] &amp; = 0,9 - 0,6 = 0,3.
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<p>Nessa seção, iremos apresentar iniciar com uma motivação, por meio do Exemplo <a href="cap05.html#ex:jovemprend">5.18</a>, uma abordagem sobre dois assuntos muito interessantes na probabilidade, que são a independência de eventos e a modificação do espaço amostral, dada uma informação antecipada, e qual a implicância dessas informações para a probabilidade de um evento ocorrer.</p>
+<div id="ex:jovemprend" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.18</strong></summary><div>
+<p>Paulo é um jovem empreendedor e quer abrir seu próprio negócio. Ele observou que o mercado de sandálias era lucrativo. Então resolveu abrir uma fábrica de sandálias. Devido a dificuldade financeira, resolveu comprar três máquinas de sandálias usadas. As informações anteriores sobre estas máquinas dadas pelo proprietário foram:</p>
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Máquina</strong></th>
+<th style="text-align: center;"><strong>Produto</strong></th>
+<th style="text-align: center;"><strong>Total da produção</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">M1 &amp; Pantufas</td>
+<td style="text-align: center;">50%</td>
+<td style="text-align: center;">1%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">M2</td>
+<td style="text-align: center;">Sandálias baixas</td>
+<td style="text-align: center;">40%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">M3</td>
+<td style="text-align: center;">Sandálias de couro</td>
+<td style="text-align: center;">10%</td>
+</tr>
+</tbody>
+</table>
+<p>Surgiu as seguintes indagações:</p>
+<ul>
+<li>Do total de sandálias produzidas, qual a probabilidade de Paulo produzir uma sandália com defeito?</li>
+<li>Pensando em aumentar o lucro da fábrica, Paulo pensa e substituir uma das máquinas, qual seria sua decisão?
+<ul>
+<li>Será que a máquina M1 que produz mais sandálias e consequentemente tem maior desgaste, deve ser trocada primeiro?</li>
+<li>Ou será que apesar da máquina M3 ter menor produção, é a que gera mais defeito por sandália, deve ser trocada primeiro?</li>
+</ul></li>
+</ul>
+</div></details>
+</div>
+<p>Muitas vezes nos deparamos com situações em que antes da realização de algum experimento, temos alguma informação adicional. Queremos saber o quanto que essa informação pode afetar a medida de probabilidade. Assim, apresentamos a Definição <a href="cap05.html#def:probcond">5.18</a>, que define a probabilidade condicional, a seguir.</p>
+<div id="def:probcond" class="Definition" title="Probabilidade condicional">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.18: </strong>Probabilidade condicional</summary><div>Dados dois eventos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> definidos em <span class="math inline">\(\Omega\)</span>, então a probabilidade condicional do evento <span class="math inline">\(A\)</span> dado que ocorreu o evento <span class="math inline">\(B\)</span>, denotado por <span class="math inline">\(P(A|B)\)</span>, é definida por: <span class="math display">\[\begin{equation}
+    P(A|B) = \frac{P(A \cap B)}{P(B)},
+\end{equation}\]</span> para <span class="math inline">\(P(B) &gt; 0\)</span>.<p></p>
+</div></details>
+</div>
+<p>Baseado no problema de Paulo, denotemos o evento <span class="math inline">\(D\)</span> as sandálias produzidas com defeitos pela empresa, <span class="math inline">\(M_1\)</span> o evento que representa as sandálias produzidas pela máquina <span class="math inline">\(M_1\)</span>, <span class="math inline">\(M_2\)</span> o evento que representa as sandálias produzidas pela máquina <span class="math inline">\(M_2\)</span> e <span class="math inline">\(M_3\)</span> o evento que representa as sandálias produzidas pela máquina <span class="math inline">\(M_3\)</span>. Assim, percebemos que a probabilidade do evento <span class="math inline">\(D\)</span> não pode ser observada facilmente, pois o defeito dos produtos produzidos pelas máquinas está condicionado a cada máquina. Desse modo podemos representar, a probabilidade desses defeitos da seguinte forma: <span class="math inline">\(P(D|M_1) = 0,01\)</span>, <span class="math inline">\(P(D|M_2) = 0,02\)</span>, e <span class="math inline">\(P(D|M_3) = 0,03\)</span>. Essas probabilidades apresentam uma alteração no espaço amostral para cada evento, porque esses resultados mostram a chance de defeito do produto, dado o conhecimento de que máquina foi produzido, é o que chamamos de restrição do espaço amostral.</p>
+<p>Essa restrição do espaço amostral, pode nos questionar se de fato a probabilidade condicional, de fato, é uma medida de probabilidade. Para isso, apresentamos o Teorema <a href="cap05.html#teo:probcond">5.7</a>, na sequência.</p>
+<div id="teo:probcond" class="Theorem" title="P(A|B) é uma medida de probabilidade">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.7: </strong><span class="math inline">\(P(A|B)\)</span> é uma medida de probabilidade</summary><div>Sejam <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> eventos aleatórios, tal que <span class="math inline">\(P(B)&gt;0\)</span>, e considere <span class="math inline">\(Q: \Omega\rightarrow [0,1]\)</span> definida por <span class="math display">\[
+  Q(A) = P(A|B) = \frac{P(A\cap B)}{P(B)},
+\]</span> que é a probabilidade condicional de <span class="math inline">\(A\)</span> dado <span class="math inline">\(B\)</span>. Então <span class="math inline">\(Q\)</span> é também uma medida de probabilidade.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.9" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<p>Para verificarmos se <span class="math inline">\(Q(.)\)</span> é uma medida de probabilidade, devemos assumir que <span class="math inline">\(Q\)</span> satisfaz os axiomas de Kolmogorov, isto é,</p>
+<ul>
+<li><p>Axioma 1: <span class="math display">\[\begin{align*}
+      Q(\Omega) &amp;= \frac{P(\Omega \cap B)}{P(B)}\\
+      &amp;= \frac{P(B)}{P(B)}\\
+      &amp;= 1.
+\end{align*}\]</span></p></li>
+<li><p>Axioma 2: como <span class="math inline">\(P\)</span> é uma medida de probabilidade, então <span class="math display">\[
+\forall A \in \Omega: \quad Q(A) \geq 0.
+\]</span></p></li>
+<li><p>Axioma 3: Sejam dois eventos <span class="math inline">\(A_1\)</span> e <span class="math inline">\(A_2\)</span>, disjuntos, então <span class="math display">\[\begin{align*}
+      Q(A_1 \cup A_2) &amp;= \frac{P[(A_1 \cup A_2) \cap B]}{P(B)}\\
+      &amp;= \sum^{2}_{i=1}\frac{P[(A_1 \cap B) \cup (A_2 \cap B)]}{P(B)},~~ \textrm{Teorema 5.2 (III)}\\
+      &amp;= Q(A_1) + Q(A_2).
+\end{align*}\]</span> o que conclui a prova.</p></li>
+</ul>
+</div></details>
+</div>
+<p>Como sequência de importantes resultados sobre propriedades da probabilidade, apresentamos o Teorema <a href="cap05.html#teo:regprodprob">5.8</a>, que será importante para resultados muito utilizados na área aplicada, como o Teorema de Bayes, apresentado na sequência.</p>
+<div id="teo:regprodprob" class="Theorem" title="Regra do produto de probabilidade">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.8: </strong>Regra do produto de probabilidade</summary><div>Seja os eventos não vazios <span class="math inline">\(A_1,A_2,\ldots,A_n\)</span> em <span class="math inline">\(\Omega\)</span>, com <span class="math inline">\(P(\bigcap^{n}_{i=1}A_i)&gt;0\)</span>, então a probabilidade do produto desses eventos é dado por <span class="math display">\[
+    P(\bigcap^{n}_{i=1}A_i)=P(A_1)P(A_2|A_1)\ldots P(A_n|\bigcap^{n}_{i=1}A_i).
+\]</span><p></p>
+</div></details>
+</div>
+<div id="Proof*-5.10" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Por indução, consideremos <span class="math inline">\(n=2\)</span>. Assim, pela Definição <a href="cap05.html#def:probcond">5.18</a>, temos <span class="math display">\[\begin{eqnarray*}
+    P(A_2|A_1)=\frac{P(A_1\cap A_2)}{P(A_1)}\\
+    P(A_1\cap A_2)=P(A_1)P(A_2|A_1),
+\end{eqnarray*}\]</span> em que <span class="math inline">\(P(A_1\cap A_2)=P(A_1)P(A_2|A_1)\)</span> e <span class="math inline">\(P(A_1)&gt;0\)</span>. Agora para <span class="math inline">\(n=k\)</span>, generalizamos a indução, <span class="math display">\[\begin{eqnarray*}
+    P(A_1\cap A_2\cap \ldots \cap A_{k})&amp;=&amp; P[(A_1A_2\ldots A_{k-1}) \cap A_{k}],
+\end{eqnarray*}\]</span> pela Definição <a href="cap05.html#def:probcond">5.18</a>, temos <span class="math display">\[\begin{align*}
+        P\left[\bigcap^{k-1}_{i=1}A_i\cap A_k\right]&amp;=P[(A_1A_2\ldots A_{k-1})]P(A_{k}|A_1A_2\ldots A_{k-1})
+\end{align*}\]</span> podendo ser reescrito como <span class="math display">\[\begin{align*}
+    P\left[\bigcap^{k-1}_{i=1}A_i\cap A_k\right]&amp;=\underbrace{P(A_1A_2\ldots A_{k-2})P(A_{k-1}|A_1A_2\ldots A_{k-2})}_{P(A_1A_2\ldots A_{k-1})}\times\\
+        &amp;\quad \times P(A_{k}|A_1A_2\ldots A_{k-1}).
+\end{align*}\]</span> Assim, usando a indução sucessivas vezes, chegaremos a expressão <span class="math display">\[\begin{align*}
+    P(A_1 A_2 \ldots \cap A_{k})&amp;=P(A_1)P(A_2|A_1)\ldots P(A_{k-1}|A_1A_2\ldots A_{k-2})\times\\
+    &amp;\quad \times P(A_{k}|A_1A_2\ldots A_{k-1}).
+\end{align*}\]</span> Observe que por hipótese, todos os condicionamentos da expressão do lado direito, têm probabilidades positivas, pois contém <span class="math inline">\(\bigcap^{n}_{i=1}A_i\)</span>, o que conclui a prova.<p></p>
+</div></details>
+</div>
+<p>Antes de falarmos sobre o teorema da lei da probabilidade total, será interessante fazer a definição sobre a partição de <span class="math inline">\(\Omega\)</span>, apresentada na Definição <a href="cap05.html#def:partomega">5.19</a>, a seguir.</p>
+<div id="def:partomega" class="Definition" title="Partição de \Omega">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.19: </strong>Partição de <span class="math inline">\(\Omega\)</span></summary><div>Se a sequência <span class="math inline">\(A_1, A_2, \ldots,\)</span> são disjuntos dois a dois, não vazios, e <span class="math inline">\(\bigcup^{\infty}_{i=1}A_i=\Omega\)</span>, então dizemos que essa sequência forma uma partição de <span class="math inline">\(\Omega\)</span>.<p></p>
+</div></details>
+</div>
+<p>Entretanto, para calcular a probabilidade de uma sandália está com defeito, isto é <span class="math inline">\(P(D)\)</span>, independente de qual máquina a produziu, pode ser calculada por meio do Teorema <a href="cap05.html#teo:probtotal">5.9</a>, a seguir.</p>
+<div id="teo:probtotal" class="Theorem" title="Teorema da probabilidade total">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.9: </strong>Teorema da probabilidade total</summary><div>Seja uma sequência de eventos <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> de <span class="math inline">\(\Omega\)</span>, disjuntos, tal que <span class="math inline">\(\bigcup^{n}_{i = 1}A_i = \Omega\)</span>, e <span class="math inline">\(B\)</span> um evento de <span class="math inline">\(\Omega\)</span>, não vazio, então a probabilidade de <span class="math inline">\(B\)</span> é dada por: <span class="math display">\[\begin{eqnarray}
+    P(B) = \sum_{i = 1}^{n}P(B|A_i)P(A_i),
+\end{eqnarray}\]</span> para <span class="math inline">\(P(A_i) &gt; 0\)</span>, sendo <span class="math inline">\(i = 1, 2, \ldots, n\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.11" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<pre><code>Sabendo que $A_i \cap_{i \neq j} A_j$ e que $\bigcup^{n}_{i = 1}B\cap A_i = \Omega$, então $\bigcup_{i = 1}^{n} B\cap A_i = B$ e os $B\cap A_i$ são também disjuntos. Dessa forma,</code></pre>
+<p><span class="math display">\[\begin{align*}
+    P(B) = &amp; P\left(\bigcup_{i = 1}^{n} B\cap A_i\right) \\
+         = &amp; \sum_{i = 1}^{n}  P(B\cap A_i) \qquad (B\cap A_i\textrm{ disjuntos)}\\
+         = &amp; \sum_{i = 1}^{n}P(B|A_i)P(A_i) \qquad \textrm{ (Teorema \ref{teo:regprodprob})}
+\end{align*}\]</span> como queríamos provar.</p>
+</div></details>
+</div>
+<p>Retornando ao cálculo da probabilidade <span class="math inline">\(P(D)\)</span>, no Exemplo <a href="cap05.html#ex:probd">5.19</a> apresentamos como o Teorema <a href="cap05.html#teo:probtotal">5.9</a> soluciona esse problema, a seguir.</p>
+<div id="ex:probd" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.19</strong></summary><div>Voltando ao problema de Paulo, como <span class="math inline">\(P(M_1) = 0,50\)</span>, <span class="math inline">\(P(M_2) = 0,40)\)</span> e <span class="math inline">\(P(M_3) = 0,10\)</span>, então a probabilidade de uma sandália ter defeito é <span class="math display">\[\begin{align*}
+    P(D) = &amp; \sum_{i = 1}^{3}P(D|M_i)P(M_i)\\
+    = &amp; P(D|M_1)P(M_1) + P(D|M_2)P(M_2) + P(D|M_3)P(M_3)\\
+    = &amp; 0,01 \times 0,50 + 0,02 \times 0,40 + 0,03 \times 0,10\\
+    = &amp; 0,016.
+\end{align*}\]</span><p></p>
+</div></details>
+</div>
+<p>Nesse momento, surge uma importante definição na Estatística e Probabilidade, que é a independência de eventos, apresentada na Definição <a href="cap05.html#def:ind2">5.20</a>. A ideia da independência é uma característica probabilística, e isto significa, que se dois eventos forem independentes, então a probabilidade de um evento ocorrer não é influenciado pela ocorrência ou não do outro evento. A implicância da pressuposição da independência em problemas práticos na estatística podem ser resolvidos de forma trivial, devido as técnicas probabilísticas serem resolvidas de forma mais facilmente.</p>
+<div id="def:ind2" class="Definition" title="Independência de dois eventos">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.20: </strong>Independência de dois eventos</summary><div>
+<p>Considere o espaço amostral <span class="math inline">\(\Omega\)</span>. Dois eventos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> de <span class="math inline">\(\Omega\)</span> são independentes se satisfaz ao menos uma das seguintes condições:</p>
+<ol type="I">
+<li><span class="math inline">\(P(A \cap B) = P(A)P(B)\)</span>;</li>
+<li><span class="math inline">\(P(A|B) = P(A)\)</span>, para <span class="math inline">\(P(B) &gt; 0\)</span>;</li>
+<li><span class="math inline">\(P(B|A) = P(B)\)</span>, para <span class="math inline">\(P(A) &gt; 0\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<p>É fácil mostrar que (I) implica em (II), (II) implica em (III), e (III) implica em (I).</p>
+<p><span class="math inline">\((i) \to (ii)\)</span>: Se <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span>, então</p>
+<p><span class="math display">\[\begin{align*}
+  P(A|B) = \frac{P(AB)}{P(A)} = \frac{P(A)P(B)}{P(B)} = P(A), \quad \textrm{para } P(B) &gt; 0;
+\end{align*}\]</span></p>
+<p><span class="math inline">\((ii) \to (iii)\)</span>: Se <span class="math inline">\(P(A|B) = P(A)\)</span>, então <span class="math display">\[\begin{align*}
+  P(B|A) = \frac{P(BA)}{P(A)} = \frac{P(A|B)P(B)}{P(A)} = P(B), \quad \textrm{para } P(A) &gt; 0;
+\end{align*}\]</span></p>
+<p><span class="math inline">\((iii) \to (i)\)</span>: Se <span class="math inline">\(P(B|A) = P(B)\)</span>, então <span class="math display">\[\begin{align*}
+  P(AB) = P(B|A)P(A) = P(B)P(A), \textrm{para } P(A) &gt; 0.
+\end{align*}\]</span></p>
+<p>A intuição para independência na Definição <a href="cap05.html#def:ind2">5.20</a> fica justificada pelo fato de que <span class="math inline">\(A\)</span> é independente de <span class="math inline">\(B\)</span> tanto na ocorrência quanto a não ocorrência de <span class="math inline">\(B\)</span> e isso não muda em nada a probabilidade da ocorrência de <span class="math inline">\(A\)</span>, isto é, <span class="math inline">\(P(A|B) = P(A)\)</span> e <span class="math inline">\(P(A|B^c) = P(A)\)</span>. Essas duas expressões significam que <span class="math display">\[\begin{align*}
+  P(A\cap B) &amp; = P(B)P(A|B) = P(B)P(A)\\
+  P(A\cap B^c) &amp; = P(B^c)P(A|B^c) = P(B^c)P(A).
+\end{align*}\]</span></p>
+<p>Entretanto, a independência entre dois eventos não implica em independência coletiva. Vejamos o Exemplo <a href="cap05.html#ex:indcoletiva">5.21</a>, a seguir.</p>
+<div id="ex:indcoletiva" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.21</strong></summary><div>Sejam os resultados possíveis de um dado honesto, cujo espaço amostral é <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span>. Considere um evento que representa o conjunto dos números ímpares desse espaço amostral, <span class="math inline">\(A = \{1, 3, 5\}\)</span>, e outro evento que consite nos múltiplos de 3, <span class="math inline">\(B = \{3, 6\}\)</span>. A probabilidade de <span class="math inline">\(A\)</span> é <span class="math inline">\(P(A) = 1/2\)</span>, a probabilidade de B é <span class="math inline">\(P(B) = 1/3\)</span>, e a probabilidade da interseção entre A e B é <span class="math inline">\(P(A \cap B) = 1/6\)</span>. Veja que dado que o evento B ocorra, ou não ocorra <span class="math inline">\(B^c = \{1, 2, 4, 5\}\)</span>, a probabilidade do evento A é a mesma, veja: <span class="math display">\[\begin{align*}
+  P(A|B) &amp; = \frac{1/6}{1/3} = 1/2\\
+  P(A|B^c) &amp; = \frac{2/6}{4/6} = 1/2.
+\end{align*}\]</span> Que é o mesmo que entender que <span class="math inline">\(P(A) \times P(B) = 1/6 = P(A\cap B)\)</span>. Logo, <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são eventos independentes.<p></p>
+</div></details>
+</div>
+<p>Para uma definição mais geral sobre a independência de eventos, apresentamos a Definição <a href="cap05.html#def:ind3">5.22</a>, a seguir.</p>
+<div id="def:ind3" class="Definition" title="Independência de eventos">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.22: </strong>Independência de eventos</summary><div>Considere o espaço amostral <span class="math inline">\(\Omega\)</span>. Uma sequência de eventos <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> de <span class="math inline">\(\Omega\)</span> são independentes se e somente se: <span class="math display">\[\begin{align}
+    P(A_i \cap A_j) &amp; = P(A_i)P(A_j), \quad \textrm{para } i \neq j; \nonumber\\
+    P(A_i \cap A_j \cap A_k) &amp; = P(A_i)P(A_j)P(A_k), \quad \textrm{para } i \neq j \neq k; \nonumber\\
+    \vdots &amp;  \nonumber\\
+    P(\cap_{i = 1}^{n} A_i) &amp; = \prod_{i = 1}^{n}P(A_i).
+\end{align}\]</span><p></p>
+</div></details>
+</div>
+<p>Paulo poderia indagar, se os eventos <span class="math inline">\(M_i\)</span> e <span class="math inline">\(D\)</span> são independentes ou dependentes. Contudo, pela Definição <a href="cap05.html#def:ind2">5.20</a>, temos que <span class="math display">\[\begin{align*}
+P(D|M_i) &amp; \neq P(D) = 0,016 \Rightarrow D \textrm{ e } M_i \textrm{, para } i = 1, 2, 3,
+\end{align*}\]</span> logo, não são independentes.</p>
+<div id="ex:efmult" class="Example" title="Efeito de multiplicidade">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.20: </strong>Efeito de multiplicidade</summary><div>Retomando as propriedades da probabilidade, Teorema <a href="cap05.html#teo:propPx">5.6</a>, e agora com a abordagem da ideia de independência de eventos, Definição <a href="cap05.html#def:ind3">5.22</a>, um importante problema na área da estatística é o uso de comparações simultâneas (hipóteses), assunto previamente abordado no <a href="cap10.html" class="quarto-xref"><span>Capítulo 10</span></a> para uma única comparação. Entendemos por hipótese (<span class="math inline">\(H_i\)</span>) uma afirmação realizada pelo pesquisador sobre uma determinada população. O objetivo de um teste é rejeitar a hipótese estudada. Mas como tudo em estatística não há certeza, a probabilidade de rejeitarmos uma hipótese verdadeira é dada por <span class="math inline">\(\alpha\)</span>, isto é, o nível de significância do teste. Essa decisão é chamada de erro tipo I, e representaremos neste exemplo, pelo evento <span class="math inline">\(H_i^c\)</span>. Quando aplicamos simultaneamente <span class="math inline">\(n\)</span> comparações, queremos garantir que o nível de significância global do teste de hipóteses seja no máximo <span class="math inline">\(\alpha\)</span>. Esta área da estatística é chamada de procedimento de comparação múltipla.<p></p>
+<p>Muitos procedimentos ou testes que se baseiam nesse tipo de problema usam como referência a taxa de erro por experimento, que representa a probabilidade de ao menos uma hipótese verdadeira ser rejeitada. Para isso, pensemos em <span class="math inline">\(n = 10\)</span> comparações (hipóteses) verdadeiras e independentes, <span class="math inline">\(H_i\)</span>, <span class="math inline">\(i =1, 2, \ldots, 10\)</span>. A probabilidade de cada comparação não ser rejeitada é dada por <span class="math inline">\(P(H_i) = 1 -\alpha\)</span>. Ao passo que, a probabilidade de cada hipótese verdadeira ser rejeitada erroneamente, evento <span class="math inline">\(H_i^c\)</span>, é dada por <span class="math inline">\(P(H_i^c) = \alpha\)</span>. Assim, a probabilidade de ao menos uma comparação ser erroneamente rejeitada é dada por: <span id="eq-efmult01"><span class="math display">\[
+\begin{align}
+    P\left(\bigcup^{10}_{i = 1}H_i^c\right) &amp; = 1 - P\left(\bigcap^{10}_{i = 1}H_i\right).
+\end{align}
+\tag{5.22}\]</span></span> Vamos usar a ideia do evento complementar, isto é, a probabilidade de termos ao menos uma comparação rejeitada erroneamente é o mesmo que calcularmos a probabilidade do espaço amostral (<span class="math inline">\(\Omega\)</span>) menos a probabilidade de nenhuma comparação ser rejeitada erroneamente, que representa a interseção <span class="math inline">\(\cap^{10}_{i = 1}H_i\)</span>.</p>
+<p>Para observarmos que isso é verdade, vamos simplificar para <span class="math inline">\(n = 2\)</span>. Vejamos, <span class="math display">\[\begin{align*}
+  P(H_1^c \cup H_2^c) &amp; = P(H_1^c) + P(H_2^c) - P(H_1^c \cap H_2^c) \quad \textrm{(independentes)}\\
+  &amp;= P(H_1^c) + P(H_2^c) - P(H_1^c)P(H_2^c)\\
+  &amp;= \alpha + \alpha - \alpha \times \alpha\\
+  &amp;= 2\alpha - \alpha^2,
+\end{align*}\]</span> isto é, <span class="math display">\[\begin{align*}
+    P(H_1^c \cup H_2^c) &amp; = 1 - P(H_1 \cap H_2) \quad \textrm{(independentes)}\\
+    &amp;= 1 - P(H_1)P(H_2)\\
+    &amp;= 1 - (1 - \alpha)(1 - \alpha)\\
+    &amp;= 1 - (1^2 - 2\alpha + \alpha^2)\\
+    &amp;= 2\alpha - \alpha^2,
+\end{align*}\]</span> ou ainda <span class="math display">\[\begin{align*}
+    P[(H_1^c \cap H_2)\cup (H_1 \cap H_2^c)\cup (H_1^c \cap H_2^c)] &amp; = P(H_1^c \cap H_2) + P(H_1 \cap H_2^c) + \\
+    &amp; \quad + P(H_1^c \cap H_2^c)~\textrm{(disj. e indep.)}\\
+    &amp;= P(H_1^c)P(H_2) + P(H_1)P(H_2^c)\\
+    &amp; \quad  + P(H_1^c) P(H_2^c)\\
+    &amp;= \alpha(1 - \alpha) + (1 - \alpha)\alpha + \alpha^2\\
+    &amp;= 2\alpha - \alpha^2.
+\end{align*}\]</span> Esses resultados foram possíveis porque a condição de independência existente nos eventos também implica em independência nos eventos complementares, Teorema <a href="cap05.html#teo:ind4">5.12</a>. Retornando a expressão (<a href="#eq-efmult01" class="quarto-xref"><span>5.22</span></a>), e a condição de independência, obtemos <span class="math display">\[\begin{align*}
+    P\left(\bigcup^{10}_{i = 1}H_i^c\right) &amp; = 1 - (1 - \alpha)^{10}.
+\end{align*}\]</span></p>
+<p>Se considerássemos <span class="math inline">\(\alpha = 0,05\)</span>, a probabilidade do erro tipo I por experimento é de 0,4013, isto é, <span class="math inline">\(P\left(\cup^{10}_{i = 1}H_i^c\right) = 0,4013\)</span>. Fixando <span class="math inline">\(\alpha = 0,05\)</span> e variando o número de testes, podemos perceber pela <a href="#fig-efmult01" class="quarto-xref">Figura&nbsp;<span>5.3</span></a> que a taxa de erro por experimento aumenta rapidamente. Esse é o efeito de multiplicidade, um problemas dos procedimentos de comparações múltiplas. Os testes são desenvolvimentos tentando controlar esse tipo de problema, porque baseado no exemplo anterior para <span class="math inline">\(n = 10\)</span>, a chance de termos ao menos uma decisão errada de rejeitar uma hipótese verdadeira, quando achávamos que era de 0,05 na realidade foi de 0,4013, muito maior.</p>
+<div id="fig-efmult01" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-efmult01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap5/graftaxaerro.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-efmult01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.3: Representação da taxa de erro por experimento em comparações simultâneas, em relação ao número de testes.
+</figcaption>
+</figure>
+</div>
+<p>Não aceitarmos a independência das comparações, podemos usar a desigualdade de Boole, Teorema <a href="cap05.html#teo:propPx">5.6</a> (<span class="math inline">\(viii\)</span> e <span class="math inline">\(ix\)</span>), e afirmar que no máximo a taxa de erro por experimento, para <span class="math inline">\(\alpha = 0,05\)</span> e <span class="math inline">\(n = 10\)</span>, é dada por:</p>
+<p><span class="math display">\[\begin{align*}
+  P\left(\bigcup^{10}_{i = 1}H_i^c\right) &amp; \leq \sum_{i = 1}^{10} P(H_i^c)\\
+                                          &amp; \leq n \times \alpha\\
+                                          &amp; \leq 10 \times 0,05\\
+                                          &amp; \leq 0,5,
+\end{align*}\]</span> que de fato é verdade, pois <span class="math inline">\(0,4013 &lt; 0,5\)</span>. Ou ainda, pela desigualdade de Bonferroni, <a href="cap05.html#teo:propPx">5.6</a> (<span class="math inline">\(x\)</span>), dizemos que ao menos a probabilidade de todas as decisões serem corretas, isto é, de não rejeitarmos hipóteses verdadeiras simultaneamente, é ao menos</p>
+<p><span class="math display">\[\begin{align*}
+  P\left(\bigcap^{10}_{i = 1}H_i\right) &amp; \geq 1 - \sum_{i = 1}^{10}P(H_i^c)\\
+                                        &amp; \geq 1 - 10\times 0,05\\
+                                        &amp; \geq 0,5.
+\end{align*}\]</span></p>
+</div></details>
+</div>
+</section>
+</section>
+<section id="teorema-de-bayes" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="teorema-de-bayes"><span class="header-section-number">5.4</span> Teorema de Bayes</h2>
+<p>A grande questão agora é qual a máquina que Paulo deveria substituir com o propósito de aumentar seu lucro na empresa. A ideia será calcular <span class="math inline">\(P(M_i|D)\)</span>, isto é, dado um defeito na sandália qual a probabilidade de vindo da máquina <span class="math inline">\(i\)</span>? A maior probabilidade será a máquina substituída. Entretanto, ainda não temos ferramenta para resolver essa resposta. Para isso, apresentamos o seguinte Teorema <a href="cap05.html#teo:teobayes">5.10</a> a seguir.</p>
+<div id="teo:teobayes" class="Theorem" title="Teorema de Bayes">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.10: </strong>Teorema de Bayes</summary><div>Considere o espaço amostral <span class="math inline">\(\Omega\)</span>. Considere uma sequência de eventos <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> de <span class="math inline">\(\Omega\)</span>, disjuntos, tal que <span class="math inline">\(\bigcup^{n}_{i = 1}A_i = \Omega\)</span>, e <span class="math inline">\(B\)</span> um evento de <span class="math inline">\(\Omega\)</span>, então a probabilidade de <span class="math inline">\(A_k\)</span>, para <span class="math inline">\(k = 1, 2, \ldots, n\)</span>, dado que ocorreu o evento <span class="math inline">\(B\)</span>, denotado por <span class="math inline">\(P(A_k|B)\)</span>, é dado por: <span class="math display">\[\begin{eqnarray}
+    P(A_k|B) = \frac{P(B|A_k)P(A_k)}{\sum_{i = 1}^{n}P(B|A_i)P(A_i)}, \qquad k = 1, 2, \ldots, n,
+\end{eqnarray}\]</span> para <span class="math inline">\(P(A_k) &gt; 0\)</span> e <span class="math inline">\(P(A_i) &gt; 0\)</span>, sendo <span class="math inline">\(i = 1, 2, \ldots, n\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.12" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Para um <span class="math inline">\(i\)</span> qualquer, temos <span class="math display">\[\begin{align*}
+    P(A_i|B) &amp;= \frac{P(A_i\cap B)}{P(B)}\\
+    \textrm{ou} &amp;\\
+    P(B|A_i) &amp;= \frac{P(B \cap A_i)}{P(A_i)}.
+\end{align*}\]</span> Isto implica que <span class="math display">\[
+    P(A_i\cap B) = P(B)P(A_i|B) = P(A_i)P(B|A_i).
+\]</span> Pela lei da probabilidade total, a probabilidade de <span class="math inline">\(B\)</span> pode ser dada por <span class="math inline">\(P(B)\)</span> = <span class="math inline">\(\sum^{\infty}_{i=1}\)</span> <span class="math inline">\(P(A_i)\)</span> <span class="math inline">\(P(B|A_i)\)</span>. Portanto, <span class="math display">\[
+P(A_i| B) = \frac{P(A_i)P(B|A_i)}{\sum^{\infty}_{i=1}P(A_i)P(B|A_i)},
+\]</span> prova concluída.<p></p>
+</div></details>
+</div>
+<p>Tal é a sua importância, que um dos ramos de estudo da inferência estatística é baseado nesse teorema. O Teorema de Bayes fornece uma atualização do conhecimento já existente <span class="math inline">\(P(A_k)\)</span>, conhecido como “<em>a priori</em>”, por meio da ocorrência do evento <span class="math inline">\(B\)</span>. Essa atualização é a probabilidade “<em>a posteriori</em>” <span class="math inline">\(P(A_k|B)\)</span>.</p>
+<p>Com esse resultado, Paulo agora pode tomar uma decisão mais plausível, isto é, dado um defeito numa determinada sandália produzida na fábrica, qual a probabilidade desta ter sido produzida em cada uma das máquinas? <span class="math display">\[\begin{align*}
+    P(M_1|D) = \frac{0,01 \times 0,50}{0,016} = 0,3125\\
+    P(M_2|D) = \frac{0,02 \times 0,40}{0,016} = 0,5000\\
+    P(M_3|D) = \frac{0,03 \times 0,10}{0,016} = 0,1875\\
+\end{align*}\]</span> A tomada de decisão será substituir a máquina <span class="math inline">\(M_2\)</span>. Poderíamos ter tomado uma decisão equivocada se não fosse o teorema de Bayes.</p>
+<p>Devemos abrir uma discussão que ocorre muito frequente entre as Definições <a href="cap05.html#def:disjeventos">5.10</a> e <a href="cap05.html#def:ind2">5.20</a>, isto é, eventos disjuntos e independência. Nas próprias definições, percebemos a distinção clara entre as características. A primeira se remete a eventos (conjuntos), e a segunda é uma condição probabilística dos eventos. Contudo, em determinados problemas ainda há muita confusão ao tentar resolvê-los. Assim, apresentemos o Teorema <a href="cap05.html#teo:disjindeventos">5.11</a>, a seguir.</p>
+<div id="teo:disjindeventos" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.11</strong></summary><div>#Eventos disjuntos e independentes<p></p>
+<p>Considere <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, dois eventos <span class="math inline">\(\Omega\)</span>. Se <span class="math inline">\(A\cap B = \emptyset\)</span> (eventos disjuntos), então <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são independentes apenas, se e somente se, um dos eventos tiver probabilidade 0.</p>
+</div></details>
+</div>
+<div id="Proof*-5.13" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Considerando que o evento <span class="math inline">\(A\)</span> tenha probabilidade 0, isto é, <span class="math inline">\(P(A) = 0\)</span>, implica que <span class="math inline">\(A = \emptyset\)</span>. Assim, <span class="math inline">\(P(A\cap B) = P(\emptyset\cap B) = P(\emptyset) = 0\)</span>. A condição de independência entre os dois eventos existe se <span class="math inline">\(P(A)P(B) = P(A\cap B)\)</span>, e isso ocorre de fato, <span class="math inline">\(P(A)P(B) = P(\emptyset)P(B) = 0\times P(B) = 0 = P(A\cap B)\)</span>, o que completa a prova.<p></p>
+</div></details>
+</div>
+<p>Caso esses eventos não tenham probabilidade <span class="math inline">\(0\)</span>, a condição <span class="math inline">\(A \cap B = \emptyset\)</span> implica que estes são dependentes. Vejamos o Exemplo <a href="cap05.html#ex:evdisind">5.21</a> adaptado de <span class="citation" data-cites="Morettin2010">Morettin (<a href="references.html#ref-Morettin2010" role="doc-biblioref">2010</a>)</span>, para elucidar essas definições.</p>
+<div id="ex:evdisind" class="Example" title="Adaptado de Morettin (2010)">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.21: </strong>Adaptado de Morettin (2010)</summary><div>A tabela abaixo dá a distribuição das probabilidade dos quatro tipos sanguíneos, numa certa comunidade.<p></p>
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Tipo sanguíneo</strong></th>
+<th style="text-align: center;"><strong>A</strong></th>
+<th style="text-align: center;"><strong>B</strong></th>
+<th style="text-align: center;"><strong>AB</strong></th>
+<th style="text-align: center;"><strong>O</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Probabilidade de ter o tipo especificado</td>
+<td style="text-align: center;">0,2</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Probabilidade de não ter o tipo especificado</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0,9</td>
+<td style="text-align: center;">0,95</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Calcular a probabilidade de que:</p>
+<ol type="a">
+<li>um indivíduo, sorteado ao acaso nessa comunidade, tenha o tipo O;</li>
+<li>um indivíduo, sorteado ao acaso nessa comunidade, tenha o tipo A e tipo B ao mesmo tempo. Podemos afirmar, que estes são independentes?</li>
+<li>dois indivíduos, sorteados ao acaso nessa comunidade, tenham tipo A e tipo B, nessa ordem;</li>
+<li>um indivíduo, sorteado ao acaso nessa comunidade, não tenha o tipo B ou não tenha o tipo AB.</li>
+</ol>
+<p>Vejamos que os tipos sanguíneos são mutuamente exclusivos e formam a partição do espaço amostral, uma vez que não existe outro tipo sanguineo além dos informados e que não há indivíduo com dois tipos sanguíneos. Assim,</p>
+<ol type="a">
+<li><p>Consideremos o evento A, os indivíduos da comunidade especificado do tipo sanguíneo A, tal que, <span class="math inline">\(A = \{\omega_A \in \Omega: \omega_A \in A\}\)</span>; o evento B, os indivíduos da comunidade especificado do tipo sanguíneo B, tal que, <span class="math inline">\(B = \{\omega_B \in \Omega: \omega_B \in B\}\)</span>; o evento <span class="math inline">\(AB\)</span>, os indivíduos da comunidade especificado do tipo sanguíneo AB, tal que, <span class="math inline">\(AB = \{\omega_{AB} \in \Omega: \omega_{AB} \in AB\}\)</span>; o evento <span class="math inline">\(O\)</span>, os indivíduos da comunidade especificado do tipo sanguíneo O, tal que, <span class="math inline">\(O = \{\omega_O \in \Omega: \omega_O \in O\}\)</span>. Desse modo, o espaço amostral é dado por <span class="math inline">\(\Omega = \{\omega_A, ~\omega_B, ~\omega_{AB}, ~\omega_O\}\)</span>, cujos elementos de <span class="math inline">\(\omega\)</span> devem estar apenas em um dos eventos anteriores, e que a união de todos os elementos desses formam o espaço amostral, logo esses eventos formam uma partição do espaço amostral (Definição <a href="cap05.html#def:partomega">5.19</a>). Observe também que os elementos não são equiprováveis, como mostrado na tabela de probabilidades na própria questão. Assim, <span class="math inline">\(P(\Omega)\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(P(A)\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(P(B)\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(P(AB)\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(P(O)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(1\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(0,2000\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(0,1000\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(0,0500\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(P(O)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(P(O)\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(0,6500\)</span>;</p></li>
+<li><p>Este ítem merece uma atenção. Como os eventos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são multumente exclusivos, logo <span class="math inline">\(P(A \cap B) = 0\)</span>, e estes não são independentes pois nenhum tem probabilidade 0 (Teorema <a href="cap05.html#teo:disjindeventos">5.11</a>), logo <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são eventos dependentes;</p></li>
+<li><p>Diferentemente do espaço amostral anterior, neste temos uma combinação de 16 possibilidades a cardinalidade de <span class="math inline">\(\Omega\)</span>, uma vez que temos 4 possibilidades para o primeiro indivíduo e mais 4 possibilidades para o segundo indivíduo, isto é, <span class="math inline">\(\Omega\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(\{(\omega_A, \omega_A)\)</span>, <span class="math inline">\((\omega_A, \omega_B)\)</span>, <span class="math inline">\((\omega_A, \omega_{AB})\)</span>, <span class="math inline">\((\omega_A, \omega_O)\)</span>, <span class="math inline">\((\omega_B, \omega_A)\)</span>, <span class="math inline">\((\omega_B, \omega_B)\)</span>, <span class="math inline">\((\omega_B, \omega_{AB})\)</span>, <span class="math inline">\((\omega_B, \omega_O)\)</span>, <span class="math inline">\((\omega_{AB}, \omega_A)\)</span>, <span class="math inline">\((\omega_{AB}, \omega_B)\)</span>, <span class="math inline">\((\omega_{AB}, \omega_{AB})\)</span>, <span class="math inline">\((\omega_{AB},\)</span> <span class="math inline">\(\omega_O)\)</span>, <span class="math inline">\((\omega_O, \omega_A)\)</span>, <span class="math inline">\((\omega_O, \omega_{B})\)</span>, <span class="math inline">\((\omega_O, \omega_{AB})\)</span>, <span class="math inline">\((\omega_O, \omega_O)\)</span> <span class="math inline">\(\}\)</span>. Uma vez determinada as probabilidades de especificação em indivíduos diferentes, a probabilidade de especificar o tipo sanguíneo A em um indivíduo da comunidade não interfere em nada na probabilidade de especificar o tipo sanguíneo de um outro indivíduo dessa mesma comunidade (Uma ressalva é válida, no sentido também que estamos desconsiderando indivíduos consanguíneos, isto é, com grau de parentesco). Assim, a probabilidade de especificar o tipo sanguíneo desses dois indivíduos simultaneamente é <span class="math inline">\(P(A)\times P(B) = 0,2000 \times 0,1000 = 0,0200\)</span>. De outro modo, temos que: <span class="math display">\[\begin{align*}
+      P(A \cap B) &amp; = P(\{\omega_A, ~\omega_B\})\\
+                  &amp; = P(\underbrace{\omega_A \in A}_{\textrm{Indivíduo I}} \textrm{ e } \underbrace{\omega_B \in B}_{\textrm{Indivíduo II}})\\
+                  &amp; = P(\omega_A \in A) \times P(\omega_B \in B)\\
+                  &amp; = P(A) \times P(B)\\
+                  &amp; = 0,2000 \times 0,0100\\
+                  &amp; = 0,0200;
+\end{align*}\]</span></p></li>
+<li><p>Agora os eventos “não ter o tipo sanguíneo especificado” não implica que os eventos sejam mutuamente exclusivos pelo fato dos eventos “ter o tipo sanguíneo especificado” terem sido disjuntos. Veja, o evento não ter o tipo sanguínio AB e o evento não ter o tipo sanguíneo B, pode existir indivíduos comum a estes dois eventos, por exemplo, um indivíduo do tipo sanguíneo A ou O, e a probabilidade destes não é zero, logo, os eventos não ter o tipo sanguínio AB e não ter o tipo sanguíneo B não são disjuntos. Entretanto, esses eventos são independentes, pois a probabilidade de um evento não influencia na probabilidade do outro. Assim, <span id="eq-aux22"><span class="math display">\[
+\begin{align}
+      P[(AB)^c \cup B^c] &amp; = P[(AB)^c] + P(B^c) - P[(AB)^c \cap B^c] \nonumber\\
+      &amp; = 0,9500 + 0,9000 - P[(AB)^c \cap B^c].
+\end{align}
+\tag{5.23}\]</span></span></p></li>
+</ol>
+<p>Vejamos o evento <span class="math inline">\((AB)^c = A\cup B \cup O\)</span> e o evento <span class="math inline">\(B^c = A\cup AB \cup O\)</span>. A interseção entre estes é <span class="math inline">\((AB)^c \cap B^c = A\cup O\)</span>, em que A e O são disjuntos, assim, <span id="eq-aux21"><span class="math display">\[
+\begin{align}
+     P[(AB)^c \cap B^c] &amp; = P(A\cup O) = P(A) + P(O) \nonumber\\
+                        &amp; = 0,20 + 0,65 = 0,85.
+\end{align}
+\tag{5.24}\]</span></span> Substituindo (<a href="#eq-aux21" class="quarto-xref"><span>5.24</span></a>) em (<a href="#eq-aux22" class="quarto-xref"><span>5.23</span></a>), segue que <span class="math display">\[
+\begin{align*}
+  P[(AB)^c \cup B^c] &amp; = 0,95 + 0,90 - 0,85 = 1.
+\end{align*}
+\]</span> De outro modo, <span class="math display">\[\begin{align}
+  P[(AB)^c \cup B^c] &amp; = P[(AB \cap B)^c]  \quad \textrm{(Lei DeMorgan)}\nonumber\\
+  &amp; = 1 - P[(AB \cap B)] \quad \textrm{(Evento complementar)} \nonumber\\
+  &amp; = 1 - 0 \quad \textrm{(Evento disjunto)} \nonumber\\
+  &amp; = 1.
+\end{align}\]</span></p>
+<p>Ao final, temos a tabela completada da seguinte forma:</p>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Tipo sanguíneo</strong></th>
+<th style="text-align: center;"><strong>A</strong></th>
+<th style="text-align: center;"><strong>B</strong></th>
+<th style="text-align: center;"><strong>AB</strong></th>
+<th style="text-align: center;"><strong>O</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Probabilidade de ter o tipo especificado</td>
+<td style="text-align: center;">0,20</td>
+<td style="text-align: center;">0,10</td>
+<td style="text-align: center;">0,05</td>
+<td style="text-align: center;">0,65</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Probabilidade de não ter o tipo especificado</td>
+<td style="text-align: center;">0,80</td>
+<td style="text-align: center;">0,90</td>
+<td style="text-align: center;">0,95</td>
+<td style="text-align: center;">0,35</td>
+</tr>
+</tbody>
+</table>
+<p>Vale a pena discutirmos sobre a independência nessa situação. Quan-do falamos na especificação do tipo sanguínio é fato que um mesmo elemento não pode ser especificado em dois ou mais tipos sanguíneo. Fica claro que os eventos A, AB, B e O, são disjuntos. Agora, será que a probabilidade de especificar, por exemplo, o tipo sanguíneo A, não interfere na probabilidade do tipo sanguíneo B, ou qualquer um outro tipo sanguíneo? Observe que uma vez especificado a probabilidade de um determinado tipo sanguíneo, por exemplo, tipo A, não haverá mais chances de ele ter o tipo sanguíneo B, logo a probabilidade de B ocorrer é 0. Assim, a condição de ter especificado o tipo sanguíneo A alterou a probabilidade de especificar o tipo sanguíneo B. Logo estes eventos são dependentes.</p>
+</div></details>
+</div>
+<p>Podemos ainda expressar mais dois teoremas para complementar as afirmações feitas no Exemplo <a href="cap05.html#ex:evdisind">5.21</a>, e suas implicações em relação aos eventos serem independentes e eventos disjuntos. Inicialmente, apresentamos o Teorema <a href="cap05.html#teo:ind4">5.12</a> como uma implicância da independência de eventos, a seguir.</p>
+<p>Podemos ainda expressar mais dois teoremas para complementar as afirmações feitas no Exemplo <a href="cap05.html#ex:evdisind">5.21</a>, e suas implicações em relação aos eventos serem independentes e eventos disjuntos. Inicialmente, apresentamos o Teorema <a href="cap05.html#teo:ind4">5.12</a> como uma implicância da independência de eventos, a seguir.</p>
+<div id="teo:ind4" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.12</strong></summary><div>
+<p>Se A e B são eventos independentes, não vazio, definidos em <span class="math inline">\(\Omega\)</span>, então</p>
+<ol type="a">
+<li><span class="math inline">\(A\)</span> e <span class="math inline">\(B^c\)</span> também são independentes;</li>
+<li><span class="math inline">\(A^c\)</span> e <span class="math inline">\(B\)</span> também são independentes;</li>
+<li><span class="math inline">\(A^c\)</span> e <span class="math inline">\(B^c\)</span> também são independentes.</li>
+</ol>
+</div></details>
+</div>
+<div id="Proof*-5.14" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Usando as seguintes equivalências: <span id="eq-eq1"><span class="math display">\[
+  P(A) = P(A\cap B) + P(A\cap B^c),
+\tag{5.25}\]</span></span><p></p>
+<p><span id="eq-eq2"><span class="math display">\[
+P(A^c) = P(A^c\cap B) + P(A^c \cap B^c),
+\tag{5.26}\]</span></span></p>
+<p><span id="eq-eq3"><span class="math display">\[
+P(B) = P(B\cap A) + P(B \cap A^c), \textrm{ e }
+\tag{5.27}\]</span></span></p>
+<p><span id="eq-eq4"><span class="math display">\[
+P(B^c) = P(B^c\cap A) + P(B^c\cap A^c),
+\tag{5.28}\]</span></span> e a condição de que <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span> (independentes), então usando (<a href="#eq-eq1" class="quarto-xref"><span>5.25</span></a>) temos <span class="math display">\[\begin{align*}
+  P(A\cap B^c) &amp; = P(A) - P(A)P(B)\quad \textrm{(Independência)}\\
+                  &amp; = P(A)[1 - P(B)] = P(A)P(B^c),
+\end{align*}\]</span> o que prova o ítem (a). Usando (<a href="#eq-eq3" class="quarto-xref"><span>5.27</span></a>) pelo mesmo raciocínio, provamos o ítem (b). Usando o resultado do ítem (a), já provado, e a condição de independência na expressão (<a href="#eq-eq4" class="quarto-xref"><span>5.28</span></a>), temos <span class="math display">\[\begin{align*}
+  P(A^c \cap B^c) &amp; = P(B^c) - P(B^c)P(A)\\
+                  &amp; = P(B^c)[1 - P(A)] = P(B^c)P(A^c),
+\end{align*}\]</span> o que prova o ítem (c), concluindo assim, a prova do teorema.</p>
+</div></details>
+</div>
+<p>Por fim, o Teorema <a href="cap05.html#teo:disj2eventos">5.13</a> apresenta uma implicância sobre eventos disjuntos, a seguir.</p>
+<div id="teo:disj2eventos" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.13</strong></summary><div>Sejam dois eventos A e B em <span class="math inline">\(\Omega\)</span>. Se <span class="math inline">\(A\cap B = \emptyset\)</span>, então <span class="math inline">\(A^c \cap B^c \neq \emptyset\)</span>, a menos que A e B sejam partição do espaço amostral.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.15" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Considere <span class="math inline">\(A\cap B = \emptyset\)</span> e que <span id="eq-aux11"><span class="math display">\[
+\begin{align}
+      A \cup B &amp; = (A\cap B^c) \cup (A\cap B) \cup (A^c \cap B) \nonumber\\
+               &amp; = (A\cap B^c) \cup (A^c \cap B) \nonumber\\
+               &amp; \neq \Omega \quad \textrm{(A e B não são partição do espaço amostral)}.
+\end{align}
+\tag{5.29}\]</span></span><p></p>
+<p>Usando a Lei de Morgan <span class="math inline">\(A^c\cap B^c = (A\cup B)^c\)</span>, logo percebemos pela expressão (<a href="#eq-aux11" class="quarto-xref"><span>5.29</span></a>) que <span class="math inline">\(A^c\cap B^c \neq \emptyset\)</span>, o que completa a prova.</p>
+</div></details>
+</div>
 
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
@@ -613,6 +1597,9 @@ MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatísta <span>A</span>plicada e <spa
 <div id="ref-mood1974" class="csl-entry" role="listitem">
 MOOD, A. M.; GRAYBILL, F. A.; BOES, D. C. <strong>Introduction to the <span>T</span>heory of <span>S</span>tatistics</strong>. New York: John <span>W</span>iley &amp; <span>S</span>ons, 1974. p. 564
 </div>
+<div id="ref-Morettin2010" class="csl-entry" role="listitem">
+MORETTIN, L. G. <strong>Estatística básica: probabilidade e inferência</strong>. Volume único ed. São Paulo: Pearson Prentice Hall, 2010. p. 390
+</div>
 <div id="ref-pagano2004" class="csl-entry" role="listitem">
 PAGANO, M.; GAUVREAU, K. <strong>Princípios de Bioestatística</strong>. São Paulo: Thomson, 2004. p. 506
 </div>
@@ -629,6 +1616,13 @@ SOUZA, G. S. <strong>Introdução aos <span>M</span>odelos de <span>R</span>egre
 STEEL, R. G. D.; TORRIE, J. H. <strong>Principles and procedures of statistics: A biometrical approach</strong>. 2. ed. New York: McGraw-Hill Book Company, 1980. p. 512
 </div>
 </div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Em notação, temos que <span class="math inline">\(\{A_i\}_{i = 1}^{n} = A_1,~A_2,~\ldots,~, A_n\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Em notação, temos que <span class="math inline">\(\{A_i\}_{i \geq 1} = A_1,~A_2,~\ldots\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
