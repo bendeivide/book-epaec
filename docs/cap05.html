@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -91,19 +125,27 @@ div.csl-indent {
   }
 }</script>
 <style>
-.Definition {
-  --color1: #5e737f;
-  --color2: #49606d;
+.Example {
+  --color1: #c0c0c0;
+  --color2: #808080;
 }
-.Solution {
-  --color1: #9ad5f6;
+.Proof {
+  --color1: #aaa6a3;
 }
 .Corolary {
   --color1: #df6d0d;
   --color2: #b85604;
 }
-.Proof {
-  --color1: #aaa6a3;
+.Solution {
+  --color1: #9ad5f6;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Definition {
+  --color1: #5e737f;
+  --color2: #49606d;
 }
 .Exercise {
   --color1: #4485f6;
@@ -112,14 +154,6 @@ div.csl-indent {
 .Theorem {
   --color1: #d14747;
   --color2: #8b1f1f;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Example {
-  --color1: #c0c0c0;
-  --color2: #808080;
 }
 </style>
 
@@ -288,10 +322,28 @@ window.Quarto = {
   <li><a href="#introd" id="toc-introd" class="nav-link active" data-scroll-target="#introd"><span class="header-section-number">5.1</span> Introdução</a></li>
   <li><a href="#teoconj" id="toc-teoconj" class="nav-link" data-scroll-target="#teoconj"><span class="header-section-number">5.2</span> Introdução à teoria de conjuntos no contexto probabilístico</a></li>
   <li><a href="#definições-de-probabilidades" id="toc-definições-de-probabilidades" class="nav-link" data-scroll-target="#definições-de-probabilidades"><span class="header-section-number">5.3</span> Definições de probabilidades</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#propriedades" id="toc-propriedades" class="nav-link" data-scroll-target="#propriedades"><span class="header-section-number">5.3.1</span> Propriedades</a></li>
   </ul></li>
-  <li><a href="#teorema-de-bayes" id="toc-teorema-de-bayes" class="nav-link" data-scroll-target="#teorema-de-bayes"><span class="header-section-number">5.4</span> Teorema de Bayes</a></li>
+  <li><a href="#eventos-independentes-e-probabilidade-condicional" id="toc-eventos-independentes-e-probabilidade-condicional" class="nav-link" data-scroll-target="#eventos-independentes-e-probabilidade-condicional"><span class="header-section-number">5.4</span> Eventos independentes e probabilidade condicional</a></li>
+  <li><a href="#teorema-de-bayes" id="toc-teorema-de-bayes" class="nav-link" data-scroll-target="#teorema-de-bayes"><span class="header-section-number">5.5</span> Teorema de Bayes</a></li>
+  <li><a href="#variável-aleatória" id="toc-variável-aleatória" class="nav-link" data-scroll-target="#variável-aleatória"><span class="header-section-number">5.6</span> Variável Aleatória</a></li>
+  <li><a href="#distribuição-de-x" id="toc-distribuição-de-x" class="nav-link" data-scroll-target="#distribuição-de-x"><span class="header-section-number">5.7</span> Distribuição de <span class="math inline">\(X\)</span></a></li>
+  <li><a href="#função-de-distribuição-fd-ou-fda" id="toc-função-de-distribuição-fd-ou-fda" class="nav-link" data-scroll-target="#função-de-distribuição-fd-ou-fda"><span class="header-section-number">5.8</span> Função de distribuição (FD ou FDA)</a></li>
+  <li><a href="#natureza-das-variáveis-aleatórias" id="toc-natureza-das-variáveis-aleatórias" class="nav-link" data-scroll-target="#natureza-das-variáveis-aleatórias"><span class="header-section-number">5.9</span> Natureza das variáveis aleatórias</a>
+  <ul>
+  <li><a href="#variável-aleatória-discreta" id="toc-variável-aleatória-discreta" class="nav-link" data-scroll-target="#variável-aleatória-discreta"><span class="header-section-number">5.9.1</span> Variável aleatória discreta</a>
+  <ul class="collapse">
+  <li><a href="#função-de-probabilidade-fp" id="toc-função-de-probabilidade-fp" class="nav-link" data-scroll-target="#função-de-probabilidade-fp"><span class="header-section-number">5.9.1.1</span> Função de probabilidade (FP)</a></li>
+  <li><a href="#fda-para-as-variáveis-aleatórias-discretas" id="toc-fda-para-as-variáveis-aleatórias-discretas" class="nav-link" data-scroll-target="#fda-para-as-variáveis-aleatórias-discretas"><span class="header-section-number">5.9.1.2</span> FDA para as variáveis aleatórias discretas</a></li>
+  </ul></li>
+  <li><a href="#variável-aleatória-contínua" id="toc-variável-aleatória-contínua" class="nav-link" data-scroll-target="#variável-aleatória-contínua"><span class="header-section-number">5.9.2</span> Variável aleatória contínua</a>
+  <ul class="collapse">
+  <li><a href="#função-densidade-de-probabilidade-fdp" id="toc-função-densidade-de-probabilidade-fdp" class="nav-link" data-scroll-target="#função-densidade-de-probabilidade-fdp"><span class="header-section-number">5.9.2.1</span> Função densidade de probabilidade (FDP)</a></li>
+  <li><a href="#fda-para-as-variáveis-aleatórias-contínuas" id="toc-fda-para-as-variáveis-aleatórias-contínuas" class="nav-link" data-scroll-target="#fda-para-as-variáveis-aleatórias-contínuas"><span class="header-section-number">5.9.2.2</span> FDA para as variáveis aleatórias contínuas</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#função-quantil-função-de-sobrevivência-e-função-s-quantil" id="toc-função-quantil-função-de-sobrevivência-e-função-s-quantil" class="nav-link" data-scroll-target="#função-quantil-função-de-sobrevivência-e-função-s-quantil"><span class="header-section-number">5.10</span> Função quantil, Função de sobrevivência e função s-quantil</a></li>
   </ul>
 </nav>
     </div>
@@ -483,9 +535,11 @@ Figura&nbsp;5.2: Escolha do ponto em um círculo unitário.
 </div>
 <p>Uma outra forma de definir o evento impossível é representá-lo como um conjunto vazio, apresentado na Definição <a href="cap05.html#def:conjvazio">5.7</a>, a seguir.</p>
 <div id="def:conjvazio" class="Definition" title="Conjunto Vazio">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.7: </strong>Conjunto Vazio</summary><div>Se o conjunto A não contém nenhum elemento, então A é chamado de conjunto nulo ou conjunto vazio, ou seja, <span class="math inline">\(A=\varnothing\)</span> ou <span class="math inline">\(A=\{ \ \}\)</span>, isto é, <span class="math display">\[\begin{align}
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.7: </strong>Conjunto Vazio</summary><div>Se o conjunto A não contém nenhum elemento, então A é chamado de conjunto nulo ou conjunto vazio, ou seja, <span class="math inline">\(A=\varnothing\)</span> ou <span class="math inline">\(A=\{ \ \}\)</span>, isto é, <span id="eq-conjvazio"><span class="math display">\[
+\begin{align}
   A &amp; = \{\omega \in \Omega: \omega \neq \omega \}.
-\end{align}\]</span><p></p>
+\end{align}
+\tag{5.1}\]</span></span><p></p>
 </div></details>
 </div>
 <p>Podemos perceber que todo conjunto vazio é um subconjunto de qualquer evento não vazio do espaço amostral, como pode ser apresentado no Teorema <a href="cap05.html#teo:vaziosubj">5.1</a>.</p>
@@ -512,7 +566,7 @@ Figura&nbsp;5.2: Escolha do ponto em um círculo unitário.
 \begin{align}
   A\cup B &amp; = \{\omega \in \Omega: ~\omega \in A \textrm{ ou } \omega \in B\}.
 \end{align}
-\tag{5.1}\]</span></span><p></p>
+\tag{5.2}\]</span></span><p></p>
 </div></details>
 </div>
 <p>Vejamos o Exemplo <a href="cap05.html#ex:udoisevt">5.9</a>, sobre a união de dois eventos, a seguir.</p>
@@ -530,7 +584,7 @@ Figura&nbsp;5.2: Escolha do ponto em um círculo unitário.
 \begin{align}
   A \cap B &amp; = \{\omega \in \Omega: ~\omega \in A \textrm{ e } \omega \in B\}.
 \end{align}
-\tag{5.2}\]</span></span><p></p>
+\tag{5.3}\]</span></span><p></p>
 </div></details>
 </div>
 <p>Do Exemplo <a href="cap05.html#ex:udoisevt">5.9</a>, temos que a intersecção de <span class="math inline">\(AB = \{3\}\)</span>.</p>
@@ -565,7 +619,7 @@ B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
 \begin{align}
   A^c &amp; = \{\omega \in \Omega: ~ \omega \notin A\}.
 \end{align}
-\tag{5.3}\]</span></span><p></p>
+\tag{5.4}\]</span></span><p></p>
 </div></details>
 </div>
 <div id="ex:compevento" class="Example">
@@ -580,7 +634,7 @@ B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
 \begin{align}
   A - B &amp; = \{\omega \in \Omega: ~\omega \in A \textrm{ e } \omega \notin B\}.
 \end{align}
-\tag{5.4}\]</span></span><p></p>
+\tag{5.5}\]</span></span><p></p>
 </div></details>
 </div>
 <p>A Definição <a href="cap05.html#def:difeventos">5.14</a> pode ser confundida com a Definição <a href="cap05.html#def:compevento">5.13</a>, porém esta última se remete ao espaço amostral, e a diferença entre dois eventos se refere apenas a existência dos elementos de um evento que não estão em outro evento. Vejamos o Exemplo <a href="cap05.html#ex:difeventos">5.13</a>, e depois compare com o Exemplo <a href="cap05.html#ex:compevento">5.12</a>, para elucidar essas duas definições.</p>
@@ -746,7 +800,7 @@ B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
 </div></details>
 </div>
 <div id="Proof*-5.5" class="Proof">
-<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Supondo satisfeito o <em><strong>Axioma [iii<span class="math inline">\(^{**}\)</span>]</strong></em>, seja uma sequência de eventos <span class="math inline">\(\{A_i\}_{i = 1}^{n} \subset \Omega\)</span>, e que <span class="math inline">\(P(\emptyset) = 0\)</span> (Teorema <span class="math inline">\(\ref{teo:propP(x)}\)</span>, <span class="math inline">\(ii\)</span>), então<p></p>
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Supondo satisfeito o <em><strong>Axioma [iii<span class="math inline">\(^{**}\)</span>]</strong></em>, seja uma sequência de eventos <span class="math inline">\(\{A_i\}_{i = 1}^{n} \subset \Omega\)</span>, e que <span class="math inline">\(P(\emptyset) = 0\)</span> (Teorema <a href="cap05.html#teo:propPx">5.6</a>, <span class="math inline">\(ii\)</span>), então<p></p>
 <p><span class="math display">\[\begin{align*}
         P(\Omega) = P(\Omega \cup \emptyset \cup \emptyset \cup \ldots
         ) = P(\Omega) + P(\emptyset) + P(\emptyset) + \ldots.
@@ -810,7 +864,7 @@ B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
 <div id="corl:eqsistaxiomas" class="Corolary">
 <details class="Corolary fbx-simplebox fbx-default" open=""><summary><strong>Corolário 5.2</strong></summary><div>
 <p>Os dois seguintes sistemas de axiomas são equivalentes:</p>
-<table class="caption-top table">
+<table class="table-striped table-hover caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -924,16 +978,16 @@ P(B) &amp; = &amp; P(A\cap B)+P(A^c\cap B) \\
 \begin{align}
     P(A\cup B) &amp;= P(A \cap B^c) + P(A \cap B) + P(A^c \cap B).
 \end{align}
-\tag{5.5}\]</span></span></p>
+\tag{5.6}\]</span></span></p>
 <p>Por (<span class="math inline">\(iii\)</span>) sabemos que <span class="math inline">\(P(A) = P(B\cap A)+P(B^c\cap A)\)</span>, assim <span id="eq-itemv02"><span class="math display">\[
 \begin{align}
   P(B^c\cap A) = P(A) - P(B\cap A).
 \end{align}
-\tag{5.6}\]</span></span> Ainda, temos que <span class="math inline">\(P(B) = P(A\cap B)+P(A^c\cap B)\)</span> o que implica <span id="eq-itemv03"><span class="math display">\[
+\tag{5.7}\]</span></span> Ainda, temos que <span class="math inline">\(P(B) = P(A\cap B)+P(A^c\cap B)\)</span> o que implica <span id="eq-itemv03"><span class="math display">\[
 \begin{align}
   P(A^c\cap B) = P(B) - P(A\cap B).
 \end{align}
-\tag{5.7}\]</span></span> Portanto, substituindo (<a href="#eq-itemv02" class="quarto-xref"><span>5.6</span></a>) e (<a href="#eq-itemv03" class="quarto-xref"><span>5.7</span></a>) em (<a href="#eq-itemv01" class="quarto-xref"><span>5.5</span></a>), obtemos <span class="math display">\[\begin{eqnarray*}
+\tag{5.8}\]</span></span> Portanto, substituindo (<a href="#eq-itemv02" class="quarto-xref"><span>5.7</span></a>) e (<a href="#eq-itemv03" class="quarto-xref"><span>5.8</span></a>) em (<a href="#eq-itemv01" class="quarto-xref"><span>5.6</span></a>), obtemos <span class="math display">\[\begin{eqnarray*}
     P(A\cup B) &amp;=&amp; P(A) + P(B) - P(A \cap B),
 \end{eqnarray*}\]</span> o que conclui a prova;</p>
 <ol start="6" type="i">
@@ -954,19 +1008,19 @@ P\left(\bigcup^{\infty}_{i=1}A_i\right)= P\left(\bigcup^{\infty}_{i=1}A^*_i\righ
   P(\Omega) &amp; = P(\cup^{n}_{i = 1}A_i^c) + (\cup^{n}_{i = 1}A_i^c)^c \quad \textrm{(eventos disjuntos)} \nonumber\\
   1      &amp; = P(\cup^{n}_{i = 1}A_i^c) + (\cup^{n}_{i = 1}A_i^c)^c. \quad \textrm{(Def. 5.17, axioma $i$)}
 \end{align}
-\tag{5.8}\]</span></span> </font> Logo, pela expressão (<a href="#eq-bonferroni01" class="quarto-xref"><span>5.8</span></a>) e as equivalências apresentadas anteriormente, temos que <span id="eq-bonferroni02"><span class="math display">\[
+\tag{5.9}\]</span></span> </font> Logo, pela expressão (<a href="#eq-bonferroni01" class="quarto-xref"><span>5.9</span></a>) e as equivalências apresentadas anteriormente, temos que <span id="eq-bonferroni02"><span class="math display">\[
 \begin{align}
 P(\cap^{n}_{i = 1}A_i) = 1 - P(\cup^{n}_{i = 1}A_i^c).
 \end{align}
-\tag{5.9}\]</span></span> Pela subaditividade, propriedade (<span class="math inline">\(viii\)</span>), observamos que <span id="eq-bonferroni03"><span class="math display">\[
+\tag{5.10}\]</span></span> Pela subaditividade, propriedade (<span class="math inline">\(viii\)</span>), observamos que <span id="eq-bonferroni03"><span class="math display">\[
 \begin{align}
 P(\cup^{n}_{i=1}A_i^c)\leq \sum^{n}_{i=1}P(A_i^c).
 \end{align}
-\tag{5.10}\]</span></span> Portanto, substituindo (<a href="#eq-bonferroni02" class="quarto-xref"><span>5.9</span></a>) em (<a href="#eq-bonferroni03" class="quarto-xref"><span>5.10</span></a>), temos <span class="math display">\[\begin{align*}
+\tag{5.11}\]</span></span> Portanto, substituindo (<a href="#eq-bonferroni02" class="quarto-xref"><span>5.10</span></a>) em (<a href="#eq-bonferroni03" class="quarto-xref"><span>5.11</span></a>), temos <span class="math display">\[\begin{align*}
 1- P(\cap_{i = 1}^{n}A_i) &amp; \leq \sum_{i = 1}^{n}P(A_i^c)\\
 -P(\cap_{i = 1}^{n}A_i) &amp; \leq - 1 + \sum_{i = 1}^{n}P(A_i^c) \quad \times (-1)\\
 P(\cap_{i = 1}^{n}A_i) &amp; \geq 1 - \sum_{i = 1}^{n}P(A_i^c),\\
-\end{align*}\]</span> o que se conclui a prova; =</p></li>
+\end{align*}\]</span> o que se conclui a prova;</p></li>
 <li><p>Vamos apresentar duas provas:</p></li>
 </ol>
 <p><em>Primeira demonstração</em></p>
@@ -975,13 +1029,13 @@ P(\cap_{i = 1}^{n}A_i) &amp; \geq 1 - \sum_{i = 1}^{n}P(A_i^c),\\
 \begin{align}
 P(A_1 \cup A_2) &amp; = P(A_1)+P(A_2) - P(A_1\cap A_2)
 \end{align}
-\tag{5.11}\]</span></span></p></li>
+\tag{5.12}\]</span></span></p></li>
 <li><p>Para <span class="math inline">\(n = 3\)</span>, vamos considerar <span class="math inline">\(A = \{A_1 \cup A_2\}\)</span>, e que <span id="eq-aux21"><span class="math display">\[
 \begin{align}
       P(A_1 \cup A_2 \cup A_3) &amp; = P(A \cup A_3) \nonumber\\
       &amp; = P(A) + P(A_3) - P(A \cap A_3).
 \end{align}
-\tag{5.12}\]</span></span></p></li>
+\tag{5.13}\]</span></span></p></li>
 </ul>
 <p>Segue que <span class="math inline">\(P(A) = P(A_1 \cup A_2)  =  P(A_1)+P(A_2) - P(A_1\cap A_2)\)</span> e que <span id="eq-aux31"><span class="math display">\[
 \begin{align}
@@ -990,28 +1044,30 @@ P(A_1 \cup A_2) &amp; = P(A_1)+P(A_2) - P(A_1\cap A_2)
         &amp; = P(A_1 \cap A_3) + P(A_2 \cap A_3)\\
         &amp; \quad - P(A_1 \cap A_2 \cap A_3) \nonumber
 \end{align}
-\tag{5.13}\]</span></span></p>
-<p>Substituindo as expressões (<a href="#eq-aux11" class="quarto-xref"><span>5.29</span></a>) e (<a href="#eq-aux31" class="quarto-xref"><span>5.13</span></a>) em (<a href="#eq-aux21" class="quarto-xref"><span>5.24</span></a>), logo <span class="math display">\[\begin{align*}
+\tag{5.14}\]</span></span></p>
+<p>Substituindo as expressões (<a href="#eq-aux11" class="quarto-xref"><span>5.45</span></a>) e (<a href="#eq-aux31" class="quarto-xref"><span>5.14</span></a>) em (<a href="#eq-aux21" class="quarto-xref"><span>5.39</span></a>), logo <span class="math display">\[\begin{align*}
         P(A_1 \cup A_2 \cup A_3) &amp; = P(A_1)+ P(A_2) + P(A_3) - P(A_1\cap A_2)\\
                                  &amp; \quad -  P(A_1 \cap A_3) -  P(A_2 \cap A_3)\\
         &amp; \quad + P(A_1 \cap A_2 \cap A_3).
 \end{align*}\]</span></p>
 <ul>
-<li><p>Para <span class="math inline">\(n = 4\)</span>, já apresentando o resultado direto, temos <span class="math display">\[\begin{align}
+<li>Para <span class="math inline">\(n = 4\)</span>, já apresentando o resultado direto, temos <span id="eq-n4"><span class="math display">\[
+\begin{align}
       P(A_1 \cup A_2 \cup A_3 \cup A_4) &amp;  = \sum_{i = 1}^{4}P(A_i) - \sum_{1\leq i &lt; j}^{4}P(A_i \cap A_j) +\nonumber\\
       &amp; \quad + \sum_{1 \leq i &lt; j &lt; k}^{4}P(A_i \cap A_j \cap A_k) + \nonumber\\
       &amp; \quad - P(\cap_{i = 1}^{4}A_i).
-\end{align}\]</span></p></li>
-<li><p>Para <span class="math inline">\(n = 5\)</span>, já apresentando o resultado direto, temos <span id="eq-aux41"><span class="math display">\[
+\end{align}
+\tag{5.15}\]</span></span></li>
+<li>Para <span class="math inline">\(n = 5\)</span>, já apresentando o resultado direto, temos <span id="eq-aux41"><span class="math display">\[
 \begin{align}
       P\left(\bigcup_{i = 1}^{5}A_i\right) &amp;  = \sum_{i = 1}^{5}P(A_i) - \sum_{1 \leq i &lt; j}^{5}P(A_i \cap A_j) +\nonumber \\
       &amp; \quad + \sum_{1 \leq i &lt; j &lt; k}^{5}P(A_i \cap A_j \cap A_k) +\nonumber\\
       &amp; \quad - \sum_{1 \leq i &lt; j &lt; k &lt; l}^{5}P(A_i \cap A_j \cap A_k \cap A_l) +\nonumber\\
       &amp; \quad + P(\cap_{i = 1}^{5}A_i).
 \end{align}
-\tag{5.14}\]</span></span></p></li>
+\tag{5.16}\]</span></span></li>
 </ul>
-<p>Observe que a última expressão para a união das probabilidades alterna o sinal à medida que <span class="math inline">\(n\)</span> aumenta, isto é, quando <span class="math inline">\(n\)</span> é par, a interseção de todos os eventos é subtraída. Quando <span class="math inline">\(n\)</span> é ímpar, a interseção de todos os eventos é somada. Assim, para um <span class="math inline">\(n\)</span> qualquer induzindo pela expressão (<a href="#eq-aux41" class="quarto-xref"><span>5.14</span></a>), temos</p>
+<p>Observe que a última expressão para a união das probabilidades alterna o sinal à medida que <span class="math inline">\(n\)</span> aumenta, isto é, quando <span class="math inline">\(n\)</span> é par, a interseção de todos os eventos é subtraída. Quando <span class="math inline">\(n\)</span> é ímpar, a interseção de todos os eventos é somada. Assim, para um <span class="math inline">\(n\)</span> qualquer induzindo pela expressão (<a href="#eq-aux41" class="quarto-xref"><span>5.16</span></a>), temos</p>
 <p><span class="math display">\[\begin{align*}
         P\left(\bigcup_{i = 1}^{n}A_i\right) &amp;  = \sum_{i = 1}^{n}P(A_i) - \sum_{1 \leq i &lt; j}^{n}P(A_i \cap A_j) + \nonumber\\
         &amp; \quad  + \sum_{1 \leq i &lt; j &lt; k}^{n}P(A_i \cap A_j \cap A_k) - \ldots\nonumber\\
@@ -1027,7 +1083,7 @@ P(A_1 \cup A_2) &amp; = P(A_1)+P(A_2) - P(A_1\cap A_2)
         &amp; \quad \left.\ldots + (-1)^{(n - 1) + 1}P\left(\cap_{i =1}^{n-1}A_i\right)\right]+ \nonumber\\
         &amp; \quad +P\left(A_n\right) - P\left( \bigcup_{i = 1}^{n-1}A_i \cap A_n\right).
 \end{align}
-\tag{5.15}\]</span></span> Observe que <font size="+0"> <span id="eq-aux61"><span class="math display">\[
+\tag{5.17}\]</span></span> Observe que <font size="+0"> <span id="eq-aux61"><span class="math display">\[
 \begin{align}
         P\left( \bigcup_{i = 1}^{n-1}A_i \cap A_n\right) &amp; = \sum_{i = 1}^{n-1}P(A_i\cap A_n) - \sum_{1 \leq i&lt;j}^{n-1}P[(A_i\cap A_n)\cap (A_j\cap A_n)] +\nonumber\\
         &amp; \quad  \ldots + (-1)^{(n-1) + 1}P\left(\bigcap_{i = 1}^{n-1}(A_i\cap A_n)\right) \nonumber\\
@@ -1035,7 +1091,7 @@ P(A_1 \cup A_2) &amp; = P(A_1)+P(A_2) - P(A_1\cap A_2)
         &amp; \quad +(-1)^{n-1}\sum_{1 \leq i_1 &lt; \ldots &lt; i_{n-2}}^{n-1}P(\cap^{n-2}_{j = 1} A_{i_{j}}\cap A_n)+\nonumber\\
         &amp; \quad + (-1)^{(n-1) + 1}P\left(\cap_{i = 1}^{n}A_i\right).
 \end{align}
-\tag{5.16}\]</span></span> </font> Então, a expressão <span class="math inline">\(P\left( \bigcup_{i = 1}^{n-1}A_i \cap A_n\right)\)</span> recebe o sinal negativo, e portanto iremos substituir (<a href="#eq-aux61" class="quarto-xref"><span>5.16</span></a>) em (<a href="#eq-aux51" class="quarto-xref"><span>5.21</span></a>), levando em consideração a substituição do sinal, que segue <font size="-1"> <span id="eq-aux7"><span class="math display">\[
+\tag{5.18}\]</span></span> </font> Então, a expressão <span class="math inline">\(P\left( \bigcup_{i = 1}^{n-1}A_i \cap A_n\right)\)</span> recebe o sinal negativo, e portanto iremos substituir (<a href="#eq-aux61" class="quarto-xref"><span>5.18</span></a>) em (<a href="#eq-aux51" class="quarto-xref"><span>5.32</span></a>), levando em consideração a substituição do sinal, que segue <font size="-1"> <span id="eq-aux7"><span class="math display">\[
 \begin{align}
 P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \sum_{1 \leq i &lt; j}^{n-1}P(A_i \cap A_j) + \sum_{1 \leq i &lt; j &lt; k}^{n-1}P(A_i \cap A_j \cap A_k) - \ldots\right.\nonumber\\
     &amp; \quad \left. \ldots + (-1)^{(n - 1) + 1}P\left(\cap_{i =1}^{n-1}A_i\right)\right]+ P\left(A_n\right) - \left[\sum_{i = 1}^{n-1}P(A_i\cap A_n) - \right. \nonumber\\
@@ -1046,7 +1102,7 @@ P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \s
     &amp; \quad \ldots + (-1)^{n-1}\sum_{1 \leq i_1 &lt; \ldots &lt; i_{n-2}}^{n-1}P(\cap^{n-2}_{j = 1} A_{i_{j}}\cap A_n) +\nonumber\\
     &amp; \quad \ldots + (-1)^{(n - 1) + 1}P\left(\cap_{i =1}^{n-1}A_i\right) + (-1)^{(n-1) + 1}P\left(\cap_{i = 1}^{n}A_i\right)
 \end{align}
-\tag{5.17}\]</span></span> </font></p>
+\tag{5.19}\]</span></span> </font></p>
 <p>Nesse momento, precisamos verificar algumas equivalências:</p>
 <ul>
 <li>Primeira equivalência:</li>
@@ -1056,7 +1112,7 @@ P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \s
     \sum_{i = 1}^{n-1}P(A_i) + P\left(A_n\right) &amp; = P(A_1) + \ldots + P(A_{n-1}) + P(A_n) \nonumber\\
     &amp; = \sum_{i = 1}^{n}P(A_i).
 \end{align}
-\tag{5.18}\]</span></span></p>
+\tag{5.20}\]</span></span></p>
 <ul>
 <li><p>Segunda equivalência: <font size="-1"> <span id="eq-aux9"><span class="math display">\[
 \begin{align}
@@ -1066,30 +1122,98 @@ P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \s
   &amp; \quad \left.  + P(A_2 \cap A_n) + \ldots +  P(A_{n-1} \cap A_{n}) + \right] \nonumber\\
   &amp; = \sum_{1 \leq i &lt; j}^{n}P(A_i \cap A_j).
 \end{align}
-\tag{5.19}\]</span></span> </font></p></li>
+\tag{5.21}\]</span></span> </font></p></li>
 <li><p>Terceira equivalência:</p></li>
 </ul>
 <p><span id="eq-aux10"><span class="math display">\[
 \begin{align}
         \sum_{i &lt; j &lt; k}^{n-1}P(A_i \cap A_j \cap A_k) +\sum_{1 \leq i&lt;j}^{n-1}P(A_i\cap A_j \cap A_n) &amp; =  \sum_{i &lt; j &lt; k}^{n}P(A_i \cap A_j \cap A_k)
 \end{align}
-\tag{5.20}\]</span></span></p>
+\tag{5.22}\]</span></span></p>
 <ul>
-<li>Demais equivalências: os demais termos apresentados em (<a href="#eq-aux7" class="quarto-xref"><span>5.17</span></a>) seguem as mesmas ideias das equivalências apresentadas anteriormente, exceto o último termo <span class="math inline">\((-1)^{(n-1) + 1}P\left(\cap_{i = 1}^{n}A_i\right)\)</span>.</li>
+<li>Demais equivalências: os demais termos apresentados em (<a href="#eq-aux7" class="quarto-xref"><span>5.19</span></a>) seguem as mesmas ideias das equivalências apresentadas anteriormente, exceto o último termo <span class="math inline">\((-1)^{(n-1) + 1}P\left(\cap_{i = 1}^{n}A_i\right)\)</span>.</li>
 </ul>
-<p>Portanto, substituindo as expressões (<a href="#eq-aux8" class="quarto-xref"><span>5.18</span></a>), (<a href="#eq-aux9" class="quarto-xref"><span>5.19</span></a>) e (<a href="#eq-aux10" class="quarto-xref"><span>5.20</span></a>) em (<a href="#eq-aux7" class="quarto-xref"><span>5.17</span></a>), chegamos ao resultado esperado <span class="math display">\[\begin{align*}
+<p>Portanto, substituindo as expressões (<a href="#eq-aux8" class="quarto-xref"><span>5.20</span></a>), (<a href="#eq-aux9" class="quarto-xref"><span>5.21</span></a>) e (<a href="#eq-aux10" class="quarto-xref"><span>5.22</span></a>) em (<a href="#eq-aux7" class="quarto-xref"><span>5.19</span></a>), chegamos ao resultado esperado <span class="math display">\[\begin{align*}
   P(\bigcup_{i = 1}^{n}A_i) &amp; = \sum_{i = 1}^{n}P(A_i) - \sum_{i &lt; j}^{n}P(A_i \cap A_j) + \sum_{i &lt; j &lt; k}^{n}P(A_i \cap A_j \cap A_k) - \ldots \\
   &amp; \quad \dots + (-1)^{n + 1}P(\cap_{i = 1}^{n} A_n),
 \end{align*}\]</span> o que conclui a prova.</p>
 </div></details>
 </div>
-<p>Percebemos ainda no Teorema <a href="cap05.html#teo:propPx">5.6</a> que a propriedade (<span class="math inline">\(xi\)</span>) é uma generalização da propriedade (<span class="math inline">\(v\)</span>). Ao passo que a condição de uma sequência de eventos serem disjuntos dois a dois, Definição <a href="cap05.html#def:disjeventos">5.10</a>, temos <span class="math display">\[\begin{align}
+<p>Os resultados apresentados no Teorema <a href="cap05.html#teo:propPx">5.6</a> como propriedades da medida de probabilidade, nos auxilia em diversos problemas de uma forma geral, como condições elementares apresentadas nas sete primeiras propriedades, condições limitantes nas propriedades de (<span class="math inline">\(viii\)</span>) a (<span class="math inline">\(x\)</span>), e a condição de união de uma sequência de eventos. Esta última necessitação de um exemplo teórico mais simples para a sua elucidação, apresentada no Exemplo <a href="cap05.html#ex:teoincexcxi">5.17</a>.</p>
+<div id="ex:teoincexcxi" class="Example" title="Princípio da inclusão-exclusão">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.17: </strong>Princípio da inclusão-exclusão</summary><div>
+<p>Após termos apresentado nas propriedades da probabilidade, Teorema <a href="cap05.html#teo:propPx">5.6</a> (<span class="math inline">\(xi\)</span>), a propriedade da união de <span class="math inline">\(n\)</span> eventos, vamos elucidar uma dedução mais simples para <span class="math inline">\(n = 4\)</span>, que segue:</p>
+<p><span id="eq-princincexc01"><span class="math display">\[
+\begin{align}
+    P\left( \bigcup^{4}_{i = 1}A_i\right) &amp; = P\left( \bigcup^{3}_{i = 1}(A_i \cup A_4)\right) \nonumber\\
+    &amp; =  P\left( \bigcup^{3}_{i = 1}A_i\right) +  P\left(A_4\right) - P\left( \bigcup^{3}_{i = 1}A_i \cap A_4\right).
+\end{align}
+\tag{5.23}\]</span></span></p>
+<p>Deduzindo os termos individuais em (<a href="#eq-princincexc01" class="quarto-xref"><span>5.23</span></a>), temos <span id="eq-princincexc02"><span class="math display">\[
+\begin{align}
+  P\left( \bigcup^{3}_{i = 1}A_i\right) &amp;= \sum_{i = 1}^{3}P(A_i) - \sum_{1 \leq i &lt; j}^{3}P(A_i \cap A_j) + P(\cap_{i = 1}^{3}A_i).
+\end{align}
+\tag{5.24}\]</span></span></p>
+<p>Deduzindo o outro termo, temos</p>
+<p><font size="-1"> <span id="eq-princincexc03"><span class="math display">\[
+\begin{align}
+    P\left( \bigcup^{3}_{i = 1}A_i \cap A_4\right) &amp;= \sum_{i = 1}^{3}P(A_i \cap A_4) - \sum_{1 \leq i &lt; j}^{3}P(A_i \cap A_j \cap A_4) + P(\cap_{i = 1}^{4}A_i).
+\end{align}
+\tag{5.25}\]</span></span> </font></p>
+<p>Substituindo (<a href="#eq-princincexc02" class="quarto-xref"><span>5.24</span></a>) e (<a href="#eq-princincexc03" class="quarto-xref"><span>5.25</span></a>) em (<a href="#eq-princincexc01" class="quarto-xref"><span>5.23</span></a>), obtemos <font size="-1"> <span id="eq-princincexc04"><span class="math display">\[
+\begin{align}
+  P\left( \bigcup^{4}_{i = 1}A_i\right) &amp; = \left[\sum_{i = 1}^{3}P(A_i) - \sum_{1 \leq i &lt; j}^{3}P(A_i \cap A_j) + P(\cap_{i = 1}^{3}A_i) \right] +  P\left(A_4\right) - \nonumber \\
+  &amp; \quad - \left[\sum_{i = 1}^{3}P(A_i \cap A_4) - \sum_{1 \leq i &lt; j}^{3}P(A_i \cap A_j \cap A_4) + P(\cap_{i = 1}^{4}A_i) \right] \nonumber \\
+  &amp; = \sum_{i = 1}^{3}P(A_i) + P\left(A_4\right) - \sum_{1 \leq i &lt; j}^{3}P(A_i \cap A_j) - \sum_{i = 1}^{3}P(A_i \cap A_4) + \nonumber\\
+  &amp; \quad + P(\cap_{i = 1}^{3}A_i) + \sum_{1 \leq i &lt; j}^{3}P(A_i \cap A_j \cap A_4) - P(\cap_{i = 1}^{4}A_i).
+\end{align}
+\tag{5.26}\]</span></span> </font></p>
+<p>Devemos observar as seguintes equivalências:</p>
+<ul>
+<li>Primeira equivalência:</li>
+</ul>
+<p><span id="eq-princincexc05"><span class="math display">\[
+\begin{align}
+  \sum_{i = 1}^{3}P(A_i) + P\left(A_4\right) &amp; = P(A_1) + P(A_2) + P(A_3) + P(A_4) \nonumber \\
+  &amp; = \sum_{i = 1}^{4}P(A_i);
+\end{align}
+\tag{5.27}\]</span></span></p>
+<ul>
+<li>Segunda equivalência: <font size="-1"> <span id="eq-princincexc06"><span class="math display">\[
+\begin{align}
+\sum_{1 \leq i &lt; j}^{3}P(A_i \cap A_j) + \sum_{i = 1}^{3}P(A_i \cap A_4) &amp; =   [P(A_1\cap A_2) + P(A_1\cap A_3) +\\
+&amp; \quad P(A_2\cap A_3)]+ [P(A_1\cap A_4) +\\
+&amp; \quad + P(A_2\cap A_4) + P(A_3\cap A_4)]\\
+&amp; = \sum_{1 \leq i &lt; j}^{4}P(A_i \cap A_j);
+\end{align}
+\tag{5.28}\]</span></span> </font></li>
+<li>Terceira equivalência: para este caso, observando a última parte do resultado em (<a href="#eq-aux7" class="quarto-xref"><span>5.19</span></a>), isto é, <font size="-1"> <span class="math display">\[\begin{align*}
+\ldots + (-1)^{n-1}\sum_{1 \leq i_1 &lt; \ldots &lt; i_{n-2}}^{n-1}P(\cap^{n-2}_{j = 1} A_{i_{j}}\cap A_n) + \ldots + (-1)^{(n - 1) + 1}P\left(\cap_{i =1}^{n-1}A_i\right);
+\end{align*}\]</span> </font> a parte similar para o exemplo se refere a seguinte equivalência: <font size="-1"> <span id="eq-princincexc08"><span class="math display">\[
+\begin{align}
+P(\cap_{i = 1}^{3}A_i) + \sum_{1 \leq i &lt; j}^{3}P(A_i \cap A_j \cap A_4) &amp; = [P(A_1\cap A_2 \cap A_3)] + \\
+&amp;  \quad + [P(A_1\cap A_2 \cap A_4) +\\
+&amp; \quad + P(A_1\cap A_3 \cap A_4) + \\
+&amp; \quad + P(A_2 \cap A_3 \cap A_4)] \\
+&amp; = \sum_{1 \leq i &lt; j &lt; k}^{4}P(A_i \cap A_j \cap A_k).
+\end{align}
+\tag{5.29}\]</span></span> </font> Substituindo as equivalências em (<a href="#eq-princincexc04" class="quarto-xref"><span>5.26</span></a>), logo <font size="-1"> <span class="math display">\[\begin{align*}
+P\left( \bigcup^{4}_{i = 1}A_i\right) &amp; = \sum_{i = 1}^{4}P(A_i) - \sum_{1 \leq i &lt; j}^{4}P(A_i \cap A_j) + \sum_{1 \leq i &lt; j &lt; k}^{4}P(A_i \cap A_j \cap A_k) - P(\cap_{i = 1}^{4}A_i),
+\end{align*}\]</span> </font> resultado igual ao que apresentamos em (<a href="#eq-aux41" class="quarto-xref"><span>5.16</span></a>).</li>
+</ul>
+</div></details>
+</div>
+<p>Percebemos ainda no Teorema <a href="cap05.html#teo:propPx">5.6</a> que a propriedade (<span class="math inline">\(xi\)</span>) é uma generalização da propriedade (<span class="math inline">\(v\)</span>). Ao passo que a condição de uma sequência de eventos serem disjuntos dois a dois, Definição <a href="cap05.html#def:disjeventos">5.10</a>, temos <span id="eq-seqinfdisj"><span class="math display">\[
+\begin{align}
   P\left(\bigcup^{\infty}_{i = 1}A_i\right) = \sum_{i = 1}^{\infty}P(A_i).
-\end{align}\]</span> Se considerarmos <span class="math inline">\(A_i = \emptyset\)</span> para todo <span class="math inline">\(i = n + 1, n + 2, \ldots\)</span>, então restringimos a probabilidade de uma soma finita, isto é, <span class="math display">\[\begin{align}
+\end{align}
+\tag{5.30}\]</span></span> Se considerarmos <span class="math inline">\(A_i = \emptyset\)</span> para todo <span class="math inline">\(i = n + 1, n + 2, \ldots\)</span>, então restringimos a probabilidade de uma soma finita, isto é, <span id="eq-seqfindisj"><span class="math display">\[
+\begin{align}
   P\left(\bigcup^{n}_{i = 1}A_i\right) = \sum_{i = 1}^{n}P(A_i),
-\end{align}\]</span> uma vez que <span class="math inline">\(P(\emptyset) = 0\)</span> (Teorema <a href="cap05.html#teo:propPx">5.6</a>, <span class="math inline">\(ii\)</span>). Por fim, para a situação de termo apenas dois eventos, o resultado é o Axioma (<span class="math inline">\(iii\)</span>) da Definição <a href="cap05.html#def:medprob">5.17</a>. Vejamos mais um exemplo, a seguir.</p>
+\end{align}
+\tag{5.31}\]</span></span> uma vez que <span class="math inline">\(P(\emptyset) = 0\)</span> (Teorema <a href="cap05.html#teo:propPx">5.6</a>, <span class="math inline">\(ii\)</span>). Por fim, para a situação de termo apenas dois eventos, o resultado é o Axioma (<span class="math inline">\(iii\)</span>) da Definição <a href="cap05.html#def:medprob">5.17</a>. Vejamos mais um exemplo, a seguir.</p>
 <div id="ex:prob2" class="Example" title="Retirado de Devore (2006)">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.17: </strong>Retirado de Devore (2006)</summary><div>Uma empresa de eletricidade oferece uma taxa vitalícia de energia a qualquer lar cuja utilização de energia esteja abaixo de <span class="math inline">\(240\)</span>~kWh durante um determinado mês. Represente por <span class="math inline">\(A\)</span> o evento de um lar selecionado aleatoriamente em um comunidade que não excede a utilização da taxa vitalícia em janeiro e por <span class="math inline">\(B\)</span> o evento análogo para o mês de julho (<span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> se referem ao mesmo lar). Suponha que <span class="math inline">\(P(A) = 0,8\)</span>, <span class="math inline">\(P(B) = 0,7\)</span> e <span class="math inline">\(P(A \cup B) = 0,9\)</span>. Calcule:<p></p>
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.18: </strong>Retirado de Devore (2006)</summary><div>Uma empresa de eletricidade oferece uma taxa vitalícia de energia a qualquer lar cuja utilização de energia esteja abaixo de <span class="math inline">\(240\)</span>~kWh durante um determinado mês. Represente por <span class="math inline">\(A\)</span> o evento de um lar selecionado aleatoriamente em um comunidade que não excede a utilização da taxa vitalícia em janeiro e por <span class="math inline">\(B\)</span> o evento análogo para o mês de julho (<span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> se referem ao mesmo lar). Suponha que <span class="math inline">\(P(A) = 0,8\)</span>, <span class="math inline">\(P(B) = 0,7\)</span> e <span class="math inline">\(P(A \cup B) = 0,9\)</span>. Calcule:<p></p>
 <ol type="a">
 <li><span class="math inline">\(P(A \cap B)\)</span>;</li>
 <li>A probabilidade de a quantia da taxa vitalícia ser excedida em exatamente um dos dois meses. Descreva esse evento em termos de <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>.</li>
@@ -1104,7 +1228,7 @@ P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \s
              &amp; =  0,8 + 0,7 - 0,9 \nonumber\\
              &amp; = 0,6.
 \end{align}
-\tag{5.21}\]</span></span> No caso do ítem (b), o evento que representa o <em>lar X de a quantia vitalícia ser excedida em exatamente um dos dois meses</em> por ser representado por: <span class="math inline">\((A^c \cap B) \cup (A \cap B^c)\)</span>, uma vez que,</p>
+\tag{5.32}\]</span></span> No caso do ítem (b), o evento que representa o <em>lar X de a quantia vitalícia ser excedida em exatamente um dos dois meses</em> por ser representado por: <span class="math inline">\((A^c \cap B) \cup (A \cap B^c)\)</span>, uma vez que,</p>
 <p><span class="math display">\[\begin{align*}
   A^c  = \{\omega \in \Omega: \omega = \textrm{``lar X que exceder 240kWh em janeiro''}\}, \\
   B^c  = \{\omega \in \Omega: \omega = \textrm{``lar X que exceder 240kWh em julho''}\}.\\
@@ -1117,9 +1241,19 @@ P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \s
 \end{align*}\]</span></p>
 </div></details>
 </div>
-<p>Nessa seção, iremos apresentar iniciar com uma motivação, por meio do Exemplo <a href="cap05.html#ex:jovemprend">5.18</a>, uma abordagem sobre dois assuntos muito interessantes na probabilidade, que são a independência de eventos e a modificação do espaço amostral, dada uma informação antecipada, e qual a implicância dessas informações para a probabilidade de um evento ocorrer.</p>
+<div id="ex:prob3" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.19</strong></summary><div>Usando os resultados do Exemplo <a href="cap05.html#ex:prob2">5.18</a>, podemos calcular a probabilidade de <span class="math inline">\(A^c\)</span>, usando a propriedade (<span class="math inline">\(i\)</span>) do Teorema <span class="math inline">\(\ref{teo:propP(x)}\)</span>, ou seja: <span class="math display">\[\begin{align*}
+  P(A^c) &amp; = 1 - 0,8 = 0,2.
+\end{align*}\]</span> Isso representa a chance do exceder a energia acima de 240kWh, em janeiro.<p></p>
+</div></details>
+</div>
+</section>
+</section>
+<section id="eventos-independentes-e-probabilidade-condicional" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="eventos-independentes-e-probabilidade-condicional"><span class="header-section-number">5.4</span> Eventos independentes e probabilidade condicional</h2>
+<p>Nessa seção, iremos apresentar iniciar com uma motivação, por meio do Exemplo <a href="cap05.html#ex:jovemprend">5.20</a>, uma abordagem sobre dois assuntos muito interessantes na probabilidade, que são a independência de eventos e a modificação do espaço amostral, dada uma informação antecipada, e qual a implicância dessas informações para a probabilidade de um evento ocorrer.</p>
 <div id="ex:jovemprend" class="Example">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.18</strong></summary><div>
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.20</strong></summary><div>
 <p>Paulo é um jovem empreendedor e quer abrir seu próprio negócio. Ele observou que o mercado de sandálias era lucrativo. Então resolveu abrir uma fábrica de sandálias. Devido a dificuldade financeira, resolveu comprar três máquinas de sandálias usadas. As informações anteriores sobre estas máquinas dadas pelo proprietário foram:</p>
 <table class="table-striped table-hover caption-top table">
 <thead>
@@ -1160,9 +1294,11 @@ P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \s
 </div>
 <p>Muitas vezes nos deparamos com situações em que antes da realização de algum experimento, temos alguma informação adicional. Queremos saber o quanto que essa informação pode afetar a medida de probabilidade. Assim, apresentamos a Definição <a href="cap05.html#def:probcond">5.18</a>, que define a probabilidade condicional, a seguir.</p>
 <div id="def:probcond" class="Definition" title="Probabilidade condicional">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.18: </strong>Probabilidade condicional</summary><div>Dados dois eventos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> definidos em <span class="math inline">\(\Omega\)</span>, então a probabilidade condicional do evento <span class="math inline">\(A\)</span> dado que ocorreu o evento <span class="math inline">\(B\)</span>, denotado por <span class="math inline">\(P(A|B)\)</span>, é definida por: <span class="math display">\[\begin{equation}
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.18: </strong>Probabilidade condicional</summary><div>Dados dois eventos <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> definidos em <span class="math inline">\(\Omega\)</span>, então a probabilidade condicional do evento <span class="math inline">\(A\)</span> dado que ocorreu o evento <span class="math inline">\(B\)</span>, denotado por <span class="math inline">\(P(A|B)\)</span>, é definida por: <span id="eq-probcond"><span class="math display">\[
+\begin{equation}
     P(A|B) = \frac{P(A \cap B)}{P(B)},
-\end{equation}\]</span> para <span class="math inline">\(P(B) &gt; 0\)</span>.<p></p>
+\end{equation}
+\tag{5.33}\]</span></span> para <span class="math inline">\(P(B) &gt; 0\)</span>.<p></p>
 </div></details>
 </div>
 <p>Baseado no problema de Paulo, denotemos o evento <span class="math inline">\(D\)</span> as sandálias produzidas com defeitos pela empresa, <span class="math inline">\(M_1\)</span> o evento que representa as sandálias produzidas pela máquina <span class="math inline">\(M_1\)</span>, <span class="math inline">\(M_2\)</span> o evento que representa as sandálias produzidas pela máquina <span class="math inline">\(M_2\)</span> e <span class="math inline">\(M_3\)</span> o evento que representa as sandálias produzidas pela máquina <span class="math inline">\(M_3\)</span>. Assim, percebemos que a probabilidade do evento <span class="math inline">\(D\)</span> não pode ser observada facilmente, pois o defeito dos produtos produzidos pelas máquinas está condicionado a cada máquina. Desse modo podemos representar, a probabilidade desses defeitos da seguinte forma: <span class="math inline">\(P(D|M_1) = 0,01\)</span>, <span class="math inline">\(P(D|M_2) = 0,02\)</span>, e <span class="math inline">\(P(D|M_3) = 0,03\)</span>. Essas probabilidades apresentam uma alteração no espaço amostral para cada evento, porque esses resultados mostram a chance de defeito do produto, dado o conhecimento de que máquina foi produzido, é o que chamamos de restrição do espaço amostral.</p>
@@ -1222,26 +1358,26 @@ P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \s
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.19: </strong>Partição de <span class="math inline">\(\Omega\)</span></summary><div>Se a sequência <span class="math inline">\(A_1, A_2, \ldots,\)</span> são disjuntos dois a dois, não vazios, e <span class="math inline">\(\bigcup^{\infty}_{i=1}A_i=\Omega\)</span>, então dizemos que essa sequência forma uma partição de <span class="math inline">\(\Omega\)</span>.<p></p>
 </div></details>
 </div>
-<p>Entretanto, para calcular a probabilidade de uma sandália está com defeito, isto é <span class="math inline">\(P(D)\)</span>, independente de qual máquina a produziu, pode ser calculada por meio do Teorema <a href="cap05.html#teo:probtotal">5.9</a>, a seguir.</p>
+<p>Entretanto, para calcular a probabilidade de uma sandália está com defeito, isto é <span class="math inline">\(P(D)\)</span>, independente de qual máquina a produziu, usamos o Teorema <a href="cap05.html#teo:probtotal">5.9</a>, a seguir.</p>
 <div id="teo:probtotal" class="Theorem" title="Teorema da probabilidade total">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.9: </strong>Teorema da probabilidade total</summary><div>Seja uma sequência de eventos <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> de <span class="math inline">\(\Omega\)</span>, disjuntos, tal que <span class="math inline">\(\bigcup^{n}_{i = 1}A_i = \Omega\)</span>, e <span class="math inline">\(B\)</span> um evento de <span class="math inline">\(\Omega\)</span>, não vazio, então a probabilidade de <span class="math inline">\(B\)</span> é dada por: <span class="math display">\[\begin{eqnarray}
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.9: </strong>Teorema da probabilidade total</summary><div>Seja uma sequência de eventos <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> de <span class="math inline">\(\Omega\)</span>, disjuntos, tal que <span class="math inline">\(\bigcup^{n}_{i = 1}A_i = \Omega\)</span>, e <span class="math inline">\(B\)</span> um evento de <span class="math inline">\(\Omega\)</span>, não vazio, então a probabilidade de <span class="math inline">\(B\)</span> é dada por: <span id="eq-teoprobtot"><span class="math display">\[
+\begin{eqnarray}
     P(B) = \sum_{i = 1}^{n}P(B|A_i)P(A_i),
-\end{eqnarray}\]</span> para <span class="math inline">\(P(A_i) &gt; 0\)</span>, sendo <span class="math inline">\(i = 1, 2, \ldots, n\)</span>.<p></p>
+\end{eqnarray}
+\tag{5.34}\]</span></span> para <span class="math inline">\(P(A_i) &gt; 0\)</span>, sendo <span class="math inline">\(i = 1, 2, \ldots, n\)</span>.<p></p>
 </div></details>
 </div>
 <div id="Proof*-5.11" class="Proof">
-<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
-<pre><code>Sabendo que $A_i \cap_{i \neq j} A_j$ e que $\bigcup^{n}_{i = 1}B\cap A_i = \Omega$, então $\bigcup_{i = 1}^{n} B\cap A_i = B$ e os $B\cap A_i$ são também disjuntos. Dessa forma,</code></pre>
-<p><span class="math display">\[\begin{align*}
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Sabendo que <span class="math inline">\(A_i \cap_{i \neq j} A_j\)</span> e que <span class="math inline">\(\bigcup^{n}_{i = 1}B\cap A_i = \Omega\)</span>, então <span class="math inline">\(\bigcup_{i = 1}^{n} B\cap A_i = B\)</span> e os <span class="math inline">\(B\cap A_i\)</span> são também disjuntos. Dessa forma, <span class="math display">\[\begin{align*}
     P(B) = &amp; P\left(\bigcup_{i = 1}^{n} B\cap A_i\right) \\
          = &amp; \sum_{i = 1}^{n}  P(B\cap A_i) \qquad (B\cap A_i\textrm{ disjuntos)}\\
-         = &amp; \sum_{i = 1}^{n}P(B|A_i)P(A_i) \qquad \textrm{ (Teorema \ref{teo:regprodprob})}
-\end{align*}\]</span> como queríamos provar.</p>
+         = &amp; \sum_{i = 1}^{n}P(B|A_i)P(A_i) \qquad \textrm{ (Teorema 5.8)}
+\end{align*}\]</span> como queríamos provar.<p></p>
 </div></details>
 </div>
-<p>Retornando ao cálculo da probabilidade <span class="math inline">\(P(D)\)</span>, no Exemplo <a href="cap05.html#ex:probd">5.19</a> apresentamos como o Teorema <a href="cap05.html#teo:probtotal">5.9</a> soluciona esse problema, a seguir.</p>
+<p>Retornando ao cálculo da probabilidade <span class="math inline">\(P(D)\)</span>, no Exemplo <a href="cap05.html#ex:probd">5.21</a> apresentamos como o Teorema <a href="cap05.html#teo:probtotal">5.9</a> soluciona esse problema, a seguir.</p>
 <div id="ex:probd" class="Example">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.19</strong></summary><div>Voltando ao problema de Paulo, como <span class="math inline">\(P(M_1) = 0,50\)</span>, <span class="math inline">\(P(M_2) = 0,40)\)</span> e <span class="math inline">\(P(M_3) = 0,10\)</span>, então a probabilidade de uma sandália ter defeito é <span class="math display">\[\begin{align*}
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.21</strong></summary><div>Voltando ao problema de Paulo, como <span class="math inline">\(P(M_1) = 0,50\)</span>, <span class="math inline">\(P(M_2) = 0,40)\)</span> e <span class="math inline">\(P(M_3) = 0,10\)</span>, então a probabilidade de uma sandália ter defeito é <span class="math display">\[\begin{align*}
     P(D) = &amp; \sum_{i = 1}^{3}P(D|M_i)P(M_i)\\
     = &amp; P(D|M_1)P(M_1) + P(D|M_2)P(M_2) + P(D|M_3)P(M_3)\\
     = &amp; 0,01 \times 0,50 + 0,02 \times 0,40 + 0,03 \times 0,10\\
@@ -1275,34 +1411,40 @@ P\left(\bigcup_{i = 1}^{n}A_i\right) &amp; = \left[\sum_{i = 1}^{n-1}P(A_i) - \s
   P(A\cap B) &amp; = P(B)P(A|B) = P(B)P(A)\\
   P(A\cap B^c) &amp; = P(B^c)P(A|B^c) = P(B^c)P(A).
 \end{align*}\]</span></p>
-<p>Entretanto, a independência entre dois eventos não implica em independência coletiva. Vejamos o Exemplo <a href="cap05.html#ex:indcoletiva">5.21</a>, a seguir.</p>
-<div id="ex:indcoletiva" class="Definition">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.21</strong></summary><div>Sejam os resultados possíveis de um dado honesto, cujo espaço amostral é <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span>. Considere um evento que representa o conjunto dos números ímpares desse espaço amostral, <span class="math inline">\(A = \{1, 3, 5\}\)</span>, e outro evento que consite nos múltiplos de 3, <span class="math inline">\(B = \{3, 6\}\)</span>. A probabilidade de <span class="math inline">\(A\)</span> é <span class="math inline">\(P(A) = 1/2\)</span>, a probabilidade de B é <span class="math inline">\(P(B) = 1/3\)</span>, e a probabilidade da interseção entre A e B é <span class="math inline">\(P(A \cap B) = 1/6\)</span>. Veja que dado que o evento B ocorra, ou não ocorra <span class="math inline">\(B^c = \{1, 2, 4, 5\}\)</span>, a probabilidade do evento A é a mesma, veja: <span class="math display">\[\begin{align*}
+<p>Entretanto, a independência entre dois eventos não implica em independência coletiva. Vejamos o Exemplo <a href="cap05.html#ex:indcoletiva">5.22</a>, a seguir.</p>
+<div id="ex:indcoletiva" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.22</strong></summary><div>Sejam os resultados possíveis de um dado honesto, cujo espaço amostral é <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span>. Considere um evento que representa o conjunto dos números ímpares desse espaço amostral, <span class="math inline">\(A = \{1, 3, 5\}\)</span>, e outro evento que consite nos múltiplos de 3, <span class="math inline">\(B = \{3, 6\}\)</span>. A probabilidade de <span class="math inline">\(A\)</span> é <span class="math inline">\(P(A) = 1/2\)</span>, a probabilidade de B é <span class="math inline">\(P(B) = 1/3\)</span>, e a probabilidade da interseção entre A e B é <span class="math inline">\(P(A \cap B) = 1/6\)</span>. Veja que dado que o evento B ocorra, ou não ocorra <span class="math inline">\(B^c = \{1, 2, 4, 5\}\)</span>, a probabilidade do evento A é a mesma, veja: <span class="math display">\[\begin{align*}
   P(A|B) &amp; = \frac{1/6}{1/3} = 1/2\\
   P(A|B^c) &amp; = \frac{2/6}{4/6} = 1/2.
 \end{align*}\]</span> Que é o mesmo que entender que <span class="math inline">\(P(A) \times P(B) = 1/6 = P(A\cap B)\)</span>. Logo, <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são eventos independentes.<p></p>
 </div></details>
 </div>
-<p>Para uma definição mais geral sobre a independência de eventos, apresentamos a Definição <a href="cap05.html#def:ind3">5.22</a>, a seguir.</p>
+<div id="Example-5.23" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.23</strong></summary><div>Seja um experimento cujo objetivo é verificar a face superior de um tetraedro, isto é, <span class="math inline">\(\Omega = \{1, 2, 3, 4\}\)</span>. Sejam os eventos em <span class="math inline">\(\Omega\)</span>, <span class="math inline">\(A = \{1, 4\}\)</span>, <span class="math inline">\(B = \{2, 4\}\)</span> e <span class="math inline">\(C = \{3, 4\}\)</span>. Considerando o tetraedro honesto e que cada valor é equiprovável, assim <span class="math inline">\(P(A) = P(B) = P(C) = 1/2\)</span>. Observamos que estes eventos são independentes dois a dois, isto é, <span class="math inline">\(P(A\cap B) = 1/4 = P(A)P(B)\)</span>, <span class="math inline">\(P(A\cap C) = 1/4 = P(A)P(C)\)</span> e <span class="math inline">\(P(B\cap C) = 1/4 = P(B)P(C)\)</span>. Porém, <span class="math inline">\(P(A\cap B \cap C) = 1/4 \neq P(A) P(B) P(C)\)</span>. Logo, os eventos A, B e C não são independentes três a três.<p></p>
+</div></details>
+</div>
+<p>Para uma definição mais geral sobre a independência de eventos, apresentamos a Definição <a href="cap05.html#def:ind3">5.21</a>, a seguir.</p>
 <div id="def:ind3" class="Definition" title="Independência de eventos">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.22: </strong>Independência de eventos</summary><div>Considere o espaço amostral <span class="math inline">\(\Omega\)</span>. Uma sequência de eventos <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> de <span class="math inline">\(\Omega\)</span> são independentes se e somente se: <span class="math display">\[\begin{align}
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.21: </strong>Independência de eventos</summary><div>Considere o espaço amostral <span class="math inline">\(\Omega\)</span>. Uma sequência de eventos <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> de <span class="math inline">\(\Omega\)</span> são independentes se e somente se: <span id="eq-indeventos"><span class="math display">\[
+\begin{align}
     P(A_i \cap A_j) &amp; = P(A_i)P(A_j), \quad \textrm{para } i \neq j; \nonumber\\
     P(A_i \cap A_j \cap A_k) &amp; = P(A_i)P(A_j)P(A_k), \quad \textrm{para } i \neq j \neq k; \nonumber\\
     \vdots &amp;  \nonumber\\
     P(\cap_{i = 1}^{n} A_i) &amp; = \prod_{i = 1}^{n}P(A_i).
-\end{align}\]</span><p></p>
+\end{align}
+\tag{5.35}\]</span></span><p></p>
 </div></details>
 </div>
 <p>Paulo poderia indagar, se os eventos <span class="math inline">\(M_i\)</span> e <span class="math inline">\(D\)</span> são independentes ou dependentes. Contudo, pela Definição <a href="cap05.html#def:ind2">5.20</a>, temos que <span class="math display">\[\begin{align*}
 P(D|M_i) &amp; \neq P(D) = 0,016 \Rightarrow D \textrm{ e } M_i \textrm{, para } i = 1, 2, 3,
 \end{align*}\]</span> logo, não são independentes.</p>
 <div id="ex:efmult" class="Example" title="Efeito de multiplicidade">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.20: </strong>Efeito de multiplicidade</summary><div>Retomando as propriedades da probabilidade, Teorema <a href="cap05.html#teo:propPx">5.6</a>, e agora com a abordagem da ideia de independência de eventos, Definição <a href="cap05.html#def:ind3">5.22</a>, um importante problema na área da estatística é o uso de comparações simultâneas (hipóteses), assunto previamente abordado no <a href="cap10.html" class="quarto-xref"><span>Capítulo 10</span></a> para uma única comparação. Entendemos por hipótese (<span class="math inline">\(H_i\)</span>) uma afirmação realizada pelo pesquisador sobre uma determinada população. O objetivo de um teste é rejeitar a hipótese estudada. Mas como tudo em estatística não há certeza, a probabilidade de rejeitarmos uma hipótese verdadeira é dada por <span class="math inline">\(\alpha\)</span>, isto é, o nível de significância do teste. Essa decisão é chamada de erro tipo I, e representaremos neste exemplo, pelo evento <span class="math inline">\(H_i^c\)</span>. Quando aplicamos simultaneamente <span class="math inline">\(n\)</span> comparações, queremos garantir que o nível de significância global do teste de hipóteses seja no máximo <span class="math inline">\(\alpha\)</span>. Esta área da estatística é chamada de procedimento de comparação múltipla.<p></p>
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.24: </strong>Efeito de multiplicidade</summary><div>Retomando as propriedades da probabilidade, Teorema <a href="cap05.html#teo:propPx">5.6</a>, e agora com a abordagem da ideia de independência de eventos, Definição <a href="cap05.html#def:ind3">5.21</a>, um importante problema na área da estatística é o uso de comparações simultâneas (hipóteses), assunto previamente abordado no <a href="cap10.html" class="quarto-xref"><span>Capítulo 10</span></a> para uma única comparação. Entendemos por hipótese (<span class="math inline">\(H_i\)</span>) uma afirmação realizada pelo pesquisador sobre uma determinada população. O objetivo de um teste é rejeitar a hipótese estudada. Mas como tudo em estatística não há certeza, a probabilidade de rejeitarmos uma hipótese verdadeira é dada por <span class="math inline">\(\alpha\)</span>, isto é, o nível de significância do teste. Essa decisão é chamada de erro tipo I, e representaremos neste exemplo, pelo evento <span class="math inline">\(H_i^c\)</span>. Quando aplicamos simultaneamente <span class="math inline">\(n\)</span> comparações, queremos garantir que o nível de significância global do teste de hipóteses seja no máximo <span class="math inline">\(\alpha\)</span>. Esta área da estatística é chamada de procedimento de comparação múltipla.<p></p>
 <p>Muitos procedimentos ou testes que se baseiam nesse tipo de problema usam como referência a taxa de erro por experimento, que representa a probabilidade de ao menos uma hipótese verdadeira ser rejeitada. Para isso, pensemos em <span class="math inline">\(n = 10\)</span> comparações (hipóteses) verdadeiras e independentes, <span class="math inline">\(H_i\)</span>, <span class="math inline">\(i =1, 2, \ldots, 10\)</span>. A probabilidade de cada comparação não ser rejeitada é dada por <span class="math inline">\(P(H_i) = 1 -\alpha\)</span>. Ao passo que, a probabilidade de cada hipótese verdadeira ser rejeitada erroneamente, evento <span class="math inline">\(H_i^c\)</span>, é dada por <span class="math inline">\(P(H_i^c) = \alpha\)</span>. Assim, a probabilidade de ao menos uma comparação ser erroneamente rejeitada é dada por: <span id="eq-efmult01"><span class="math display">\[
 \begin{align}
     P\left(\bigcup^{10}_{i = 1}H_i^c\right) &amp; = 1 - P\left(\bigcap^{10}_{i = 1}H_i\right).
 \end{align}
-\tag{5.22}\]</span></span> Vamos usar a ideia do evento complementar, isto é, a probabilidade de termos ao menos uma comparação rejeitada erroneamente é o mesmo que calcularmos a probabilidade do espaço amostral (<span class="math inline">\(\Omega\)</span>) menos a probabilidade de nenhuma comparação ser rejeitada erroneamente, que representa a interseção <span class="math inline">\(\cap^{10}_{i = 1}H_i\)</span>.</p>
+\tag{5.36}\]</span></span> Vamos usar a ideia do evento complementar, isto é, a probabilidade de termos ao menos uma comparação rejeitada erroneamente é o mesmo que calcularmos a probabilidade do espaço amostral (<span class="math inline">\(\Omega\)</span>) menos a probabilidade de nenhuma comparação ser rejeitada erroneamente, que representa a interseção <span class="math inline">\(\cap^{10}_{i = 1}H_i\)</span>.</p>
 <p>Para observarmos que isso é verdade, vamos simplificar para <span class="math inline">\(n = 2\)</span>. Vejamos, <span class="math display">\[\begin{align*}
   P(H_1^c \cup H_2^c) &amp; = P(H_1^c) + P(H_2^c) - P(H_1^c \cap H_2^c) \quad \textrm{(independentes)}\\
   &amp;= P(H_1^c) + P(H_2^c) - P(H_1^c)P(H_2^c)\\
@@ -1321,7 +1463,7 @@ P(D|M_i) &amp; \neq P(D) = 0,016 \Rightarrow D \textrm{ e } M_i \textrm{, para }
     &amp; \quad  + P(H_1^c) P(H_2^c)\\
     &amp;= \alpha(1 - \alpha) + (1 - \alpha)\alpha + \alpha^2\\
     &amp;= 2\alpha - \alpha^2.
-\end{align*}\]</span> Esses resultados foram possíveis porque a condição de independência existente nos eventos também implica em independência nos eventos complementares, Teorema <a href="cap05.html#teo:ind4">5.12</a>. Retornando a expressão (<a href="#eq-efmult01" class="quarto-xref"><span>5.22</span></a>), e a condição de independência, obtemos <span class="math display">\[\begin{align*}
+\end{align*}\]</span> Esses resultados foram possíveis porque a condição de independência existente nos eventos também implica em independência nos eventos complementares, Teorema <a href="cap05.html#teo:ind4">5.12</a>. Retornando a expressão (<a href="#eq-efmult01" class="quarto-xref"><span>5.36</span></a>), e a condição de independência, obtemos <span class="math display">\[\begin{align*}
     P\left(\bigcup^{10}_{i = 1}H_i^c\right) &amp; = 1 - (1 - \alpha)^{10}.
 \end{align*}\]</span></p>
 <p>Se considerássemos <span class="math inline">\(\alpha = 0,05\)</span>, a probabilidade do erro tipo I por experimento é de 0,4013, isto é, <span class="math inline">\(P\left(\cup^{10}_{i = 1}H_i^c\right) = 0,4013\)</span>. Fixando <span class="math inline">\(\alpha = 0,05\)</span> e variando o número de testes, podemos perceber pela <a href="#fig-efmult01" class="quarto-xref">Figura&nbsp;<span>5.3</span></a> que a taxa de erro por experimento aumenta rapidamente. Esse é o efeito de multiplicidade, um problemas dos procedimentos de comparações múltiplas. Os testes são desenvolvimentos tentando controlar esse tipo de problema, porque baseado no exemplo anterior para <span class="math inline">\(n = 10\)</span>, a chance de termos ao menos uma decisão errada de rejeitar uma hipótese verdadeira, quando achávamos que era de 0,05 na realidade foi de 0,4013, muito maior.</p>
@@ -1350,14 +1492,15 @@ Figura&nbsp;5.3: Representação da taxa de erro por experimento em comparaçõe
 </div></details>
 </div>
 </section>
-</section>
-<section id="teorema-de-bayes" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="teorema-de-bayes"><span class="header-section-number">5.4</span> Teorema de Bayes</h2>
+<section id="teorema-de-bayes" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="teorema-de-bayes"><span class="header-section-number">5.5</span> Teorema de Bayes</h2>
 <p>A grande questão agora é qual a máquina que Paulo deveria substituir com o propósito de aumentar seu lucro na empresa. A ideia será calcular <span class="math inline">\(P(M_i|D)\)</span>, isto é, dado um defeito na sandália qual a probabilidade de vindo da máquina <span class="math inline">\(i\)</span>? A maior probabilidade será a máquina substituída. Entretanto, ainda não temos ferramenta para resolver essa resposta. Para isso, apresentamos o seguinte Teorema <a href="cap05.html#teo:teobayes">5.10</a> a seguir.</p>
 <div id="teo:teobayes" class="Theorem" title="Teorema de Bayes">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.10: </strong>Teorema de Bayes</summary><div>Considere o espaço amostral <span class="math inline">\(\Omega\)</span>. Considere uma sequência de eventos <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> de <span class="math inline">\(\Omega\)</span>, disjuntos, tal que <span class="math inline">\(\bigcup^{n}_{i = 1}A_i = \Omega\)</span>, e <span class="math inline">\(B\)</span> um evento de <span class="math inline">\(\Omega\)</span>, então a probabilidade de <span class="math inline">\(A_k\)</span>, para <span class="math inline">\(k = 1, 2, \ldots, n\)</span>, dado que ocorreu o evento <span class="math inline">\(B\)</span>, denotado por <span class="math inline">\(P(A_k|B)\)</span>, é dado por: <span class="math display">\[\begin{eqnarray}
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.10: </strong>Teorema de Bayes</summary><div>Considere o espaço amostral <span class="math inline">\(\Omega\)</span>. Considere uma sequência de eventos <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> de <span class="math inline">\(\Omega\)</span>, disjuntos, tal que <span class="math inline">\(\bigcup^{n}_{i = 1}A_i = \Omega\)</span>, e <span class="math inline">\(B\)</span> um evento de <span class="math inline">\(\Omega\)</span>, então a probabilidade de <span class="math inline">\(A_k\)</span>, para <span class="math inline">\(k = 1, 2, \ldots, n\)</span>, dado que ocorreu o evento <span class="math inline">\(B\)</span>, denotado por <span class="math inline">\(P(A_k|B)\)</span>, é dado por: <span id="eq-teobayes"><span class="math display">\[
+\begin{eqnarray}
     P(A_k|B) = \frac{P(B|A_k)P(A_k)}{\sum_{i = 1}^{n}P(B|A_i)P(A_i)}, \qquad k = 1, 2, \ldots, n,
-\end{eqnarray}\]</span> para <span class="math inline">\(P(A_k) &gt; 0\)</span> e <span class="math inline">\(P(A_i) &gt; 0\)</span>, sendo <span class="math inline">\(i = 1, 2, \ldots, n\)</span>.<p></p>
+\end{eqnarray}
+\tag{5.37}\]</span></span> para <span class="math inline">\(P(A_k) &gt; 0\)</span> e <span class="math inline">\(P(A_i) &gt; 0\)</span>, sendo <span class="math inline">\(i = 1, 2, \ldots, n\)</span>.<p></p>
 </div></details>
 </div>
 <div id="Proof*-5.12" class="Proof">
@@ -1379,18 +1522,17 @@ P(A_i| B) = \frac{P(A_i)P(B|A_i)}{\sum^{\infty}_{i=1}P(A_i)P(B|A_i)},
     P(M_3|D) = \frac{0,03 \times 0,10}{0,016} = 0,1875\\
 \end{align*}\]</span> A tomada de decisão será substituir a máquina <span class="math inline">\(M_2\)</span>. Poderíamos ter tomado uma decisão equivocada se não fosse o teorema de Bayes.</p>
 <p>Devemos abrir uma discussão que ocorre muito frequente entre as Definições <a href="cap05.html#def:disjeventos">5.10</a> e <a href="cap05.html#def:ind2">5.20</a>, isto é, eventos disjuntos e independência. Nas próprias definições, percebemos a distinção clara entre as características. A primeira se remete a eventos (conjuntos), e a segunda é uma condição probabilística dos eventos. Contudo, em determinados problemas ainda há muita confusão ao tentar resolvê-los. Assim, apresentemos o Teorema <a href="cap05.html#teo:disjindeventos">5.11</a>, a seguir.</p>
-<div id="teo:disjindeventos" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.11</strong></summary><div>#Eventos disjuntos e independentes<p></p>
-<p>Considere <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, dois eventos <span class="math inline">\(\Omega\)</span>. Se <span class="math inline">\(A\cap B = \emptyset\)</span> (eventos disjuntos), então <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são independentes apenas, se e somente se, um dos eventos tiver probabilidade 0.</p>
+<div id="teo:disjindeventos" class="Theorem" title="Eventos disjuntos e independentes">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.11: </strong>Eventos disjuntos e independentes</summary><div>Considere <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, dois eventos <span class="math inline">\(\Omega\)</span>. Se <span class="math inline">\(A\cap B = \emptyset\)</span> (eventos disjuntos), então <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são independentes apenas, se e somente se, um dos eventos tiver probabilidade 0.<p></p>
 </div></details>
 </div>
 <div id="Proof*-5.13" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Considerando que o evento <span class="math inline">\(A\)</span> tenha probabilidade 0, isto é, <span class="math inline">\(P(A) = 0\)</span>, implica que <span class="math inline">\(A = \emptyset\)</span>. Assim, <span class="math inline">\(P(A\cap B) = P(\emptyset\cap B) = P(\emptyset) = 0\)</span>. A condição de independência entre os dois eventos existe se <span class="math inline">\(P(A)P(B) = P(A\cap B)\)</span>, e isso ocorre de fato, <span class="math inline">\(P(A)P(B) = P(\emptyset)P(B) = 0\times P(B) = 0 = P(A\cap B)\)</span>, o que completa a prova.<p></p>
 </div></details>
 </div>
-<p>Caso esses eventos não tenham probabilidade <span class="math inline">\(0\)</span>, a condição <span class="math inline">\(A \cap B = \emptyset\)</span> implica que estes são dependentes. Vejamos o Exemplo <a href="cap05.html#ex:evdisind">5.21</a> adaptado de <span class="citation" data-cites="Morettin2010">Morettin (<a href="references.html#ref-Morettin2010" role="doc-biblioref">2010</a>)</span>, para elucidar essas definições.</p>
+<p>Caso esses eventos não tenham probabilidade <span class="math inline">\(0\)</span>, a condição <span class="math inline">\(A \cap B = \emptyset\)</span> implica que estes são dependentes. Vejamos o Exemplo <a href="cap05.html#ex:evdisind">5.25</a> adaptado de <span class="citation" data-cites="Morettin2010">Morettin (<a href="references.html#ref-Morettin2010" role="doc-biblioref">2010</a>)</span>, para elucidar essas definições.</p>
 <div id="ex:evdisind" class="Example" title="Adaptado de Morettin (2010)">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.21: </strong>Adaptado de Morettin (2010)</summary><div>A tabela abaixo dá a distribuição das probabilidade dos quatro tipos sanguíneos, numa certa comunidade.<p></p>
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.25: </strong>Adaptado de Morettin (2010)</summary><div>A tabela abaixo dá a distribuição das probabilidade dos quatro tipos sanguíneos, numa certa comunidade.<p></p>
 <table class="table-striped table-hover caption-top table">
 <thead>
 <tr class="header">
@@ -1442,24 +1584,25 @@ P(A_i| B) = \frac{P(A_i)P(B|A_i)}{\sum^{\infty}_{i=1}P(A_i)P(B|A_i)},
       P[(AB)^c \cup B^c] &amp; = P[(AB)^c] + P(B^c) - P[(AB)^c \cap B^c] \nonumber\\
       &amp; = 0,9500 + 0,9000 - P[(AB)^c \cap B^c].
 \end{align}
-\tag{5.23}\]</span></span></p></li>
+\tag{5.38}\]</span></span></p></li>
 </ol>
 <p>Vejamos o evento <span class="math inline">\((AB)^c = A\cup B \cup O\)</span> e o evento <span class="math inline">\(B^c = A\cup AB \cup O\)</span>. A interseção entre estes é <span class="math inline">\((AB)^c \cap B^c = A\cup O\)</span>, em que A e O são disjuntos, assim, <span id="eq-aux21"><span class="math display">\[
 \begin{align}
      P[(AB)^c \cap B^c] &amp; = P(A\cup O) = P(A) + P(O) \nonumber\\
                         &amp; = 0,20 + 0,65 = 0,85.
 \end{align}
-\tag{5.24}\]</span></span> Substituindo (<a href="#eq-aux21" class="quarto-xref"><span>5.24</span></a>) em (<a href="#eq-aux22" class="quarto-xref"><span>5.23</span></a>), segue que <span class="math display">\[
+\tag{5.39}\]</span></span> Substituindo (<a href="#eq-aux21" class="quarto-xref"><span>5.39</span></a>) em (<a href="#eq-aux22" class="quarto-xref"><span>5.38</span></a>), segue que <span class="math display">\[
 \begin{align*}
   P[(AB)^c \cup B^c] &amp; = 0,95 + 0,90 - 0,85 = 1.
 \end{align*}
-\]</span> De outro modo, <span class="math display">\[\begin{align}
+\]</span> De outro modo, <span id="eq-resmor"><span class="math display">\[
+\begin{align}
   P[(AB)^c \cup B^c] &amp; = P[(AB \cap B)^c]  \quad \textrm{(Lei DeMorgan)}\nonumber\\
   &amp; = 1 - P[(AB \cap B)] \quad \textrm{(Evento complementar)} \nonumber\\
   &amp; = 1 - 0 \quad \textrm{(Evento disjunto)} \nonumber\\
   &amp; = 1.
-\end{align}\]</span></p>
-<p>Ao final, temos a tabela completada da seguinte forma:</p>
+\end{align}
+\tag{5.40}\]</span></span> Ao final, temos a tabela completada da seguinte forma:</p>
 <table class="table-striped table-hover caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -1497,8 +1640,8 @@ P(A_i| B) = \frac{P(A_i)P(B|A_i)}{\sum^{\infty}_{i=1}P(A_i)P(B|A_i)},
 <p>Vale a pena discutirmos sobre a independência nessa situação. Quan-do falamos na especificação do tipo sanguínio é fato que um mesmo elemento não pode ser especificado em dois ou mais tipos sanguíneo. Fica claro que os eventos A, AB, B e O, são disjuntos. Agora, será que a probabilidade de especificar, por exemplo, o tipo sanguíneo A, não interfere na probabilidade do tipo sanguíneo B, ou qualquer um outro tipo sanguíneo? Observe que uma vez especificado a probabilidade de um determinado tipo sanguíneo, por exemplo, tipo A, não haverá mais chances de ele ter o tipo sanguíneo B, logo a probabilidade de B ocorrer é 0. Assim, a condição de ter especificado o tipo sanguíneo A alterou a probabilidade de especificar o tipo sanguíneo B. Logo estes eventos são dependentes.</p>
 </div></details>
 </div>
-<p>Podemos ainda expressar mais dois teoremas para complementar as afirmações feitas no Exemplo <a href="cap05.html#ex:evdisind">5.21</a>, e suas implicações em relação aos eventos serem independentes e eventos disjuntos. Inicialmente, apresentamos o Teorema <a href="cap05.html#teo:ind4">5.12</a> como uma implicância da independência de eventos, a seguir.</p>
-<p>Podemos ainda expressar mais dois teoremas para complementar as afirmações feitas no Exemplo <a href="cap05.html#ex:evdisind">5.21</a>, e suas implicações em relação aos eventos serem independentes e eventos disjuntos. Inicialmente, apresentamos o Teorema <a href="cap05.html#teo:ind4">5.12</a> como uma implicância da independência de eventos, a seguir.</p>
+<p>Podemos ainda expressar mais dois teoremas para complementar as afirmações feitas no Exemplo <a href="cap05.html#ex:evdisind">5.25</a>, e suas implicações em relação aos eventos serem independentes e eventos disjuntos. Inicialmente, apresentamos o Teorema <a href="cap05.html#teo:ind4">5.12</a> como uma implicância da independência de eventos, a seguir.</p>
+<p>Podemos ainda expressar mais dois teoremas para complementar as afirmações feitas no Exemplo <a href="cap05.html#ex:evdisind">5.25</a>, e suas implicações em relação aos eventos serem independentes e eventos disjuntos. Inicialmente, apresentamos o Teorema <a href="cap05.html#teo:ind4">5.12</a> como uma implicância da independência de eventos, a seguir.</p>
 <div id="teo:ind4" class="Theorem">
 <details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.12</strong></summary><div>
 <p>Se A e B são eventos independentes, não vazio, definidos em <span class="math inline">\(\Omega\)</span>, então</p>
@@ -1512,19 +1655,19 @@ P(A_i| B) = \frac{P(A_i)P(B|A_i)}{\sum^{\infty}_{i=1}P(A_i)P(B|A_i)},
 <div id="Proof*-5.14" class="Proof">
 <p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Usando as seguintes equivalências: <span id="eq-eq1"><span class="math display">\[
   P(A) = P(A\cap B) + P(A\cap B^c),
-\tag{5.25}\]</span></span><p></p>
+\tag{5.41}\]</span></span><p></p>
 <p><span id="eq-eq2"><span class="math display">\[
 P(A^c) = P(A^c\cap B) + P(A^c \cap B^c),
-\tag{5.26}\]</span></span></p>
+\tag{5.42}\]</span></span></p>
 <p><span id="eq-eq3"><span class="math display">\[
 P(B) = P(B\cap A) + P(B \cap A^c), \textrm{ e }
-\tag{5.27}\]</span></span></p>
+\tag{5.43}\]</span></span></p>
 <p><span id="eq-eq4"><span class="math display">\[
 P(B^c) = P(B^c\cap A) + P(B^c\cap A^c),
-\tag{5.28}\]</span></span> e a condição de que <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span> (independentes), então usando (<a href="#eq-eq1" class="quarto-xref"><span>5.25</span></a>) temos <span class="math display">\[\begin{align*}
+\tag{5.44}\]</span></span> e a condição de que <span class="math inline">\(P(A\cap B) = P(A)P(B)\)</span> (independentes), então usando (<a href="#eq-eq1" class="quarto-xref"><span>5.41</span></a>) temos <span class="math display">\[\begin{align*}
   P(A\cap B^c) &amp; = P(A) - P(A)P(B)\quad \textrm{(Independência)}\\
                   &amp; = P(A)[1 - P(B)] = P(A)P(B^c),
-\end{align*}\]</span> o que prova o ítem (a). Usando (<a href="#eq-eq3" class="quarto-xref"><span>5.27</span></a>) pelo mesmo raciocínio, provamos o ítem (b). Usando o resultado do ítem (a), já provado, e a condição de independência na expressão (<a href="#eq-eq4" class="quarto-xref"><span>5.28</span></a>), temos <span class="math display">\[\begin{align*}
+\end{align*}\]</span> o que prova o ítem (a). Usando (<a href="#eq-eq3" class="quarto-xref"><span>5.43</span></a>) pelo mesmo raciocínio, provamos o ítem (b). Usando o resultado do ítem (a), já provado, e a condição de independência na expressão (<a href="#eq-eq4" class="quarto-xref"><span>5.44</span></a>), temos <span class="math display">\[\begin{align*}
   P(A^c \cap B^c) &amp; = P(B^c) - P(B^c)P(A)\\
                   &amp; = P(B^c)[1 - P(A)] = P(B^c)P(A^c),
 \end{align*}\]</span> o que prova o ítem (c), concluindo assim, a prova do teorema.</p>
@@ -1542,78 +1685,830 @@ P(B^c) = P(B^c\cap A) + P(B^c\cap A^c),
                &amp; = (A\cap B^c) \cup (A^c \cap B) \nonumber\\
                &amp; \neq \Omega \quad \textrm{(A e B não são partição do espaço amostral)}.
 \end{align}
-\tag{5.29}\]</span></span><p></p>
-<p>Usando a Lei de Morgan <span class="math inline">\(A^c\cap B^c = (A\cup B)^c\)</span>, logo percebemos pela expressão (<a href="#eq-aux11" class="quarto-xref"><span>5.29</span></a>) que <span class="math inline">\(A^c\cap B^c \neq \emptyset\)</span>, o que completa a prova.</p>
+\tag{5.45}\]</span></span><p></p>
+<p>Usando a Lei de Morgan <span class="math inline">\(A^c\cap B^c = (A\cup B)^c\)</span>, logo percebemos pela expressão (<a href="#eq-aux11" class="quarto-xref"><span>5.45</span></a>) que <span class="math inline">\(A^c\cap B^c \neq \emptyset\)</span>, o que completa a prova.</p>
+</div></details>
+</div>
+</section>
+<section id="variável-aleatória" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="variável-aleatória"><span class="header-section-number">5.6</span> Variável Aleatória</h2>
+<p>Em estatística, avaliamos um experimento não pelos eventos em si, mas por uma função definida no espaço amostral, que associa o evento a um número real. Chamamos essa função de variável aleatória, denotada por uma letra maiúscula, <span class="math inline">\(X\)</span> ou <span class="math inline">\(X(.)\)</span>. Por exemplo, no Exemplo <a href="cap05.html#ex:efmult">5.24</a> verificamos o efeito de multiplicidade de <span class="math inline">\(n\)</span> comparações, e ao invés de computarmos a probabilidade da taxa de erro tipo I por experimento observando o evento <span class="math inline">\(\cup^{n}_{i = 1}H_i^c\)</span> , isto é, <span class="math inline">\(P(\cup^{n}_{i = 1}H_i^c)\)</span>, podemos olhar para uma variável aleatória <span class="math inline">\(X(\omega)\)</span> que contabiliza o número de erros possíveis, isto é, <span class="math inline">\(\{X \geq 1\}\)</span>. Considerando que o suporte de <span class="math inline">\(X\)</span> seja <span class="math inline">\(\{0, 1, 2, \ldots, n\}\)</span>, então a probabilidade pode ser expressa como <span class="math inline">\(P(X \geq 1)\)</span>, tornando mais simples a notação para o cálculo desejado. O necessário é entender o modelo probabilístico de <span class="math inline">\(X\)</span>, que será abordado posteriormente.</p>
+<p>Alguns autores criticam o termo “variável aleatória”, já que a mesma é uma função. Como essa definição ficou conhecida com esse nome, seria um equívoco tentar renomeá-la, do qual é apresentada na Definição <a href="cap05.html#def:varaleatoria">5.22</a>, a seguir.</p>
+<div id="def:varaleatoria" class="Definition" title="Variável Aleatória">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.22: </strong>Variável Aleatória</summary><div>Seja o espaço amostral <span class="math inline">\(\Omega\)</span> de um experimento, então uma função <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span> é chamada de variável aleatória, isto é, considerando <span class="math inline">\(\omega \in \Omega\)</span>, então a variável aleatória, <span class="math inline">\(X(\omega)\)</span>, é uma função com domínio em <span class="math inline">\(\Omega\)</span> e imagem no conjunto dos reais <span class="math inline">\(B\)</span>, tal que <span class="math inline">\(B = \{x \in \mathbb{R}: X(\omega) = x,~\omega \in \Omega\}\)</span>.<p></p>
+</div></details>
+</div>
+<p>Consideramos <span class="math inline">\(X\)</span> uma <strong>variável aleatória discreta</strong>, quando <span class="math inline">\(B\)</span> representa um conjunto contável (ou enumerável) de valores (finito ou infinito). Por outro lado, se <span class="math inline">\(B\)</span> for um conjunto não contável (ou não enumerável), <span class="math inline">\(X\)</span> será denominada de <strong>variável aleatória contínua</strong>. O fato é que, independente da natureza da variável aleatória, ela induz a um novo espaço amostral na reta real.</p>
+<div id="ex:varaleatoria" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.26</strong></summary><div>
+<p>Para explicar a definição de uma variável aleatória será considerado o exemplo, no qual duas variedades de uma espécie <span class="math inline">\(A\)</span> (<span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2\)</span>) e três de outra espécie <span class="math inline">\(E\)</span> (<span class="math inline">\(E_1\)</span>, <span class="math inline">\(E_2\)</span> e <span class="math inline">\(E_3\)</span>) são disponibilizados para uma pesquisa. Uma amostra de duas variedades (<span class="math inline">\(n=2\)</span>) é extraída. O espaço amostral dos resultados desse experimento, segue,</p>
+<p><span class="math display">\[
+\Omega=\left\lbrace \begin{array}{ccccc}
+(A_1,A_2) &amp; (A_1,E_1) &amp; (A_1,E_2) &amp; (A_1,E_3) &amp; (A_2,E_1)\\
+(A_2,E_2) &amp; (A_2,E_3) &amp; (E_1,E_2) &amp; (E_1,E_3) &amp; (E_2,E_3)
+\end{array}
+\right\rbrace.
+\]</span></p>
+<p>Se for considerado o número de variedades da espécie <span class="math inline">\(A\)</span> na amostra sorteada, percebemos que os valores encontrados são: <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span> e <span class="math inline">\(2\)</span>. É possível associar a esses valores alguns pontos do espaço amostral <span class="math inline">\(\Omega\)</span>, formando subconjuntos que seguem:</p>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(\mathbf{X}(\omega)\)</span></th>
+<th style="text-align: center;"><strong>Eventos</strong> (<span class="math inline">\(\mathbf{C_i}\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(C_1 = \{(E_1,E_2)\)</span>, <span class="math inline">\((E_1,E_3)\)</span>, <span class="math inline">\((E_2,E_3)\}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(C_2 = \{(A_1,E_1)\)</span>, <span class="math inline">\((A_1,E_2)\)</span>, <span class="math inline">\((A_1,E_3), (A_2,E_1), (A_2,E_2),(A_2,E_3)\}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(C_3 = \{(A_1,A_2)\}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div></details>
+</div>
+<p>No Exemplo <a href="cap05.html#ex:varaleatoria">5.26</a>, criamos uma partição do espaço amostral (<span class="math inline">\(\Omega\)</span>) e associamos com um outro espaço amostral induzido (<span class="math inline">\(\Omega_X\)</span>), por meio da variável aleatória <span class="math inline">\(X\)</span>, como pode ser apresentado na <a href="#fig-espinduzido" class="quarto-xref">Figura&nbsp;<span>5.4</span></a>.</p>
+<div id="fig-espinduzido" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-espinduzido-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap5/espinduzido.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-espinduzido-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.4: Espaço amostral e espaço amostral induzido pela variável aleatória <span class="math inline">\(X\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Para o exemplo do experimento do sorteio das duas variedades, definindo-se <span class="math inline">\(X\)</span> como sendo a variável aleatória relativa a contagem de variedades da espécie <span class="math inline">\(A\)</span>, verificamos que os valores possíveis para <span class="math inline">\(x\)</span> são: <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>. É comum representar a variável por <span class="math inline">\(X\)</span> (letra maiúscula) e os seus valores ou realizações por <span class="math inline">\(x\)</span> (a respectiva letra minúscula).</p>
+<div id="def:realzx" class="Definition" title="Realização de uma variável aleatória">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.23: </strong>Realização de uma variável aleatória</summary><div>Dado um <span class="math inline">\(\omega \in \Omega\)</span>, então <span class="math inline">\(x = X(\omega) \in \mathbb{R}\)</span> representa a realização da variável aleatória <span class="math inline">\(X\)</span>.<p></p>
+</div></details>
+</div>
+<p>Considerando ainda o Exemplo <a href="cap05.html#ex:varaleatoria">5.26</a>, os pontos de <span class="math inline">\(\Omega\)</span> são equiprováveis, então a probabilidade de <span class="math inline">\(X\)</span> assumir um dado valor <span class="math inline">\(x\)</span> será denotado por <span class="math inline">\(P_X(X=x)\)</span>, <span class="math inline">\(P(X=x)\)</span>, <span class="math inline">\(p_X(x)\)</span> ou <span class="math inline">\(p_i\)</span> com <span class="math inline">\(i=1,2,\ldots\)</span>. O primeiro caso, servirá para diferenciar <span class="math inline">\(P_X(.)\)</span> uma probabilidade induzida por <span class="math inline">\(X\)</span> quando estivermos relacionando com a probabilidade dos eventos equivalentes do espaço amostral. Para este último, usaremos apenas a notação <span class="math inline">\(P(.)\)</span> sendo denominada também de função de probabilidade de <span class="math inline">\(X\)</span>, para o caso da variável discreta. Quando não tivermos fazendo essa relação, usaremos a probabilidade para <span class="math inline">\(X\)</span> apenas como <span class="math inline">\(P(X = x)\)</span>, por exemplo. As duas últimas notações (<span class="math inline">\(p_X(x)\)</span> ou <span class="math inline">\(p_i\)</span>), serão usadas quando estivermos nos referindo a probabilidade associadas as variáveis aleatórias discretas, que a chamaremos de função de probabilidade.</p>
+<p>Supondo que desejamos calcular a probabilidade de <span class="math inline">\(C_3\)</span> ocorrer, temos: <span id="eq-resC3"><span class="math display">\[
+\begin{align}
+  P(C_3) &amp; = P(\{\omega \in \Omega: \omega \in C_3\}) \nonumber\\
+         &amp; = P(\{(A_1,A_2)\}) \nonumber\\
+         &amp; = \frac{\#\{(A_1,A_2)\}}{\#\Omega} = \frac{1}{10}.
+\end{align}
+\tag{5.46}\]</span></span></p>
+<p>Vamos observar que de modo equivalente iremos calcular a probabilidade do evento <span class="math inline">\(C_3\)</span> agora olhando para a variável <span class="math inline">\(X\)</span>, tal que <span class="math inline">\(P(C_3) = p_X(2) = P(X = 2)\)</span>, que segue,</p>
+<p><span id="eq-resX2"><span class="math display">\[
+\begin{align}
+  p_X(2) = P_X(X = 2) &amp; = P_X(D), \quad (D = \{2\}\textrm{, Figura 5.4)   } \nonumber\\
+                    &amp; = P_X(\{x \in \Omega_X: X(\omega) \in D, ~\omega \in \Omega\}) \nonumber\\
+                    &amp; = P(X^{-1}(2))\nonumber\\
+                    &amp; = P(\{\omega \in \Omega: X(\omega) = 2\})\nonumber\\
+                    &amp; = P(\{\omega \in \Omega: \omega \in C_3\})\nonumber\\
+                    &amp; = P(\{(A_1,A_2)\})\nonumber\\
+                    &amp; = P(C_3)\nonumber\\
+                    &amp; = \frac{1}{10}, \quad \textrm{(resultado 5.46)}.
+\end{align}
+\tag{5.47}\]</span></span></p>
+<p>Portanto, a partir de agora em diante, iremos calcular as probabilidades dos eventos a partir da variável aleatória. Para um mesmo espaço amostral, é possível associar outras variáveis aleatórias. No exemplo anterior considerado, poderíamos pensar em uma variável aleatória <span class="math inline">\(Y\)</span> que representasse o número de espécies da variedade <span class="math inline">\(E\)</span>. %A função de probabilidade de <span class="math inline">\(X\)</span> define a distribuição de probabilidade dessa variável aleatória, porque <span class="math inline">\(X\)</span> é uma variável aleatória discreta.</p>
+<p>Dessa forma, a distribuição de probabilidade pode ser vista como uma correspondência que associa as probabilidades aos valores de uma variável aleatória, que é função do espaço amostral, definida na próxima seção.</p>
+</section>
+<section id="distribuição-de-x" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="distribuição-de-x"><span class="header-section-number">5.7</span> Distribuição de <span class="math inline">\(X\)</span></h2>
+<p>Sabemos que uma variável aleatória <span class="math inline">\(X\)</span>, é função dos possíveis resultados <span class="math inline">\(\omega \in \Omega\)</span>, e que estes possíveis resultados assumem diferentes valores com diferentes probabilidades. Assim, <span class="math inline">\(w\)</span> é aleatório, e por consequência <span class="math inline">\(X\)</span> também, como já falado anteriormente. Por isso, a variável por ser aleatória, a probabilidade de <span class="math inline">\(X\)</span> assumir um determinado valor <span class="math inline">\(x\)</span> ou está em uma determinada região do espaço amostral induzido, passa a ser importante. Assim, apresentamos a relação entre <span class="math inline">\(X\)</span> e sua probabilidade <span class="math inline">\(P(.)\)</span> por meio da Definição <a href="cap05.html#def:distx">5.24</a>, a seguir.</p>
+<div id="def:distx" class="Definition" title="Distribuição de X">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.24: </strong>Distribuição de <span class="math inline">\(X\)</span></summary><div>O conjunto de probabilidades <span class="math display">\[
+P_X(X(\omega) \in B) = P(\{w \in \Omega: X(\omega) \in B,~B \subset \mathbb{R}\}),
+\]</span> para todos os subconjuntos de <span class="math inline">\(B \in \Omega_X\)</span>, em que <span class="math inline">\(B\)</span> é um subconjunto do espaço amostral induzido, é a distribuição de uma variável aleatória <span class="math inline">\(X\)</span>.<p></p>
+</div></details>
+</div>
+<p>Retornando ao Exemplo <a href="cap05.html#ex:varaleatoria">5.26</a>, apresentamos a distribuição de <span class="math inline">\(X\)</span> no Exemplo <a href="cap05.html#ex:distx">5.27</a>.</p>
+<div id="ex:distx" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.27</strong></summary><div>
+<p>Considerando que <span class="math inline">\(X\)</span> representa o número de variedades da espécie <span class="math inline">\(A\)</span>, apresentamos a distribuição de <span class="math inline">\(X\)</span>:</p>
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(X\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(P(X = x)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3/10\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(6/10\)</span></td>
+</tr>
+</tbody>
+</table>
+</div></details>
+</div>
+</section>
+<section id="função-de-distribuição-fd-ou-fda" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="função-de-distribuição-fd-ou-fda"><span class="header-section-number">5.8</span> Função de distribuição (FD ou FDA)</h2>
+<p>Para entendermos o comportamento estatístico de uma variável aleatória, temos que definir sua função de distribuição, em que são caracterizados por eventos da forma <span class="math inline">\(B = (-\infty,x]\)</span>.</p>
+<div id="def:funcdist" class="Definition" title="Função de distribuição de X">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.25: </strong>Função de distribuição de <span class="math inline">\(X\)</span></summary><div>A função de distribuição (FD) ou função de distribuição acumulada (FDA) de uma variável aleatória <span class="math inline">\(X\)</span>, é definida por <span class="math display">\[
+F_X(x)=P(X\in (-\infty,x])=P(X \leq x), \ x\in\mathbb{R}.
+\]</span><p></p>
+</div></details>
+</div>
+<p>Para que não haja confusão sobre função de distribuição a qual está relacionada com a variável aleatória <span class="math inline">\(X\)</span>, usamos o subscrito <span class="math inline">\(F_X\)</span>. Para entendermos melhor sobre a função de distribuição, mostraremos suas propriedades.</p>
+<div id="teo:propfuncdist" class="Theorem" title="Propriedades da função de distribuição">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.14: </strong>Propriedades da função de distribuição</summary><div>
+<p>Uma função de distribuição de uma variável aleatória <span class="math inline">\(X\)</span> obedece as seguintes propriedades:</p>
+<ol type="I">
+<li><span class="math inline">\(\lim_{x\rightarrow\infty}F_X(x)=1\)</span> e <span class="math inline">\(\lim_{x\rightarrow -\infty}F_X(x)=0\)</span>;</li>
+<li><span class="math inline">\(F_X(x)\)</span> é uma função não decrescente, isto é, <span class="math inline">\(F_X(x)\leq F_X(y)\)</span> sempre que <span class="math inline">\(x\leq y\)</span>, <span class="math inline">\(\forall x,y \in \mathbb{R}\)</span>;</li>
+<li><span class="math inline">\(F_X(x)\)</span> é contínua à direita, ou seja, para um número <span class="math inline">\(x\)</span>, <span class="math inline">\(\lim_{x_n\downarrow x}F_X(x_n)\downarrow F_X(x)\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="Proof*-5.16" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<ol type="I">
+<li>Aplicando a continuidade da probabilidade (Teorema <a href="cap05.html#teo:propPx">5.6</a>, <span class="math inline">\(vii\)</span>). Observe que para <span class="math inline">\(x_n\downarrow -\infty\)</span>, os eventos <span class="math inline">\([X\leq x_n]=\{w\in\Omega:X(w)\leq x_n\}\)</span> têm como o limite o conjunto vazio. Logo <span class="math inline">\(F_X(x_n)=P(X\leq x_n)\downarrow 0\)</span>. Tomando <span class="math inline">\(x_n\uparrow\infty\)</span>, os eventos <span class="math inline">\([X\leq x_n]\uparrow\Omega\)</span> e, portanto <span class="math inline">\(F_X(x_n)=P(X\leq x_n)\uparrow 1\)</span>;</li>
+<li>Note que <span class="math inline">\([X\leq x]\subset [X\leq y]\)</span> sempre que <span class="math inline">\(x\leq y\)</span> (Teorema <a href="cap05.html#teo:propPx">5.6</a>, <span class="math inline">\(iv\)</span>). Logo as probabilidades satisfazem à desigualdade: <span class="math display">\[
+F_X(x)=P(X\leq x)\leq P(X\leq y)=F_X(y).
+\]</span> Como <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> são arbitrários, concluímos que <span class="math inline">\(F\)</span> é não decrescente.</li>
+<li>Seja <span class="math inline">\(x\in\mathbb{R}\)</span> e considere uma sequência <span class="math inline">\(\{x_n,\ n\in\mathbb{N}^{+}\}\)</span> tal que <span class="math inline">\(x_n\downarrow x\)</span>, ou seja, os <span class="math inline">\(x_n\)</span>’s se aproximam de <span class="math inline">\(x\)</span> pela direita ou por valores superiores a <span class="math inline">\(x\)</span>. Então, <span class="math inline">\([X\leq x_n]\downarrow [X\leq x]\)</span>, e assim, <span class="math inline">\(F_X(x_n)\downarrow F_X(x)\)</span>. Como o resultado vale para qualquer <span class="math inline">\(x\)</span>, a propriedade está verificada.</li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="natureza-das-variáveis-aleatórias" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="natureza-das-variáveis-aleatórias"><span class="header-section-number">5.9</span> Natureza das variáveis aleatórias</h2>
+<p>Se <span class="math inline">\(X\)</span> é uma variável aleatória definida em <span class="math inline">\(\Omega\)</span>, estamos interessados em calcular probabilidade de eventos que envolvem <span class="math inline">\(X\)</span>, isto é, <span class="math inline">\(P(w\in\Omega:X(w)\in B)\)</span> com <span class="math inline">\(B \subset \mathbb{R}\)</span>. A forma que essas probabilidades são calculadas depende da natureza particular de <span class="math inline">\(X\)</span>.</p>
+<section id="variável-aleatória-discreta" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="variável-aleatória-discreta"><span class="header-section-number">5.9.1</span> Variável aleatória discreta</h3>
+<p>Formalmente, definimos</p>
+<div id="def:vadiscreta" class="Definition" title="Variável Aleatória Discreta">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.26: </strong>Variável Aleatória Discreta</summary><div>Seja o espaço amostral <span class="math inline">\(\Omega\)</span> de um experimento, então a função <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span> é chamada de variável aleatória discreta se imagem é um subconjunto contável <span class="math inline">\(B\)</span>, finito ou infinito dos reais, tal que <span class="math inline">\(B = \{x \in \mathbb{R}: X(\omega) = x,~\omega \in \Omega\}\)</span>.<p></p>
+</div></details>
+</div>
+<p>Na realidade, dizer que os valores que a variável aleatória discreta assume em <span class="math inline">\(\mathbb{R}\)</span> é dizer que <span class="math inline">\(Im(X(w)) \in B\)</span>.</p>
+<div id="ex:vadiscreta" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.28</strong></summary><div>
+<p>Suponha que haja alguma chance de um <em>bit</em> transmitido de um canal digital com erro. Consideremos um <em>bit</em> com erro representado pela letra <span class="math inline">\(E\)</span>, e um <em>bit</em> recebido sem erro, representado por <span class="math inline">\(B\)</span>. Levando em consideração que a transmissão dos <em>bits</em> no canal digital sejam independentes, estamos interessados em verificar nos próximos 3 <em>bits</em> quantos estarão com erro. Desse modo, podemos assumir que o espaço amostral desse experimento é representado da seguinte forma: <span class="math display">\[\begin{align*}
+\Omega = \{(BBB), (EBB), (BEB), (BBE), (EEB), (EBE), (BEE), (EEE)\}.
+\end{align*}\]</span> A variável aleatória representa o número de <em>bits</em> errados nos próximos três transmitidos. Assim, esta função assume em um conjunto <span class="math inline">\(B\)</span> nos reais, tal que: <span class="math display">\[\begin{align*}
+B = \{0, 1, 2, 3\}.
+\end{align*}\]</span> Por exemplo, se <span class="math inline">\(\omega = (BBB)\)</span> implica que <span class="math inline">\(X((BBB)) = 0\)</span>. Observamos na <a href="#tbl-varaleatdisc" class="quarto-xref">Tabela&nbsp;<span>5.1</span></a>, os demais casos. Logo, como a variável assume valores em um conjunto <span class="math inline">\(B\)</span> contável, dizemos que <span class="math inline">\(X\)</span> é uma variável aleatória contínua.</p>
+<div id="tbl-varaleatdisc" class="striped hover quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-varaleatdisc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;5.1: Espaço amostral e induzido pela variável aleatória discreta <span class="math inline">\(X\)</span>.
+</figcaption>
+<div aria-describedby="tbl-varaleatdisc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-striped table-hover caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(\omega \in  \Omega\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(X(\omega) \in B\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\((BBB)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((EBB)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\((BEB)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((BBE)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\((EEB)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((EBE)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\((BEE)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((EEE)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</div></details>
+</div>
+<section id="função-de-probabilidade-fp" class="level4" data-number="5.9.1.1">
+<h4 data-number="5.9.1.1" class="anchored" data-anchor-id="função-de-probabilidade-fp"><span class="header-section-number">5.9.1.1</span> Função de probabilidade (FP)</h4>
+<p>A probabilidade dos valores de <span class="math inline">\(X\)</span> que pertencem a <span class="math inline">\(B\)</span> é dada por <span class="math display">\[\begin{eqnarray*}
+    P(X\in B)&amp;=&amp; P(X=x_1\textrm{ ou }X=x_2\textrm{ ou }\ldots)\\
+    &amp;=&amp; P(X=x_1)+P(X=x_2)+\ldots = \sum_{x\in B}p_X(x),
+\end{eqnarray*}\]</span> em que <span class="math inline">\(p_X(x)\)</span>, <span class="math inline">\(x\in \mathbb{R}\)</span>, é a função de probabilidade de <span class="math inline">\(X\)</span>, definida por <span class="math inline">\(p_X(x)=P(X=x)\)</span>. Assim, a probabilidade de um evento envolvendo <span class="math inline">\(X\)</span> é encontrado pela sumarização das funções de probabilidades dos conjuntos de pontos favoráveis ao evento. Em particular, a função de probabilidade determina as probabilidades de os valores possíveis que <span class="math inline">\(X\)</span> possa assumir.</p>
+<p>Dessa forma, podemos definir a função de probabilidade da variável aleatória discreta <span class="math inline">\(X\)</span>, a seguir.</p>
+<div id="def:fp" class="Definition" title="Função de Probabilidade">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.27: </strong>Função de Probabilidade</summary><div>Seja <span class="math inline">\(X\)</span> uma variável aleatória discreta, então sua função de probabilidade, <span class="math inline">\(p_X:\mathbb{R}\rightarrow [0,1]\)</span>, é definida por: <span class="math display">\[
+p_X(x)= P_X(X=x) = P(X=x) = P(\{w\in\Omega:X(w)=x\}),   
+\]</span> sendo <span class="math inline">\(\sum_xP_X(x)=1\)</span>.<p></p>
+</div></details>
+</div>
+<p>Essa definição nos permite observar que para valores distintos de <span class="math inline">\(X\)</span>, se o seu suporte é o conjunto <span class="math inline">\(\mathcal{X}=\{x_1,x_2,\ldots\}\)</span>, então <span class="math inline">\(\Omega=\bigcup_{n}\{w:X(w)=x_n\}=\bigcup_{n}\{X=x_n\}\)</span> e <span class="math inline">\(\{X=x_i\}\cap\{X=x_j\}=\emptyset\)</span> para <span class="math inline">\(i\neq j\)</span>. Logo, <span class="math inline">\(1=P(\Omega)=\sum_np_X(x_n)\)</span>.</p>
+<p>De outra forma, definimos</p>
+<div id="def:fp" class="Definition" title="Suporte de X (v.a. discreta)">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.28: </strong>Suporte de <span class="math inline">\(X\)</span> (v.a. discreta)</summary><div>O suporte de uma variável aleatória discreta, denotado por <span class="math inline">\(\mathcal{X}\)</span>, tal que <span class="math inline">\(\mathcal{X} \subset \mathbb{R}\)</span> é dado por <span id="eq-supXvad"><span class="math display">\[
+\begin{align}
+  \mathcal{X} &amp; = \{x:~ p_X(x) &gt; 0\}.
+\end{align}
+\tag{5.48}\]</span></span><p></p>
+</div></details>
+</div>
+<p>Isso significa que as realizações de <span class="math inline">\(X\)</span>, Definição <a href="cap05.html#def:realzx">5.23</a>, pertencem a <span class="math inline">\(\mathcal{X}\)</span>, e que o suporte é a imagem de <span class="math inline">\(X\)</span> contida nos reais tais que a probabilidade de cada elemento ocorrer é maior que zero. Ao passo que, qualquer elemento fora do suporte de <span class="math inline">\(X\)</span>, isto é, <span class="math inline">\(x \in \mathcal{X}^c\)</span>, tem probabilidade nula. Vejamos o Exemplo <a href="cap05.html#ex:funcprob">5.29</a>, para um melhor entendimento de tudo o que falamos.</p>
+<div id="ex:funcprob" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.29</strong></summary><div>Retornando ao exemplo das variedades, Exemplo <a href="cap05.html#ex:varaleatoria">5.26</a>, podemos apresentar a distribuição de probabilidade da variável <span class="math inline">\(X\)</span>, número de variedades da espécie A na amostra sorteada, <span class="math inline">\(n=2\)</span>. Cada ponto do espaço amostral amostral foi considerado como equiprovável.<p></p>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong><span class="math inline">\(\mathbf{X}\)</span>: número de variedades de <span class="math inline">\(\mathbf{A}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="math inline">\(\mathbf{p_X(x)}\)</span>: probabilidade</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">3/10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">6/10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1/10</td>
+</tr>
+</tbody>
+</table>
+<p>Dessa forma, o suporte de <span class="math inline">\(X\)</span> é <span class="math inline">\(\mathcal{X} = \{0, 1, 2\}\)</span>, e cada elemento é uma realização da variável aleatória. Qualquer valor fora do suporte de <span class="math inline">\(X\)</span> tem probabilidade zero, por exemplo, <span class="math inline">\(p_X(3) = 0\)</span>.</p>
+</div></details>
+</div>
+<p>A representação gráfica da função de probabilidade é dada por meio do gráfico de hastes ou bastão, para representar a discretização das realizações no suporte de <span class="math inline">\(X\)</span>, <a href="#fig-graffp" class="quarto-xref">Figura&nbsp;<span>5.5</span></a>.</p>
+<div id="fig-graffp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-graffp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap5/graffp.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-graffp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.5: Representação gráfica da função de probabilidade para os dados do Exemplo <a href="cap05.html#ex:funcprob">5.29</a>.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="fda-para-as-variáveis-aleatórias-discretas" class="level4" data-number="5.9.1.2">
+<h4 data-number="5.9.1.2" class="anchored" data-anchor-id="fda-para-as-variáveis-aleatórias-discretas"><span class="header-section-number">5.9.1.2</span> FDA para as variáveis aleatórias discretas</h4>
+<p>Anteriormente, afirmamos que a distribuição de <span class="math inline">\(X\)</span> é dada por <span class="math inline">\(P(X(\omega) \in B)\)</span>, em que <span class="math inline">\(B \in \mathbb{R}\)</span>. Existe um caso especial, em que <span class="math inline">\(B = (-\infty, x]\)</span>, em que <span class="math inline">\(x \in \mathbb{R}\)</span>. Assim, dizemos que <span class="math inline">\(P(X(\omega) \in (\infty, x])\)</span> representa a função de distribuição ou função de distribuição acumulada (FD ou FDA), e em notação temos <span class="math inline">\(F_X(x) = P(X(\omega) \in (\infty, x])\)</span>. Para o caso das variáveis aleatórias discretas, usaremos a definição de função de probabilidade (Definição <a href="cap05.html#def:fp">5.28</a>), sendo apresentada na Definição <a href="cap05.html#def:fdva">5.29</a>, a seguir.</p>
+<div id="def:fdva" class="Definition" title="Função de distribuição de uma v.a. discreta">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.29: </strong>Função de distribuição de uma v.a. discreta</summary><div>A função de distribuição de uma variável aleatória discreta <span class="math inline">\(X\)</span> é a função <span class="math inline">\(F_X:\mathbb{R}\rightarrow [0,1]\)</span>, definida por <span class="math display">\[
+F_X(x)=P(X\leq x)=\sum_{x}p_X(x),
+\]</span> para todo <span class="math inline">\(x\in\mathbb{R}\)</span>.<p></p>
+</div></details>
+</div>
+<p>Essa função de distribuição tem a forma de escada sendo descontínua nos valores assumidos pela variável aleatória <span class="math inline">\(X\)</span>, <a href="#fig-fda" class="quarto-xref">Figura&nbsp;<span>5.6</span></a>.</p>
+<div class="cell">
+<div id="lst-codRfda" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRfda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;5.1: FDA de uma variável aleatória discreta.
+</figcaption>
+<div aria-describedby="lst-codRfda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRfda"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRfda-1"><a href="#lst-codRfda-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote ao caminho de busca</span></span>
+<span id="lst-codRfda-2"><a href="#lst-codRfda-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRfda-3"><a href="#lst-codRfda-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Funcao de probabilidade</span></span>
+<span id="lst-codRfda-4"><a href="#lst-codRfda-4" aria-hidden="true" tabindex="-1"></a><span class="fu">showcdf</span>(<span class="at">prop =</span> <span class="cn">NULL</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div id="fig-fda" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cap05_files/figure-html/fig-fda-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.6: Gráfico da função de distribuição de <span class="math inline">\(X\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Outro ponto importante é que <span class="math inline">\(x\in\mathbb{R}\)</span>, isto é, <span class="math inline">\(x\)</span> não necessariamente é elemento do suporte de <span class="math inline">\(X\)</span>. Percebemos na <a href="#fig-fda" class="quarto-xref">Figura&nbsp;<span>5.6</span></a>, por exemplo, qualquer valor de <span class="math inline">\(x\)</span> tal que <span class="math inline">\(x_2 \leq x &lt; x_3\)</span>, <span class="math inline">\(F_X(x) = F_X(x_2)\)</span>. E percebemos que o suporte de <span class="math inline">\(X\)</span> não contém um <span class="math inline">\(x\)</span>, tal que <span class="math inline">\(x_2 &lt; x &lt; x_3\)</span>. Logo, <span class="math inline">\(P(X = x) = 0\)</span> neste ponto. A função de distribuição nos informa que devemos somar apenas as probabilidades para as realizações até <span class="math inline">\(x \in \mathbb{R}\)</span>. Para isto, olhamos para <span class="math inline">\(\mathcal{X}\)</span> e verificamos quais as realizações até <span class="math inline">\(x\)</span> e somamos as suas probabilidades para o cômputo de <span class="math inline">\(F_X(x)\)</span>. Vejamos o Exemplo <a href="cap05.html#ex:criancasvacinadas">5.30</a>.</p>
+<div id="ex:criancasvacinadas" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.30</strong></summary><div>
+<p>Considere um estudo hipotético do qual desejamos imunizar 1000 pessoas em uma comunidade rural da doença da COVID-19, por meio de uma determinada vacina. Supomos que sejam aplicados 5 doses em cada pessoa, em períodos espaçados, dessa vacina. A cada dose aplicada, as pessoas passam por uma série de avaliações para a verificar se adquiriu imunidade ou não. Caso se verifique a imunidade em uma determinada dose aplicada, esta pessoa não irá tomar a dose subsequente; caso contrário, seguirá tomando as doses subsequentes, até a 5ª dose. Os resultados completos, são apresentados a seguir.</p>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Doses</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Frequência</td>
+<td style="text-align: center;">230</td>
+<td style="text-align: center;">270</td>
+<td style="text-align: center;">300</td>
+<td style="text-align: center;">120</td>
+<td style="text-align: center;">80</td>
+</tr>
+</tbody>
+</table>
+<p>Considerando uma pessoa dessa comunidade sorteada ao acaso, poderíamos estar interessados em saber qual a probilidade dela ter recebido 2 doses? usando a ideia da probabilidade frequentista, a probabilidade desejada é de <span class="math inline">\(270/1000\)</span> $= $ <span class="math inline">\(0,27\)</span>. Podemos assim obter a função de probabilidade para a variável aleatória número de doses recebidas, que também pode ser observado pela <a href="#fig-graf_funcprob" class="quarto-xref">Figura&nbsp;<span>5.7</span></a>, da seguinte forma:</p>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Doses</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(p_i\)</span></td>
+<td style="text-align: center;">0,23</td>
+<td style="text-align: center;">0,27</td>
+<td style="text-align: center;">0,30</td>
+<td style="text-align: center;">0,12</td>
+<td style="text-align: center;">0,08</td>
+</tr>
+</tbody>
+</table>
+<div id="fig-graf_funcprob" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-graf_funcprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap5/fpcovid.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-graf_funcprob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.7: Função de probabilidade do número de doses da COVID-19, aplicados em 1000 pessoas.
+</figcaption>
+</figure>
+</div>
+<p>Pela função de distribuição, podemos responder, por exemplo, a chance de uma determinada pessoa dessa população ter tomado até duas doses, da seguinte forma:</p>
+<p><span class="math display">\[
+    F_X(2)=P(X\leq 2)=P(X=1)+P(X=2)=0,50.
+\]</span></p>
+<p>Apesar da escolha de <span class="math inline">\(x\)</span> ter sido sempre um número inteiro até agora, esse valor fica inalterado no intervalo <span class="math inline">\([2,3)\)</span>. Isto significa que, <span class="math inline">\(F_X(2,3)\)</span>, <span class="math inline">\(F_X(2,45)\)</span> ou <span class="math inline">\(F_X(2,99)\)</span> têm os mesmos valores que <span class="math inline">\(F_X(2)\)</span>. Por isso, escrevemos <span class="math display">\[
+    F_X(x)=P(X\leq x)=0,50, \ \ \textrm{para} \ \ 2\leq x &lt; 3.
+\]</span></p>
+<p>Por fim, apresentamos a função de distribuição para todo <span class="math inline">\(x\)</span>, como também o gráfico dessa função, <a href="#fig-graf_funcdist" class="quarto-xref">Figura&nbsp;<span>5.8</span></a>.</p>
+<p><span class="math display">\[
+    F_X(x)=\left\lbrace  \begin{array}{lcl}
+        0,&amp; \textrm{se}&amp; x&lt;1;\\
+        0,23, &amp; \textrm{se} &amp; 1\leq x &lt;2;\\
+        0,50, &amp; \textrm{se} &amp; 2\leq x &lt; 3;\\
+        0,80, &amp; \textrm{se} &amp; 3\leq x &lt; 4;\\
+        0,92, &amp; \textrm{se} &amp; 4\leq x &lt; 5;\\
+        1, &amp; \textrm{se} &amp; x\geq 5.
+    \end{array}\right.
+\]</span></p>
+<div id="fig-graf_funcdist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-graf_funcdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap5/fdacovid.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-graf_funcdist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.8: Função de distribuição do número de doses da COVID-19, aplicados em 1000 pessoas.
+</figcaption>
+</figure>
+</div>
+</div></details>
+</div>
+<p>Além de mostrarmos o gráfico da FDA para um variável aleatória discreta, apresentamos as propriedades do Teorema <a href="cap05.html#teo:propfuncdist">5.14</a> no <a href="#lst-codRpropfda" class="quarto-xref">Código R&nbsp;<span>5.2</span></a>. Primeiro, na Figura <a href="#fig-p1fdavad" class="quarto-xref">Figura&nbsp;<span>5.9</span></a> verificamos a primeira propriedade do Teorema <a href="cap05.html#teo:propfuncdist">5.14</a>. Na <a href="#fig-p2fdavad" class="quarto-xref">Figura&nbsp;<span>5.10</span></a>, conseguimos observar a segunda propriedade. Com a representação gráfica, fica mais fácil entender a implicância dos resultados encontrados no referido teorema. Observe na <a href="#fig-prop3disc" class="quarto-xref">Figura&nbsp;<span>5.11</span></a> o porquê da <span class="math inline">\(F_X\)</span> ser contínua à direita. Por exemplo, vamos assumir o ponto <span class="math inline">\(a = 2\)</span> na <a href="#fig-graf_funcdist" class="quarto-xref">Figura&nbsp;<span>5.8</span></a>. Considerando que <span class="math display">\[\begin{align*}
+  \lim_{x \to a^{+}}F(x) = F(a) = F(2) = 0,50.
+\end{align*}\]</span> Logo, <span class="math inline">\(F_X(x)\)</span> em <span class="math inline">\(a\)</span> é contínua à direita. Ao passo que <span class="math display">\[\begin{align*}
+  \lim_{x \to a^{-}}F(x) = 0,23 \neq F(a) = F(2) = 0,50.
+\end{align*}\]</span> Logo, <span class="math inline">\(F_X(x)\)</span>, em <span class="math inline">\(a\)</span>, não é contínua à esquerda.</p>
+<div class="cell">
+<div id="lst-codRpropfda" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRpropfda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;5.2: Propriedades da FDA de uma variável aleatória discreta.
+</figcaption>
+<div aria-describedby="lst-codRpropfda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRpropfda"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRpropfda-1"><a href="#lst-codRpropfda-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRpropfda-2"><a href="#lst-codRpropfda-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRpropfda-3"><a href="#lst-codRpropfda-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Propriedade 1</span></span>
+<span id="lst-codRpropfda-4"><a href="#lst-codRpropfda-4" aria-hidden="true" tabindex="-1"></a><span class="fu">showcdf</span>(<span class="at">prop =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div id="fig-p1fdavad" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p1fdavad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cap05_files/figure-html/fig-p1fdavad-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p1fdavad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.9: Propriedade (<span class="math inline">\(i\)</span>) do Teorema 5.14 para FDA de uma v.a. discreta.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Propriedade 1</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">showcdf</span>(<span class="at">prop =</span> <span class="dv">2</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-p2fdavad" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-p2fdavad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cap05_files/figure-html/fig-p2fdavad-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-p2fdavad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.10: Propriedade (<span class="math inline">\(ii\)</span>) do Teorema 5.14 para FDA de uma v.a. discreta.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Propriedade 1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">showcdf</span>(<span class="at">prop =</span> <span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-prop3disc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prop3disc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cap05_files/figure-html/fig-prop3disc-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prop3disc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.11: Propriedade (<span class="math inline">\(iii\)</span>) do Teorema 5.14 para FDA de uma v.a. discreta.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Uma característica interessante é que da distribuição de probabilidade obtemos a função de distribuição e vice-versa, do qual apresentamos a seguir.</p>
+<div id="teo:relfdpfda" class="Theorem" title="Relação entre p_X e F_X">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.15: </strong>Relação entre <span class="math inline">\(p_X\)</span> e <span class="math inline">\(F_X\)</span></summary><div>Considerando uma variável aleatória discreta <span class="math inline">\(X\)</span>, Definição <a href="cap05.html#def:vadiscreta">5.26</a>, então a função de distribuição (<span class="math inline">\(F_X\)</span>) pode ser obtida a partir da função de probabilidade (<span class="math inline">\(p_X\)</span>), e vice-versa.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.17" class="Proof">
+<details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>
+<p>Seja o suporte de <span class="math inline">\(X\)</span> dado por <span class="math inline">\(\mathcal{X} = \{x_1, x_2, \ldots\}\)</span>, então:</p>
+<ul>
+<li>supomos o conhecimento de <span class="math inline">\(p_X(x)\)</span>. Logo, <span class="math inline">\(F_X(x) = \sum\limits_{x_i \leq x}p_X(x_i) = \sum\limits_{x_i \leq x}P_X(X = x_i)\)</span>;</li>
+<li>supomos o conhecimento de <span class="math inline">\(F_X(x_i)\)</span>, <span class="math inline">\(\forall x_i \in \mathcal{X}\)</span>. Logo, <span class="math inline">\(p_X(x_i) = F_X(x_i) - \lim\limits_{\epsilon \to 0}F_X(x_i - \epsilon)\)</span>, para <span class="math inline">\(\epsilon &gt; 0\)</span>.</li>
+</ul>
+</div></details>
+</div>
+</section>
+</section>
+<section id="variável-aleatória-contínua" class="level3" data-number="5.9.2">
+<h3 data-number="5.9.2" class="anchored" data-anchor-id="variável-aleatória-contínua"><span class="header-section-number">5.9.2</span> Variável aleatória contínua</h3>
+<p>Observamos que seria muito restritivo definir apenas variáveis aleatórias cujo resultado da função assumisse apenas em um conjunto contável. Por isso, uma outra natureza de variável aleatória modela situações cuja função assume em um conjunto infinito não contável dos reais, do qual apresentamos na Definição <a href="cap05.html#def:vacontinua">5.30</a>.</p>
+<div id="def:vacontinua" class="Definition" title="Variável Aleatória Contínua">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.30: </strong>Variável Aleatória Contínua</summary><div>Seja o espaço amostral <span class="math inline">\(\Omega\)</span> de um experimento, então a função <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span> é chamada de variável aleatória contínua, se a sua imagem é um subconjunto <span class="math inline">\(B\)</span>, infinito não enumerável dos reais, e que <span class="math display">\[\begin{align*}
+    P(X = x) = 0,
+\end{align*}\]</span> para todo <span class="math inline">\(x \in \mathbb{R}\)</span>.<p></p>
+</div></details>
+</div>
+<p>Existem diversos exemplos de variáveis aleatórias contínuas, tais como: a carga (<span class="math inline">\(g/cm\)</span>) em uma viga de uma determinada construção civil, a concentração de um corante (<span class="math inline">\(g/l\)</span>) para fabricação de tintas, diâmetro de roldanas (<span class="math inline">\(mm\)</span>) em uma máquina desenvolvida para o processo de conformação a frio com o objetivo de melhorar as propriedades ótimas de um fio de arame, dentre outras.</p>
+<p>Agora, supomos que estipulássemos o tempo de execução de um algoritmo computacional para uma determinada atividade no intervalo <span class="math inline">\([0h,~1h]\)</span>, como verificado na <a href="#fig-talgorit" class="quarto-xref">Figura&nbsp;<span>5.12</span></a>.</p>
+<div id="fig-talgorit" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-talgorit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/cap5/tempoalgoritmo.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-talgorit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.12: Tempo de execução de um algoritmo computacional.
+</figcaption>
+</figure>
+</div>
+<p>Considerando <span class="math inline">\(X\)</span> uma variável aleatória contínua que mede o tempo de execução do algoritmo no intervalo da <a href="#fig-talgorit" class="quarto-xref">Figura&nbsp;<span>5.12</span></a>, qual seria a probabilidade dessa execução ser realizada em <span class="math inline">\(0,5h\)</span>, isto é, <span class="math inline">\(P(X = 0,5)\)</span>? Sabemos que infinitas possibilidades são possíveis no intervalo. Se disséssemos que essa probabilidade é 0. Sim, exatamente, a probabilidade <span class="math inline">\(P(X = 0,5) = 0\)</span>.</p>
+<p>Para qualquer intervalo que assumíssemos, o fato de existir infinitas realizações para <span class="math inline">\(X\)</span>, se essa probabilidade fosse diferente de zero, por exemplo, um <span class="math inline">\(\phi_x\)</span> valor positivo próximo de zero, então <span class="math inline">\(\sum_{x \in [0,1]} P(X = x) \to \infty\)</span>, e isso seria uma contradição, de acordo com a Definição <a href="cap05.html#def:medprob">5.17</a> (Axioma <span class="math inline">\(i\)</span>), não importa o quão pequeno seja <span class="math inline">\(\phi_x\)</span>. Mas não implica dizer que esta situação seria impossível, porque o evento <span class="math inline">\(\{X = 0,5\}\)</span> existe no intervalo. Porém, como <span class="math inline">\(P(\Omega = [0,~1]) = 1\)</span>, se todos os valores de <span class="math inline">\(X\)</span> têm probabilidade 0?</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Evento certo não implica em certeza de ocorrência de seus elementos em um experimento!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Considere <span class="math inline">\(X\)</span> uma variável aleatória contínua que assume valores no conjunto dos irracionais no intervalo <span class="math inline">\([0,1]\)</span>, similar ao exemplo que apresentamos na <a href="#fig-talgorit" class="quarto-xref">Figura&nbsp;<span>5.12</span></a>. A probabilidade de <span class="math inline">\(X\)</span> assumir um número racional, isso representa um evento certo e tem probabilidade 1, isto é, <span class="math inline">\(P(\{X = x_{\mathbb{I}}\} = \{x_{\mathbb{I}} \in [0,1]: x_{\mathbb{I}} \in \mathbb{I}\}) = 1\)</span>. Porém, um resultado possível é <span class="math inline">\(1/2\)</span> que não é irracional. Da mesma forma, como afirmamos no início da seção que um evento com probabilidade <span class="math inline">\(0\)</span> não implica que ele seja impossível.</p>
+</div>
+</div>
+<section id="função-densidade-de-probabilidade-fdp" class="level4" data-number="5.9.2.1">
+<h4 data-number="5.9.2.1" class="anchored" data-anchor-id="função-densidade-de-probabilidade-fdp"><span class="header-section-number">5.9.2.1</span> Função densidade de probabilidade (FDP)</h4>
+<p>Anteriormente, afirmamos que uma variável aleatória <span class="math inline">\(X\)</span> é contínua se <span class="math inline">\(P,(X = x) = 0\)</span>. Assim, como poderíamos atribuir probabilidade às variáveis aleatórias? Com o intuito de resolver esse problema, definimos a função densidade de probabilidade a seguir.</p>
+<div id="def:fdp" class="Definition" title="Função densidade de probabilidade">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.31: </strong>Função densidade de probabilidade</summary><div>
+<p>Seja <span class="math inline">\(f:\mathbb{R}\rightarrow \mathbb{R}\)</span> uma função. Então <span class="math inline">\(f\)</span> é uma função densidade se:</p>
+<ol type="i">
+<li><span class="math inline">\(f(x)\geq 0\)</span> para todo <span class="math inline">\(x\in\mathbb{R}\)</span>, e</li>
+<li><span class="math inline">\(\int^{\infty}_{-\infty}f(x)dx=1\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<p>Podemos observar que a função densidade de probabilidade foi definida sem fazer referência a uma variável aleatória contínua. Apenas que satisfaça as duas condições apresentadas na Definição <a href="cap05.html#def:fdp">5.31</a>.</p>
+<div id="ex:funcdens" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.31</strong></summary><div>Vamos verificar se <span class="math inline">\(f(x)=\frac{1}{128}e^{-x/128}\)</span> é uma densidade de probabilidade para <span class="math inline">\(x\geq 0\)</span>. A variável aleatória <span class="math inline">\(X\)</span> representa o tempo de vida de uma espécie vegetal arbórea dada em anos. Para verificarmos se <span class="math inline">\(f_X\)</span> é uma função densidade de probabilidade, devemos provar as condições:<p></p>
+<ol type="i">
+<li><p><span class="math inline">\(f(x)\geq 0\)</span>, pois <span class="math inline">\(e^{-x/128}\geq 0, \ \ \forall x\geq0\)</span>, e <span class="math inline">\(1/128\)</span> é uma constante sempre positiva.</p></li>
+<li><p>Verificar se <span class="math inline">\(\displaystyle\int_{0}^{\infty}f(x)dx=1\)</span>.</p></li>
+</ol>
+<p>Inicialmente vamos relembrar a derivada de uma função <span class="math inline">\(h(x)=e^{-mx}\)</span>: <span class="math display">\[\begin{eqnarray*}
+            h'(x)&amp;=&amp;-me^{-mx},
+\end{eqnarray*}\]</span> integrando em ambos os lados, temos: <span class="math display">\[\begin{eqnarray*}
+            \int h'(x)dx&amp;=&amp;\int -me^{-mx}dx,\\
+            h(x)&amp;=&amp;-m\int e^{-mx}dx,\\
+            \frac{h(x)}{-m}&amp;=&amp;\int e^{-mx}dx,
+\end{eqnarray*}\]</span> como <span class="math inline">\(h(x)=e^{-mx}\)</span>, então, <span id="eq-exp(-mx)"><span class="math display">\[
+\begin{equation}
+            \int e^{-mx}dx=\frac{-e^{-mx}}{m}+c.
+\end{equation}
+\tag{5.49}\]</span></span><br>
+Assim, se considerarmos <span class="math inline">\(m\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(1/128\)</span>, então começamos a prova do item (ii).</p>
+<p><span class="math display">\[\begin{eqnarray*}
+            \int_{0}^{\infty}\frac{1}{128}e^{-\frac{1}{128}x}dx &amp;=&amp;\frac{1}{128}\underbrace{\int_{0}^{\infty}e^{-\frac{1}{128}x}dx,}_{\textrm{idêntica a }eq. (5.49) }\\
+            &amp;=&amp;\frac{1}{128}\left[\frac{-e^{-(1/128)x}}{1/128} \right]_{0}^{\infty},\\
+            &amp;=&amp;\frac{1}{128}\left[0-\left( \frac{-e^{-(1/128)\times 0}}{1/128}  \right)  \right],\\
+            &amp;=&amp;\frac{1}{128}\left[128e^{0} \right] \\
+            &amp;=&amp;\frac{1}{128}\times 128 \times 1=1.
+\end{eqnarray*}\]</span> Portanto, <span class="math inline">\(f(x)\)</span> é uma função densidade.</p>
+</div></details>
+</div>
+<p>Vejamos o Exemplo <a href="cap05.html#ex:funcdens2">5.32</a>, uma outra situação para determinarmos uma função densidade de probabilidade.</p>
+<div id="ex:funcdens2" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.32</strong></summary><div>Seja <span class="math display">\[
+    f(x)=\left\lbrace \begin{array}{ll}
+        1/6x+k,&amp;\textrm{se }0\leq x \leq 3\\
+        0, &amp; \textrm{em qualquer outro caso}.
+    \end{array}\right.
+\]</span> Encontrar o valor de “<span class="math inline">\(k\)</span>” na função para que <span class="math inline">\(f(x)\)</span> seja FDP. Para determinar o valor de <span class="math inline">\(k\)</span>, então <span class="math display">\[
+    \int_{0}^{3}(1/6x+k)dx=1.
+\]</span> Assim, <span id="eq-exem3"><span class="math display">\[
+\begin{eqnarray}
+        \int_{0}^{3}(1/6x+k)dx&amp;=&amp;\left[1/6\frac{x^2}{2}+xk \right]_0^{3} \nonumber \\
+        &amp;=&amp;1/6\frac{3^2}{2}+3k.
+\end{eqnarray}
+\tag{5.50}\]</span></span> Igualando (<a href="#eq-exem3" class="quarto-xref"><span>5.50</span></a>) a 1, temos: <span class="math display">\[
+    1/6\frac{3^2}{2}+3k=1 \Rightarrow k=1/12.
+\]</span> Portanto, <span class="math inline">\(f(x)=1/6x+1/12\)</span> é uma FDP.<p></p>
+</div></details>
+</div>
+<p>Com a Definição <a href="cap05.html#def:fdp">5.31</a>, podemos redefinir formalmente uma variável aleatória contínua.</p>
+<div id="def:vaac" class="Definition" title="Variável aleatória absolutamente contínua">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.32: </strong>Variável aleatória absolutamente contínua</summary><div>Uma variável aleatória <span class="math inline">\(X\)</span> é absolutamente contínua se existe uma função densidade <span class="math inline">\(f_X(x)\)</span>, tal que <span id="eq-Fxcont"><span class="math display">\[
+\begin{eqnarray}        
+F_X(x)=\int_{-\infty}^{x}f_X(t)dt,
+\end{eqnarray}
+\tag{5.51}\]</span></span> para todo <span class="math inline">\(x \in \mathbb{R}\)</span>.<p></p>
+</div></details>
+</div>
+<p>A partir da Definição <a href="cap05.html#def:vaac">5.32</a>, usamos a notação para a FDP de <span class="math inline">\(X\)</span> como <span class="math inline">\(f_X\)</span>, para associá-la com a respectiva variável aleatória contínua. Na Definições <a href="cap05.html#def:vacontinua">5.30</a> e <a href="cap05.html#def:vaac">5.32</a>, percebemos que <span class="math inline">\(f_X(x)\)</span> não é unicamente definida. Mas se requer que a integral de <span class="math inline">\(f_X(x)\)</span> exista para todo <span class="math inline">\(x\)</span>. Vejamos o Exemplo <a href="cap05.html#ex:fdps">5.33</a>.</p>
+<div id="ex:fdps" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.33</strong></summary><div>Considere <span class="math inline">\(I_A\)</span> uma função indicadora do conjunto <span class="math inline">\(A\)</span>, e suponha que <span class="math inline">\(F_X(x)\)</span> $= $ <span class="math inline">\(xI_{[0,1)}(u)\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(I_{[1,\infty)}(u)\)</span>, então <span class="math inline">\(f_X(u)=I_{(0,1)}(u)\)</span> satisfaz <span class="math inline">\(F_X(x)\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(\int^{x}_{-\infty}f_X(u)du\)</span>. Agora, se considerarmos <span class="math inline">\(f_X(u)\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(I_{(0,1/2)}(u)\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(35I_{[1/2]}(u)\)</span> <span class="math inline">\(+\)</span> <span class="math inline">\(I_{(1/2,1)}(u)\)</span>, também satistaz <span class="math inline">\(F_X(x)\)</span> <span class="math inline">\(=\)</span> <span class="math inline">\(\int^{x}_{-\infty}f_X(u)du\)</span>. Ou seja, a função densidade é mudada em alguns pontos, e <span class="math inline">\(F_X\)</span> não se altera. Portanto, o correto ao invés de dizermos “a” função densidade de probabilidade, seria “uma” função densidade de probabilidade.<p></p>
+</div></details>
+</div>
+<p>Definiremos a seguir uma FDA para o caso contínuo, já mencionado na Definição <a href="cap05.html#def:vaac">5.32</a>, expressão (<a href="#eq-Fxcont" class="quarto-xref"><span>5.51</span></a>).</p>
+</section>
+<section id="fda-para-as-variáveis-aleatórias-contínuas" class="level4" data-number="5.9.2.2">
+<h4 data-number="5.9.2.2" class="anchored" data-anchor-id="fda-para-as-variáveis-aleatórias-contínuas"><span class="header-section-number">5.9.2.2</span> FDA para as variáveis aleatórias contínuas</h4>
+<p>Assim como no caso discreto, também apresentaremos a FDA para as variáveis aleatórias absolutamente contínuas.</p>
+<div id="def:fdcont" class="Definition" title="Função de distribuição de uma variável aleatória contínua">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.33: </strong>Função de distribuição de uma variável aleatória contínua</summary><div>Se <span class="math inline">\(X\)</span> é uma variável aleatória absolutamente contínua, a função de distribuição <span class="math inline">\(F_X\)</span>, se existir uma função densidade <span class="math inline">\(f_X\)</span>, é definida por <span class="math display">\[
+F_X(x) = \int^{x}_{-\infty} f_X(t)dt, \ x \in \mathbb{R}.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="ex:fdac" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.34</strong></summary><div>No canal do <a href="youtube.com/bendeivide">Youtube</a> ocorreram 200 acessos em 48 horas. Qual a probabilidade de não haver acessos nos próximos cinco minutos?<p></p>
+<p>Consideremos <span class="math inline">\(X\)</span> um variável aleatória que mede o tempo, a partir de um tempo inicial (<span class="math inline">\(t_0\)</span>), até o tempo em que houve o primeiro acesso no canal. Podemos considerar também que se assumirmos <span class="math inline">\(Y\)</span> como sendo uma variável aleatória que conta o número de acessos em 5 minutos, dizemos que <span class="math inline">\(Y\sim Poisson(\lambda x)\)</span>, em que <span class="math inline">\(\lambda\)</span> representa o número médio de acessos por minuto e <span class="math inline">\(x\)</span> representa o valor do tempo, em minutos.</p>
+<p>Diante dessas informações, podemos determinar a distribuição de <span class="math inline">\(X\)</span> a partir da distribuição de <span class="math inline">\(Y\)</span>. Assumir que não tenha acessos (<span class="math inline">\(Y = 0\)</span>) nos próximos 5 minutos (<span class="math inline">\(x\)</span>), significa dizer que o primeiro acesso superior aos 5 minutos, é equivalente a dizer que <span class="math inline">\(Y = 0\)</span> do início da contagem do tempo até os cinco minutos. Generalizando a expressão para um <span class="math inline">\(x\)</span> qualquer, e que o tempo de verificação do experimento seja maior que <span class="math inline">\(x\)</span>, então <span id="eq-exppois"><span class="math display">\[
+\begin{align}
+P(X &gt; x) = P(Y = 0) = \frac{e^{-\lambda x}(\lambda x )^0}{0!} = e^{-\lambda x}.
+\end{align}
+\tag{5.52}\]</span></span> Pela Definição <a href="cap05.html#def:funcdist">5.25</a>, temos que a função de distribuição de <span class="math inline">\(X\)</span> pode ser dada como: <span id="eq-fdaexp"><span class="math display">\[
+\begin{align}
+    F_X(x) = P(X \leq x) &amp; = 1 - P(X &gt; x) \nonumber\\
+                &amp; = 1 - e^{-\lambda x}, \quad \textrm{(Resultado de 5.52)}
+\end{align}
+\tag{5.53}\]</span></span> para <span class="math inline">\(x \geq 0\)</span>. O resultado em (<a href="#eq-fdaexp" class="quarto-xref"><span>5.53</span></a>) representa a distribuição acumulada de uma variável aleatória <span class="math inline">\(X\)</span> que tem distribuição exponencial, em notação <span class="math inline">\(X \sim Exp(\lambda)\)</span>.</p>
+<p>Retornando a solução do problema inicial, temos que:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(200\)</span> acessos</td>
+<td style="text-align: center;"><span class="math inline">\(\to\)</span></td>
+<td style="text-align: center;">$48 $ horas</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\lambda\)</span> acessos</td>
+<td style="text-align: center;"><span class="math inline">\(\to\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span> hora,</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>logo, <span class="math inline">\(\lambda = 4,166667\)</span> acessos por hora. Assim, usando (<a href="#eq-exppois" class="quarto-xref"><span>5.52</span></a>), temos</p>
+<p><span class="math display">\[\begin{align*}
+  P(X &gt; 5 / 60) = P(X &gt; 0,083333) &amp; = e^{-4,166667 \times 0,833333} =  0,7066484,
+\end{align*}\]</span> isto é, a chance de não haver acessos nos próximos 5 minutos é em torno de <span class="math inline">\(71\%\)</span>.</p>
+</div></details>
+</div>
+<p>Podemos representar graficamente as funções: FDP e FDA. Com a Definição <a href="cap05.html#def:fdcont">5.33</a>, podemos retornar ao que falamos anteriormente, pelo seguinte teorema:</p>
+<div id="teo:varabscont" class="Theorem" title="Variável aleatória absolutamente contínua implica em variável aleatória contínua">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.16: </strong>Variável aleatória absolutamente contínua implica em variável aleatória contínua</summary><div>Se <span class="math inline">\(X\)</span> é uma variável absolutamente contínua, então <span class="math inline">\(X\)</span> é também uma variável contínua.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.18" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Pela continuidade da probabilidade, Teorema <span class="math inline">\(\ref{teo:propP(x)}\)</span>, item (<span class="math inline">\(vii\)</span>), considere <span class="math inline">\(x \in \mathbb{R}\)</span>. Então, podemos afirmar que <span class="math inline">\(P(X = x) = P(x \leq X \leq x)\)</span>. Agora, pela Definição <a href="cap05.html#def:funcdist">5.25</a> e para um pequeno valor positivo de <span class="math inline">\(\delta\)</span>, temos <span class="math display">\[\begin{align*}
+  P(X = x) &amp; = P(x - \delta \leq X \leq x)\\
+           &amp; = F_X(x) - \lim_{\delta \to 0}F_X(x - \delta)\\
+           &amp; = 0,
+\end{align*}\]</span> para todo <span class="math inline">\(x \in \mathbb{R}\)</span>.<p></p>
+</div></details>
+</div>
+<p>Há casos patológicos, em que mesmo tendo uma variável aleatória contínua, <span class="math inline">\(F_X(x)\)</span> não é diferenciável devido a <span class="math inline">\(f_X(x)\)</span>. Nesses casos, a variável aleatória não é absolutamente contínua <span class="citation" data-cites="Kachapova2012">Kachapova e Kachapov (<a href="references.html#ref-Kachapova2012" role="doc-biblioref">2012</a>)</span> . Portanto, uma variável é absolutamente contínua se (<a href="#eq-Fxcont" class="quarto-xref"><span>5.51</span></a>) se mantiver. Assim, iremos omitir a palavra “absolutamente” ao mencionarmos uma variável aleatória absolutamente contínua, uma vez que os casos em que isso não ocorre são considerados patológicos e não merecedores de atenção, exceto em casos muito particulares e avançados.</p>
+<p>Da mesma forma como ocorre no caso discreto, também apresentamos o suporte de <span class="math inline">\(X\)</span> para o caso contínuo na Definição <a href="cap05.html#def:supxcont">5.34</a>.</p>
+<div id="def:supxcont" class="Definition" title="Suporte de X (v.a. contínua)">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.34: </strong>Suporte de <span class="math inline">\(X\)</span> (v.a. contínua)</summary><div>O suporte de uma variável aleatória contínua, denotado por <span class="math inline">\(\mathcal{X}\)</span>, tal que <span class="math inline">\(\mathcal{X} \subset \mathbb{R}\)</span> é dado por <span id="eq-supXvac"><span class="math display">\[
+\begin{align}
+\mathcal{X} &amp; = \{x:~ f_X(x) &gt; 0\},
+\end{align}
+\tag{5.54}\]</span></span> sendo <span class="math inline">\(f_X\)</span> apresentada na Definição <a href="cap05.html#def:fdp">5.31</a>.<p></p>
+</div></details>
+</div>
+<p>Diremos que integrar a função densidade de <span class="math inline">\(X\)</span> em seu suporte resulta em 1, que é o equivalente ao somar todas as probabilidades no suporte de <span class="math inline">\(X\)</span>, sendo <span class="math inline">\(X\)</span> uma variável aleatória discreta.</p>
+<p>A partir de uma função distribuição podemos obter uma função densidade, como também o contrário é válido, sendo apresentado no Teorema <a href="cap05.html#teo:fdafdp">5.17</a>, a seguir.</p>
+<div id="teo:fdafdp" class="Theorem" title="Relação entre F_X e f_X de uma variável aleatória contínua">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.17: </strong>Relação entre <span class="math inline">\(F_X\)</span> e <span class="math inline">\(f_X\)</span> de uma variável aleatória contínua</summary><div>Seja <span class="math inline">\(X\)</span> uma variável aleatória contínua. Então, a partir de uma função densidade <span class="math inline">\(f_X(x)\)</span> pode ser obtido a função de distribuição <span class="math inline">\(F_X(x)\)</span>, e vice-versa.<p></p>
+</div></details>
+</div>
+<div id="Proof*-5.19" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default"><summary><strong>Prova</strong></summary><div>Se <span class="math inline">\(X\)</span> é uma v. a. contínua e sua <span class="math inline">\(f_X(x)\)</span> é conhecida, então <span class="math inline">\(F_X(x)\)</span> é obtida pela integração <span class="math inline">\(\int^{x}_{-\infty}f_X(u)du\)</span>, usando a própria Definição <a href="cap05.html#def:fdcont">5.33</a>. Ao passo que, se <span class="math inline">\(F_X(x)\)</span> é conhecida, então a função densidade pode ser obtida por <span class="math inline">\(f_X(x) = dF_X(x)/dx\)</span>, nos pontos em que <span class="math inline">\(x\)</span> seja diferenciável, sendo validada pelo teorema fundamental do cálculo.<p></p>
+</div></details>
+</div>
+<div id="ex:distexpfdafdp" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.35</strong></summary><div>Retornando ao resultado (<a href="#eq-fdaexp" class="quarto-xref"><span>5.53</span></a>) obtido no Exemplo <a href="cap05.html#ex:fdac">5.34</a>, podemos usar o Teorema <a href="cap05.html#teo:fdafdp">5.17</a> para descobrir a função densidade de probabilidade de <span class="math inline">\(X\)</span>, isto é, <span id="eq-fdpexp"><span class="math display">\[
+\begin{align}
+  f_X(x) &amp; = \frac{d}{dx}F_X(x)\nonumber\\
+         &amp; = \lambda e^{-\lambda x},
+\end{align}
+\tag{5.55}\]</span></span> que representa a função densidade de probabilidade de uma variável aleatória <span class="math inline">\(X\)</span> que tem distribuição exponencial, com <span class="math inline">\(\lambda &gt; 0\)</span> e suporte de <span class="math inline">\(X\)</span> igual a <span class="math inline">\(\mathcal{X} = [0, \infty)\)</span>.<p></p>
+</div></details>
+</div>
+<p>Diferentemente do gráfico de <span class="math inline">\(F_X(x)\)</span> para <span class="math inline">\(X\)</span> uma variável aleatória discreta, vamos observar o caso contínuo por meio do <a href="#lst-codRpropfdacont" class="quarto-xref">Código R&nbsp;<span>5.3</span></a>. Pelo fato da função distribuição de uma variável aleatória contínua está bem comportada, é fácil observar as propriedades apresentadas no Teorema <a href="cap05.html#teo:propfuncdist">5.14</a>, Figuras <a href="#fig-prop1cont" class="quarto-xref"><span>5.13</span></a> a <a href="#fig-prop3cont" class="quarto-xref"><span>5.15</span></a>. Por exemplo, a propriedade (<span class="math inline">\(iii\)</span>) do Teorema <a href="cap05.html#teo:propfuncdist">5.14</a>, para este caso, poderia ser estendida para <span class="math inline">\(x_n \uparrow x\)</span> e para <span class="math inline">\(x_n \downarrow x\)</span> pelo fato da continuidade de <span class="math inline">\(F_x\)</span>, o que não seria verdade para o caso discreto, observe a <a href="#fig-prop3disc" class="quarto-xref">Figura&nbsp;<span>5.11</span></a>.</p>
+<div class="cell">
+<div id="lst-codRpropfdacont" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-codRpropfdacont-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Código R&nbsp;5.3: Propriedades da FDA de uma variável aleatória contínua.
+</figcaption>
+<div aria-describedby="lst-codRpropfdacont-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-codRpropfdacont"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="lst-codRpropfdacont-1"><a href="#lst-codRpropfdacont-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anexando o pacote leem</span></span>
+<span id="lst-codRpropfdacont-2"><a href="#lst-codRpropfdacont-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leem)</span>
+<span id="lst-codRpropfdacont-3"><a href="#lst-codRpropfdacont-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Propriedade 1</span></span>
+<span id="lst-codRpropfdacont-4"><a href="#lst-codRpropfdacont-4" aria-hidden="true" tabindex="-1"></a><span class="fu">showcdf</span>(<span class="at">variable =</span> <span class="dv">2</span>, <span class="at">prop =</span> <span class="dv">1</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output-display">
+<div id="fig-prop1cont" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prop1cont-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cap05_files/figure-html/fig-prop1cont-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prop1cont-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.13: Propriedade (<span class="math inline">\(i\)</span>) do Teorema 5.14 para FDA de uma v.a. contínua.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Propriedade 2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">showcdf</span>(<span class="at">variable =</span> <span class="dv">2</span>, <span class="at">prop =</span> <span class="dv">2</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-prop2cont" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prop2cont-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cap05_files/figure-html/fig-prop2cont-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prop2cont-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.14: Propriedade (<span class="math inline">\(ii\)</span>) do Teorema 5.14 para FDA de uma v.a. contínua.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Propriedade 3</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">showcdf</span>(<span class="at">variable =</span> <span class="dv">2</span>, <span class="at">prop =</span> <span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-prop3cont" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prop3cont-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cap05_files/figure-html/fig-prop3cont-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prop3cont-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.15: Propriedade (<span class="math inline">\(iii\)</span>) do Teorema 5.14 para FDA de uma v.a. contínua.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="função-quantil-função-de-sobrevivência-e-função-s-quantil" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="função-quantil-função-de-sobrevivência-e-função-s-quantil"><span class="header-section-number">5.10</span> Função quantil, Função de sobrevivência e função s-quantil</h2>
+<p>Outras funções são interessantes no contexto de variáveis aleatórias, principalmente quando as distribuições estiverem associados as estatísticas de testes de hipóteses, <a href="cap10.html" class="quarto-xref"><span>Capítulo 10</span></a>. As funções apresentadas a seguir são: função quantil, função de sobrevivência e função s-quantil.</p>
+<div id="def:fquantil" class="Definition" title="Função quantil">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.35: </strong>Função quantil</summary><div>Considerando uma variável aleatória <span class="math inline">\(X\)</span> com função de distribuição <span class="math inline">\(F_X\)</span>, então a função <span class="math inline">\(Q: [0,1] \to \mathbb{R}\)</span>, é chamada de função quantil, definida por: <span id="eq-fquantil"><span class="math display">\[
+\begin{align}
+    Q(p) = F^{-1}(x) &amp; = \inf\{x \in \mathbb{R}:~F(x) \geq p\},
+\end{align}
+\tag{5.56}\]</span></span><p></p>
+<p>para todo <span class="math inline">\(p \in [0,1]\)</span>. Dizemos ainda que <span class="math inline">\(Q\)</span> representa a função inversa de <span class="math inline">\(F_X\)</span>, de modo que <span class="math inline">\(x\)</span> representa o menor valor tal que <span class="math inline">\(F_X(x) \geq p\)</span>. Portanto, <span class="math inline">\(Q(p)\)</span> representa o <span class="math inline">\(p\)</span>-ésimo quantil de <span class="math inline">\(X\)</span>.</p>
+</div></details>
+</div>
+<p>A expressão (<a href="#eq-fquantil" class="quarto-xref"><span>5.56</span></a>) é definida dessa forma devido a condição da <span class="math inline">\(F_X\)</span> para a variável aleatória discreta ser descontínua à esquerda, como já mostrado anteriormente. Para o caso das variáveis aleatórias contínuas, pelos fato das FDAs dessas variáveis serem contínuas, para cada <span class="math inline">\(p\)</span> sempre existirá um <span class="math inline">\(Q(p) = x\)</span>. Dessa forma, precisamos de uma definição geral como a apresentada na Definição <a href="cap05.html#def:fquantil">5.35</a>. Apresentaremos uma sequências de exemplos para um melhor entendimento da função quantil.</p>
+<div id="def:ex:fqexp" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.36</strong></summary><div>Considere <span class="math inline">\(X\)</span> uma variável aleatória com distribuição exponencial, cuja função densidade é dada por: <span class="math display">\[\begin{align*}
+    f_X(x) = \lambda e^{-\lambda x}, \quad x \geq 0, \quad \lambda &gt; 0.
+\end{align*}\]</span> A função de distribuição é dada por: <span id="eq-fdaexp02"><span class="math display">\[
+\begin{align}
+  F_X(x) &amp; = \int_{0}^{x}\lambda e^{-\lambda t} dt \nonumber\\
+  &amp; = \lambda\left[-\frac{1}{\lambda} e^{-\lambda t }\right]^{x}_{0} = 1 - e^{-\lambda x}.
+\end{align}
+\tag{5.57}\]</span></span> Agora, vamos determinar a função quantil, <span class="math inline">\(Q(p) = u\)</span>, para um dado valor de <span class="math inline">\(p\)</span>, em que <span class="math inline">\(0 &lt; p &lt; 1\)</span>, tal que <span class="math inline">\(F_X(u) = p\)</span>. Vamos resolver a equação, dado que <span class="math inline">\(F_X\)</span> ja foi obtido em (<a href="#eq-fdaexp02" class="quarto-xref"><span>5.57</span></a>), assim, <span class="math display">\[\begin{align*}
+  1 - e^{-\lambda u} &amp; = p\\
+  e^{-\lambda u} &amp; = 1 - p.
+\end{align*}\]</span> Aplicando o logaritmo natural, temos <span class="math display">\[\begin{align*}
+  -\lambda u&amp; = ln(1 - p)\\
+  u &amp; = -\frac{1}{\lambda}\ln(1 - p),
+\end{align*}\]</span> logo, a função quantil de <span class="math inline">\(X\)</span> é <span class="math display">\[
+Q(p) = -\frac{1}{\lambda}\ln(1 - p).
+\]</span><p></p>
+</div></details>
+</div>
+<p>Nem sempre é possível determinar analiticamente uma função quantil de uma determinada variável aleatória, devido as limitações de uma forma fechada para a inversa de <span class="math inline">\(F_X\)</span>. Mesmo assim, ainda é possível em muitas situações obter o valor para uma determinada função quantil. Vejamos mais um exemplo.</p>
+<div id="ex:fqbin" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.37</strong></summary><div>Considere <span class="math inline">\(X\)</span> uma variável aleatória discreta com distribuição binomial, cuja função de distribuição é dada por: <span class="math display">\[\begin{align*}
+    F_X(x) = \sum_{i =  0}^{x}\binom{n}{i}\theta^i(1-\theta)^{n-i},
+\end{align*}\]</span> em que os parâmetros da distribuição são <span class="math inline">\(n &gt; 1\)</span> e <span class="math inline">\(0 &lt; \theta &lt; 1\)</span>. Podemos perceber que inverter a <span class="math inline">\(F_X\)</span> neste caso, não é algo simples. <span class="citation" data-cites="short2023">Short (<a href="references.html#ref-short2023" role="doc-biblioref">2023</a>)</span> apresenta alguns resultados assintóticos para o quantil da binomial. Essa situação ocorre sempre quando a variável aleatória é discreta. Por isso que na Definição <a href="cap05.html#def:fquantil">5.35</a> afirmamos o quantil representa o menor valor tal que <span class="math inline">\(F_X(x) \geq p\)</span>. Por exemplo, se considerarmos <span class="math inline">\(n = 10\)</span> e <span class="math inline">\(\theta = 0,5\)</span>, poderíamos estar interessados em saber qual o quantil de <span class="math inline">\(X\)</span> para <span class="math inline">\(p = 0,05\)</span>, isto é, <span class="math inline">\(Q(0,05)\)</span>? Uma alternativa então para calcularmos o quantil nessa situação será calcularmos a probabilidade dos valores de <span class="math inline">\(X\)</span> até verificarmos de forma acumulada se a soma dessas probabilidades resultam no valor no mínimo igual <span class="math inline">\(p\)</span>, isto é, <span class="math display">\[\begin{align*}
+    x = 0 &amp; \Rightarrow pX(0) = \binom{10}{0}0,5^0(1-0,5)^{10-0} = 0,0009765625,\\
+    x = 1 &amp; \Rightarrow pX(1) = \binom{10}{1}0,5^1(1-0,5)^{10-1} = 0,009765625,\\
+    x = 2 &amp; \Rightarrow pX(2) = \binom{10}{2}0,5^2(1-0,5)^{10-2} = 0,04394531,\\
+    x = 3 &amp; \Rightarrow pX(3) = \binom{10}{3}0,5^3(1-0,5)^{10-3} = 0,1171875.\\
+\end{align*}\]</span> Dessa forma, podemos perceber que: <span class="math display">\[\begin{align*}
+    F_X(0) &amp; = p_X(0) =  0,0009765625,\\
+    F_X(1) &amp; = p_X(0) + p_X(1) = 0,01074219,\\
+    F_X(2) &amp; = p_X(0) + p_X(1) + p_X(2) = 0,0546875,\\
+    F_X(3) &amp; = p_X(0) + p_X(1) + p_X(2) + p_X(3) = 0,171875.\\
+\end{align*}\]</span> Assim, o <span class="math inline">\(Q(0,05) = 2\)</span> porque este valor é o menor <span class="math inline">\(x\)</span> tal que <span class="math inline">\(F_X(x) \geq p\)</span>. Observe que <span class="math inline">\(F_X(3) \geq 0,05\)</span>, porém <span class="math inline">\(x = 3\)</span> não representa o menor valor para esta condição. Usando o pacote <a href="https://bendeivide.github.io/leem/">leem</a>, podemos representar a função quantil da seguinte forma…<p></p>
 </div></details>
 </div>
 
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-banzato2006" class="csl-entry" role="listitem">
-BANZATTO, D. A.; NASCIMENTO KRONKA, S. DO. <strong>Experimentação Agrícola</strong>. Jaboticabal: Funep, 2006. p. 237
-</div>
-<div id="ref-barbin2003" class="csl-entry" role="listitem">
-BARBIN, D. <strong>Planejamento e Análise Estatística de Experimentos Agrômica</strong>. Arapongas: Midas, 2003. p. 208
-</div>
-<div id="ref-bolfarinebussab2005" class="csl-entry" role="listitem">
-BOLFARINE, H.; BUSSAB, W. O. <strong>Elementos de Amostragem</strong>. São Paulo: Edgard Blucher, 2005. p. 274
-</div>
-<div id="ref-bolfarine2010" class="csl-entry" role="listitem">
-BOLFARINE, H.; SANDOVAL, M. C. <strong>Introdução à <span>I</span>nferência <span>E</span>statística</strong>. 2. ed. São Paulo: SBM, 2010. p. 159
-</div>
-<div id="ref-cochrancox2005" class="csl-entry" role="listitem">
-COCHRAN, W.; COX, G. M. <strong>Experimental <span>D</span>esigns</strong>. 2. ed. New York: John Wiley &amp; Sons, 2005. p. 618
-</div>
-<div id="ref-crespo2009" class="csl-entry" role="listitem">
-CRESPO, A. A. <strong>Estatística Fácil</strong>. 19. ed. São Paulo: Saraiva, 2009. p. 232
-</div>
-<div id="ref-dantas2008" class="csl-entry" role="listitem">
-DANTAS, C. A. B. <strong>Probabilidade: Um <span>C</span>urso <span>I</span>ntrodutório</strong>. 3. ed. São Paulo: EDUSP, 2008. p. 256
-</div>
-<div id="ref-drapersmith1998" class="csl-entry" role="listitem">
-DRAPER, N. R.; SMITH, H. <strong>Applied regression analysis</strong>. 3. ed. New York: Wiley, 1998. p. 736
-</div>
 <div id="ref-James2004" class="csl-entry" role="listitem">
 JAMES, B. R. <strong>Probabilidade: um curso em nível intermediário</strong>. 3. ed. Rio de Janeiro: IMPA, 2004. p. 304
 </div>
-<div id="ref-magalhaes2011" class="csl-entry" role="listitem">
-MAGALHAES, M. N. <strong>Probabilidade e variáveis aleatórias</strong>. 3. ed. São Paulo: EDUSP, 2011. p. 424
-</div>
-<div id="ref-magalhaeslima2023" class="csl-entry" role="listitem">
-MAGALHAES, M. N.; LIMA, A. C. P. <strong>Noções de <span>P</span>robabilidade e <span>E</span>statística</strong>. 7. ed. São Paulo: EDUSP, 2023. p. 428
-</div>
-<div id="ref-meyer2000" class="csl-entry" role="listitem">
-MEYER, P. L. <strong>Probabilidade: aplicações á estatística</strong>. 2. ed. Rio de <span>J</span>aneiro: LTC, 2000. p. 426
-</div>
-<div id="ref-montgomery2019" class="csl-entry" role="listitem">
-MONTGOMERY, D. C. <strong>Design and <span>A</span>nalysis of <span>E</span>xperiments</strong>. 9. ed. New Jersey: Wiley, 2019. p. 752
+<div id="ref-Kachapova2012" class="csl-entry" role="listitem">
+KACHAPOVA, F.; KACHAPOV, I. Students? misconceptions about random variables. <strong>International Journal of Mathematical Education in Science and Technology</strong>, v. 143, n. 7, p. 963–971, 2012.
 </div>
 <div id="ref-Montgomery2016" class="csl-entry" role="listitem">
 MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatística Aplicada e Probabilidade para Engenheiros</strong>. 6. ed. Rio de Janeiro: LTC, 2016. p. 629
 </div>
-<div id="ref-montgomery2021" class="csl-entry" role="listitem">
-MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatísta <span>A</span>plicada e <span>P</span>robabilidade para <span>E</span>ngenheiros</strong>. 7. ed. Rio de <span>J</span>aneiro: LTC, 2021. p. 416
-</div>
-<div id="ref-mood1974" class="csl-entry" role="listitem">
-MOOD, A. M.; GRAYBILL, F. A.; BOES, D. C. <strong>Introduction to the <span>T</span>heory of <span>S</span>tatistics</strong>. New York: John <span>W</span>iley &amp; <span>S</span>ons, 1974. p. 564
-</div>
 <div id="ref-Morettin2010" class="csl-entry" role="listitem">
 MORETTIN, L. G. <strong>Estatística básica: probabilidade e inferência</strong>. Volume único ed. São Paulo: Pearson Prentice Hall, 2010. p. 390
 </div>
-<div id="ref-pagano2004" class="csl-entry" role="listitem">
-PAGANO, M.; GAUVREAU, K. <strong>Princípios de Bioestatística</strong>. São Paulo: Thomson, 2004. p. 506
-</div>
-<div id="ref-pimentelgomes2022" class="csl-entry" role="listitem">
-PIMENTEL-GOMES, F. <strong>Curso de <span>E</span>statística <span>E</span>xperimental</strong>. 15. ed. Piracicaba: FEALQ, 2022. p. 451
-</div>
-<div id="ref-silva2015" class="csl-entry" role="listitem">
-SILVA, N. N. <strong>Amostragem <span>P</span>robabilística</strong>. 3. ed. São Paulo: EDUSP, 2015. p. 136
-</div>
-<div id="ref-souza1998" class="csl-entry" role="listitem">
-SOUZA, G. S. <strong>Introdução aos <span>M</span>odelos de <span>R</span>egressão <span>L</span>inear e <span>N</span>ão-<span>L</span>inear</strong>. Brasília: EMBRAPA, 1998. p. 489
-</div>
-<div id="ref-st1980" class="csl-entry" role="listitem">
-STEEL, R. G. D.; TORRIE, J. H. <strong>Principles and procedures of statistics: A biometrical approach</strong>. 2. ed. New York: McGraw-Hill Book Company, 1980. p. 512
+<div id="ref-short2023" class="csl-entry" role="listitem">
+SHORT, M. <a href="https://doi.org/10.1080/03610926.2021.1986540">On binomial quantile and proportion bounds: <span>With</span> applications in engineering and informatics</a>. <strong>Communications in Statistics - Theory and Methods</strong>, v. 52, n. 12, p. 4183–4199, jun. 2023.
 </div>
 </div>
 </section>

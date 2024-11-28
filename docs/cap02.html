@@ -125,35 +125,35 @@ div.csl-indent {
   }
 }</script>
 <style>
-.Corolary {
-  --color1: #df6d0d;
-  --color2: #b85604;
-}
-.Example {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
-.Exercise {
-  --color1: #4485f6;
-  --color2: #479bd1;
+.Definition {
+  --color1: #5e737f;
+  --color2: #49606d;
 }
 .Theorem {
   --color1: #d14747;
   --color2: #8b1f1f;
 }
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Exercise {
+  --color1: #4485f6;
+  --color2: #479bd1;
+}
+.Example {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
 .Solution {
   --color1: #9ad5f6;
-}
-.Definition {
-  --color1: #5e737f;
-  --color2: #49606d;
 }
 .Proof {
   --color1: #aaa6a3;
 }
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
+.Corolary {
+  --color1: #df6d0d;
+  --color2: #b85604;
 }
 </style>
 
@@ -322,12 +322,17 @@ window.Quarto = {
   <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">2.1</span> Introdução</a></li>
   <li><a href="#sec-reptabular" id="toc-sec-reptabular" class="nav-link" data-scroll-target="#sec-reptabular"><span class="header-section-number">2.2</span> Representação tabular</a></li>
   <li><a href="#sec-repgraficas" id="toc-sec-repgraficas" class="nav-link" data-scroll-target="#sec-repgraficas"><span class="header-section-number">2.3</span> Representação gráfica</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#gráfico-de-hastes-ou-bastão" id="toc-gráfico-de-hastes-ou-bastão" class="nav-link" data-scroll-target="#gráfico-de-hastes-ou-bastão"><span class="header-section-number">2.3.1</span> Gráfico de hastes ou bastão</a></li>
   <li><a href="#gráfico-de-barras" id="toc-gráfico-de-barras" class="nav-link" data-scroll-target="#gráfico-de-barras"><span class="header-section-number">2.3.2</span> Gráfico de barras</a></li>
   <li><a href="#histograma-de-frequências" id="toc-histograma-de-frequências" class="nav-link" data-scroll-target="#histograma-de-frequências"><span class="header-section-number">2.3.3</span> Histograma de frequências</a></li>
   <li><a href="#polígono-de-frequências" id="toc-polígono-de-frequências" class="nav-link" data-scroll-target="#polígono-de-frequências"><span class="header-section-number">2.3.4</span> Polígono de frequências</a></li>
-  <li><a href="#ogivas" id="toc-ogivas" class="nav-link" data-scroll-target="#ogivas"><span class="header-section-number">2.3.5</span> Ogivas</a></li>
+  <li><a href="#ogivas" id="toc-ogivas" class="nav-link" data-scroll-target="#ogivas"><span class="header-section-number">2.3.5</span> Ogivas</a>
+  <ul class="collapse">
+  <li><a href="#ogiva-crescente" id="toc-ogiva-crescente" class="nav-link" data-scroll-target="#ogiva-crescente"><span class="header-section-number">2.3.5.1</span> Ogiva crescente</a></li>
+  <li><a href="#ogiva-decrescente" id="toc-ogiva-decrescente" class="nav-link" data-scroll-target="#ogiva-decrescente"><span class="header-section-number">2.3.5.2</span> Ogiva decrescente</a></li>
+  <li><a href="#interseção-entre-as-ogivas" id="toc-interseção-entre-as-ogivas" class="nav-link" data-scroll-target="#interseção-entre-as-ogivas"><span class="header-section-number">2.3.5.3</span> Interseção entre as ogivas</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#exercícios-propostos" id="toc-exercícios-propostos" class="nav-link" data-scroll-target="#exercícios-propostos">Exercícios propostos</a></li>
   </ul>
@@ -1259,7 +1264,7 @@ Fac2p: Frequência acumulada percentual (acima de) </code></pre>
 <h2 data-number="2.3" class="anchored" data-anchor-id="sec-repgraficas"><span class="header-section-number">2.3</span> Representação gráfica</h2>
 <p>Ao final do que foi apresentado no Exemplo <a href="cap02.html#ex:Challanger1986">2.1</a>, percebemos uma simplificação da apresentação dos dados. Mesmo assim, esse tipo de apresentação pode não ser satisfatório para que visualiza, seja pela complexidade que a disposição dessas informações ainda exige ou a sua própria limitação de conhecimento. Um apelo mais simples e rápido de ser entendido é a representação gráfica dos dados.</p>
 <p>A disposição gráfica de dados evolui bastante ao longo do tempo, e muitos recursos estão disponíveis hoje. Por exemplo, no ambiente R existe alguns pacotes nativos, mas em especial o pacote <a href="http://cran.r-project.org/">graphics</a>. Este pacote apresenta recursos para desenvolvimento de gráficos, apresentando funções de nível superior (nível de usuário) até funções específicas para a criação de nossos próprios gráficos. As funções de nível superior já nos dão suporte a criação de diversos tipos de gráficos, tais como: gráfico de barras, histogramas, gráfico de linhas, gráfico de dispersão, dentre outros. Não satisfeitos com estes, podemos criar também os nossos próprios gráficos com este pacote.</p>
-<p>Com o apoio de toda a comunidade científica ao ambiente R, um outro pacote que apresenta destaque hoje na apresentação gráfica de dados é o <a href="https://ggplot2.tidyverse.org/">ggplot2</a> <span class="citation" data-cites="wickham2016">(<a href="references.html#ref-wickham2016" role="doc-biblioref">Wickham, 2018</a>)</span>. Este pacote apresenta uma série de recursos gráficos para serem utilizados, mas não sendo objeto de estudo deste material.</p>
+<p>Com o apoio de toda a comunidade científica ao ambiente R, um outro pacote que apresenta destaque hoje na apresentação gráfica de dados é o <a href="https://ggplot2.tidyverse.org/">ggplot2</a> <span class="citation" data-cites="wickham2016">(<a href="references.html#ref-wickham2016" role="doc-biblioref">Wickham, 2016</a>)</span>. Este pacote apresenta uma série de recursos gráficos para serem utilizados, mas não sendo objeto de estudo deste material.</p>
 <p>Pretendemos para esta seção apresentar apenas alguns tipos de gráficos com o intuito de motivar esse tipo de apresentação de dados, usando o pacote <a href="https://bendeivide.github.io/leem/">leem</a>. Os gráficos são:</p>
 <ul>
 <li>Gráfico de hastes ou bastão;</li>
@@ -2137,77 +2142,20 @@ Rural
 
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-banzato2006" class="csl-entry" role="listitem">
-BANZATTO, D. A.; NASCIMENTO KRONKA, S. DO. <strong>Experimentação Agrícola</strong>. Jaboticabal: Funep, 2006. p. 237
-</div>
-<div id="ref-barbin2003" class="csl-entry" role="listitem">
-BARBIN, D. <strong>Planejamento e Análise Estatística de Experimentos Agrômica</strong>. Arapongas: Midas, 2003. p. 208
-</div>
-<div id="ref-bolfarinebussab2005" class="csl-entry" role="listitem">
-BOLFARINE, H.; BUSSAB, W. O. <strong>Elementos de Amostragem</strong>. São Paulo: Edgard Blucher, 2005. p. 274
-</div>
-<div id="ref-bolfarine2010" class="csl-entry" role="listitem">
-BOLFARINE, H.; SANDOVAL, M. C. <strong>Introdução à <span>I</span>nferência <span>E</span>statística</strong>. 2. ed. São Paulo: SBM, 2010. p. 159
-</div>
-<div id="ref-cochrancox2005" class="csl-entry" role="listitem">
-COCHRAN, W.; COX, G. M. <strong>Experimental <span>D</span>esigns</strong>. 2. ed. New York: John Wiley &amp; Sons, 2005. p. 618
-</div>
-<div id="ref-crespo2009" class="csl-entry" role="listitem">
-CRESPO, A. A. <strong>Estatística Fácil</strong>. 19. ed. São Paulo: Saraiva, 2009. p. 232
-</div>
-<div id="ref-dantas2008" class="csl-entry" role="listitem">
-DANTAS, C. A. B. <strong>Probabilidade: Um <span>C</span>urso <span>I</span>ntrodutório</strong>. 3. ed. São Paulo: EDUSP, 2008. p. 256
-</div>
-<div id="ref-drapersmith1998" class="csl-entry" role="listitem">
-DRAPER, N. R.; SMITH, H. <strong>Applied regression analysis</strong>. 3. ed. New York: Wiley, 1998. p. 736
-</div>
 <div id="ref-Ferreira2009" class="csl-entry" role="listitem">
 FERREIRA, D. F. <strong>Estatística Básica</strong>. 2 Revisada ed. Lavras: Editora UFLA, 2009. p. 664
-</div>
-<div id="ref-magalhaes2011" class="csl-entry" role="listitem">
-MAGALHAES, M. N. <strong>Probabilidade e variáveis aleatórias</strong>. 3. ed. São Paulo: EDUSP, 2011. p. 424
-</div>
-<div id="ref-magalhaeslima2023" class="csl-entry" role="listitem">
-MAGALHAES, M. N.; LIMA, A. C. P. <strong>Noções de <span>P</span>robabilidade e <span>E</span>statística</strong>. 7. ed. São Paulo: EDUSP, 2023. p. 428
-</div>
-<div id="ref-meyer2000" class="csl-entry" role="listitem">
-MEYER, P. L. <strong>Probabilidade: aplicações á estatística</strong>. 2. ed. Rio de <span>J</span>aneiro: LTC, 2000. p. 426
-</div>
-<div id="ref-montgomery2019" class="csl-entry" role="listitem">
-MONTGOMERY, D. C. <strong>Design and <span>A</span>nalysis of <span>E</span>xperiments</strong>. 9. ed. New Jersey: Wiley, 2019. p. 752
 </div>
 <div id="ref-Montgomery2016" class="csl-entry" role="listitem">
 MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatística Aplicada e Probabilidade para Engenheiros</strong>. 6. ed. Rio de Janeiro: LTC, 2016. p. 629
 </div>
-<div id="ref-montgomery2021" class="csl-entry" role="listitem">
-MONTGOMERY, D. C.; RUNGER, G. C. <strong>Estatísta <span>A</span>plicada e <span>P</span>robabilidade para <span>E</span>ngenheiros</strong>. 7. ed. Rio de <span>J</span>aneiro: LTC, 2021. p. 416
-</div>
-<div id="ref-mood1974" class="csl-entry" role="listitem">
-MOOD, A. M.; GRAYBILL, F. A.; BOES, D. C. <strong>Introduction to the <span>T</span>heory of <span>S</span>tatistics</strong>. New York: John <span>W</span>iley &amp; <span>S</span>ons, 1974. p. 564
-</div>
-<div id="ref-pagano2004" class="csl-entry" role="listitem">
-PAGANO, M.; GAUVREAU, K. <strong>Princípios de Bioestatística</strong>. São Paulo: Thomson, 2004. p. 506
-</div>
-<div id="ref-pimentelgomes2022" class="csl-entry" role="listitem">
-PIMENTEL-GOMES, F. <strong>Curso de <span>E</span>statística <span>E</span>xperimental</strong>. 15. ed. Piracicaba: FEALQ, 2022. p. 451
-</div>
 <div id="ref-Nasa1986" class="csl-entry" role="listitem">
 PRESIDENTIAL COMISSION. <strong>On the Space Shuttle Challanger Accident</strong>. Washington: National Aeronautics; Space Administration, 1986.
-</div>
-<div id="ref-silva2015" class="csl-entry" role="listitem">
-SILVA, N. N. <strong>Amostragem <span>P</span>robabilística</strong>. 3. ed. São Paulo: EDUSP, 2015. p. 136
-</div>
-<div id="ref-souza1998" class="csl-entry" role="listitem">
-SOUZA, G. S. <strong>Introdução aos <span>M</span>odelos de <span>R</span>egressão <span>L</span>inear e <span>N</span>ão-<span>L</span>inear</strong>. Brasília: EMBRAPA, 1998. p. 489
-</div>
-<div id="ref-st1980" class="csl-entry" role="listitem">
-STEEL, R. G. D.; TORRIE, J. H. <strong>Principles and procedures of statistics: A biometrical approach</strong>. 2. ed. New York: McGraw-Hill Book Company, 1980. p. 512
 </div>
 <div id="ref-Tavares1999" class="csl-entry" role="listitem">
 TAVARES, E. L.; ANJOS, L. A. DO. Perfil antropométrico da população idosa brasileira. Resultados da Pesquisa Nacional sobre saúde e Nutrição. <strong>Cad. Saúde Pública</strong>, v. 15, n. 4, p. 759–768, 1999.
 </div>
 <div id="ref-wickham2016" class="csl-entry" role="listitem">
-WICKHAM, H. <strong><a href="https://ggplot2-book.org/">ggplot2: Elegant graphics for data analysis</a></strong>. 2. ed. New York: Springer, 2018. p. 276
+WICKHAM, H. <strong>ggplot2: Elegant graphics for data analysis</strong>. 2. ed. New York: Springer International Publishing, 2016. p. 260
 </div>
 </div>
 </section>
