@@ -129,31 +129,31 @@ div.csl-indent {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Proof {
-  --color1: #aaa6a3;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 .Corolary {
   --color1: #df6d0d;
   --color2: #b85604;
 }
-.Solution {
-  --color1: #9ad5f6;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
+.Exercise {
+  --color1: #4485f6;
+  --color2: #479bd1;
 }
 .Definition {
   --color1: #5e737f;
   --color2: #49606d;
 }
-.Exercise {
-  --color1: #4485f6;
-  --color2: #479bd1;
+.Solution {
+  --color1: #9ad5f6;
 }
 .Theorem {
   --color1: #d14747;
   --color2: #8b1f1f;
+}
+.Proof {
+  --color1: #aaa6a3;
 }
 </style>
 
@@ -344,6 +344,7 @@ window.Quarto = {
   </ul></li>
   </ul></li>
   <li><a href="#função-quantil-função-de-sobrevivência-e-função-s-quantil" id="toc-função-quantil-função-de-sobrevivência-e-função-s-quantil" class="nav-link" data-scroll-target="#função-quantil-função-de-sobrevivência-e-função-s-quantil"><span class="header-section-number">5.10</span> Função quantil, Função de sobrevivência e função s-quantil</a></li>
+  <li><a href="#exercícios-propostos" id="toc-exercícios-propostos" class="nav-link" data-scroll-target="#exercícios-propostos">Exercícios propostos</a></li>
   </ul>
 </nav>
     </div>
@@ -1242,7 +1243,7 @@ P\left( \bigcup^{4}_{i = 1}A_i\right) &amp; = \sum_{i = 1}^{4}P(A_i) - \sum_{1 \
 </div></details>
 </div>
 <div id="ex:prob3" class="Example">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.19</strong></summary><div>Usando os resultados do Exemplo <a href="cap05.html#ex:prob2">5.18</a>, podemos calcular a probabilidade de <span class="math inline">\(A^c\)</span>, usando a propriedade (<span class="math inline">\(i\)</span>) do Teorema <span class="math inline">\(\ref{teo:propP(x)}\)</span>, ou seja: <span class="math display">\[\begin{align*}
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.19</strong></summary><div>Usando os resultados do Exemplo <a href="cap05.html#ex:prob2">5.18</a>, podemos calcular a probabilidade de <span class="math inline">\(A^c\)</span>, usando a propriedade (<span class="math inline">\(i\)</span>) do Teorema <a href="cap05.html#teo:propPx">5.6</a>, ou seja: <span class="math display">\[\begin{align*}
   P(A^c) &amp; = 1 - 0,8 = 0,2.
 \end{align*}\]</span> Isso representa a chance do exceder a energia acima de 240kWh, em janeiro.<p></p>
 </div></details>
@@ -1483,7 +1484,7 @@ Figura&nbsp;5.3: Representação da taxa de erro por experimento em comparaçõe
                                           &amp; \leq n \times \alpha\\
                                           &amp; \leq 10 \times 0,05\\
                                           &amp; \leq 0,5,
-\end{align*}\]</span> que de fato é verdade, pois <span class="math inline">\(0,4013 &lt; 0,5\)</span>. Ou ainda, pela desigualdade de Bonferroni, <a href="cap05.html#teo:propPx">5.6</a> (<span class="math inline">\(x\)</span>), dizemos que ao menos a probabilidade de todas as decisões serem corretas, isto é, de não rejeitarmos hipóteses verdadeiras simultaneamente, é ao menos</p>
+\end{align*}\]</span> que de fato é verdade, pois <span class="math inline">\(0,4013 &lt; 0,5\)</span>. Ou ainda, pela desigualdade de Bonferroni, Teorema <a href="cap05.html#teo:propPx">5.6</a> (<span class="math inline">\(x\)</span>), dizemos que ao menos a probabilidade de todas as decisões serem corretas, isto é, de não rejeitarmos hipóteses verdadeiras simultaneamente, é ao menos</p>
 <p><span class="math display">\[\begin{align*}
   P\left(\bigcap^{10}_{i = 1}H_i\right) &amp; \geq 1 - \sum_{i = 1}^{10}P(H_i^c)\\
                                         &amp; \geq 1 - 10\times 0,05\\
@@ -2490,6 +2491,611 @@ Q(p) = -\frac{1}{\lambda}\ln(1 - p).
     F_X(2) &amp; = p_X(0) + p_X(1) + p_X(2) = 0,0546875,\\
     F_X(3) &amp; = p_X(0) + p_X(1) + p_X(2) + p_X(3) = 0,171875.\\
 \end{align*}\]</span> Assim, o <span class="math inline">\(Q(0,05) = 2\)</span> porque este valor é o menor <span class="math inline">\(x\)</span> tal que <span class="math inline">\(F_X(x) \geq p\)</span>. Observe que <span class="math inline">\(F_X(3) \geq 0,05\)</span>, porém <span class="math inline">\(x = 3\)</span> não representa o menor valor para esta condição. Usando o pacote <a href="https://bendeivide.github.io/leem/">leem</a>, podemos representar a função quantil da seguinte forma…<p></p>
+</div></details>
+</div>
+</section>
+<section id="exercícios-propostos" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercícios-propostos">Exercícios propostos</h2>
+<div id="exerc:Ex5.1" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.1</strong></summary><div>Defina o que é um experimento aleatório e exemplifique.<p></p>
+</div></details>
+</div>
+<div id="Solution*-5.20" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Verifique a Definição <a href="cap05.html#def:expaleatorio">5.1</a> e formule uma resposta.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.2" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.2</strong></summary><div>Defina o que é um espaço amostral e exemplifique.<p></p>
+</div></details>
+</div>
+<div id="Solution*-5.21" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Verifique as Definições <a href="cap05.html#def:espamostral">5.2</a> e <a href="cap05.html#def:espdisccont">5.3</a> e formule uma resposta.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.3" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.3</strong></summary><div>
+<p>Para cada um dos casos abaixo, escreva o espaço amostral correspondente e conte seus elementos.</p>
+<ol type="a">
+<li>Uma moeda é lançada duas vezes e observam-se as faces obtidas.</li>
+<li>Um dado é lançado duas vezes e a ocorrência de face par ou ímpar é observado.</li>
+<li>Dois dados são lançados simultaneamente e estamos interessados na soma das faces observadas.</li>
+<li>Em uma cidade, famílias com 3 crianças são selecionadas ao acaso, anotando-se o sexo de cada uma.</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.22" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<ol type="a">
+<li><p>Consideremos <span class="math inline">\(C_i\)</span> e <span class="math inline">\(K_i\)</span>, as faces superiores cara e coroa, respectivamente, para as moedas <span class="math inline">\(i = 1, 2\)</span>. Assim, o espaço amostral é dado por <span class="math inline">\(\Omega = \{(C_1, C_2), (C_1, K_2), (K_1, C_2) , (K_1, K_2)\}\)</span> e <span class="math inline">\(\#\Omega = 4\)</span>;</p></li>
+<li><p>Segue o resultado para o dado:</p></li>
+</ol>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Dado</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Resultado</td>
+<td style="text-align: center;">Ímpar</td>
+<td style="text-align: center;">Par</td>
+<td style="text-align: center;">Ímpar</td>
+<td style="text-align: center;">Par</td>
+<td style="text-align: center;">Ímpar</td>
+<td style="text-align: center;">Par</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Considerando que foi lançado duas vezes o dado, cada elemento é um par de resultados, e ainda, mesmo alguns resultados representando elementos iguais, como por exemplo, {(Par, Par)} = {(2, 2), (2, 4), (2, 6), …}, no espaço amostral só teremos o elemento (Par, Par). Assim, o espaço amostral é dado por <span class="math inline">\(\Omega\)</span> = {(Par, Par), (Par, Ímpar), (Ímpar, Par), (Ímpar, Ímpar)}, com <span class="math inline">\(\#\Omega = 4\)</span>;</p>
+<ol start="3" type="a">
+<li>O espaço amostral para a somas das faces superiores de dois dados lançados é <span class="math inline">\(\Omega = \{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}\)</span>, com cardinalidade <span class="math inline">\(\#\Omega = 11\)</span>;</li>
+<li>O espaço amostral para esse experimento aleatório, considerando <span class="math inline">\(F\)</span> - pessoa do sexo feminino e <span class="math inline">\(M\)</span> - pessoa do sexo masculino, é: <span class="math display">\[\begin{align*}
+  \Omega &amp;  = \{(F,F,F), (F,F,M), (F,M,F), (M,F,F), (F,M,M),\\
+      &amp; \quad (M,M,F), (M,F,M), (M,M,M)\},
+\end{align*}\]</span> com cardinalidade <span class="math inline">\(\#\Omega = 8\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex5.4" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.4</strong></summary><div>
+<p>Duas pessoas <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>, lançam três moedas de modo independente, e nessa ordem, primeiro a pessoa A, depois a pessoa <span class="math inline">\(B\)</span>, alternadamente. Nesse jogo, ganha quem conseguir três faces iguais, sendo finalizado com a vitória de um dos competidores. Assim, perguntamos:</p>
+<ol type="a">
+<li>Qual a probabilidade de <span class="math inline">\(A\)</span> ganhar?</li>
+<li>Qual a probabilidade de <span class="math inline">\(B\)</span> ganhar?</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.23" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Essa questão exige um conhecimento avançado de progressão aritmética. Vejamos, inicia-se o jogo com A, posteriormente, B. Enquanto ninguém ganhar o jogo prossegue. Dessa forma, as jogadas em que A pode ganhar são 1ª, 3ª, 5ª, 7ª, …, e assim por diante. As jogadas em que B pode ganhar são 2ª, 4ª, 6ª, …, e assim por diante.<p></p>
+<ol type="a">
+<li>Vejamos, as chances de A ganhar:</li>
+</ol>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Jogada</td>
+<td style="text-align: center;">Situação</td>
+<td style="text-align: center;">Probabilidade</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1ª</td>
+<td style="text-align: center;">3 moedas caras ou 3 coroas</td>
+<td style="text-align: center;"><span class="math inline">\(2\times (1/2)^3 = 1/4\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3ª</td>
+<td style="text-align: center;">A perder, B perder e A ganhar</td>
+<td style="text-align: center;">$(3/4)^2 /4 $</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5ª</td>
+<td style="text-align: center;">A perder, B perder, A perder, B perder e A ganhar</td>
+<td style="text-align: center;"><span class="math inline">\((1/3)^4 \times 1/4\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Percebe-se que a sequência <span class="math inline">\(1/4\)</span>, <span class="math inline">\(1/4[(3/4)^2]^1\)</span>, <span class="math inline">\(1/4[(3/4)^2]^2\)</span>, <span class="math inline">\(1/4[(3/4)^2]^3\)</span>, <span class="math inline">\(\ldots\)</span>, é uma progressão geométrica (PG) em que o primeiro elemento é <span class="math inline">\(a_1 = 1/4\)</span> e a razão é <span class="math inline">\(q = (3/4)^2\)</span>. Pode-se mostrar que a soma infinita de uma PG é dada por: <span id="eq-q1.4"><span class="math display">\[
+\begin{align}
+    S &amp; = \frac{a_1}{1 - q},
+\end{align}
+\tag{5.58}\]</span></span> que representa a probabilidade de A ganhar, isto é, <span class="math display">\[\begin{align*}
+    P(\textrm{A ganhar}) &amp; = \frac{1/4}{1 - (3/4)2} = 4/7;
+\end{align*}\]</span></p>
+<ol start="2" type="a">
+<li>As chances de B ganhar são:</li>
+</ol>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Jogada</td>
+<td style="text-align: center;">Situação</td>
+<td style="text-align: center;">Probabilidade</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2ª</td>
+<td style="text-align: center;">A perder e B ganhar</td>
+<td style="text-align: center;"><span class="math inline">\((1 - 1/4). 1/4 = 3/4 \times 1/4\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4ª</td>
+<td style="text-align: center;">A perder, B perder, A perder e B ganhar</td>
+<td style="text-align: center;"><span class="math inline">\((3/4)^3 \times 1/4\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6ª</td>
+<td style="text-align: center;">A perder, B perder, A perder, B perder, A perder e B ganhar</td>
+<td style="text-align: center;"><span class="math inline">\((3/4)^5 \times 1/4\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>A série pode ser expressa como: <span class="math inline">\(3/16\)</span>, <span class="math inline">\(3/16 \times [(3/4)^2]^1\)</span>, <span class="math inline">\(3/16 \times [(3/4)^2]^2\)</span>, …, e assim por diante. Pelo mesmo raciocínio feito na probabilidade de A ganhar, temos que a probabilidade de B ganhar é: <span class="math display">\[\begin{align*}
+    P(\textrm{B ganhar}) &amp;  = \frac{3/16}{1 - (3/4)^2}  = \frac{3}{7}.
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.5" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.5</strong></summary><div>
+<p>Uma Universidade tem 10 mil alunos dos quais 4 mil são considerados esportistas. Temos ainda que 500 alunos são do curso de Administração noturno, 700 de Ciências contábeis noturno, 100 são esportistas e da Administração noturno e 200 são esportistas e da Ciências contábeis noturno. Qual a probabilidade de:</p>
+<ol type="a">
+<li>Ser esportista;</li>
+<li>Ser esportista e aluno da Administração;</li>
+<li>Ser esportista ou aluno da Ciências contábeis;</li>
+<li>Não ser esportista nem aluno da Administração.</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.24" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<p><img src="figura/q5.png" class="img-fluid"></p>
+<ol type="a">
+<li><p>E - Evento ser Esportista, logo <span class="math inline">\(P(E) = 4.000/10.000 = 0,40\)</span>;</p></li>
+<li><p>EA - Esportista e aluno da Administração, logo P(EA) = 100/10.000;</p></li>
+<li><p>E - Evento ser esportista; C - Evento ser da C. Contábeis, logo, <span class="math inline">\(P(E \cup C) = P(E) + P(C) - P(E \cap C) = 4.000/10.000 +\)</span> <span class="math inline">\(700/10.000 - 200/10000 = 4.500/10.000\)</span>.</p></li>
+<li><p>E - Evento ser esportista; A - Evento ser da administração, como <span class="math inline">\(P(E \cup A) = P(E) + P(A) - P(E \cap A) = 4.000/10.000 +\)</span> <span class="math inline">\(500/10.000 - 100/10.000 = 4.400/10.000\)</span>, logo <span class="math inline">\(P(E \cup A)^c = 1 - 4.400/10.000\)</span>.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex5.6" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.6</strong></summary><div>Sejam A e B dois eventos em um dado espaço amostral, tais que <span class="math inline">\(P(A) = 0,2\)</span>, <span class="math inline">\(P(B) = p\)</span>, <span class="math inline">\(P(A \cup B) = 0,5\)</span> e <span class="math inline">\(P(A \cap B) = 0,1\)</span>. Determine o valor de <span class="math inline">\(p\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Solution*-5.25" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div><span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A\cap B) \Rightarrow P(B) = P(A \cup B) +\)</span> <span class="math inline">\(P(A\cap B) - P(A) = 0,5 + 0,1 - 0,2 = 0,4\)</span>.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.7" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.7</strong></summary><div>
+<p>Se <span class="math inline">\(P(A) = \frac{1}{2}\)</span>; <span class="math inline">\(P(B) = \frac{1}{4}\)</span>, e A e B são mutuamente exclusivos, calcular:</p>
+<ol type="a">
+<li><span class="math inline">\(P(A^c)\)</span>.</li>
+<li><span class="math inline">\(P(B^c)\)</span>.</li>
+<li><span class="math inline">\(P(A \cap B)\)</span>.</li>
+<li><span class="math inline">\(P(A \cup B)\)</span>.</li>
+<li><span class="math inline">\(P(A^c \cap B^c)\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.26" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<ol type="a">
+<li><p><span class="math inline">\(P(A^c) = 1 - \frac{1}{2} = \frac{1}{2}\)</span>;</p></li>
+<li><p><span class="math inline">\(P(B^c) = 1 - \frac{1}{4} = \frac{3}{4}\)</span>;</p></li>
+<li><p><span class="math inline">\(P(A \cap B) = 0\)</span>;</p></li>
+<li><p><span class="math inline">\(P(A \cup B) = P(A) + P(B) = \frac{1}{2} + \frac{1}{4} = \frac{3}{4}\)</span>;</p></li>
+<li><p><span class="math inline">\(P(A^c \cap B^c) = P[(A \cup B)^c] = 1 - \frac{3}{4} = \frac{1}{4}\)</span>.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex5.8" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.8</strong></summary><div>
+<p>Se <span class="math inline">\(P(A) = \frac{1}{2}\)</span>; <span class="math inline">\(P(B) = \frac{1}{3}\)</span> e <span class="math inline">\(P(A \cap B) = \frac{1}{3}\)</span>. Calcule:</p>
+<ol type="a">
+<li><span class="math inline">\(P(A \cup B)\)</span>;</li>
+<li><span class="math inline">\(P(A^c \cup B)\)</span>;</li>
+<li><span class="math inline">\(P(A^c \cap B^c)\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.27" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<ol type="a">
+<li><p><span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A \cap B) = \frac{1}{2} + \frac{1}{3} - \frac{1}{3} = \frac{1}{2}\)</span>;</p></li>
+<li><p><span class="math inline">\(P(A^c \cup B) = P(A^c) + P(B) - P(A^c \cap B) =\)</span> <span class="math inline">\(P(A^c) + P(B) = \frac{5}{6}\)</span>, uma vez que <span class="math inline">\(P(A^c \cap B) = 0\)</span>, pois <span class="math inline">\(B \subset A\)</span> (já que <span class="math inline">\(P(A^c \cap B) = P(B)\)</span>);</p></li>
+<li><p><span class="math inline">\(P(A^c \cap B^c) = P[(A \cup B)^c] =\)</span> <span class="math inline">\(1 - P(A \cup B) = 1 - \frac{1}{2} = \frac{1}{2}\)</span>;</p></li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex5.9" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.9</strong></summary><div>
+<p>Dois dados são lançados simultaneamente. Qual a probabilidade de:</p>
+<ol type="a">
+<li>a soma ser menor que 4;</li>
+<li>a soma ser 9;</li>
+<li>o primeiro resultado ser maior que o segundo.</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.28" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Dado 1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Dado 2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li><p>A - Evento: soma ser menor que 4, logo <span class="math inline">\(P(A) = \frac{\#\{\textrm{Soma ser menor que 4}\}}{36} = \frac{3}{36}\)</span>;</p></li>
+<li><p>B - Evento: soma ser 9, logo <span class="math inline">\(P(B) = \frac{\#\{\textrm{Soma ser 9}\}}{36} = \frac{4}{36}\)</span></p></li>
+<li><p>C - Evento: o primeiro resultado ser maior que o segundo, logo <span class="math inline">\(P(C) = \frac{\#\{\textrm{1º Resultado ser maior que o 2º Resultado}\}}{36} = \frac{15}{36}\)</span>.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex5.10" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.10</strong></summary><div>Qual a probabilidade de sair um rei ou uma carta de copas, quando retiramos uma carta de um baralho?<p></p>
+</div></details>
+</div>
+<div id="Solution*-5.29" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Considerando que um baralho tem 52 cartas, 4 cartas rei, e 13 cartas com naipe copas, sendo 1 rei de copas, e ainda R: carta rei, C: Carta de copas, logo<p></p>
+<p><span class="math display">\[
+P(R \cup C) = P(R) + P(C) - P(R\cap C) = \frac{4}{52} + \frac{13}{52} - \frac{1}{52} = \frac{16}{52}.
+\]</span></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.11" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.11</strong></summary><div>
+<p>As probabilidades de três jogadores marcarem um pênalti são respectivamente: <span class="math inline">\(\frac{2}{3}\)</span>, <span class="math inline">\(\frac{4}{5}\)</span> e <span class="math inline">\(\frac{7}{10}\)</span>. Se cada um ``cobrar’’ uma única vez, qual a probabilidade de:</p>
+<ol type="a">
+<li>todos acertarem?</li>
+<li>apenas um acertar?</li>
+<li>todos errarem?</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.30" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Evento <span class="math inline">\(J_1\)</span>: o jogador 1 marca o pênalti; Evento <span class="math inline">\(J_2\)</span>: o jogador 2 marca o pênalti; Evento <span class="math inline">\(J_3\)</span>: o jogador 3 marca o pênalti. Assim,<p></p>
+<ol type="a">
+<li>Todos acertarem:</li>
+</ol>
+<p><span class="math inline">\(P(J_1 \cap J_2 \cap J_3) = P(J_1) \times P(J_2) \times P(J_3) = \frac{2}{3} \times \frac{4}{5} \times \frac{7}{10} = \frac{28}{75}\)</span>.</p>
+<ol start="2" type="a">
+<li>Apenas um acertar:</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+    P(J_1 \cap J_2^c \cap J_3^c) + P(J_1^c \cap J_2 \cap J_3^c) + P(J_1^c \cap J_2^c \cap J_3)\\
+    \left(\frac{2}{3} \times \frac{1}{5} \times \frac{3}{10}\right) + \left(\frac{1}{3} \times \frac{4}{5} \times \frac{3}{10}\right) + \left(\frac{1}{3} \times \frac{1}{5} \times \frac{7}{10}\right)\\
+    \frac{1}{25} + \frac{2}{25} + \frac{7}{150}\\
+    \frac{1}{6}.
+  \end{align*}\]</span></p>
+<ol start="3" type="a">
+<li>Todos errarem:</li>
+</ol>
+<p><span class="math inline">\(P[J_1^c \cap J_2^c \cap J_3^c] = \frac{1}{3} \times \frac{1}{5} \times \frac{3}{10}= \frac{1}{50}.\)</span></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.12" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.12</strong></summary><div>
+<p>Dois armários guardam as bolas de voleibol e basquete. O armário 1 tem três bolas de voleibol e 1 de basquete, enquanto o armário 2 tem 3 de voleibol e 2 de basquete. Escolhendo-se ao acaso um armário e, em seguida, uma de suas bolas, calcule a probabilidade dela ser:</p>
+<ol type="a">
+<li>De voleibol, sabendo-se que o armário 1 foi escolhido;</li>
+<li>De basquete, sabendo-se que o armário 2 foi escolhido;</li>
+<li>De basquete.</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.31" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<p>Considerando os eventos <span class="math inline">\(V\)</span>: bola de volei; <span class="math inline">\(B\)</span>: bola de basquete; <span class="math inline">\(A_1\)</span>: bola no armário 1; <span class="math inline">\(A_2\)</span>: bola no armário 2, assim</p>
+<ol type="a">
+<li><p><span class="math inline">\(P(V|A_1) = \frac{P(V \cap A_1)}{A_1} = \frac{3/9}{4/9} = \frac{3}{4}\)</span>.</p></li>
+<li><p><span class="math inline">\(P(B|A_2) = \frac{P(B \cap A_2)}{P(A_2)} = \frac{2/9}{5/9} = \frac{2}{5}\)</span>.</p></li>
+<li><p>Essa questão nos remete uma atenção. O enunciado está desejando calcular a probabilidade de escolher um armário e em seguida uma de suas bolas, sendo esta de basquete. Como neste ítem não foi identificado qual armário seria o escolhido, vamos identificar o evento <span class="math inline">\(A_1^*\)</span> que representa a escolha do armário 1, e o evento <span class="math inline">\(A_2^*\)</span> que representa a escolha do armário 2. Estes eventos são diferentes dos eventos <span class="math inline">\(A_1\)</span> e <span class="math inline">\(A_2\)</span>, respectivamente, pois estes últimos representam os eventos de escolher as bolas nestes respectivos armários e não a escolha do armário. Logo, a chance de escolhermos um dos armários é 50%, isto é, <span class="math inline">\(P(A_2^*) = P(A_2^*) = 1/2\)</span>. Dessa forma, a probabilidade de escolhermos um armário e uma bola de basquete pode ser dada por: <span class="math display">\[\begin{align*}
+P(B) &amp; = P(A_1^*) \times P(B|A_1) + P(A_2^*) \times P(B|A_2)\\
+      &amp; = 1/2 \times 1/4 + 1/2 \times 2/5\\
+      &amp; = \frac{13}{40} = 0,3250.
+\end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex5.13" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.13</strong></summary><div>Em certo colégio, 5% dos homens, 2% das mulheres têm mais do que 1,80m. Por outro lado, 60% dos estudantes são homens. Se um estudante é selecionado aleatoriamente e tem mais de 1,80m de altura, qual a probabilidade de que o estudante seja mulher?<p></p>
+</div></details>
+</div>
+<div id="Solution*-5.32" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div><img src="exerc_propostos/cap05/ep5.13.png" class="img-fluid"><p></p>
+<p>Seja <span class="math inline">\(A\)</span> o evento do estudante ter mais de 1,80m, e considere M o evento do estudante ser mulher. Temos as seguintes informações disponíveis, <span class="math inline">\(P(H) = 0,60\)</span>, <span class="math inline">\(P(M) = 0,40\)</span>, <span class="math inline">\(P(A|H) = 0,05\)</span> e <span class="math inline">\(P(A|M) = 0,02\)</span>. Para calcularmos o evento A, temos <span class="math display">\[\begin{align*}
+    P(A) &amp; = P(A\cap M) + P(A \cap H)\\
+         &amp; = P(A|M)P(M) + P(A|H)P(H)\\
+         &amp; = 0,02 \times 0,40 + 0,05 \times 0,6\\
+         &amp; = 0,038.
+\end{align*}\]</span> Assim, para calcularmos <span class="math inline">\(P(M|A)\)</span> temos <span class="math display">\[\begin{align*}
+    P(M|A) &amp; = \frac{P(M \cap A)}{P(A)}\\
+           &amp; = \frac{0,008}{0,038} = 0,2105.
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.14" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.14</strong></summary><div>
+<p>A probabilidade de uma mulher está viva daqui a 30 anos é <span class="math inline">\(\frac{3}{4}\)</span> e a de seu marido, <span class="math inline">\(\frac{3}{5}\)</span>. Calcular a probabilidade de:</p>
+<ol type="a">
+<li>apenas o homem está vivo;</li>
+<li>somente a mulher está;</li>
+<li>ambos estarem vivos.</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.33" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<p>Considere o evento H - homem está vivo; e o evento M - mulher está viva. Assim,</p>
+<ol type="a">
+<li><p><span class="math inline">\(P(H \cap M^c) = P(H) \times P(M^c) = \frac{3}{5} \times \frac{1}{4} = \frac{3}{20}\)</span>;</p></li>
+<li><p><span class="math inline">\(P(H^c \cap M) = P(H^c) \times P(M) = \frac{2}{5} \times \frac{3}{4} = \frac{6}{20}\)</span>;</p></li>
+<li><p><span class="math inline">\(P(H\cap M) = P(H) \times P(M) = \frac{3}{5} \times \frac{3}{4} = \frac{9}{20}\)</span>.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex5.15" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.15</strong></summary><div>
+<p>Se <span class="math inline">\(P(A\cup B) = 0,8\)</span>, <span class="math inline">\(P(A) = 0,5\)</span> e <span class="math inline">\(P(B) = x\)</span>, determine o valor de <span class="math inline">\(x\)</span> no caso de:</p>
+<ol type="a">
+<li>A e B serem mutuamente exclusivos;</li>
+<li>A e B serem independentes.</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.34" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<ol type="a">
+<li><p><span class="math inline">\(P(A\cup B) = P(A) + P(B) \Rightarrow P(B) = 0,8 - 0,5 = 0,3\)</span>.</p></li>
+<li><p><span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A\cap B)\)</span>. Se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são independentes, então <span class="math inline">\(P(A \cap B) = P(A) \times P(B)\)</span>. Logo, <span class="math display">\[\begin{align*}
+P(A \cup B) &amp; = P(A) + P(B) - P(A)P(B)\\
+             &amp; = P(A) + P(B)[1 - P(A)]\\
+             &amp; = P(A) + P(B)P(A^c)\\
+     0,8     &amp; = 0,5  + P(B)\times 0,5,
+\end{align*}\]</span> que resulta em <span class="math inline">\(P(B) = \frac{0,8 - 0,5}{0,5} = \frac{0,3}{0,5} = 0,60\)</span>.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex5.16" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.16</strong></summary><div>Se P(B) = 0,4, P(A) = 0,7 e <span class="math inline">\(P(A \cap B) = 0,3\)</span>, calcule <span class="math inline">\(P(A|B^c)\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Solution*-5.35" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div><img src="figura/q17.png" class="img-fluid"><p></p>
+<p>Considerando que <span class="math inline">\(P(B^c) = 1 - P(B) = 0,6\)</span>, então</p>
+<p><span class="math display">\[\begin{align*}
+  P(A|B^c) &amp; = \frac{P(A\cap B^c)}{P(B^c)} = \frac{0,4}{0,6} = 0,6667.
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.17" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.17</strong></summary><div>O São Paulo Futebol Clube ganha com probabilidade 0,7 se chove e 0,8 se não chove. Em Dezembro, a probabilidade de chuva é de 0,3. O São Paulo ganhou uma partida em Dezembro, qual a probabilidade de ter chovido nesse dia?<p></p>
+</div></details>
+</div>
+<div id="Solution*-5.36" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Problema resolvido pelo teorema de Bayes. Consideremos o evento <span class="math inline">\(G\)</span> o evento das vitórias do São Paulo, e <span class="math inline">\(X\)</span> o evento de chover. Assim, <span class="math display">\[\begin{align*}
+    P(X|G) &amp; = \frac{P(G|X)P(X)}{P(G|X)P(X) + P(G|X^c)P(X^c)}\\
+           &amp; = \frac{0,7\times 0,3}{0,7 \times 0,3 + 0,8 \times 0,7}\\
+           &amp; = \frac{0,21}{0,77} = 0,2727.
+\end{align*}\]</span><p></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.18" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.18</strong></summary><div>Três máquinas A, B, e C produzem, respectivamente 30%, 50% e 20% do total de peças de uma fábrica. As porcentagens e peças defeituosas nas respectivas máquinas são 3%, 5% e 2%. Uma peça é sorteada ao acaso, e verifica-se que é defeituosa. Qual a probabilidade de que a peça tenha vindo da máquina B?<p></p>
+</div></details>
+</div>
+<div id="Solution*-5.37" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Considerando D o evento defeito, temos <span class="math display">\[\begin{align*}
+    P(B|D) &amp; = \frac{P(D|B)P(B)}{P(D|A)P(A) + P(D|B)P(B) + P(D|C)P(C)}\\
+           &amp; = \frac{0,05 \times 0,50}{0,03 \times 0,30 + 0,05 \times 0,50 + 0,02 \times 0,20}\\
+           &amp; = \frac{0,0250}{0,038} = 0,6579.
+\end{align*}\]</span><p></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.19" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.19</strong></summary><div>
+<p>Numa certa população, a probabilidade de gostar de teatro é de 1/3, enquanto que a de gostar de cinema é 1/2. Determine a probabilidade de gostar de teatro e não de cinema, nos seguintes casos:</p>
+<ol type="a">
+<li>Gostar de teatro e gostar de cinema são eventos disjuntos.</li>
+<li>Gostar de teatro e gostar de cinema são eventos independentes.</li>
+<li>Todos que gostam de teatro gostam de cinema.</li>
+<li>A probabilidade de gostar de teatro e de cinema é de 1/8.</li>
+<li>Dentre os que não gostam de cinema, a probabilidade de não gostar de teatro é de 3/4.</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.38" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<p>Seja T o evento de gostar de teatro, e B o evento de gostar de cinema. Assim, temos que <span class="math inline">\(T = (T \cap B) \cup (T \cap B^c)\)</span>.</p>
+<ol type="a">
+<li><p>Como <span class="math inline">\(P(T \cap B) = 0\)</span>, então <span class="math inline">\(P(T \cap B^c) = P(T) = 1/3\)</span>.</p></li>
+<li><p><span class="math inline">\(P(T \cap B^c) = P(T) - P(T)P(B) = 1/3 - 1/3 \times 1/2 = 1/6\)</span>.</p></li>
+<li><p>Nesse caso, <span class="math inline">\(T \subset B\)</span>, logo <span class="math inline">\(T \cap B^c = \emptyset\)</span>. Assim, <span class="math inline">\(P(T \cap B^c) = 0\)</span>.</p></li>
+<li><p><span class="math inline">\(P(T \cap B^c) = P(T) - P(T \cap B) = 1/3 - 1/8 = 5/24\)</span>.</p></li>
+<li><p>Sabemos que <span class="math inline">\(P(T^c|B^c) = 3/4\)</span>, e que <span class="math inline">\(P(T^c|B^c) + P(T|B^c) = 1\)</span>, então <span class="math inline">\(P(T|B^c) = 1/4\)</span>. Sabemos também que <span class="math display">\[\begin{align*}
+P(T \cap B^c) &amp; = P(T|B^c) \times P(B^c)\\
+               &amp; = P(T|B^c) \times [1 - P(B)]\\
+               &amp; = 1/4 (1 - 1/2)\\
+               &amp; = 1/8.
+\end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex5.20" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.20</strong></summary><div>A probabilidade de fechamento de cada relé do circuito apresentado a seguir é dada por <span class="math inline">\(p\)</span>. Se todos os relés funcionarem independentemente, qual será a probabilidade de que haja corrente entre os terminais L e R?<p></p>
+<p>![](figures/cap5/circuitos1.png]</p>
+</div></details>
+</div>
+<div id="Solution*-5.39" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div><img src="figura/q21.png" class="img-fluid"><p></p>
+<p><span class="math display">\[\begin{align*}
+    P(A \cup B) &amp; = P(A) + P(B) - P(A \cap B)\\
+                &amp; = p^2 + p^2 - p^4\\
+                &amp; = 2p^2 - p^4.
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.21" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.21</strong></summary><div>A probabilidade de fechamento de cada relé do circuito apresentado a seguir é dada por <span class="math inline">\(p\)</span>. Se todos os relés funcionarem independentemente, qual será a probabilidade de que haja corrente entre os terminais L e R?<p></p>
+<p><img src="figures/cap5/circuitos2.png" class="img-fluid"></p>
+</div></details>
+</div>
+<div id="Solution*-5.40" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div><img src="figura/desafio.png" class="img-fluid"><p></p>
+<p><span class="math display">\[\begin{align*}
+    P(A \cup B \cup C) &amp; = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) -\\
+    &amp; \quad - P(B \cap C) + P(A \cap B \cap C)\\
+    &amp; = p^2 + p + p^2 - p^3 - p^4 - p^3 + p^5\\
+    &amp; = 2p^2 + p + 2p^3 - p^5.
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.22" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.22</strong></summary><div>Considerando a população brasileira vacinada de covid-19 até o dia 13/06/2021, de acordo com o Ministério da Saúde, de uma população vacinável de <span class="math inline">\(160.044.909\)</span> milhões de pessoas, observou-se que <span class="math inline">\(826.158\)</span> mil pessoas tomaram apenas a primeira dose da vacina, <span class="math inline">\(1.950.914\)</span> milhões de pessoas tomaram a primeira e a segunda dose, sendo que <span class="math inline">\(157.267.837\)</span> milhões de pessoas ainda não tomaram vacina. Considerando essas informações apresente a função de distribuição de <span class="math inline">\(X\)</span>, sendo <span class="math inline">\(X\)</span> o número de doses aplicadas na população vacinável.<p></p>
+</div></details>
+</div>
+<div id="Solution*-5.41" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div><span class="math display">\[\begin{align*}
+  F_X(x) &amp; = \left\{\begin{array}{ll}
+                      0,  &amp; \textrm{se } x &lt; 0, \\
+                      &amp;\\
+                      \frac{157.267.837}{160.044.908}, &amp; \textrm{se } 0 \leq x &lt; 1, \\
+                      &amp;\\
+                      \frac{158.093.995}{160.044.908}, &amp; \textrm{se } 1 \leq x &lt; 2, \\
+                      &amp;\\
+                      1,  &amp; \textrm{se } x \geq 2. \\
+                    \end{array}
+  \right.
+\end{align*}\]</span><p></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.23" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.23</strong></summary><div>
+<p>Considere <span class="math inline">\(X\)</span> uma variável aleatória discreta, cuja sua função de distribuição é dada por: <span class="math display">\[\begin{align*}
+  F_X(x) &amp; = \left\{\begin{array}{ll}
+                      0,  &amp; \textrm{se } x &lt; 5, \\
+                      0,2, &amp; \textrm{se } 5 \leq x &lt; 7, \\
+                      0,5, &amp; \textrm{se } 7 \leq x &lt; 8, \\
+                      0,9, &amp; \textrm{se } 8 \leq x &lt; 20, \\
+                      1,  &amp; \textrm{se } x \geq 20. \\
+                    \end{array}
+  \right.
+\end{align*}\]</span> Determine:</p>
+<ol type="a">
+<li>a função de probabilidade de <span class="math inline">\(X\)</span>;</li>
+<li><span class="math inline">\(P(X \leq 7)\)</span>;</li>
+<li><span class="math inline">\(P(X &lt; 7)\)</span>;</li>
+<li><span class="math inline">\(P(8 \leq X \leq 18)\)</span>;</li>
+<li><span class="math inline">\(P(X \geq 15)\)</span>;</li>
+<li>qual é o valor da esperança matemática? E a mediana? E a moda?</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-5.42" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Considere a função de probabilidade:<p></p>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(x\)</span></td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(p_X(x)\)</span></td>
+<td style="text-align: center;">0,2</td>
+<td style="text-align: center;">0,3</td>
+<td style="text-align: center;">0,4</td>
+<td style="text-align: center;">0,1</td>
+</tr>
+</tbody>
+</table>
+<p>Assim, temos que:</p>
+<ol type="a">
+<li><span class="math inline">\(P(X \geq 7) = P(X = 5) + P(X = 7) = 0,2 + 0,3 = 0,5\)</span>;</li>
+<li><span class="math inline">\(P(X &lt; 7) = P(X = 5) = 0,2\)</span>;</li>
+<li><span class="math inline">\(P(8 \leq X \leq 18) = P(X = 8) = 0,4\)</span>;</li>
+<li><span class="math inline">\(P(X \geq 15) = P(X = 20) = 0,1\)</span>;</li>
+<li>A esperança é calculada da seguinte forma:</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+    E[X] &amp; = 5 \times 0,2 + 7 \times 0,3 + 8 \times 0,4 + 20 \times 0,1 = 8,3~\textrm{unid.},
+\end{align*}\]</span></p>
+<p>a mediana é um número entre <span class="math inline">\(7\)</span> e <span class="math inline">\(8\)</span>, pois abaixo e acima desses respectivos números temos <span class="math inline">\(50\%\)</span>, e por conveniência assumimos <span class="math inline">\(\mu_d = (7 + 8) / 2 = 7,5\)</span> unid., isto é, o ponto médio entre os dois valores centrais, e por fim, a moda é o valor de maior chance, isto é, <span class="math inline">\(\mu_0 = 8\)</span> unid..</p>
+</div></details>
+</div>
+<div id="exerc:Ex5.24" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.24</strong></summary><div>Sejam dois eventos não vazios <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> de <span class="math inline">\(\Omega\)</span>, e que <span class="math inline">\(\omega \in C = (A\cap B^c)\cup (A^c\cap B)\)</span> representam os elementos que estão exatamente em um dos dois eventos, isto é, não há elementos em comum entre esses dois eventos. Assim, prove que <span class="math display">\[\begin{align*}
+  P(C) &amp; = P(A) + P(A) - 2P(A\cap B).
+\end{align*}\]</span><p></p>
+</div></details>
+</div>
+<div id="Solution*-5.43" class="Solution">
+<p></p><details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>Seja <span id="eq-q1.1"><span class="math display">\[
+\begin{align}
+  P(A) = P(A \cap B) + P(A \cap B^c)
+\end{align}
+\tag{5.59}\]</span></span> e <span id="eq-q1.2"><span class="math display">\[
+\begin{align}
+  P(B) = P(A \cap B) + P(B \cap A^c)
+\end{align}
+\tag{5.60}\]</span></span> Considere ainda que os eventos <span class="math inline">\(A \cap B^c\)</span> e <span class="math inline">\(A^c \cap B\)</span> são disjuntos. Assim, <span id="eq-q1.3"><span class="math display">\[
+\begin{align}
+    P[(A \cap B^c)\cup (A^c \cap B)] &amp;  = P(A \cap B^c) + \\
+    &amp; \quad + P(A^c \cap B).\\
+\end{align}
+\tag{5.61}\]</span></span> Substituindo (<a href="#eq-q1.1" class="quarto-xref"><span>5.59</span></a>) e (<a href="#eq-q1.2" class="quarto-xref"><span>5.60</span></a>) em (<a href="#eq-q1.3" class="quarto-xref"><span>5.61</span></a>), temos <span class="math display">\[\begin{align*}
+    P[(A \cap B^c)\cup (A^c \cap B)] &amp;  = [P(A) - P(A \cap B)] +\\
+    &amp; \quad + [P(B) - P(A \cap B)]\\
+    &amp; = P(A) + P(B) -2P(A \cap B),
+\end{align*}\]</span> o que prova o resultado.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex5.25" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.25</strong></summary><div>No Exemplo <a href="cap05.html#ex:distexpfdafdp">5.35</a> apresentamos a FDP de uma variável aleatória com distribuição exponencial. Porém, não provamos que de fato é uma função densidade de probabilidade. Baseado na Definição <a href="cap05.html#def:fdp">5.31</a>, mostre que a expressão <span class="math inline">\(\eqref{eq:fdpexp}\)</span> é uma FDP.<p></p>
 </div></details>
 </div>
 
