@@ -71,27 +71,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Solution {
-  --color1: #9ad5f6;
-}
-.Definition {
-  --color1: #5e737f;
-  --color2: #49606d;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
 .Proof {
   --color1: #aaa6a3;
-}
-.Theorem {
-  --color1: #d14747;
-  --color2: #8b1f1f;
-}
-.Example {
-  --color1: #c0c0c0;
-  --color2: #808080;
 }
 .Corolary {
   --color1: #df6d0d;
@@ -101,8 +82,56 @@ ul.task-list li input[type="checkbox"] {
   --color1: #4485f6;
   --color2: #479bd1;
 }
+.Definition {
+  --color1: #5e737f;
+  --color2: #49606d;
+}
+.Solution {
+  --color1: #9ad5f6;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Example {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Theorem {
+  --color1: #d14747;
+  --color2: #8b1f1f;
+}
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="custom.scss">
 </head>
@@ -231,8 +260,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#exerprop" id="toc-exerprop" class="nav-link active" data-scroll-target="#exerprop">Exercícios propostos</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -256,8 +291,70 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="exerprop" class="level2 unnumbered" title="Clique aqui!">
+<h2 class="unnumbered anchored" title="Clique aqui!" data-anchor-id="exerprop">Exercícios propostos</h2>
+<div id="exerc:Ex9.1" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 9.1</strong></summary><div>Um experimento objetivou detectar a tensão máxima necessária (em MPa) até o aparecimento de trincas em parabrisas de caminhões pesados de uma determinada marca, do qual verifiou-se a tensão máxima até o aparecimento numa amostra de 10 parabrisas, cujos valores são: <span class="math inline">\(9,02\)</span>; <span class="math inline">\(8,82\)</span>; <span class="math inline">\(7,63\)</span>; <span class="math inline">\(8,40\)</span>; <span class="math inline">\(9,29\)</span>; <span class="math inline">\(9,39\)</span>; <span class="math inline">\(7,79\)</span>; <span class="math inline">\(8,64\)</span>; <span class="math inline">\(7,37\)</span>; <span class="math inline">\(8,74\)</span>. Considerando que os dados têm distribuição normal, apresente um estimador intervalar para a média populacional <span class="math inline">\(\mu\)</span> para a tensão máxima necessária (em MPa) até o aparecimento de trincas em parabrisas de caminhões pesados de uma determinada marca, com um nível de confiança de <span class="math inline">\(95\%\)</span> de confiança.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex9.2" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 9.2</strong></summary><div>Considere <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span> uma amostra aleatória de uma população com distribuição exponencial de parâmero <span class="math inline">\(\lambda\)</span>, tal que sua função densidade de probabilidade é dada por: <span class="math display">\[\begin{align*}
+  f_X(x) &amp; = \left\{\begin{array}{ll}
+                      \lambda e^{-\lambda x}, &amp; x &gt; 0, \\
+                      0 &amp; \textrm{caso contrário,}
+                    \end{array}\right.
+\end{align*}\]</span> em que <span class="math inline">\(\lambda &gt; 0\)</span>. Determine um estimador para <span class="math inline">\(\lambda\)</span> pelo método de máxima verossimilhança e pelo método dos momentos.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex9.3" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 9.3</strong></summary><div>Considere <span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(X_n\)</span> uma amostra aleatória de uma população com distribuição uniforme no intervalo <span class="math inline">\([0, \theta]\)</span>, tal que sua função densidade de probabilidade é dada por: <span class="math display">\[\begin{align*}
+  f_X(x) &amp; = \left\{\begin{array}{ll}
+                        \frac{1}{\theta}, &amp; 0 \leq x \leq \theta\\
+                      0 &amp; \textrm{caso contrário.}
+                    \end{array}\right.
+\end{align*}\]</span> Determine um estimador para <span class="math inline">\(\theta\)</span> pelo método de máxima verossimilhança.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex9.4" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 9.4</strong></summary><div>Considere um experimento do qual se observa o desempenho de um sistema operacional implantado em uma determinada indústria de robótica. Foi verificado que o tempo de resposta (em milissegundos) de um comando do operador a uma determinada atividade usando esse sistema operacional, tem distribuição normal com desvio padrão de <span class="math inline">\(20\)</span> milissegundos. Retirado uma amostra de tamanho <span class="math inline">\(n = 100\)</span>, com média de <span class="math inline">\(52,05\)</span> milissegudos, determine um estimador intervalar para a média populacional do tempo de resposta do comando do operador a uma determinada atividade, para verificarmos o desempenho do sistema operacional implantado, com um nível de confiança de <span class="math inline">\(95\%\)</span> de probabilidade.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex9.5" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 9.5</strong></summary><div>Considere duas máquinas que produzem peças, dos quais estamos avaliando a resistência à tensão dessas máquinas (MPa). Retirou-se uma amostra de 8 peças de cada máquina, e obtendo as seguintes resistências:<p></p>
+<table class="table-striped table-hover caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Máquina 1</td>
+<td style="text-align: center;">161</td>
+<td style="text-align: center;">147</td>
+<td style="text-align: center;">162</td>
+<td style="text-align: center;">161</td>
+<td style="text-align: center;">154</td>
+<td style="text-align: center;">136</td>
+<td style="text-align: center;">142</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Máquina 2</td>
+<td style="text-align: center;">140</td>
+<td style="text-align: center;">162</td>
+<td style="text-align: center;">147</td>
+<td style="text-align: center;">133</td>
+<td style="text-align: center;">130</td>
+<td style="text-align: center;">137</td>
+<td style="text-align: center;">137</td>
+</tr>
+</tbody>
+</table>
+<p>Considere que a resistência à tensão apresenta distribuição normal e que as variâncias populacionais são desconhecidas para os dados obtidos pelas duas máquinas, porém iguais, encontre um estimador intervalar para a diferença das médias dos dois grupos, com um nível de confiança de <span class="math inline">\(99\%\)</span> de probabilidade.</p>
+</div></details>
+</div>
+<div id="exerc:Ex9.6" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 9.6</strong></summary><div>Verifique se o estimador de máxima verossimilhança de <span class="math inline">\(\hat{p} = \bar{Y}/ k\)</span>, de uma amostra aleatória <span class="math inline">\(Y_1\)</span>, <span class="math inline">\(Y_2\)</span>, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(Y_k\)</span> de uma distribuição Binomial de parâmetros <span class="math inline">\(n\)</span> (conhecido) e <span class="math inline">\(p\)</span>, é um estimador não viesado de <span class="math inline">\(p\)</span>. Verifique também se esse estimador é consistente.<p></p>
+</div></details>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

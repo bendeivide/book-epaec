@@ -125,9 +125,27 @@ div.csl-indent {
   }
 }</script>
 <style>
+.Exercise {
+  --color1: #4485f6;
+  --color2: #479bd1;
+}
+.Theorem {
+  --color1: #d14747;
+  --color2: #8b1f1f;
+}
 .Example {
   --color1: #c0c0c0;
   --color2: #808080;
+}
+.Definition {
+  --color1: #5e737f;
+  --color2: #49606d;
+}
+.Proof {
+  --color1: #aaa6a3;
+}
+.Solution {
+  --color1: #9ad5f6;
 }
 .TODO {
   --color1: #e7b1b4;
@@ -136,24 +154,6 @@ div.csl-indent {
 .Corolary {
   --color1: #df6d0d;
   --color2: #b85604;
-}
-.Exercise {
-  --color1: #4485f6;
-  --color2: #479bd1;
-}
-.Definition {
-  --color1: #5e737f;
-  --color2: #49606d;
-}
-.Solution {
-  --color1: #9ad5f6;
-}
-.Theorem {
-  --color1: #d14747;
-  --color2: #8b1f1f;
-}
-.Proof {
-  --color1: #aaa6a3;
 }
 </style>
 
@@ -321,30 +321,30 @@ window.Quarto = {
   <ul>
   <li><a href="#introd" id="toc-introd" class="nav-link active" data-scroll-target="#introd"><span class="header-section-number">5.1</span> Introdução</a></li>
   <li><a href="#teoconj" id="toc-teoconj" class="nav-link" data-scroll-target="#teoconj"><span class="header-section-number">5.2</span> Introdução à teoria de conjuntos no contexto probabilístico</a></li>
-  <li><a href="#definições-de-probabilidades" id="toc-definições-de-probabilidades" class="nav-link" data-scroll-target="#definições-de-probabilidades"><span class="header-section-number">5.3</span> Definições de probabilidades</a>
+  <li><a href="#defprobs" id="toc-defprobs" class="nav-link" data-scroll-target="#defprobs"><span class="header-section-number">5.3</span> Definições de probabilidades</a>
   <ul>
-  <li><a href="#propriedades" id="toc-propriedades" class="nav-link" data-scroll-target="#propriedades"><span class="header-section-number">5.3.1</span> Propriedades</a></li>
+  <li><a href="#prop" id="toc-prop" class="nav-link" data-scroll-target="#prop"><span class="header-section-number">5.3.1</span> Propriedades</a></li>
   </ul></li>
-  <li><a href="#eventos-independentes-e-probabilidade-condicional" id="toc-eventos-independentes-e-probabilidade-condicional" class="nav-link" data-scroll-target="#eventos-independentes-e-probabilidade-condicional"><span class="header-section-number">5.4</span> Eventos independentes e probabilidade condicional</a></li>
-  <li><a href="#teorema-de-bayes" id="toc-teorema-de-bayes" class="nav-link" data-scroll-target="#teorema-de-bayes"><span class="header-section-number">5.5</span> Teorema de Bayes</a></li>
-  <li><a href="#variável-aleatória" id="toc-variável-aleatória" class="nav-link" data-scroll-target="#variável-aleatória"><span class="header-section-number">5.6</span> Variável Aleatória</a></li>
-  <li><a href="#distribuição-de-x" id="toc-distribuição-de-x" class="nav-link" data-scroll-target="#distribuição-de-x"><span class="header-section-number">5.7</span> Distribuição de <span class="math inline">\(X\)</span></a></li>
-  <li><a href="#função-de-distribuição-fd-ou-fda" id="toc-função-de-distribuição-fd-ou-fda" class="nav-link" data-scroll-target="#função-de-distribuição-fd-ou-fda"><span class="header-section-number">5.8</span> Função de distribuição (FD ou FDA)</a></li>
-  <li><a href="#natureza-das-variáveis-aleatórias" id="toc-natureza-das-variáveis-aleatórias" class="nav-link" data-scroll-target="#natureza-das-variáveis-aleatórias"><span class="header-section-number">5.9</span> Natureza das variáveis aleatórias</a>
+  <li><a href="#ind&amp;probcond" id="toc-ind&amp;probcond" class="nav-link" data-scroll-target="#ind&amp;probcond"><span class="header-section-number">5.4</span> Eventos independentes e probabilidade condicional</a></li>
+  <li><a href="#teobayes" id="toc-teobayes" class="nav-link" data-scroll-target="#teobayes"><span class="header-section-number">5.5</span> Teorema de Bayes</a></li>
+  <li><a href="#valeatoria" id="toc-valeatoria" class="nav-link" data-scroll-target="#valeatoria"><span class="header-section-number">5.6</span> Variável Aleatória</a></li>
+  <li><a href="#distx" id="toc-distx" class="nav-link" data-scroll-target="#distx"><span class="header-section-number">5.7</span> Distribuição de <span class="math inline">\(X\)</span></a></li>
+  <li><a href="#fda" id="toc-fda" class="nav-link" data-scroll-target="#fda"><span class="header-section-number">5.8</span> Função de distribuição (FD ou FDA)</a></li>
+  <li><a href="#natva" id="toc-natva" class="nav-link" data-scroll-target="#natva"><span class="header-section-number">5.9</span> Natureza das variáveis aleatórias</a>
   <ul>
-  <li><a href="#variável-aleatória-discreta" id="toc-variável-aleatória-discreta" class="nav-link" data-scroll-target="#variável-aleatória-discreta"><span class="header-section-number">5.9.1</span> Variável aleatória discreta</a>
+  <li><a href="#vad" id="toc-vad" class="nav-link" data-scroll-target="#vad"><span class="header-section-number">5.9.1</span> Variável aleatória discreta</a>
   <ul class="collapse">
-  <li><a href="#função-de-probabilidade-fp" id="toc-função-de-probabilidade-fp" class="nav-link" data-scroll-target="#função-de-probabilidade-fp"><span class="header-section-number">5.9.1.1</span> Função de probabilidade (FP)</a></li>
-  <li><a href="#fda-para-as-variáveis-aleatórias-discretas" id="toc-fda-para-as-variáveis-aleatórias-discretas" class="nav-link" data-scroll-target="#fda-para-as-variáveis-aleatórias-discretas"><span class="header-section-number">5.9.1.2</span> FDA para as variáveis aleatórias discretas</a></li>
+  <li><a href="#fp" id="toc-fp" class="nav-link" data-scroll-target="#fp"><span class="header-section-number">5.9.1.1</span> Função de probabilidade (FP)</a></li>
+  <li><a href="#fdavad" id="toc-fdavad" class="nav-link" data-scroll-target="#fdavad"><span class="header-section-number">5.9.1.2</span> FDA para as variáveis aleatórias discretas</a></li>
   </ul></li>
-  <li><a href="#variável-aleatória-contínua" id="toc-variável-aleatória-contínua" class="nav-link" data-scroll-target="#variável-aleatória-contínua"><span class="header-section-number">5.9.2</span> Variável aleatória contínua</a>
+  <li><a href="#vac" id="toc-vac" class="nav-link" data-scroll-target="#vac"><span class="header-section-number">5.9.2</span> Variável aleatória contínua</a>
   <ul class="collapse">
-  <li><a href="#função-densidade-de-probabilidade-fdp" id="toc-função-densidade-de-probabilidade-fdp" class="nav-link" data-scroll-target="#função-densidade-de-probabilidade-fdp"><span class="header-section-number">5.9.2.1</span> Função densidade de probabilidade (FDP)</a></li>
-  <li><a href="#fda-para-as-variáveis-aleatórias-contínuas" id="toc-fda-para-as-variáveis-aleatórias-contínuas" class="nav-link" data-scroll-target="#fda-para-as-variáveis-aleatórias-contínuas"><span class="header-section-number">5.9.2.2</span> FDA para as variáveis aleatórias contínuas</a></li>
+  <li><a href="#fdp" id="toc-fdp" class="nav-link" data-scroll-target="#fdp"><span class="header-section-number">5.9.2.1</span> Função densidade de probabilidade (FDP)</a></li>
+  <li><a href="#fdavac" id="toc-fdavac" class="nav-link" data-scroll-target="#fdavac"><span class="header-section-number">5.9.2.2</span> FDA para as variáveis aleatórias contínuas</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#função-quantil-função-de-sobrevivência-e-função-s-quantil" id="toc-função-quantil-função-de-sobrevivência-e-função-s-quantil" class="nav-link" data-scroll-target="#função-quantil-função-de-sobrevivência-e-função-s-quantil"><span class="header-section-number">5.10</span> Função quantil, Função de sobrevivência e função s-quantil</a></li>
-  <li><a href="#exercícios-propostos" id="toc-exercícios-propostos" class="nav-link" data-scroll-target="#exercícios-propostos">Exercícios propostos</a></li>
+  <li><a href="#fquant&amp;fs&amp;fsq" id="toc-fquant&amp;fs&amp;fsq" class="nav-link" data-scroll-target="#fquant&amp;fs&amp;fsq"><span class="header-section-number">5.10</span> Função quantil, Função de sobrevivência e função s-quantil</a></li>
+  <li><a href="#exerprop" id="toc-exerprop" class="nav-link" data-scroll-target="#exerprop">Exercícios propostos</a></li>
   </ul>
 </nav>
     </div>
@@ -766,8 +766,8 @@ B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
 </div>
 <p>Baseado em tudo o que foi estudado sobre uma introdução à teoria de conjuntos, iremos a partir da próxima seção, contextualizar todas essas informações com o estudo sobre a medida de probabilidade.</p>
 </section>
-<section id="definições-de-probabilidades" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="definições-de-probabilidades"><span class="header-section-number">5.3</span> Definições de probabilidades</h2>
+<section id="defprobs" class="level2" title="Clique aqui!" data-number="5.3">
+<h2 title="Clique aqui!" data-number="5.3" class="anchored" data-anchor-id="defprobs"><span class="header-section-number">5.3</span> Definições de probabilidades</h2>
 <p>Após um contexto sobre a teoria de conjuntos, iniciamos o contexto probabilístico, com o interesse de saber a chance de determinado elemento de um evento ocorrer como resultado de um experimento, ao invés de estar interessado nesse resultado. Isso tem total importância prática, pois é dessa forma, por exemplo, que prevemos determinados resultados de um fenômeno de interesse. Consideremos um evento <span class="math inline">\(A\)</span> contido no espaço amostral <span class="math inline">\(\Omega\)</span>, e desejamos associar ao evento <span class="math inline">\(A\)</span> uma medida que assume valores entre 0 e 1, que chamamos de medida de probabilidade de <span class="math inline">\(A\)</span>, denotada por <span class="math inline">\(P(A)\)</span>. Assim, diremos que <span class="math inline">\(P(A)\)</span> é a probabilidade de que o evento <span class="math inline">\(A\)</span> ocorra no espaço amostral <span class="math inline">\(\Omega\)</span>. De outro modo, a probabilidade do evento <span class="math inline">\(A\)</span> representa a chance de ao menos um de seus elementos ocorrerem como resultado de um experimento. Voltando ao Exemplo <a href="cap05.html#ex:espamos1">5.1</a>, considerando que esse dado é equilibrado, e o evento <span class="math inline">\(A\subset \Omega\)</span>, então poderemos atribuir uma probabilidade para <span class="math inline">\(A\)</span> da seguinte forma: <span class="math display">\[\begin{align*}
   P(A) &amp; = \frac{\#A}{6} = \frac{\textrm{número de resultados favoráveis a }A}{\textrm{número de resultados possíveis}}.
 \end{align*}\]</span></p>
@@ -923,8 +923,8 @@ B=\{1,2,3\} \ \mbox{e} \ A=\{1,2,3\},
 <p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.16</strong></summary><div>Suponha que seja conhecida a frequência de cada possível elemento do espaço amostral, <span class="math inline">\(\Omega\)</span>. Se sorteamos aleatoriamente um elemento dessa população, a probabilidade de sortear esse ou aquele elemento será a sua respectiva frequência relativa, fato que se enquadra no tipo de probabilidade frequentista ou a <em>posteriori</em>.<p></p>
 </div></details>
 </div>
-<section id="propriedades" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="propriedades"><span class="header-section-number">5.3.1</span> Propriedades</h3>
+<section id="prop" class="level3" title="Clique aqui!" data-number="5.3.1">
+<h3 title="Clique aqui!" data-number="5.3.1" class="anchored" data-anchor-id="prop"><span class="header-section-number">5.3.1</span> Propriedades</h3>
 <p>Vejamos algumas propriedades da medida de probabilidade, consequências dos Teoremas <a href="cap05.html#teo:leiconj">5.2</a> e <a href="cap05.html#teo:identeventos">5.3</a>, a seguir.</p>
 <div id="teo:propPx" class="Theorem" title="Propriedades de P">
 <details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.6: </strong>Propriedades de <span class="math inline">\(P\)</span></summary><div>
@@ -1250,8 +1250,8 @@ P\left( \bigcup^{4}_{i = 1}A_i\right) &amp; = \sum_{i = 1}^{4}P(A_i) - \sum_{1 \
 </div>
 </section>
 </section>
-<section id="eventos-independentes-e-probabilidade-condicional" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="eventos-independentes-e-probabilidade-condicional"><span class="header-section-number">5.4</span> Eventos independentes e probabilidade condicional</h2>
+<section id="ind&amp;probcond" class="level2" title="Clique aqui!" data-number="5.4">
+<h2 title="Clique aqui!" data-number="5.4" class="anchored" data-anchor-id="ind&amp;probcond"><span class="header-section-number">5.4</span> Eventos independentes e probabilidade condicional</h2>
 <p>Nessa seção, iremos apresentar iniciar com uma motivação, por meio do Exemplo <a href="cap05.html#ex:jovemprend">5.20</a>, uma abordagem sobre dois assuntos muito interessantes na probabilidade, que são a independência de eventos e a modificação do espaço amostral, dada uma informação antecipada, e qual a implicância dessas informações para a probabilidade de um evento ocorrer.</p>
 <div id="ex:jovemprend" class="Example">
 <details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Exemplo 5.20</strong></summary><div>
@@ -1493,8 +1493,8 @@ Figura&nbsp;5.3: Representação da taxa de erro por experimento em comparaçõe
 </div></details>
 </div>
 </section>
-<section id="teorema-de-bayes" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="teorema-de-bayes"><span class="header-section-number">5.5</span> Teorema de Bayes</h2>
+<section id="teobayes" class="level2" title="Clique aqui!" data-number="5.5">
+<h2 title="Clique aqui!" data-number="5.5" class="anchored" data-anchor-id="teobayes"><span class="header-section-number">5.5</span> Teorema de Bayes</h2>
 <p>A grande questão agora é qual a máquina que Paulo deveria substituir com o propósito de aumentar seu lucro na empresa. A ideia será calcular <span class="math inline">\(P(M_i|D)\)</span>, isto é, dado um defeito na sandália qual a probabilidade de vindo da máquina <span class="math inline">\(i\)</span>? A maior probabilidade será a máquina substituída. Entretanto, ainda não temos ferramenta para resolver essa resposta. Para isso, apresentamos o seguinte Teorema <a href="cap05.html#teo:teobayes">5.10</a> a seguir.</p>
 <div id="teo:teobayes" class="Theorem" title="Teorema de Bayes">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Teorema 5.10: </strong>Teorema de Bayes</summary><div>Considere o espaço amostral <span class="math inline">\(\Omega\)</span>. Considere uma sequência de eventos <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> de <span class="math inline">\(\Omega\)</span>, disjuntos, tal que <span class="math inline">\(\bigcup^{n}_{i = 1}A_i = \Omega\)</span>, e <span class="math inline">\(B\)</span> um evento de <span class="math inline">\(\Omega\)</span>, então a probabilidade de <span class="math inline">\(A_k\)</span>, para <span class="math inline">\(k = 1, 2, \ldots, n\)</span>, dado que ocorreu o evento <span class="math inline">\(B\)</span>, denotado por <span class="math inline">\(P(A_k|B)\)</span>, é dado por: <span id="eq-teobayes"><span class="math display">\[
@@ -1691,8 +1691,8 @@ P(B^c) = P(B^c\cap A) + P(B^c\cap A^c),
 </div></details>
 </div>
 </section>
-<section id="variável-aleatória" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="variável-aleatória"><span class="header-section-number">5.6</span> Variável Aleatória</h2>
+<section id="valeatoria" class="level2" title="Clique aqui!" data-number="5.6">
+<h2 title="Clique aqui!" data-number="5.6" class="anchored" data-anchor-id="valeatoria"><span class="header-section-number">5.6</span> Variável Aleatória</h2>
 <p>Em estatística, avaliamos um experimento não pelos eventos em si, mas por uma função definida no espaço amostral, que associa o evento a um número real. Chamamos essa função de variável aleatória, denotada por uma letra maiúscula, <span class="math inline">\(X\)</span> ou <span class="math inline">\(X(.)\)</span>. Por exemplo, no Exemplo <a href="cap05.html#ex:efmult">5.24</a> verificamos o efeito de multiplicidade de <span class="math inline">\(n\)</span> comparações, e ao invés de computarmos a probabilidade da taxa de erro tipo I por experimento observando o evento <span class="math inline">\(\cup^{n}_{i = 1}H_i^c\)</span> , isto é, <span class="math inline">\(P(\cup^{n}_{i = 1}H_i^c)\)</span>, podemos olhar para uma variável aleatória <span class="math inline">\(X(\omega)\)</span> que contabiliza o número de erros possíveis, isto é, <span class="math inline">\(\{X \geq 1\}\)</span>. Considerando que o suporte de <span class="math inline">\(X\)</span> seja <span class="math inline">\(\{0, 1, 2, \ldots, n\}\)</span>, então a probabilidade pode ser expressa como <span class="math inline">\(P(X \geq 1)\)</span>, tornando mais simples a notação para o cálculo desejado. O necessário é entender o modelo probabilístico de <span class="math inline">\(X\)</span>, que será abordado posteriormente.</p>
 <p>Alguns autores criticam o termo “variável aleatória”, já que a mesma é uma função. Como essa definição ficou conhecida com esse nome, seria um equívoco tentar renomeá-la, do qual é apresentada na Definição <a href="cap05.html#def:varaleatoria">5.22</a>, a seguir.</p>
 <div id="def:varaleatoria" class="Definition" title="Variável Aleatória">
@@ -1779,8 +1779,8 @@ Figura&nbsp;5.4: Espaço amostral e espaço amostral induzido pela variável ale
 <p>Portanto, a partir de agora em diante, iremos calcular as probabilidades dos eventos a partir da variável aleatória. Para um mesmo espaço amostral, é possível associar outras variáveis aleatórias. No exemplo anterior considerado, poderíamos pensar em uma variável aleatória <span class="math inline">\(Y\)</span> que representasse o número de espécies da variedade <span class="math inline">\(E\)</span>. %A função de probabilidade de <span class="math inline">\(X\)</span> define a distribuição de probabilidade dessa variável aleatória, porque <span class="math inline">\(X\)</span> é uma variável aleatória discreta.</p>
 <p>Dessa forma, a distribuição de probabilidade pode ser vista como uma correspondência que associa as probabilidades aos valores de uma variável aleatória, que é função do espaço amostral, definida na próxima seção.</p>
 </section>
-<section id="distribuição-de-x" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="distribuição-de-x"><span class="header-section-number">5.7</span> Distribuição de <span class="math inline">\(X\)</span></h2>
+<section id="distx" class="level2" title="Clique aqui!" data-number="5.7">
+<h2 title="Clique aqui!" data-number="5.7" class="anchored" data-anchor-id="distx"><span class="header-section-number">5.7</span> Distribuição de <span class="math inline">\(X\)</span></h2>
 <p>Sabemos que uma variável aleatória <span class="math inline">\(X\)</span>, é função dos possíveis resultados <span class="math inline">\(\omega \in \Omega\)</span>, e que estes possíveis resultados assumem diferentes valores com diferentes probabilidades. Assim, <span class="math inline">\(w\)</span> é aleatório, e por consequência <span class="math inline">\(X\)</span> também, como já falado anteriormente. Por isso, a variável por ser aleatória, a probabilidade de <span class="math inline">\(X\)</span> assumir um determinado valor <span class="math inline">\(x\)</span> ou está em uma determinada região do espaço amostral induzido, passa a ser importante. Assim, apresentamos a relação entre <span class="math inline">\(X\)</span> e sua probabilidade <span class="math inline">\(P(.)\)</span> por meio da Definição <a href="cap05.html#def:distx">5.24</a>, a seguir.</p>
 <div id="def:distx" class="Definition" title="Distribuição de X">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.24: </strong>Distribuição de <span class="math inline">\(X\)</span></summary><div>O conjunto de probabilidades <span class="math display">\[
@@ -1811,8 +1811,8 @@ P_X(X(\omega) \in B) = P(\{w \in \Omega: X(\omega) \in B,~B \subset \mathbb{R}\}
 </div></details>
 </div>
 </section>
-<section id="função-de-distribuição-fd-ou-fda" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="função-de-distribuição-fd-ou-fda"><span class="header-section-number">5.8</span> Função de distribuição (FD ou FDA)</h2>
+<section id="fda" class="level2" title="Clique aqui!" data-number="5.8">
+<h2 title="Clique aqui!" data-number="5.8" class="anchored" data-anchor-id="fda"><span class="header-section-number">5.8</span> Função de distribuição (FD ou FDA)</h2>
 <p>Para entendermos o comportamento estatístico de uma variável aleatória, temos que definir sua função de distribuição, em que são caracterizados por eventos da forma <span class="math inline">\(B = (-\infty,x]\)</span>.</p>
 <div id="def:funcdist" class="Definition" title="Função de distribuição de X">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.25: </strong>Função de distribuição de <span class="math inline">\(X\)</span></summary><div>A função de distribuição (FD) ou função de distribuição acumulada (FDA) de uma variável aleatória <span class="math inline">\(X\)</span>, é definida por <span class="math display">\[
@@ -1843,11 +1843,11 @@ F_X(x)=P(X\leq x)\leq P(X\leq y)=F_X(y).
 </div></details>
 </div>
 </section>
-<section id="natureza-das-variáveis-aleatórias" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="natureza-das-variáveis-aleatórias"><span class="header-section-number">5.9</span> Natureza das variáveis aleatórias</h2>
+<section id="natva" class="level2" title="Clique aqui!" data-number="5.9">
+<h2 title="Clique aqui!" data-number="5.9" class="anchored" data-anchor-id="natva"><span class="header-section-number">5.9</span> Natureza das variáveis aleatórias</h2>
 <p>Se <span class="math inline">\(X\)</span> é uma variável aleatória definida em <span class="math inline">\(\Omega\)</span>, estamos interessados em calcular probabilidade de eventos que envolvem <span class="math inline">\(X\)</span>, isto é, <span class="math inline">\(P(w\in\Omega:X(w)\in B)\)</span> com <span class="math inline">\(B \subset \mathbb{R}\)</span>. A forma que essas probabilidades são calculadas depende da natureza particular de <span class="math inline">\(X\)</span>.</p>
-<section id="variável-aleatória-discreta" class="level3" data-number="5.9.1">
-<h3 data-number="5.9.1" class="anchored" data-anchor-id="variável-aleatória-discreta"><span class="header-section-number">5.9.1</span> Variável aleatória discreta</h3>
+<section id="vad" class="level3" title="Clique aqui!" data-number="5.9.1">
+<h3 title="Clique aqui!" data-number="5.9.1" class="anchored" data-anchor-id="vad"><span class="header-section-number">5.9.1</span> Variável aleatória discreta</h3>
 <p>Formalmente, definimos</p>
 <div id="def:vadiscreta" class="Definition" title="Variável Aleatória Discreta">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.26: </strong>Variável Aleatória Discreta</summary><div>Seja o espaço amostral <span class="math inline">\(\Omega\)</span> de um experimento, então a função <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span> é chamada de variável aleatória discreta se imagem é um subconjunto contável <span class="math inline">\(B\)</span>, finito ou infinito dos reais, tal que <span class="math inline">\(B = \{x \in \mathbb{R}: X(\omega) = x,~\omega \in \Omega\}\)</span>.<p></p>
@@ -1914,8 +1914,8 @@ Tabela&nbsp;5.1: Espaço amostral e induzido pela variável aleatória discreta 
 </div>
 </div></details>
 </div>
-<section id="função-de-probabilidade-fp" class="level4" data-number="5.9.1.1">
-<h4 data-number="5.9.1.1" class="anchored" data-anchor-id="função-de-probabilidade-fp"><span class="header-section-number">5.9.1.1</span> Função de probabilidade (FP)</h4>
+<section id="fp" class="level4" title="Clique aqui!" data-number="5.9.1.1">
+<h4 title="Clique aqui!" data-number="5.9.1.1" class="anchored" data-anchor-id="fp"><span class="header-section-number">5.9.1.1</span> Função de probabilidade (FP)</h4>
 <p>A probabilidade dos valores de <span class="math inline">\(X\)</span> que pertencem a <span class="math inline">\(B\)</span> é dada por <span class="math display">\[\begin{eqnarray*}
     P(X\in B)&amp;=&amp; P(X=x_1\textrm{ ou }X=x_2\textrm{ ou }\ldots)\\
     &amp;=&amp; P(X=x_1)+P(X=x_2)+\ldots = \sum_{x\in B}p_X(x),
@@ -1981,8 +1981,8 @@ Figura&nbsp;5.5: Representação gráfica da função de probabilidade para os d
 </figure>
 </div>
 </section>
-<section id="fda-para-as-variáveis-aleatórias-discretas" class="level4" data-number="5.9.1.2">
-<h4 data-number="5.9.1.2" class="anchored" data-anchor-id="fda-para-as-variáveis-aleatórias-discretas"><span class="header-section-number">5.9.1.2</span> FDA para as variáveis aleatórias discretas</h4>
+<section id="fdavad" class="level4" title="Clique aqui!" data-number="5.9.1.2">
+<h4 title="Clique aqui!" data-number="5.9.1.2" class="anchored" data-anchor-id="fdavad"><span class="header-section-number">5.9.1.2</span> FDA para as variáveis aleatórias discretas</h4>
 <p>Anteriormente, afirmamos que a distribuição de <span class="math inline">\(X\)</span> é dada por <span class="math inline">\(P(X(\omega) \in B)\)</span>, em que <span class="math inline">\(B \in \mathbb{R}\)</span>. Existe um caso especial, em que <span class="math inline">\(B = (-\infty, x]\)</span>, em que <span class="math inline">\(x \in \mathbb{R}\)</span>. Assim, dizemos que <span class="math inline">\(P(X(\omega) \in (\infty, x])\)</span> representa a função de distribuição ou função de distribuição acumulada (FD ou FDA), e em notação temos <span class="math inline">\(F_X(x) = P(X(\omega) \in (\infty, x])\)</span>. Para o caso das variáveis aleatórias discretas, usaremos a definição de função de probabilidade (Definição <a href="cap05.html#def:fp">5.28</a>), sendo apresentada na Definição <a href="cap05.html#def:fdva">5.29</a>, a seguir.</p>
 <div id="def:fdva" class="Definition" title="Função de distribuição de uma v.a. discreta">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.29: </strong>Função de distribuição de uma v.a. discreta</summary><div>A função de distribuição de uma variável aleatória discreta <span class="math inline">\(X\)</span> é a função <span class="math inline">\(F_X:\mathbb{R}\rightarrow [0,1]\)</span>, definida por <span class="math display">\[
@@ -2183,8 +2183,8 @@ Figura&nbsp;5.11: Propriedade (<span class="math inline">\(iii\)</span>) do Teor
 </div>
 </section>
 </section>
-<section id="variável-aleatória-contínua" class="level3" data-number="5.9.2">
-<h3 data-number="5.9.2" class="anchored" data-anchor-id="variável-aleatória-contínua"><span class="header-section-number">5.9.2</span> Variável aleatória contínua</h3>
+<section id="vac" class="level3" title="Clique aqui!" data-number="5.9.2">
+<h3 title="Clique aqui!" data-number="5.9.2" class="anchored" data-anchor-id="vac"><span class="header-section-number">5.9.2</span> Variável aleatória contínua</h3>
 <p>Observamos que seria muito restritivo definir apenas variáveis aleatórias cujo resultado da função assumisse apenas em um conjunto contável. Por isso, uma outra natureza de variável aleatória modela situações cuja função assume em um conjunto infinito não contável dos reais, do qual apresentamos na Definição <a href="cap05.html#def:vacontinua">5.30</a>.</p>
 <div id="def:vacontinua" class="Definition" title="Variável Aleatória Contínua">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.30: </strong>Variável Aleatória Contínua</summary><div>Seja o espaço amostral <span class="math inline">\(\Omega\)</span> de um experimento, então a função <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span> é chamada de variável aleatória contínua, se a sua imagem é um subconjunto <span class="math inline">\(B\)</span>, infinito não enumerável dos reais, e que <span class="math display">\[\begin{align*}
@@ -2219,8 +2219,8 @@ Evento certo não implica em certeza de ocorrência de seus elementos em um expe
 <p>Considere <span class="math inline">\(X\)</span> uma variável aleatória contínua que assume valores no conjunto dos irracionais no intervalo <span class="math inline">\([0,1]\)</span>, similar ao exemplo que apresentamos na <a href="#fig-talgorit" class="quarto-xref">Figura&nbsp;<span>5.12</span></a>. A probabilidade de <span class="math inline">\(X\)</span> assumir um número racional, isso representa um evento certo e tem probabilidade 1, isto é, <span class="math inline">\(P(\{X = x_{\mathbb{I}}\} = \{x_{\mathbb{I}} \in [0,1]: x_{\mathbb{I}} \in \mathbb{I}\}) = 1\)</span>. Porém, um resultado possível é <span class="math inline">\(1/2\)</span> que não é irracional. Da mesma forma, como afirmamos no início da seção que um evento com probabilidade <span class="math inline">\(0\)</span> não implica que ele seja impossível.</p>
 </div>
 </div>
-<section id="função-densidade-de-probabilidade-fdp" class="level4" data-number="5.9.2.1">
-<h4 data-number="5.9.2.1" class="anchored" data-anchor-id="função-densidade-de-probabilidade-fdp"><span class="header-section-number">5.9.2.1</span> Função densidade de probabilidade (FDP)</h4>
+<section id="fdp" class="level4" title="Clique aqui!" data-number="5.9.2.1">
+<h4 title="Clique aqui!" data-number="5.9.2.1" class="anchored" data-anchor-id="fdp"><span class="header-section-number">5.9.2.1</span> Função densidade de probabilidade (FDP)</h4>
 <p>Anteriormente, afirmamos que uma variável aleatória <span class="math inline">\(X\)</span> é contínua se <span class="math inline">\(P,(X = x) = 0\)</span>. Assim, como poderíamos atribuir probabilidade às variáveis aleatórias? Com o intuito de resolver esse problema, definimos a função densidade de probabilidade a seguir.</p>
 <div id="def:fdp" class="Definition" title="Função densidade de probabilidade">
 <details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.31: </strong>Função densidade de probabilidade</summary><div>
@@ -2294,8 +2294,8 @@ F_X(x)=\int_{-\infty}^{x}f_X(t)dt,
 </div>
 <p>Definiremos a seguir uma FDA para o caso contínuo, já mencionado na Definição <a href="cap05.html#def:vaac">5.32</a>, expressão (<a href="#eq-Fxcont" class="quarto-xref"><span>5.51</span></a>).</p>
 </section>
-<section id="fda-para-as-variáveis-aleatórias-contínuas" class="level4" data-number="5.9.2.2">
-<h4 data-number="5.9.2.2" class="anchored" data-anchor-id="fda-para-as-variáveis-aleatórias-contínuas"><span class="header-section-number">5.9.2.2</span> FDA para as variáveis aleatórias contínuas</h4>
+<section id="fdavac" class="level4" title="Clique aqui!" data-number="5.9.2.2">
+<h4 title="Clique aqui!" data-number="5.9.2.2" class="anchored" data-anchor-id="fdavac"><span class="header-section-number">5.9.2.2</span> FDA para as variáveis aleatórias contínuas</h4>
 <p>Assim como no caso discreto, também apresentaremos a FDA para as variáveis aleatórias absolutamente contínuas.</p>
 <div id="def:fdcont" class="Definition" title="Função de distribuição de uma variável aleatória contínua">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.33: </strong>Função de distribuição de uma variável aleatória contínua</summary><div>Se <span class="math inline">\(X\)</span> é uma variável aleatória absolutamente contínua, a função de distribuição <span class="math inline">\(F_X\)</span>, se existir uma função densidade <span class="math inline">\(f_X\)</span>, é definida por <span class="math display">\[
@@ -2444,8 +2444,8 @@ Figura&nbsp;5.15: Propriedade (<span class="math inline">\(iii\)</span>) do Teor
 </section>
 </section>
 </section>
-<section id="função-quantil-função-de-sobrevivência-e-função-s-quantil" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="função-quantil-função-de-sobrevivência-e-função-s-quantil"><span class="header-section-number">5.10</span> Função quantil, Função de sobrevivência e função s-quantil</h2>
+<section id="fquant&amp;fs&amp;fsq" class="level2" title="Clique aqui!" data-number="5.10">
+<h2 title="Clique aqui!" data-number="5.10" class="anchored" data-anchor-id="fquant&amp;fs&amp;fsq"><span class="header-section-number">5.10</span> Função quantil, Função de sobrevivência e função s-quantil</h2>
 <p>Outras funções são interessantes no contexto de variáveis aleatórias, principalmente quando as distribuições estiverem associados as estatísticas de testes de hipóteses, <a href="cap10.html" class="quarto-xref"><span>Capítulo 10</span></a>. As funções apresentadas a seguir são: função quantil, função de sobrevivência e função s-quantil.</p>
 <div id="def:fquantil" class="Definition" title="Função quantil">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definição 5.35: </strong>Função quantil</summary><div>Considerando uma variável aleatória <span class="math inline">\(X\)</span> com função de distribuição <span class="math inline">\(F_X\)</span>, então a função <span class="math inline">\(Q: [0,1] \to \mathbb{R}\)</span>, é chamada de função quantil, definida por: <span id="eq-fquantil"><span class="math display">\[
@@ -2494,8 +2494,8 @@ Q(p) = -\frac{1}{\lambda}\ln(1 - p).
 </div></details>
 </div>
 </section>
-<section id="exercícios-propostos" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="exercícios-propostos">Exercícios propostos</h2>
+<section id="exerprop" class="level2 unnumbered" title="Clique aqui!">
+<h2 class="unnumbered anchored" title="Clique aqui!" data-anchor-id="exerprop">Exercícios propostos</h2>
 <div id="exerc:Ex5.1" class="Exercise">
 <p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 5.1</strong></summary><div>Defina o que é um experimento aleatório e exemplifique.<p></p>
 </div></details>
