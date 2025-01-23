@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -71,6 +91,10 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
+.Exercise {
+  --color1: #4485f6;
+  --color2: #479bd1;
+}
 .Corolary {
   --color1: #df6d0d;
   --color2: #b85604;
@@ -79,30 +103,55 @@ ul.task-list li input[type="checkbox"] {
   --color1: #c0c0c0;
   --color2: #808080;
 }
-.Theorem {
-  --color1: #d14747;
-  --color2: #8b1f1f;
+.Proof {
+  --color1: #aaa6a3;
 }
 .Solution {
   --color1: #9ad5f6;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
 }
 .Definition {
   --color1: #5e737f;
   --color2: #49606d;
 }
-.Exercise {
-  --color1: #4485f6;
-  --color2: #479bd1;
+.Theorem {
+  --color1: #d14747;
+  --color2: #8b1f1f;
 }
-.Proof {
-  --color1: #aaa6a3;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="custom.scss">
 </head>
@@ -231,8 +280,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#exerprop" id="toc-exerprop" class="nav-link active" data-scroll-target="#exerprop">Exercícios propostos</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -256,8 +311,126 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="exerprop" class="level2 unnumbered" title="Clique aqui!">
+<h2 class="unnumbered anchored" title="Clique aqui!" data-anchor-id="exerprop">Exercícios propostos</h2>
+<div id="exerc:Ex10.1" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 10.1</strong></summary><div>
+<p>Um professor aplica um teste do tipo certo-errado com 12 questões. Queremos testar a hipótese de que o aluno está advinhando. A hipótese nula é que o aluno acerta ao acaso as questões. A hipótese alternativa é que o aluno tem algum conhecimento. Sendo <span class="math inline">\(p\)</span> a probabilidade (desconhecida) do aluno acertar cada questão, então a hipótese estatística de interesse pode ser dada como <span class="math inline">\(H_0: p = 1/2\)</span>. Como hipótese alternativa <span class="math inline">\(H_1: p &gt; 1/2\)</span>, isto é, o aluno tem algum conhecimento para resolver as questões. Determine:</p>
+<ol type="a">
+<li>A probabilidade do erro tipo I, supondo que adotamos a seguinte regra de decisão: o aluno não está advinhando se acertar 8 ou mais questões.</li>
+<li>Qual seria a regra de decisão, se assumíssimos um nível de significância <span class="math inline">\(\alpha \leq 0,08\)</span>?</li>
+</ol>
+</div></details>
+</div>
+<div id="Solution*-10.1" class="Solution">
+<details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
+<ol type="a">
+<li>Vamos assumir que as questões são independentes e que a variável aleatória <span class="math inline">\(X\)</span> denota o número de acertos entre as 10 questões. Portanto, <span class="math inline">\(X\)</span> tem distribuição binomial com parâmetros <span class="math inline">\(n = 10\)</span> e <span class="math inline">\(p\)</span> desconhecido. Supondo que adotamos a seguinte regra de decisão: o aluno não está advinhando se acertar 8 ou mais questões. Isto equivale a <span class="math display">\[\begin{align*}
+  \textrm{Rejeitar } H_0 \textrm{ se } &amp; X \geq 8.
+\end{align*}\]</span> Dessa forma, a região crítica do teste é <span class="math inline">\(C_{\Upsilon} = \{X: X &gt; 8\}\)</span>. É possível também que o aluno acerte 8 ou mais questões e esteja advinhando, isto é, podemos rejeitar <span class="math inline">\(H_0\)</span> dado que ela é verdadeira. A probabilidade de que isso ocorra é: <span class="math display">\[\begin{align*}
+  P(X \geq 8|p = 1/2) &amp; = \sum_{k = 8}^{10}(1/2)^{k}(1 - 1/2)^{10 - k} \approx 0,055.
+\end{align*}\]</span></li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex10.2" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 10.2</strong></summary><div>Considere um experimento do qual se observa o desempenho de um sistema operacional implantado em uma determinada indústria de robótica. Foi verificado que o tempo de resposta (em milissegundos) de um comando do operador a uma determinada atividade usando esse sistema operacional, tem distribuição normal com desvio padrão de <span class="math inline">\(20\)</span> milissegundos. Retirado uma amostra de tamanho <span class="math inline">\(n = 100\)</span>, com média de <span class="math inline">\(52,05\)</span> ms. O fabricante nos informou que o tempo médio de resposta da máquina, devido ao sistema operacional, não ultrapassa <span class="math inline">\(50\)</span> ms. Diante disso, use um teste de hipótese para verificar a informação do fabricante, ao nível de significância de <span class="math inline">\(5\%\)</span> de probabilidade.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex10.3" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 10.3</strong></summary><div>Considere que a resistência à tensão apresenta distribuição normal e que as variâncias populacionais são desconhecidas para os dados obtidos pelas duas máquinas, porém iguais. Verifique por meio de um teste de hipóteses, se a resistência à tensão média da máquina 1 é superior a da máquina 2, ao nível de significância de <span class="math inline">\(10\%\)</span> de probabilidade.<p></p>
+</div></details>
+</div>
+<div id="exerc:Ex10.4" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 10.4</strong></summary><div>Um estudo realizado sobre dois tipos de concreto para verificar a taxa de infiltração de água em sua estrutura foi realizado. Os dois tipos de concreto (C1 e C2) diferiam na porcentagem de material retido na peneira de abertura no processo de fabricação desses concretos, em que para fabricação de C1 os agregados retidos na peneira foram 100% de 6,3mm, ao passo que C2 os agregados retidos na peneira foram de 6,3mm (50%) e 4,75mm (50%). Um experimento (ensaio com carga variável) avaliou 40 corpos de provas desses dois tipos de concreto, e mediu a condutividade hidráulica (taxa de infiltração de água em <span class="math inline">\(cm/s\)</span>), dos quais os dados são obtidos na tabela abaixo:<p></p>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Concreto</th>
+<th style="text-align: center;">Amostra</th>
+<th style="text-align: center;">Média amostral (<span class="math inline">\(cm/s\)</span>)</th>
+<th style="text-align: center;">Desvio padrão amostral (<span class="math inline">\(cm/s\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">C1</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">0,523</td>
+<td style="text-align: center;">0,054</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">C2</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">0,641</td>
+<td style="text-align: center;">0,061</td>
+</tr>
+</tbody>
+</table>
+<p>Considerando que a condutividade hidráulica tem distribuição normal, verifique se há diferenças estatísticas entre as médias populacionais das condutividades hidráulicas desses dois tipos de concreto, ao nível de significância de <span class="math inline">\(10\%\)</span> de probabilidade. Considere que as variâncias populacionais são homocedásticas.</p>
+</div></details>
+</div>
+<div id="exerc:Ex10.5" class="Exercise">
+<details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 10.5</strong></summary><div>
+<p>Um estudo realizado por <span class="citation" data-cites="seker2002">Seker <em>et al.</em> (<a href="references.html#ref-seker2002" role="doc-biblioref">2002</a>)</span> avaliaram os efeitos da energia eletromagnética de celulares, no cérebro de ratos. O experimento foi conduzido <em>in vivo</em>, sob dois grupos de ratos, um primeiro grupo controle sem exposição da energia eletromagética provindo dos celulares, e outro grupo teste apresentando essa exposição. Algumas variáveis foram analisada, dentre as quais, a pressão sanguínea arterial desses ratos (<span class="math inline">\(mmHg\)</span>), coletadas durante o experimento. Os resultados são apresentado na tabela abaixo:</p>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Grupo</th>
+<th style="text-align: center;">Amostra</th>
+<th style="text-align: center;">Média amostral (<span class="math inline">\(mmHg\)</span>)</th>
+<th style="text-align: center;">Desvio padrão amostral (<span class="math inline">\(mmHg\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Teste &nbsp;(Grupo 1)</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">115</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Controle &nbsp;(Grupo 2)</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">5</td>
+</tr>
+</tbody>
+</table>
+<p>Dessa forma, indagamos:</p>
+<ol type="a">
+<li>Podemos afirmar que os efeitos da energia eletromagnética expostos aos ratos, proveniente de celulares, podem ter elevado a pressão sanguínea arterial dos ratos? Considere a realização do testes usando os níveis de significância a 1% e 5% de probabilidade, e que a variável mensurada para ambos os grupos apresentam distribuição normal com variâncias desconhecidas e diferentes (heterocedasticidade).</li>
+<li>Determine o <em>valor-p</em> para o teste realidade no ítem anterior.</li>
+<li>Por meio de um intervalo de confiança, responda a indagação do ítem (a)</li>
+<li>Podemos afirmar que, em média, a pressão sanguínea do grupo teste é no mínimo <span class="math inline">\(16~mmHg\)</span> maior do que a média do grupo controle, ao nível de significância de <span class="math inline">\(5\%\)</span> de probabilidade, baseado nas mesmas suposições do ítem (a)?</li>
+<li>Como poderíamos responder responder o ítem (d) por meio de um intervalo de confiança?</li>
+</ol>
+</div></details>
+</div>
+<div id="exerc:Ex10.6" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 10.6</strong></summary><div>Baseado nos ítens (d) e (e) do Exercício Proposto <a href="cap10.html#exerc:Ex10.6">10.6</a>, justifique o que levou a formular as hipóteses complementares desse problema.<p></p>
+</div></details>
+</div>
 
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-seker2002" class="csl-entry" role="listitem">
+SEKER, S. S. <em>et al.</em> <strong><a href="https://doi.org/10.1109/ISEMC.2002.1032671">EM effects of different mobile handsets on rats’ brain</a></strong>2002 IEEE International Symposium on Electromagnetic Compatibility. <strong>Anais</strong>...2002
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
