@@ -91,6 +91,10 @@ div.csl-indent {
   }
 }</script>
 <style>
+.Definition {
+  --color1: #5e737f;
+  --color2: #49606d;
+}
 .Exercise {
   --color1: #4485f6;
   --color2: #479bd1;
@@ -99,27 +103,23 @@ div.csl-indent {
   --color1: #df6d0d;
   --color2: #b85604;
 }
-.Example {
-  --color1: #c0c0c0;
-  --color2: #808080;
-}
 .Proof {
   --color1: #aaa6a3;
 }
-.Solution {
-  --color1: #9ad5f6;
-}
-.Definition {
-  --color1: #5e737f;
-  --color2: #49606d;
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
 }
 .Theorem {
   --color1: #d14747;
   --color2: #8b1f1f;
 }
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
+.Example {
+  --color1: #c0c0c0;
+  --color2: #808080;
+}
+.Solution {
+  --color1: #9ad5f6;
 }
 </style>
 
@@ -315,21 +315,28 @@ window.Quarto = {
 <h2 class="unnumbered anchored" title="Clique aqui!" data-anchor-id="exerprop">Exercícios propostos</h2>
 <div id="exerc:Ex10.1" class="Exercise">
 <details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercício 10.1</strong></summary><div>
-<p>Um professor aplica um teste do tipo certo-errado com 12 questões. Queremos testar a hipótese de que o aluno está advinhando. A hipótese nula é que o aluno acerta ao acaso as questões. A hipótese alternativa é que o aluno tem algum conhecimento. Sendo <span class="math inline">\(p\)</span> a probabilidade (desconhecida) do aluno acertar cada questão, então a hipótese estatística de interesse pode ser dada como <span class="math inline">\(H_0: p = 1/2\)</span>. Como hipótese alternativa <span class="math inline">\(H_1: p &gt; 1/2\)</span>, isto é, o aluno tem algum conhecimento para resolver as questões. Determine:</p>
+<p>Um professor aplica um teste do tipo certo-errado com 10 questões. Queremos testar a hipótese de que o aluno está adivinhando. A hipótese nula é que o aluno acerta ao acaso as questões. A hipótese alternativa é que o aluno tem algum conhecimento. Sendo <span class="math inline">\(p\)</span> a probabilidade (desconhecida) do aluno acertar cada questão, então a hipótese estatística de interesse pode ser dada como <span class="math inline">\(H_0: p = 1/2\)</span>. Como hipótese alternativa <span class="math inline">\(H_1: p &gt; 1/2\)</span>, isto é, o aluno tem algum conhecimento para resolver as questões. Determine:</p>
 <ol type="a">
-<li>A probabilidade do erro tipo I, supondo que adotamos a seguinte regra de decisão: o aluno não está advinhando se acertar 8 ou mais questões.</li>
-<li>Qual seria a regra de decisão, se assumíssimos um nível de significância <span class="math inline">\(\alpha \leq 0,08\)</span>?</li>
+<li>A probabilidade do erro tipo I, supondo que adotamos a seguinte regra de decisão: o aluno não está adivinhando se acertar 8 ou mais questões.</li>
+<li>Qual seria a regra de decisão, se assumíssemos um nível de significância <span class="math inline">\(\alpha \leq 0,20\)</span>?</li>
 </ol>
 </div></details>
 </div>
 <div id="Solution*-10.1" class="Solution">
 <details class="Solution fbx-simplebox fbx-default"><summary><strong>Solução</strong></summary><div>
 <ol type="a">
-<li>Vamos assumir que as questões são independentes e que a variável aleatória <span class="math inline">\(X\)</span> denota o número de acertos entre as 10 questões. Portanto, <span class="math inline">\(X\)</span> tem distribuição binomial com parâmetros <span class="math inline">\(n = 10\)</span> e <span class="math inline">\(p\)</span> desconhecido. Supondo que adotamos a seguinte regra de decisão: o aluno não está advinhando se acertar 8 ou mais questões. Isto equivale a <span class="math display">\[\begin{align*}
+<li><p>Vamos assumir que as questões são independentes e que a variável aleatória <span class="math inline">\(X\)</span> denota o número de acertos entre as 10 questões. Portanto, <span class="math inline">\(X\)</span> tem distribuição binomial com parâmetros <span class="math inline">\(n = 10\)</span> e <span class="math inline">\(p\)</span> desconhecido. Supondo que adotamos a seguinte regra de decisão: o aluno não está advinhando se acertar 8 ou mais questões. Isto equivale a <span class="math display">\[\begin{align*}
   \textrm{Rejeitar } H_0 \textrm{ se } &amp; X \geq 8.
 \end{align*}\]</span> Dessa forma, a região crítica do teste é <span class="math inline">\(C_{\Upsilon} = \{X: X &gt; 8\}\)</span>. É possível também que o aluno acerte 8 ou mais questões e esteja advinhando, isto é, podemos rejeitar <span class="math inline">\(H_0\)</span> dado que ela é verdadeira. A probabilidade de que isso ocorra é: <span class="math display">\[\begin{align*}
   P(X \geq 8|p = 1/2) &amp; = \sum_{k = 8}^{10}(1/2)^{k}(1 - 1/2)^{10 - k} \approx 0,055.
-\end{align*}\]</span></li>
+\end{align*}\]</span></p></li>
+<li><p>Agora, assumindo um <span class="math inline">\(\alpha \leq 0,2\)</span>, vamos observar os resutlados a seguir: <span class="math display">\[\begin{align*}
+      P(X \geq 6|p = 1/2) &amp; = \sum_{k = 6}^{10}(1/2)^{k}(1 - 1/2)^{10 - k} \approx 0,3769531\\
+      P(X \geq 7|p = 1/2) &amp; = \sum_{k = 7}^{10}(1/2)^{k}(1 - 1/2)^{10 - k} \approx 0,171875
+      \\
+      P(X \geq 8|p = 1/2) &amp; = \sum_{k = 8}^{10}(1/2)^{k}(1 - 1/2)^{10 - k} \approx 0,0546875\\
+      P(X \geq 9|p = 1/2) &amp; = \sum_{k = 9}^{10}(1/2)^{k}(1 - 1/2)^{10 - k} \approx 0,01074219\\
+     \end{align*}\]</span> Neste caso, verificamos que assumir como tomada de decisão de que o aluno não está adivinhando se ele acertasse no mínimo 6 questões, cometeríamos um erro de 0,3769531, sendo acima do erro adotado (<span class="math inline">\(\alpha \leq 0,2\)</span>). Portanto, a probabilidade mais próxima e abaixo de <span class="math inline">\(\alpha\)</span>, será adotar como decisão, “<em>Rejeitar se <span class="math inline">\(X \geq 7\)</span></em>”.</p></li>
 </ol>
 </div></details>
 </div>
